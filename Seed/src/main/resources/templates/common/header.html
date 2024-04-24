@@ -1,0 +1,74 @@
+<header>
+
+    <!-- 왼쪽 공백 -->
+    <section></section>
+
+    <!-- 로고, 페이지 이름, 검색창 -->
+    <section>
+
+        <a href="/">
+            <img src="/images/중성마녀.jpg" alt="메인 로고" id="homeLogo">
+        </a>
+
+        <h1>언더 더 씨</h1>
+
+        <article class="search-area">
+            <form action="#" method="GET">
+                <fieldset>
+
+                    <!-- autocomplete="off" : 자동완성 off -->
+                    <input type="search"
+                            id="query"
+                            name="query"
+                            placeholder="검색어를 입력해 주세요."
+                            autocapitalize="off"
+                    >
+
+                    <!-- 제목 검색 -->
+                    <input type="hidden" name="key" value="t">
+
+                    <!-- 검색 버튼 -->
+                    <button id="searchBtn" class="fa-solid fa-magnifying-glass"></button>
+
+                </fieldset>
+            </form>
+
+            <!-- 검색 결과 -->
+            <ul id="searchResult" class="close"></ul>
+        </article>
+
+
+        
+    </section>
+        <button class="login">로그인</button>
+        <button class="login">회원가입</button>
+        <button class="login">장바구니</button>
+
+    <section>
+
+    </section>
+
+
+
+
+
+
+
+</header>
+
+
+<!-- navigator -->
+<nav>
+    <ul>
+        <th:block th:each="boardType : ${application.boardTypeList}">
+        <li>
+            <a th:text="${boardType.baordName}"
+                th:href="@{/board/{boardCode}(boardCode = ${boardType.boardCode})}"
+            >게시판 이름</a>
+
+        </li>
+        </th:block>
+
+    </ul>
+
+</nav>
