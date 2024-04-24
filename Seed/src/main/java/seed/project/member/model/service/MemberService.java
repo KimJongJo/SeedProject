@@ -6,6 +6,9 @@ import org.springframework.transaction.annotation.Transactional;
 import lombok.extern.slf4j.Slf4j;
 
 
+
+
+@Transactional(rollbackFor=Exception.class)
 public interface MemberService {
 	
 	
