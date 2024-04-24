@@ -100,3 +100,30 @@ END
 
 !ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2024-04-24 12:20:47.477
 !MESSAGE Started org.springframework.tooling.boot.ls LS process 13340
+
+!ENTRY org.eclipse.help.base 2 0 2024-04-24 14:27:46.628
+!MESSAGE Unable to consume Lucene index from bundle 'org.eclipse.wst.server.ui.doc.user_1.1.600.v201901310132 [489]'. The index should be rebuilt with Lucene 9.10.0
+
+!ENTRY org.eclipse.help.base 2 0 2024-04-24 14:27:46.629
+!MESSAGE Unable to consume Lucene index from bundle 'org.eclipse.wst.dtdeditor.doc.user_1.1.0.v201903222120 [602]'. The index should be rebuilt with Lucene 9.10.0
+
+!ENTRY org.eclipse.help.base 2 0 2024-04-24 14:27:46.631
+!MESSAGE Unable to consume Lucene index from bundle 'org.eclipse.wst.xmleditor.doc.user_1.1.0.v201903222120 [617]'. The index should be rebuilt with Lucene 9.10.0
+
+!ENTRY org.eclipse.help.base 2 0 2024-04-24 14:27:46.633
+!MESSAGE Unable to consume Lucene index from bundle 'org.eclipse.wst.xsdeditor.doc.user_1.0.800.v201903222120 [620]'. The index should be rebuilt with Lucene 9.10.0
+
+!ENTRY org.eclipse.help.base 2 0 2024-04-24 14:27:46.636
+!MESSAGE Unable to consume Lucene index from bundle 'org.eclipse.wst.sse.doc.user_1.2.0.v201903222120 [604]'. The index should be rebuilt with Lucene 9.10.0
+
+!ENTRY org.eclipse.lsp4e 2 0 2024-04-24 14:28:41.684
+!MESSAGE Javadoc unavailable. Failed to obtain it.
+!STACK 0
+java.lang.InterruptedException
+	at java.base/java.util.concurrent.CompletableFuture.reportGet(CompletableFuture.java:386)
+	at java.base/java.util.concurrent.CompletableFuture.get(CompletableFuture.java:2096)
+	at org.eclipse.lsp4e.jdt.LSJavaHoverProvider.getHoverInfo2(LSJavaHoverProvider.java:65)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:163)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:130)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavaEditorTextHoverProxy.getHoverInfo2(JavaEditorTextHoverProxy.java:89)
+	at org.eclipse.jface.text.TextViewerHoverManager$1.run(TextViewerHoverManager.java:155)
