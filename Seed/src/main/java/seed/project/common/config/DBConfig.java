@@ -107,7 +107,7 @@ public class DBConfig {
 		// 클래스 파일명이 별칭으로 등록
 		
 		// ex) edu.kh.todo.model.dto.Member  -->  Member (별칭 등록)
-		sessionFactoryBean.setTypeAliasesPackage("edu.kh.project");
+		sessionFactoryBean.setTypeAliasesPackage("seed.project");
 		
 		// 마이바티스 설정 파일 경로 지정
 		sessionFactoryBean.setConfigLocation(
