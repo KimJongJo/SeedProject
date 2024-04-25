@@ -48,7 +48,7 @@ VALUES(SEQ_MEMBER_CODE.NEXTVAL, 'user01', 'pass01', '유저일', 'user01@gmail.c
 
 
 
-
+SELECT * FROM "MEMBER";
 
 
 
