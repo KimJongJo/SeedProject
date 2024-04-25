@@ -15,179 +15,93 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+header > :first-child{
+    background-color: #10403B;
+    height: 70px;
+    width: 100%;
+    margin-bottom: 70px;
+}
+
+header > div:nth-child(3){
+    display: flex;
+    align-items: flex-end;
+}
+
+header > div:nth-child(3) > img{
+    width: 100px;
+    height: 100px;
+}
+
+header > div:nth-child(3) > span{
+    font-size: 45px;
+    height: 50px;
+    margin-left: 30px;
+}
+
+
+header > div:nth-child(2){
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+header > div:nth-child(2) > div:nth-child(3) > button{
+    background-color: #8AA6A3;
+    border: none;
+    color: white;
+    width: 60px;
+    height: 25px;
+    border-radius: 5px;
+    margin-left: 5px;
+}
+
+
+header > div:nth-child(2) > div:nth-child(2) input{
+    width: 250px;
+    height: 40px;
+    text-align: center;
+    border: none;
+    font-size: 15px;
+    border-radius: 5px;
+
+    box-shadow: 0 3px 3px rgba(0,0,0,0.2);
+    
+}
+
+header > div:nth-child(2) > div:nth-child(2) button{
+    width: 50px;
+    height: 40px;
+    background-color: #127369;
+    border: none;
+    border-radius: 5px;
+    color: white;
+}
+
+
+header > div:nth-child(3){
+    display: flex;
+    justify-content: center;
+    margin: 30px;
+}
+
+
+#nav-top{
+    display: flex;
+    justify-content: center;
+}
+
+div > nav{
+    width: 1000px;
+    padding: 20px;
+    border-bottom: 1px solid black;
+}
+
+nav > a{
+    padding: 20px;
+    text-decoration: none;
+    font-size: 20px;
+}
 
 
 
@@ -222,18 +136,5 @@
 
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
