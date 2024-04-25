@@ -40,7 +40,10 @@ SELECT * FROM "TYPE";
 
 -- 씨앗 넣기
 
-
+-- 계정 추가
+INSERT INTO "MEMBER"
+VALUES(SEQ_MEMBER_CODE.NEXTVAL, 'user01', 'pass01', '유저일', 'user01@gmail.com',
+			NULL, '01011112222', DEFAULT, DEFAULT, DEFAULT);
 
 
 
