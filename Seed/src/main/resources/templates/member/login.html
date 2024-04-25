@@ -4,19 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+    <th:block th:replace="~{common/common}"></th:block>
 </head>
 <body>
     
-    <main>
-        <a href="/">
-            <img src="/images/중성마녀.jpg" alt="메인 로고" id="homeLogo">
-        </a>
-        <th:text>언더 더 씨</th:text>
+    <main id="loginForm">
+
+        <!-- 화면 배치 -->
+        <!-- 좌(공백) / 중앙(로고, 이름, 로그인 폼) / 우(공백) -->
+
+        <!-- 왼쪽 공백 -->
+        <section class="content-login-1"></section>
 
 
 
-        <!-- 로그인 안돼있을 때 -->
-        <th:block th:if="${session.loginMember == null}">
+
+        <!-- 중앙(로고, 이름, 로그인 폼) -->
+        <section class="content-login-2">
+
+            <!-- 로고, 이름 -->
+            <a href="/">
+                <img src="/images/중성마녀.jpg" alt="메인 로고" id="homeLogo">
+            </a>
+            <th:text>언더 더 씨</th:text>
+
+
+
+            
 
             <!-- 로그인 박스 -->
             <form action="/member/login" method="POST" id="loginForm">
@@ -54,9 +69,10 @@
             </fildset>
 
             <a href="/member/signup">회원가입</a>
-            
+        </section>
+        
+        <section class="content-login-3"></section>
 
-        </th:block>
 
     </main>
 </body>

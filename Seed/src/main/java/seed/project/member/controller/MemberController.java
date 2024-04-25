@@ -93,6 +93,13 @@ public class MemberController {
 		
 		return "/member/signup";
 	}
+	
+	
+	@GetMapping("searchId")
+	public String searchId() {
+		
+		return "/member/searchId";
+	}
 		
 	
 }
