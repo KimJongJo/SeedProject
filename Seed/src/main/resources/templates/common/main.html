@@ -10,20 +10,56 @@
 
 </head>
 <body>
-    
-    
-        <!-- 헤더 추가 -->
-        <th:block th:replace="~{common/header}"></th:block>
+    <!-- 헤더 추가 -->
+    <th:block th:replace="~{common/header}"></th:block>
 
     <main>
-
-
-    
-
+        <section class="content">
+            <!-- 필터 부분 -->
+            <div class="filter">
+                <select>
+                    <option>높은 가격순</option>
+                    <option>낮은 가격순</option>
+                    <option>종류별</option>
+                    <option>인기순</option>
+                </select>
+            </div>
+            <!-- 상품 하드코딩 9종 (추후 시간 남으면 수정) -->
+            <div class="seed-area">
+                <div>
+                    <img src="/images/쌈채소씨앗9종/고수.png">
+                    <br>
+                    <a>고수 씨앗</a><span>0 Like</span>             
+                    <p>1900원</p>
+                </div>
+                <div>
+                    <img src="/images/쌈채소씨앗9종/곰취.png">
+                    <br>
+                    <a>고수 씨앗</a><span>0 Like</span>
+                    <p>1900원</p>
+                </div>
+                <div>
+                    <img src="/images/쌈채소씨앗9종/뚝섬적축면.png">
+                    <br>
+                    <a>고수 씨앗</a><span>0 Like</span>
+                    <p>1900원</p>
+                </div>
+            </div>
+            <div class="seed-area">
+                <img src="/images/쌈채소씨앗9종/로메인상추.png">
+                <img src="/images/쌈채소씨앗9종/루꼴라.png">
+                <img src="/images/쌈채소씨앗9종/잎들깨.png">
+            </div>
+            <div class="seed-area">
+                <img src="/images/쌈채소씨앗9종/적치마상추.png">
+                <img src="/images/쌈채소씨앗9종/중엽쑥갓.png">
+                <img src="/images/쌈채소씨앗9종/포르투칼케일.png">
+            </div>
+        </section>
 
     </main>
 
 
-<th:block th:replace="~{common/footer}"></th:block>
+    <th:block th:replace="~{common/footer}"></th:block>
 </body>
 </html>
