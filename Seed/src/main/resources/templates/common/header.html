@@ -1,74 +1,34 @@
 <header>
 
-    <!-- 왼쪽 공백 -->
-    <section></section>
+    <!-- 상단 녹색 부분 -->
+    <div id="head-top"></div>
 
-    <!-- 로고, 페이지 이름, 검색창 -->
-    <section>
+    <!-- 검색창 라인 -->
+    <div id="searchLine">
+        <form action="#">
+            <input type="text" placeholder="검색어를 입력해주세요" id="searchBox">
+            <button id="searchBtn">검색</button>
+        </form>
+    </div>
 
-        <a href="/">
-            <img src="/images/중성마녀.jpg" alt="메인 로고" id="homeLogo">
-        </a>
+    <div id="searchLine-right">
+        <span>###님 환영합니다</span>
+        <button>로그아웃</button>
+        <button>마이페이지</button>
+        <button>장바구니</button>
+    </div>
 
-        <h1>언더 더 씨</h1>
-
-        <article class="search-area">
-            <form action="#" method="GET">
-                <fieldset>
-
-                    <!-- autocomplete="off" : 자동완성 off -->
-                    <input type="search"
-                            id="query"
-                            name="query"
-                            placeholder="검색어를 입력해 주세요."
-                            autocapitalize="off"
-                    >
-
-                    <!-- 제목 검색 -->
-                    <input type="hidden" name="key" value="t">
-
-                    <!-- 검색 버튼 -->
-                    <button id="searchBtn" class="fa-solid fa-magnifying-glass"></button>
-
-                </fieldset>
-            </form>
-
-            <!-- 검색 결과 -->
-            <ul id="searchResult" class="close"></ul>
-        </article>
-
-
-        
-    </section>
-        <a href="/member/login" class="login">로그인</a>
-        <a href="/member/signup" class="login">회원가입</a>
-        <a class="login">장바구니</a>
-
-    <section>
-
-    </section>
-
-
-
-
-
-
-
+    <div id="middle">
+        <img src="/images/뚱이.jpg" alt="로고" id="logo-img">
+        <span>언더 더 씨</span>
+    </div>
 </header>
 
-
-<!-- navigator -->
-<nav>
-    <ul>
-        <th:block th:each="boardType : ${application.boardTypeList}">
-        <li>
-            <a th:text="${boardType.baordName}"
-                th:href="@{/board/{boardCode}(boardCode = ${boardType.boardCode})}"
-            >게시판 이름</a>
-
-        </li>
-        </th:block>
-
-    </ul>
-
-</nav>
+<div id="nav-top">
+    <nav id="nav-bottom">
+        <a href="#">쇼핑</a>
+        <a href="#">자유 게시판</a>
+        <a href="#">문의 게시판</a>
+        <a href="#">팁과 노하우</a>
+    </nav>
+</div>
