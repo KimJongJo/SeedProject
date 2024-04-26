@@ -17,7 +17,8 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-height: 100vh; 
+    height: 3000px;
+    /* min-height: 100vh;  */
 }
 
 main {
@@ -41,7 +42,9 @@ main {
 
 
 
-
+header {
+    width: 100%;
+}
 
 
 
@@ -61,6 +64,7 @@ header > div:nth-child(3){
     justify-content: center;
     align-items: flex-end;
     margin-right: 200px;
+    line-height: 75px;
 }
 
 header > div:nth-child(3) > img{
@@ -71,7 +75,6 @@ header > div:nth-child(3) > img{
 
 header > div:nth-child(3) > span{
     font-size: 45px;
-    height: 50px;
     margin-left: 30px;
 }
 
@@ -171,7 +174,8 @@ header > div:nth-child(3){
 
 
 #nav-bottom{
-    width: 700px;
+    width: 900px;
+}
 
 div > nav{
     width: 1000px;
@@ -254,10 +258,10 @@ nav > a:hover{
 
 }
 
-#loginForm > .content-login-2 {
+/* #loginForm > .content-login-2 {
 
 
-}
+} */
 
 #loginForm > .content-login-3 {
 
@@ -265,6 +269,3 @@ nav > a:hover{
 
 
 }
-
-
-
