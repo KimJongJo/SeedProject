@@ -9,8 +9,16 @@
 </head>
 <body>
     
-    <main id="loginForm">
+    <header>
+        <div></div>
 
+    </header>
+    <main class="loginForm">
+
+
+        
+
+        
         <!-- 화면 배치 -->
         <!-- 좌(공백) / 중앙(로고, 이름, 로그인 폼) / 우(공백) -->
 
@@ -24,6 +32,7 @@
         <section class="content-login-2">
 
             <!-- 로고, 이름 -->
+
             <a href="/">
                 <img src="/images/씨앗.png" alt="메인 로고" id="homeLogo">
             </a>
@@ -34,17 +43,17 @@
             
 
             <!-- 로그인 박스 -->
-            <form action="/member/login" method="POST" id="loginForm">
+            <form action="/member/login" method="POST" id="login-area">
                 <fieldset class="id-pw-area">
 
                     <!-- 아이디/비번 입력 -->
                     <section>
                         <input type="text"
-                                name="memberId"
+                                id="memberId"
                                 placeholder="아이디">
-
+                        <br>
                         <input type="password"
-                                name="memberPw"
+                                id="memberPw"
                                 placeholder="비밀번호">
                     </section>
 
@@ -72,8 +81,13 @@
         </section>
         
         <section class="content-login-3"></section>
-
+        
 
     </main>
+
+
+    <th:block th:replace="~{common/footer}"></th:block>
 </body>
+
+
 </html>
