@@ -17,7 +17,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 3000px;
+    height: 100vh; 
     /* min-height: 100vh;  */
 }
 
@@ -25,9 +25,9 @@ main {
     width: 1140px;
 }
 
-@media (max-width : 1140px) {
+/* @media (max-width : 1140px) {
     main{ width: 100vw; }
-}
+} */
 
 
 
@@ -39,8 +39,19 @@ main {
     
 }
 
+.seed-area > div {
+
+    text-align: center;
+    margin-bottom: 36px;
+    
+}
+
+.seed-area  a {
+    margin-right: 20px;
+}
 
 
+/* ----------- 헤더 ----------- */
 
 header {
     width: 100%;
@@ -193,16 +204,17 @@ div > nav{
 
 
 
-/* 푸터(수민) */
+/* ------------------------- 푸터 시작 ----------------------- */
 footer {
     background-color: #10403B;
     color: whitesmoke;
     width: 100%;
     height: 400px;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
-    flex-direction: column;
+    padding: 20px;
+    
 }
 
 footer a {
@@ -210,13 +222,26 @@ footer a {
     color: whitesmoke;
 }
 
-footer strong {
+/* .cs-info, .bank-info {
+    
+} */
+
+.main-info strong {
     font-size: 18px;
+    
 }
 
+.cs-info strong, .bank-info strong {
+    font-size: 16px;
+    
+}
 
+.cs-info p, .bank-info p { 
+    font-size: 14px;
+    
+}
 
-
+/* -------------------- 푸터 끝 ------------------------- */
 
 
 
