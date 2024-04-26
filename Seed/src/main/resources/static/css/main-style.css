@@ -18,7 +18,6 @@ body {
     flex-direction: column;
     align-items: center;
     height: 100vh; 
-    /* min-height: 100vh;  */
 }
 
 main {
@@ -51,13 +50,14 @@ main {
 }
 
 
-/* ----------- 헤더 ----------- */
+
+
+
+/* ----------- 헤더 시작 ----------- */
 
 header {
     width: 100%;
 }
-
-
 
 
 
@@ -136,7 +136,7 @@ header > div:nth-child(2) > div:nth-child(3) > a:hover{
     transition-duration: 0.2s;
 }
 
-
+/* 검색창 */
 header > div:nth-child(2) > div:nth-child(2) input{
     width: 350px;
     height: 40px;
@@ -145,6 +145,7 @@ header > div:nth-child(2) > div:nth-child(2) input{
     font-size: 18px;
     border-radius: 5px;
     outline: none;
+    border: 1px solid #ddd;
 
     box-shadow: 0 3px 3px rgba(0,0,0,0.2);
     
@@ -169,6 +170,7 @@ header > div:nth-child(2) > div:nth-child(2) button:hover{
     cursor: pointer;
     transition-duration: 0.2s;
 }
+
 
 
 header > div:nth-child(3){
@@ -201,6 +203,8 @@ div > nav{
 }
 
 
+/* -------------------- 헤더 끝 -------------------- */
+
 
 
 
@@ -214,7 +218,7 @@ footer {
     justify-content: space-around;
     align-items: center;
     padding: 20px;
-    
+
 }
 
 footer a {
@@ -287,4 +291,75 @@ nav > a:hover{
     flex-basis: 40% ;
 
 
+}
+
+
+/* -------- 로그인 시작 --------- */
+
+.loginForm {
+    display: flex;
+}
+
+.content-login-1 {
+    width: 40%;
+}
+
+.content-login-2 {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.content-login-3 {
+    width: 40%;
+}
+
+
+#memberId, #memberPw {
+    width: 350px;
+    height: 40px;
+    padding-left: 20px;
+    border: none;
+    font-size: 18px;
+    border-radius: 5px;
+    outline: none;
+    border: 1px solid #ddd;
+    box-shadow: 0 3px 3px rgba(0,0,0,0.2);
+    
+}
+
+#memberId {
+    margin-bottom: 15px;
+}
+
+
+/* -------- 로그인 끝 --------- */
+
+
+
+
+/* 필터 */
+.filter{
+    width: 900px;
+    display: flex;
+    justify-content: flex-end;
+    margin: 20px;
+}
+
+.filter > select{
+    width: 100px;
+    height: 30px;
+    font-size: 15px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.filter > select:focus{
+    outline: none;
+}
+
+.content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
