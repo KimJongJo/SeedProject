@@ -18,13 +18,11 @@ body {
     flex-direction: column;
     align-items: center;
     height: 100vh; 
-    /* min-height: 100vh;  */
 }
 
 main {
     width: 1140px;
 }
-
 
 
 
@@ -177,6 +175,22 @@ div > nav{
     text-decoration: none;
 }
 
+
+
+nav > a{
+    padding: 20px;
+    text-decoration: none;
+    font-size: 20px;
+    color: black;
+    transition-duration: 0.3s;
+    border-radius: 15px;
+}
+
+nav > a:hover{
+    background-color: #127369;
+    transition-duration: 0.3s;
+    color: white;
+}
 
 
 

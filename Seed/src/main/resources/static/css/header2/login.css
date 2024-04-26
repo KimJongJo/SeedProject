@@ -1,0 +1,40 @@
+/* -------- 로그인 시작 --------- */
+
+.loginForm {
+    display: flex;
+}
+
+.content-login-1 {
+    width: 40%;
+}
+
+.content-login-2 {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.content-login-3 {
+    width: 40%;
+}
+
+
+#memberId, #memberPw {
+    width: 350px;
+    height: 40px;
+    padding-left: 20px;
+    border: none;
+    font-size: 18px;
+    border-radius: 5px;
+    outline: none;
+    border: 1px solid #ddd;
+    box-shadow: 0 3px 3px rgba(0,0,0,0.2);
+    
+}
+
+#memberId {
+    margin-bottom: 15px;
+}
+
+
+/* -------- 로그인 끝 --------- */

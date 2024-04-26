@@ -1,0 +1,87 @@
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+* {
+    font-family: 'Pretendard-Regular';
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh; 
+}
+
+main {
+    width: 1140px;
+}
+
+
+
+/* ----------- 헤더 ----------- */
+
+header {
+    width: 100%;
+}
+
+
+
+
+
+header > :first-child{
+    background-color: #10403B;
+    height: 70px;
+    width: 100%;
+    margin-bottom: 70px;
+}
+
+
+
+
+
+/* ------------------------- 푸터 시작 ----------------------- */
+footer {
+    background-color: #10403B;
+    color: whitesmoke;
+    width: 100%;
+    height: 400px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px;
+    
+}
+
+footer a {
+    text-decoration: none;
+    color: whitesmoke;
+}
+
+/* .cs-info, .bank-info {
+    
+} */
+
+.main-info strong {
+    font-size: 18px;
+    
+}
+
+.cs-info strong, .bank-info strong {
+    font-size: 16px;
+    
+}
+
+.cs-info p, .bank-info p { 
+    font-size: 14px;
+    
+}
+
+/* -------------------- 푸터 끝 ------------------------- */
