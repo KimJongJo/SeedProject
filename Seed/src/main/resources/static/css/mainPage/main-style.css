@@ -203,6 +203,22 @@ div > nav{
 }
 
 
+nav > a{
+    padding: 20px;
+    text-decoration: none;
+    font-size: 20px;
+    color: black;
+    transition-duration: 0.3s;
+    border-radius: 15px;
+}
+
+nav > a:hover{
+    background-color: #127369;
+    transition-duration: 0.3s;
+    color: white;
+}
+
+
 /* -------------------- 헤더 끝 -------------------- */
 
 
@@ -248,92 +264,6 @@ footer a {
 /* -------------------- 푸터 끝 ------------------------- */
 
 
-
-
-nav > a{
-    padding: 20px;
-    text-decoration: none;
-    font-size: 20px;
-    color: black;
-    transition-duration: 0.3s;
-    border-radius: 15px;
-}
-
-nav > a:hover{
-    background-color: #127369;
-    transition-duration: 0.3s;
-    color: white;
-}
-
-
-
-/* ******************* 로그인 ******************* */
-#loginForm {
-    display : flex;
-    border: 1px solid black;
-    box-sizing: border-box;
-}
-
-#loginForm > .content-login-1 {
-
-    flex-basis: 40% ;
-
-
-}
-
-/* #loginForm > .content-login-2 {
-
-
-} */
-
-#loginForm > .content-login-3 {
-
-    flex-basis: 40% ;
-
-
-}
-
-
-/* -------- 로그인 시작 --------- */
-
-.loginForm {
-    display: flex;
-}
-
-.content-login-1 {
-    width: 40%;
-}
-
-.content-login-2 {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-}
-
-.content-login-3 {
-    width: 40%;
-}
-
-
-#memberId, #memberPw {
-    width: 350px;
-    height: 40px;
-    padding-left: 20px;
-    border: none;
-    font-size: 18px;
-    border-radius: 5px;
-    outline: none;
-    border: 1px solid #ddd;
-    box-shadow: 0 3px 3px rgba(0,0,0,0.2);
-    
-}
-
-#memberId {
-    margin-bottom: 15px;
-}
-
-
-/* -------- 로그인 끝 --------- */
 
 
 
