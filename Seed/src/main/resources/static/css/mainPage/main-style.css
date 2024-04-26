@@ -44,7 +44,8 @@ main {
     margin-bottom: 36px;
     
 }
-.seed-area  a {
+
+.seed-area a {
     margin-right: 20px;
 }
 
@@ -202,6 +203,22 @@ div > nav{
 }
 
 
+nav > a{
+    padding: 20px;
+    text-decoration: none;
+    font-size: 20px;
+    color: black;
+    transition-duration: 0.3s;
+    border-radius: 15px;
+}
+
+nav > a:hover{
+    background-color: #127369;
+    transition-duration: 0.3s;
+    color: white;
+}
+
+
 /* -------------------- 헤더 끝 -------------------- */
 
 
@@ -245,6 +262,7 @@ footer a {
 }
 
 /* -------------------- 푸터 끝 ------------------------- */
+
 
 
 
@@ -347,6 +365,7 @@ nav > a:hover{
 
 
 /* -------- 로그인 끝 --------- */
+
 
 
 
