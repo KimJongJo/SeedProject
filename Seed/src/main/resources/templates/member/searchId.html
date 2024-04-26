@@ -1,49 +1,50 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html> 
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>아이디 찾기</title>
 
-    <th:block th:replace="~{common/common}"></th:block>
+    <link rel="stylesheet" href="/css/searchId.css">
 
     
 </head>
 <body>
+    <!-- 헤더 추가 -->
+    <th:block th:replace="~{common/header2}"></th:block>
+
+    <main class="main">
     
-    <!-- 화면 배치 -->
-    <!-- 좌(공백) / 중앙(로고, 이름, 아이디찾기 폼) / 우(공백) -->
+        <div style="margin-right: 130px;" class="logo-line">
+            <img src="/images/씨앗.png" alt="로고">
+            <span>언더 더 씨</span>
+        </div>
 
-    <!-- 왼쪽 공백 -->
-    <section class="content-searchId-1"></section>
+        <section class="find-form">
 
+            <span class="find-id">아이디 찾기</span>
 
-    <!-- 중앙(로고, 이름, 아이디찾기 폼) -->
-    <section class="content-searchId-2">
-        <a href="/">
-            <img src="/images/중성마녀.jpg" alt="메인 로고" id="homeLogo">
-        </a>
-        <th:text>언더 더 씨</th:text>
+            <form action="#" class="search-id-form">
+                <table class="table">
+                    <tr>
+                        <td name="memberEmail" class="email-input">이메일 입력</td>
+                        <td> <input type="text"> </td>
+                    </tr>
+                    <tr>
+                        <td name="memberNickname" class="nickname-input">닉네임 입력</td>
+                        <td> <input type="text"> </td>
+                        <td> <button>확인</button></td>
+                    </tr>
+                </table>
+            </form>
 
-        
-        <h1>아이디 찾기</h1>
-        
-        <form action="/member/searchId" method="POST" id="searchIdForm">
-        
-            <p>이메일 입력</p>
-            <input type="email"
-                    name="memberEmail">
-            <br>
-            <p>닉네임 입력</p>
-            <input type="text"
-                    name="memberNickname">
+        </section>
 
-            <button>확인</button>
-        </form>
-    </section>
+    </main>
+
     
 
-    <section class="content-searchId-3"></section>
+    <th:block th:replace="~{common/footer}"></th:block>
 
 </body>
 </html>

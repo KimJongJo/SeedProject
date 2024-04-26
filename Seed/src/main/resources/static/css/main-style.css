@@ -17,8 +17,8 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    min-height: 100vh; 
     height: 100vh; 
-    /* min-height: 100vh;  */
 }
 
 main {
@@ -45,19 +45,19 @@ main {
     margin-bottom: 36px;
     
 }
-
 .seed-area  a {
     margin-right: 20px;
 }
 
 
-/* ----------- 헤더 ----------- */
+
+
+
+/* ----------- 헤더 시작 ----------- */
 
 header {
     width: 100%;
 }
-
-
 
 
 
@@ -145,6 +145,7 @@ header > div:nth-child(2) > div:nth-child(2) input{
     font-size: 18px;
     border-radius: 5px;
     outline: none;
+    border: 1px solid #ddd;
 
     box-shadow: 0 3px 3px rgba(0,0,0,0.2);
     
@@ -169,6 +170,7 @@ header > div:nth-child(2) > div:nth-child(2) button:hover{
     cursor: pointer;
     transition-duration: 0.2s;
 }
+
 
 
 header > div:nth-child(3){
@@ -200,6 +202,8 @@ div > nav{
     text-decoration: none;
 }
 
+
+/* -------------------- 헤더 끝 -------------------- */
 
 
 
@@ -293,4 +297,30 @@ nav > a:hover{
     flex-basis: 40% ;
 
 
+}
+
+/* 필터 */
+.filter{
+    width: 900px;
+    display: flex;
+    justify-content: flex-end;
+    margin: 20px;
+}
+
+.filter > select{
+    width: 100px;
+    height: 30px;
+    font-size: 15px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.filter > select:focus{
+    outline: none;
+}
+
+.content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
