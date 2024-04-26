@@ -17,16 +17,16 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-height: 100vh; 
+    height: 100vh; 
 }
 
 main {
     width: 1140px;
 }
 
-@media (max-width : 1140px) {
+/* @media (max-width : 1140px) {
     main{ width: 100vw; }
-}
+} */
 
 
 
@@ -38,14 +38,25 @@ main {
     
 }
 
+.seed-area > div {
+
+    text-align: center;
+    margin-bottom: 36px;
+    
+}
+.seed-area  a {
+    margin-right: 20px;
+}
 
 
+
+
+
+/* ----------- 헤더 시작 ----------- */
 
 header {
     width: 100%;
 }
-
-
 
 
 
@@ -133,6 +144,7 @@ header > div:nth-child(2) > div:nth-child(2) input{
     font-size: 18px;
     border-radius: 5px;
     outline: none;
+    border: 1px solid #ddd;
 
     box-shadow: 0 3px 3px rgba(0,0,0,0.2);
     
@@ -157,6 +169,7 @@ header > div:nth-child(2) > div:nth-child(2) button:hover{
     cursor: pointer;
     transition-duration: 0.2s;
 }
+
 
 
 header > div:nth-child(3){
@@ -189,20 +202,21 @@ div > nav{
 }
 
 
+/* -------------------- 헤더 끝 -------------------- */
 
 
 
-/* 푸터(수민) */
+
+/* ------------------------- 푸터 시작 ----------------------- */
 footer {
     background-color: #10403B;
     color: whitesmoke;
     width: 100%;
     height: 400px;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
-    flex-direction: column;
-    bottom: 0px;
+    padding: 20px;
 
 }
 
@@ -211,13 +225,26 @@ footer a {
     color: whitesmoke;
 }
 
-footer strong {
+/* .cs-info, .bank-info {
+    
+} */
+
+.main-info strong {
     font-size: 18px;
+    
 }
 
+.cs-info strong, .bank-info strong {
+    font-size: 16px;
+    
+}
 
+.cs-info p, .bank-info p { 
+    font-size: 14px;
+    
+}
 
-
+/* -------------------- 푸터 끝 ------------------------- */
 
 
 
@@ -272,234 +299,7 @@ nav > a:hover{
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* -------- 로그인 --------- */
+/* -------- 로그인 시작 --------- */
 
 .loginForm {
     display: flex;
@@ -535,4 +335,36 @@ nav > a:hover{
 
 #memberId {
     margin-bottom: 15px;
+}
+
+
+/* -------- 로그인 끝 --------- */
+
+
+
+
+/* 필터 */
+.filter{
+    width: 900px;
+    display: flex;
+    justify-content: flex-end;
+    margin: 20px;
+}
+
+.filter > select{
+    width: 100px;
+    height: 30px;
+    font-size: 15px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.filter > select:focus{
+    outline: none;
+}
+
+.content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
