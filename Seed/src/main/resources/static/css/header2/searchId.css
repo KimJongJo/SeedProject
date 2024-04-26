@@ -11,16 +11,21 @@ body > div:first-child{
     display: flex;
     justify-content: center;
     align-items: flex-end;
-    line-height: 75px;
+    
 }
 
-.logo-line > img{
+.logo-line > a{
+    line-height: 75px;
+    height: 90px;
+}
+
+.logo-line  img{
     width: 100px;
     height: 100px;
 }
 
 
-.logo-line > span{
+.logo-line  span{
     font-size: 45px;
     margin-left: 30px;
 }
@@ -40,19 +45,51 @@ body > div:first-child{
 .find-id{
     font-size: 35px;
     background-color: #8AA6A3;
-    width: 240px;
+    width: 280px;
     margin-top: 20px;
+    color: white;
+    border-radius: 15px;
+    padding: 10px;
 }
 
 /* 아이디 찾기 폼 */
 .search-id-form{
-    margin-top: 50px;
+    margin-top: 40px;
+    margin-right: 120px;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    width: 300px;
+    align-items: center;
+    width: 400px;
 }
 
 .table{
-    width: 300px;
+    width: 500px;
+}
+
+.table > tr{
+    padding: 5px;
+}
+
+
+
+/* 이메일 입력, 닉네임 입력 글자 */
+.email-span, .nickname-span{
+    font-size: 20px;
+}
+
+
+.email-input, .nickname-input{
+    height: 40px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    box-shadow: 0 3px 3px rgba(0,0,0,0.2);
+}
+
+
+.form-btn{
+    height: 40px;
+    font-size: 20px;
+    background-color: #4C5958;
+    color: white;
+    border-radius: 5px;
 }

@@ -16,24 +16,26 @@
     <main class="main">
     
         <div style="margin-right: 130px;" class="logo-line">
-            <img src="/images/씨앗.png" alt="로고">
+            <a href="/">
+                <img src="/images/씨앗.png" alt="로고">
+            </a>
             <span>언더 더 씨</span>
         </div>
 
-        <section class="find-form">
+        <section class="find-form" style="height: 330px;">
 
             <span class="find-id">아이디 찾기</span>
 
             <form action="#" class="search-id-form">
                 <table class="table">
                     <tr>
-                        <td name="memberEmail" class="email-input">이메일 입력</td>
-                        <td> <input type="text"> </td>
+                        <td><span  class="email-span">이메일 입력</span></td>
+                        <td colspan="2"> <input type="text" style="width: 100%;" name="memberEmail" class="email-input"> </td>
                     </tr>
                     <tr>
-                        <td name="memberNickname" class="nickname-input">닉네임 입력</td>
-                        <td> <input type="text"> </td>
-                        <td> <button>확인</button></td>
+                        <td><span class="nickname-span">닉네임 입력</span></td>
+                        <td> <input type="text" style="width: 100%;" name="memberNickname" class="nickname-input"> </td>
+                        <td> <button style="width: 100%;" class="form-btn">확인</button></td>
                     </tr>
                 </table>
             </form>
