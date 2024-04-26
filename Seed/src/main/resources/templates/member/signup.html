@@ -1,11 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>회원가입</title>
+    <link rel="stylesheet" href="">
+
+    <th:block th:replace="~{common/common2}"></th:block>
+    <link rel="stylesheet" href="/css/header2/signup.css">
+
 </head>
 <body>
-    회원가입 화면
+
+    <th:block th:replace="~{common/header2}"></th:block>
+
+    <main>
+        <section>
+            <div class="logo-div">
+                <!-- 로고, 이름 -->
+                <a href="/">
+                    <img src="/images/씨앗.png" alt="메인 로고" id="homeLogo">
+                </a>
+                <span>언더 더 씨</span>
+
+            </div>
+            <div class="input-div">
+                <form>
+                    <label> 아이디
+                        <input>
+                    </label>
+                    <label> 비밀번호
+                        <input>
+                    </label>
+                    <label> 비밀번호 확인
+                        <input>
+                    </label>
+
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <th:block th:replace="~{common/footer}"></th:block>
 </body>
 </html>
