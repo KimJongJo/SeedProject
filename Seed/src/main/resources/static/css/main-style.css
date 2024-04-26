@@ -17,8 +17,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 3000px;
-    /* min-height: 100vh;  */
+    min-height: 100vh; 
 }
 
 main {
@@ -125,7 +124,7 @@ header > div:nth-child(2) > div:nth-child(3) > a:hover{
     transition-duration: 0.2s;
 }
 
-
+/* 검색창 */
 header > div:nth-child(2) > div:nth-child(2) input{
     width: 350px;
     height: 40px;
@@ -203,6 +202,8 @@ footer {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    bottom: 0px;
+
 }
 
 footer a {
@@ -268,4 +269,270 @@ nav > a:hover{
     flex-basis: 40% ;
 
 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* -------- 로그인 --------- */
+
+.loginForm {
+    display: flex;
+}
+
+.content-login-1 {
+    width: 40%;
+}
+
+.content-login-2 {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.content-login-3 {
+    width: 40%;
+}
+
+
+#memberId, #memberPw {
+    width: 350px;
+    height: 40px;
+    padding-left: 20px;
+    border: none;
+    font-size: 18px;
+    border-radius: 5px;
+    outline: none;
+    border: 1px solid #ddd;
+    box-shadow: 0 3px 3px rgba(0,0,0,0.2);
+    
+}
+
+#memberId {
+    margin-bottom: 15px;
 }
