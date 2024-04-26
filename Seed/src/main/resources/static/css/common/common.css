@@ -25,30 +25,7 @@ main {
     width: 1140px;
 }
 
-/* @media (max-width : 1140px) {
-    main{ width: 100vw; }
-} */
 
-
-
-/* --------------- 메인 스타일 --------------------------- */
-.seed-area {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    
-}
-
-.seed-area > div {
-
-    text-align: center;
-    margin-bottom: 36px;
-    
-}
-
-.seed-area  a {
-    margin-right: 20px;
-}
 
 
 /* ----------- 헤더 ----------- */
@@ -242,55 +219,3 @@ footer a {
 }
 
 /* -------------------- 푸터 끝 ------------------------- */
-
-
-
-
-nav > a{
-    padding: 20px;
-    text-decoration: none;
-    font-size: 20px;
-    color: black;
-    transition-duration: 0.3s;
-    border-radius: 15px;
-}
-
-nav > a:hover{
-    background-color: #127369;
-    transition-duration: 0.3s;
-    color: white;
-}
-
-
-
-
-
-
-
-
-
-/* ******************* 로그인 ******************* */
-#loginForm {
-    display : flex;
-    border: 1px solid black;
-    box-sizing: border-box;
-}
-
-#loginForm > .content-login-1 {
-
-    flex-basis: 40% ;
-
-
-}
-
-/* #loginForm > .content-login-2 {
-
-
-} */
-
-#loginForm > .content-login-3 {
-
-    flex-basis: 40% ;
-
-
-}
