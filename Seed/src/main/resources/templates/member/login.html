@@ -21,14 +21,10 @@
         <!-- 화면 배치 -->
         <!-- 좌(공백) / 중앙(로고, 이름, 로그인 폼) / 우(공백) -->
 
-        <!-- 왼쪽 공백 -->
-        <section class="content-login-1"></section>
-
-
-
+        
 
         <!-- 중앙(로고, 이름, 로그인 폼) -->
-        <section class="content-login-2">
+        <section class="content-login">
 
             <!-- 로고, 이름 -->
 
@@ -44,42 +40,49 @@
             <!-- 로그인 박스 -->
             <form action="/member/login" method="POST" id="login-area">
                 <fieldset class="id-pw-area">
+                    <legend>로그인</legend>
 
                     <!-- 아이디/비번 입력 -->
-                    <section>
+                    <div>
                         <input type="text"
                                 class="memberId"
                                 placeholder="아이디">
+                    
                         <br>
                         <input type="password"
                                 class="memberPw"
                                 placeholder="비밀번호">
-                    </section>
-
+                    </div>
+                    
+                    <div class="saveId">
+                        <input type="checkbox" name="saveId">
+                        <lavel>아이디 저장</lavel>                
+                    </div>
                     <!-- 로그인 버튼 -->
-                    <section>
+                    <div>
                         <button class="loginBtn">로그인</button>
-                    </section>
+                    </div>
+                    
+                    
                 </fieldset>
-
-                <lavel>
-                    <input type="checkbox" class="saveId">
-                    아이디 저장
-                </lavel>                
-
             </form>
-
-            <fildset class="signup-find-area">
+                    
+            <div class="signup-find-area">
                 <a href="/member/searchId">아이디 찾기</a>
                 <span> | </span>
                 <a href="/member/searchPw">비밀번호 찾기</a>
+                
+            </div>
+                    
+            <div>
+                <a href="/member/signup">회원가입</a>
+            </div>
 
-            </fildset>
 
-            <a href="/member/signup">회원가입</a>
+
         </section>
         
-        <section class="content-login-3"></section>
+        
         
 
     </main>
