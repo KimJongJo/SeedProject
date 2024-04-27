@@ -1,7 +1,17 @@
+/* *{
+    border: 1px solid black;
+} */
+
+
+
+.main{
+    height: 415px;
+}
+
 body > div:first-child{
     display: flex;
     justify-content: center;
-    margin: 30px;
+    /* margin: 30px; */
 }
 
 
@@ -37,6 +47,7 @@ body > div:first-child{
     flex-direction: column;
     align-items: center;
     text-align: center;
+    height: 330px;
 }
 
 
@@ -50,46 +61,59 @@ body > div:first-child{
     color: white;
     border-radius: 15px;
     padding: 10px;
+    margin-bottom: 30px;
+    text-align: center;
 }
 
 /* 아이디 찾기 폼 */
 .search-id-form{
-    margin-top: 40px;
-    margin-right: 120px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 400px;
+    width: 560px;
 }
 
-.table{
-    width: 500px;
-}
-
-.table > tr{
-    padding: 5px;
-}
-
-
-
-/* 이메일 입력, 닉네임 입력 글자 */
+/* 이메일 입력, 닉네임 입력 span */
 .email-span, .nickname-span{
     font-size: 20px;
+    margin-right: 10px;
 }
 
+/* 이메일 div, 닉네임 div */
+.email-div, .nickname-div{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 15px;
+    
+    
+}
 
+/* 이메일 input, 닉네임 input 공통 */
 .email-input, .nickname-input{
-    height: 40px;
+    width: 360px;
+    height: 50px;
+    margin: 5px;
     border-radius: 5px;
     border: 1px solid #ddd;
     box-shadow: 0 3px 3px rgba(0,0,0,0.2);
+    font-size: 20px;
+    padding-left: 15px;
 }
 
 
-.form-btn{
-    height: 40px;
+
+/* 닉네임 input */
+.nickname-input{
+    width: 250px;
+    margin-right: 30px;
+}
+
+/* 확인 버튼 */
+.nickname-btn{
+    width: 80px;
     font-size: 20px;
+    height: 50px;
+    border: none;
     background-color: #4C5958;
     color: white;
     border-radius: 5px;
 }
+

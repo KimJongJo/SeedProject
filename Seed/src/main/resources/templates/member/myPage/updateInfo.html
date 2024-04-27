@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>비밀번호 변경</title>
+
+    <th:block th:replace="~{common/common}"></th:block>
+    <th:block th:replace="~{common/common3}"></th:block>
+
+    <link rel="stylesheet" href="/css/myPage/updatePw.css">
+
+    
+
+</head>
+<body>
+
+    <!-- 헤더 추가 -->
+    <th:black th:replace="~{common/header}"></th:black>
+
+    <main>
+        <section class="section">
+            <!-- 왼쪽 nav -->
+            <div class="left-nav">
+                <a href="/member/updateInfo">회원 정보 변경</a>
+                <a href="/member/updatePw">비밀번호 변경</a>
+                <a href="#">장바구니</a>
+                <a href="#">주소록 관리</a>
+                <a href="#">작성한 댓글</a>
+            </div>
+
+            <!-- 추가할 공간 -->
+            <div class="blank">
+                <span class="title">회원 정보 변경</span>
+                <span class="content">내 정보를 원하는 대로 수정할 수 있습니다.</span>
+                <form action="#" class="change-info">
+
+                    <table class="table">
+                        <tr>
+                            <td class="th">닉네임</td>
+                            <td></td>
+                            <td><input type="text"></td>
+                        </tr>
+                        <tr>
+                            <td class="th">전화번호</td>
+                            <td></td>
+                            <td><input type="text"></td>
+                        </tr>
+                    </table>
+
+                    <span>주소</span>
+                    <div>
+                        <input type="text" id="sample6_postcode" placeholder="우편번호">
+                        <input type="button" onclick="sample6_execDaumPostcode()" value="검색"><br>
+                        <input type="text" id="sample6_address" placeholder="기본 주소"><br>
+                        <input type="text" id="sample6_detailAddress" placeholder="나머지주소">
+                        
+                    </div>
+
+
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- 푸터 추가 -->
+    <th:block th:replace="~{common/footer}"></th:block>
+    
+</body>
+</html>

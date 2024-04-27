@@ -1,0 +1,87 @@
+.main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 415px;
+}
+
+/* 로고 + 브랜드 이름 */
+.logo-line{
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    
+}
+
+.logo-line > a{
+    line-height: 75px;
+    height: 90px;
+}
+
+.logo-line  img{
+    width: 100px;
+    height: 100px;
+}
+
+
+.logo-line  span{
+    font-size: 45px;
+    margin-left: 30px;
+}
+
+/* 비밀번호 찾기 폼 */
+.find-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* 비밀번호 찾기 span */
+.find-pw{
+    font-size: 35px;
+    background-color: #8AA6A3;
+    width: 280px;
+    margin-top: 20px;
+    color: white;
+    border-radius: 15px;
+    padding: 10px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+/* 아이디를 입력해주세요 span */
+.id-span{
+    color: #706A6A;
+    font-size: 25px;
+    margin-bottom: 30px;
+}
+
+
+/* 아이디 input */
+.find-id-input{
+    height: 50px;
+    width: 200px;
+    padding: 15px;
+    font-size: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 3px 3px rgba(0,0,0,0.2);
+    margin-bottom: 10px;
+}
+
+/* 찾기 버튼 */
+.find-btn{
+    width: 80px;
+    height: 40px;
+    font-size: 18px;
+    border-radius: 5px;
+    border: none;
+    background-color: #4C5958;
+    color: white;
+    margin-bottom: 25px;
+}
+
+/* 아이디 찾기 버튼 */
+.find-id-btn{
+    margin-bottom: 30px;
+}

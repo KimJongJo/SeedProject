@@ -44,24 +44,28 @@ header > :first-child{
 }
 
 
-
-header > div:nth-child(3){
+header > div:nth-child(3) {
     display: flex;
     justify-content: center;
     align-items: flex-end;
     margin-right: 200px;
-    line-height: 75px;
 }
 
-header > div:nth-child(3) > img{
-    width: 100px;
+header > div:nth-child(3) >  a{
+    line-height: 75px;
+    height: 90px;
+}
+
+.logo-img{
     height: 100px;
+    width: 100px;
 }
 
 
 header > div:nth-child(3) > span{
     font-size: 45px;
     margin-left: 30px;
+    height: 60px;
 }
 
 
