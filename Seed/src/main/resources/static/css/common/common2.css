@@ -41,9 +41,25 @@ header > :first-child{
     background-color: #10403B;
     height: 70px;
     width: 100%;
-    margin-bottom: 70px;
+    margin-bottom: 30px;
 }
 
+
+
+/* 홈 버튼 */
+
+header :nth-child(2){
+    height: 100px;
+}
+
+header a {
+    margin-left: 40px;
+}
+
+a > i{
+    font-size: 30px;
+    color: #127369;
+}
 
 
 

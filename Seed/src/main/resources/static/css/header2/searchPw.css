@@ -1,3 +1,5 @@
+
+
 .main{
     display: flex;
     flex-direction: column;
@@ -79,7 +81,15 @@
     background-color: #4C5958;
     color: white;
     margin-bottom: 25px;
+    transition-duration: 0.3s;
 }
+
+.find-btn:hover{
+    background-color: black;
+    transition-duration: 0.3s;
+    cursor: pointer;
+}
+
 
 /* 아이디 찾기 버튼 */
 .find-id-btn{
