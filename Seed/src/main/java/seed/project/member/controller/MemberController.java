@@ -88,6 +88,8 @@ public class MemberController {
 		return "redirect:/"; // 메인페이지 재요청
 	}
 	
+	
+//	로그인
 	@GetMapping("signup")
 	public String signup() {
 		
@@ -95,11 +97,40 @@ public class MemberController {
 	}
 	
 	
+//	아이디 찾기
 	@GetMapping("searchId")
 	public String searchId() {
 		
 		return "/member/searchId";
 	}
-		
 	
+	
+//	비밀번호 찾기
+	@GetMapping("searchPw")
+	public String searchPw() {
+		
+		return "/member/searchPw";
+	}
+	
+	
+//	마이페이지
+	@GetMapping("myPage")
+	public String myPage() {
+		
+		return "/member/myPage/myPage";
+	}
+	
+//	비밀번호 변경
+	@GetMapping("updatePw")
+	public String changePw() {
+		
+		return "/member/myPage/updatePw";
+	}
+		
+//	회원정보 변경
+	@GetMapping("updateInfo")
+	public String changeInfo() {
+		
+		return "/member/myPage/updateInfo";
+	}
 }

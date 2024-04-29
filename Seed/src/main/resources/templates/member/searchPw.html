@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>비밀번호 찾기</title>
+    <th:block th:replace="~{common/common2}"></th:block>
+    <link rel="stylesheet" href="/css/header2/searchPw.css">
+
+</head>
+<body>
+    <th:block th:replace="~{common/header2}"></th:block>
+
+    
+
+    <main class="main">
+    
+        <div style="margin-right: 130px;" class="logo-line">
+            <a href="/">
+                <img src="/images/씨앗.png" alt="로고">
+            </a>
+            <span>언더 더 씨</span>
+        </div>
+
+        <section class="find-form">
+            <span class="find-pw">비밀번호 찾기</span>
+            <span class="id-span">아이디를 입력해주세요</span>
+
+            <input type="text" placeholder="아이디" name="memberId" class="find-id-input">
+            <button class="find-btn">찾기</button>
+
+        </section>
+
+        <a href="/member/searchId" class="find-id-btn">아이디 찾기</a>
+
+        
+
+    </main>
+
+ 
+
+
+
+
+    <th:block th:replace="~{common/footer}"></th:block>
+</body>
+</html>
