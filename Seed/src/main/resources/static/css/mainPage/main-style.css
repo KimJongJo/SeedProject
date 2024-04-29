@@ -8,7 +8,6 @@
 * {
     font-family: 'Pretendard-Regular';
     box-sizing: border-box;
-    margin: 0;
     padding: 0;
 }
 
@@ -70,8 +69,8 @@ header > :first-child{
 
 /* 로고 + 이름 부분 */
 header > div:nth-child(3){
-    display: flex;
-    justify-content: center;
+    /* display: flex;
+    justify-content: center; */
     align-items: flex-end;
     margin: 30px;
 }
