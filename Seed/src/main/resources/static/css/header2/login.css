@@ -1,5 +1,31 @@
 /* -------- 로그인 시작 --------- */
 
+/* 로고, 이름 div */
+.logo-line {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    margin: 30px;
+    margin-right: 200px;
+    align-items: center; 
+}
+
+/* 로고 */
+.logo-line img{
+    width: 100px;
+    height: 100px;
+}
+
+/* 이름 */
+.logo-line > span{
+    font-size: 45px;
+    margin-left: 30px;
+}
+
+
+
+
+
 .loginForm {
     display: flex;
     flex-direction: column;
@@ -16,8 +42,8 @@
 }
 
 
-
-.memberId, .memberPw {
+/* 아이디, 비번, 로그인 버튼 크기 및 색상 지정 */
+.memberId, .memberPw, .loginBtn {
     width: 350px;
     height: 40px;
     padding-left: 20px;
@@ -30,17 +56,48 @@
     
 }
 
+/* 아이디 input창 밑에 공간 지정 */
 .memberId {
     margin-bottom: 15px;
 }
 
+/* 비번 input창 밑에 공간 지정 */
 .memberPw {
     margin-bottom: 30px;
 }
 
+/* 로그인버튼 색상 지정 및 밑에 공간 지정 */
 .loginBtn {
-    
+    border: none;
+    background-color: #8AA6A3;
+    color: white;
+    margin-bottom: 20px;
 }
 
+
+.searchIdOther {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+.signupBtn{
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.signupBtn > a:link, .signupBtn > a:visited {
+    text-decoration: none; /* 링크 밑줄 제거 */
+    background-color: #4C5958;
+    color: white;
+    text-align: center;
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 5px;
+    /* height: 30px;
+    width: 70px; */
+}
 
 /* -------- 로그인 끝 --------- */
