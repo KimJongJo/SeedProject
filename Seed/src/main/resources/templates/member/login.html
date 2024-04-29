@@ -47,18 +47,20 @@
                     <input type="text"
                             class="memberId"
                             placeholder="아이디"
-                            name="memberId">
+                            name="memberId"
+                            id="memberId">
                 
                     <br>
                     <input type="password"
                             class="memberPw"
                             placeholder="비밀번호"
-                            name="memberPw">
+                            name="memberPw"
+                            id="memberPw">
                 </div>
                 
                 <!-- 로그인 버튼 -->
                 <div>
-                    <button class="loginBtn">로그인</button>
+                    <button class="loginBtn" id="loginBtn">로그인</button>
                 </div>
                 <div class="searchIdOther">
                     <div class="saveId">
@@ -94,6 +96,8 @@
 
 
     <th:block th:replace="~{common/footer}"></th:block>
+
+    <script src="/js/login.js"></script>
 </body>
 
 

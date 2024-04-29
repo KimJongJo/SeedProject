@@ -73,6 +73,13 @@
     color: white;
     margin-bottom: 20px;
     padding: 0%;
+    transition-duration: 0.3s;
+}
+
+.loginBtn:hover{
+    transition-duration: 0.3s;
+    background-color: #127369;
+    cursor: pointer;
 }
 
 
@@ -99,6 +106,16 @@
     border-radius: 5px;
     /* height: 30px;
     width: 70px; */
+}
+
+.signupBtn > a{
+    transition-duration: 0.3s;
+}
+
+.signupBtn > a:hover{
+    transition-duration: 0.3s;
+    background-color: black;
+    cursor: pointer;
 }
 
 /* -------- 로그인 끝 --------- */

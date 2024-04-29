@@ -37,10 +37,6 @@ public class MemberController {
 	}
 	
 	
-	
-	
-	
-	
 	/** 로그인
 	 * @param inputMember : 커맨드 객체 memberId, memberPw 세팅된 상태
 	 * @param ra : 리다이렉트 시 request scope로 데이터를 전달하는 객체
@@ -64,6 +60,8 @@ public class MemberController {
 		
 		if(loginMember == null) {
 			ra.addFlashAttribute("message", "아이디 또는 비밀번호가 일치하지 않습니다.");
+			
+			return "redirect:/member/login";
 		}
 		
 		// 로그인 성공 시
@@ -86,9 +84,9 @@ public class MemberController {
 			// 클라이언트에 쿠키 전달
 			resp.addCookie(cookie);
 			
-			return "redirect:/";
+			ra.addFlashAttribute("message", loginMember.getMemberNickname() + "님 환영합니다.");
 		}
-		return "redirect:/login"; // 메인페이지 재요청
+		return "redirect:/"; // 메인페이지 재요청
 	}
 	
 	
