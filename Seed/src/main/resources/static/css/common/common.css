@@ -44,14 +44,14 @@ header > :first-child{
 }
 
 
-header > div:nth-child(3) {
+header > div:nth-child(4) {
     display: flex;
     justify-content: center;
     align-items: flex-end;
-    margin-right: 200px;
+    /* margin-right: 200px; */
 }
 
-header > div:nth-child(3) >  a{
+header > div:nth-child(4) >  a{
     line-height: 75px;
     height: 90px;
 }
@@ -62,39 +62,35 @@ header > div:nth-child(3) >  a{
 }
 
 
-header > div:nth-child(3) > span{
+
+
+header > div:nth-child(4) > span{
     font-size: 45px;
     margin-left: 30px;
     height: 60px;
 }
 
 
-header > div:nth-child(2){
-    display: flex;
-    justify-content: space-between;
-}
-
-header > div:nth-child(2) > div:nth-child(1){
-    flex-basis: 33%;
-}
-
-header > div:nth-child(2) > div:nth-child(2){
+header > div:nth-child(3){
     display: flex;
     justify-content: center;
-    flex-basis: 33%;
 }
 
-header > div:nth-child(2) > div:nth-child(3){
-    flex-basis: 33%;
+header > div:nth-child(3) > div{
     display: flex;
     justify-content: center;
+}
+
+
+#searchLine-right{
+    display: flex;
+    justify-content: flex-end;
     align-items: center;
     line-height: 25px;
+    margin-right: 50px;
 }
 
-
-
-header > div:nth-child(2) > div:nth-child(3) > a{
+#searchLine-right > a{
     background-color: #8AA6A3;
     border: none;
     color: white;
@@ -109,14 +105,17 @@ header > div:nth-child(2) > div:nth-child(3) > a{
     transition-duration: 0.2s;
 }
 
-header > div:nth-child(2) > div:nth-child(3) > a:hover{
+
+#searchLine-right > a:hover{
     background-color: #127369;
     cursor: pointer;
     transition-duration: 0.2s;
 }
 
 
-header > div:nth-child(2) > div:nth-child(2) input{
+
+
+header > div:nth-child(3) > div input{
     width: 350px;
     height: 40px;
     padding-left: 20px;
@@ -129,10 +128,8 @@ header > div:nth-child(2) > div:nth-child(2) input{
     
 }
 
-/* header > div:nth-child(2) > div:nth-child(2) input:focus{
-} */
 
-header > div:nth-child(2) > div:nth-child(2) button{
+header > div:nth-child(3) > div button{
     width: 50px;
     height: 40px;
     background-color: #127369;
@@ -143,14 +140,14 @@ header > div:nth-child(2) > div:nth-child(2) button{
     transition-duration: 0.2s;
 }
 
-header > div:nth-child(2) > div:nth-child(2) button:hover{
+header > div:nth-child(3) > div button:hover{
     background-color: #10403B;
     cursor: pointer;
     transition-duration: 0.2s;
 }
 
 
-header > div:nth-child(3){
+header > div:nth-child(4){
     display: flex;
     justify-content: center;
     margin: 30px;
