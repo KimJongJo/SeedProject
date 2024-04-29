@@ -46,12 +46,14 @@
                 <div>
                     <input type="text"
                             class="memberId"
-                            placeholder="아이디">
+                            placeholder="아이디"
+                            name="memberId">
                 
                     <br>
                     <input type="password"
                             class="memberPw"
-                            placeholder="비밀번호">
+                            placeholder="비밀번호"
+                            name="memberPw">
                 </div>
                 
                 <!-- 로그인 버튼 -->
@@ -60,8 +62,9 @@
                 </div>
                 <div class="searchIdOther">
                     <div class="saveId">
-                        <input type="checkbox" name="saveId">
-                        <lavel>자동 로그인</lavel>   
+                        <label for="saveId">
+                            <input type="checkbox" name="saveId" id="saveId"> 자동 로그인
+                        </label>
                     </div>
                     <div class="searchIdPw">
                         <a href="/member/searchId">아이디 찾기</a>

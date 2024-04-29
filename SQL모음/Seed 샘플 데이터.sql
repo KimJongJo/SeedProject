@@ -34,9 +34,8 @@ VALUES(SEQ_SEED_CODE.NEXTVAL, '호박');
 
 SELECT * FROM "SEED_TYPE";
 
+
 COMMIT;
-
-
 
 
 
