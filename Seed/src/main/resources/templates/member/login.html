@@ -6,7 +6,7 @@
     <title>로그인</title>
 
     <th:block th:replace="~{common/common2}"></th:block>
-    <link rel="stylesheet" href="/css/header2/signup.css">
+    <link rel="stylesheet" href="/css/header2/login.css">
 </head>
 <body>
     
@@ -28,55 +28,57 @@
 
             <!-- 로고, 이름 -->
 
-            <a href="/">
-                <img src="/images/씨앗.png" alt="메인 로고" id="homeLogo">
-            </a>
-            <span>언더 더 씨</span>
+            
 
-
-
+            <div style="margin-right: 130px;" class="logo-line">
+                <a href="/">
+                    <img src="/images/씨앗.png" alt="로고">
+                </a>
+                <span>언더 더 씨</span>
+            </div>
             
 
             <!-- 로그인 박스 -->
             <form action="/member/login" method="POST" id="login-area">
-                <fieldset class="id-pw-area">
-                    <legend>로그인</legend>
+                
 
-                    <!-- 아이디/비번 입력 -->
-                    <div>
-                        <input type="text"
-                                class="memberId"
-                                placeholder="아이디">
-                    
-                        <br>
-                        <input type="password"
-                                class="memberPw"
-                                placeholder="비밀번호">
-                    </div>
-                    
+                <!-- 아이디/비번 입력 -->
+                <div>
+                    <input type="text"
+                            class="memberId"
+                            placeholder="아이디">
+                
+                    <br>
+                    <input type="password"
+                            class="memberPw"
+                            placeholder="비밀번호">
+                </div>
+                
+                <!-- 로그인 버튼 -->
+                <div>
+                    <button class="loginBtn">로그인</button>
+                </div>
+                <div class="searchIdOther">
                     <div class="saveId">
                         <input type="checkbox" name="saveId">
-                        <lavel>아이디 저장</lavel>                
+                        <lavel>자동 로그인</lavel>   
                     </div>
-                    <!-- 로그인 버튼 -->
-                    <div>
-                        <button class="loginBtn">로그인</button>
-                    </div>
-                    
-                    
-                </fieldset>
+                    <div class="searchIdPw">
+                        <a href="/member/searchId">아이디 찾기</a>
+                        <span> | </span>
+                        <a href="/member/searchPw">비밀번호 찾기</a>
+                    </div>             
+                </div>
+                
+                
+                
+                        
+                <div class="signupBtn">
+                    <a href="/member/signup">회원가입</a>
+                </div>
+                
             </form>
                     
-            <div class="signup-find-area">
-                <a href="/member/searchId">아이디 찾기</a>
-                <span> | </span>
-                <a href="/member/searchPw">비밀번호 찾기</a>
-                
-            </div>
-                    
-            <div>
-                <a href="/member/signup">회원가입</a>
-            </div>
 
 
 
