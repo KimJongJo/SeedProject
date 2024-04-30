@@ -13,4 +13,10 @@ public interface MemberMapper {
 	 */
 	Member login(String memberId);
 
+	/** 회원가입 - 아이디 중복 체크 SQL 실행
+	 * @param memberId
+	 * @return
+	 */
+	int checkId(String memberId);
+
 }
