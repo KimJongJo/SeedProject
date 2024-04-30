@@ -1,9 +1,6 @@
 package seed.project.member.model.service;
 
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
-import lombok.extern.slf4j.Slf4j;
 import seed.project.member.model.dto.Member;
 
 
@@ -17,6 +14,18 @@ public interface MemberService {
 	 * @return loginMember
 	 */
 	Member login(Member inputMember);
+
+	/** 이메일 인증번호 발급
+	 * @param memberEmail
+	 * @return result
+	 */
+	String sendEmail(String html, String memberEmail);
+
+	/** 이메일 인증번호 확인
+	 * @param authString
+	 * @return result
+	 */
+	int authCheck(String authString);
 	
 	
 }

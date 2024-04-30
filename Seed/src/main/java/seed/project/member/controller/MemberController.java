@@ -5,9 +5,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import jakarta.servlet.http.Cookie;
@@ -135,5 +138,47 @@ public class MemberController {
 	public String changeInfo() {
 		
 		return "/member/myPage/updateInfo";
+	}
+	
+	// 로그아웃
+	@GetMapping("logout")
+	public String logout(SessionStatus status,
+						RedirectAttributes ra
+			) {
+		status.setComplete();
+		ra.addFlashAttribute("message", "로그아웃 되었습니다.");
+		
+		return "redirect:/";
+	}
+	
+	
+	// 이메일 인증번호 발급
+	@ResponseBody
+	@PostMapping("sendEmail")
+	public int sendEmail(@RequestBody String memberEmail){
+		
+		String randomString = service.sendEmail("findPw", memberEmail);
+		
+		
+		if(randomString != null) {
+			return 1;
+		}
+		
+		// 이메일 보내기 실패
+		return 0;
+	}
+	
+	// 이메일 인증번호 확인
+	@ResponseBody
+	@PostMapping("authCheck")
+	public int authCheck(@RequestBody String authString) {
+		
+		int result = service.authCheck(authString);
+		
+		if( result > 0 ) {
+			return 1;
+		}
+		
+		return 0;
 	}
 }

@@ -1,4 +1,4 @@
-console.log("연결 확인");
+// console.log("연결 확인");
 
 const memberId = document.querySelector("#memberId");   // 아이디
 const memberPw = document.querySelector("#memberPw");   // 비밀번호
