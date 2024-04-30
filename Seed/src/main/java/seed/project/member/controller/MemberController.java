@@ -7,7 +7,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import jakarta.servlet.http.Cookie;
@@ -135,5 +137,26 @@ public class MemberController {
 	public String changeInfo() {
 		
 		return "/member/myPage/updateInfo";
+	}
+	
+	@GetMapping("logout")
+	public String logout(SessionStatus status, RedirectAttributes ra) {
+		
+		status.setComplete();
+		ra.addFlashAttribute("message", "로그아웃 되었습니다.");
+		
+		return "redirect:/";
+		
+	}
+	
+	/** 회원가입 - 아이디 중복 체크
+	 * @param memberId
+	 * @return
+	 */
+	@ResponseBody
+	@GetMapping("checkId")
+	public int checkId(@RequestParam("memberId") String memberId) {
+		
+		return service.checkId(memberId);
 	}
 }

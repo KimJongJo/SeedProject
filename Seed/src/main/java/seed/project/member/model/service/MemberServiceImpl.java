@@ -42,4 +42,12 @@ public class MemberServiceImpl implements MemberService{
 		return loginMember;
 	}
 
+
+	// 회원가입 - 아이디 중복 체크
+	@Override
+	public int checkId(String memberId) {
+		
+		return mapper.checkId(memberId);
+	}
+
 }
