@@ -57,6 +57,8 @@ public class MemberController {
 						HttpServletResponse resp
 						) {
 		
+		
+		
 		// 로그인 서비스 호출
 		Member loginMember = service.login(inputMember);
 		
@@ -84,8 +86,9 @@ public class MemberController {
 			// 클라이언트에 쿠키 전달
 			resp.addCookie(cookie);
 			
+			return "redirect:/";
 		}
-		return "redirect:/"; // 메인페이지 재요청
+		return "redirect:/login"; // 메인페이지 재요청
 	}
 	
 	

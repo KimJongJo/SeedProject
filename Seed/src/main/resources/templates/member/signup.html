@@ -21,19 +21,20 @@
                 <a href="/">
                     <img src="/images/씨앗.png" alt="메인 로고" id="homeLogo">
                 </a>
-                <span>언더 더 씨</span>
+                <h3>언더 더 씨 가입하기</h3>
 
             </div>
-            <div class="input-div">
-                <form>
+            <form>
+                <div class="input-div">
                     <div>
-                        <table>
+                        <table class="required-container">
                             <!-- 아이디 -->
                             <tr>
                                 <td>
                                     <span style="color: red;" class="required">*</span>아이디</td>
                                 <td>
-                                    <input placeholder="아이디">
+                                    <input 
+                                    placeholder="아이디">
                                 </td>
                             </tr>
 
@@ -76,7 +77,7 @@
                             <!-- 전화번호 -->
                             <tr>
                                 <td>
-                                    <span style="color: red;" class="required">*</span>연락처</td>
+                                    <span style="color: red;" class="required">*</span>전화번호</td>
                                 <td>
                                     <input placeholder="연락처">
                                 </td>
@@ -84,11 +85,27 @@
                         </table>
                     </div>
 
-                    <div>
-                        주소
+
+                    <div class="address-container">
+                        <p> 주소</p>
+                        <div class="signUp-input-area">
+                            <input type="text" name="memberAddress" placeholder="우편번호" maxlength="6" id="postcode">                       
+                        
+                            <button type="button" id="searchAddress">검색</button>
+                        </div>
+
+                        <div class="signUp-input-area">
+                            <input type="text" name="memberAddress" placeholder="도로명/지번 주소" id="address">
+                        </div>
+                        
+                        <div class="signUp-input-area">
+                            <input type="text" name="memberAddress" placeholder="상세 주소" id="detailAddress">
+                        </div>
                     </div>
-                </form>
-            </div>
+
+                    <button id="signUpBtn">가입</button>
+                </div>
+            </form>
         </section>
     </main>
 

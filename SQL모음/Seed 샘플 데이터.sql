@@ -39,6 +39,11 @@ DELETE FROM "MEMBER"  ;
 SELECT * FROM "SEED_TYPE";
 
 
+=======
+SELECT * FROM "SEED_TYPE";
+
+
+
 COMMIT;
 
 
