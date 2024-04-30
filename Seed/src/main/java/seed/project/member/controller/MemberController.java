@@ -8,13 +8,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
-import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import jakarta.servlet.http.Cookie;
-import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import seed.project.member.model.dto.Member;
@@ -61,7 +58,7 @@ public class MemberController {
 		// 로그인 서비스 호출
 		Member loginMember = service.login(inputMember);
 		
-		System.out.println(loginMember);
+		
 		
 		if(loginMember == null) {
 			ra.addFlashAttribute("message", "아이디 또는 비밀번호가 일치하지 않습니다.");
@@ -139,31 +136,4 @@ public class MemberController {
 		
 		return "/member/myPage/updateInfo";
 	}
-	
-//	invaliate()
-// 	로그아웃
-	@GetMapping("logout")
-	public String logout(
-				RedirectAttributes ra,
-				SessionStatus status
-			) {
-		
-		
-		status.setComplete(); // 세션을 완료
-		
-		ra.addFlashAttribute("message", "로그아웃 되었습니다.");
-		
-		return "redirect:/";
-	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 }

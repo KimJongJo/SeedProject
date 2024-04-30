@@ -53,9 +53,12 @@
 
 <div id="nav-top">
     <nav id="nav-bottom">
-        <a href="#">쇼핑</a>
-        <a href="#">자유 게시판</a>
-        <a href="#">문의 게시판</a>
-        <a href="#">팁과 노하우</a>
+        <a href="/">쇼핑</a>
+        <th:block th:each="boardType : ${application.boardTypeList}">
+                <a th:text="${boardType.boardName}"
+                    th:href="@{/board/{boardCode}(boardCode = ${boardType.boardCode})}"
+                    >게시판이름
+                </a>
+        </th:block>
     </nav>
 </div>
