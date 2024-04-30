@@ -17,7 +17,7 @@ public class MemberServiceImpl implements MemberService{
 	
 	private final MemberMapper mapper;
 	
-	private BCryptPasswordEncoder bcrypt;
+	private final BCryptPasswordEncoder bcrypt;
 	
 	
 	
@@ -27,7 +27,6 @@ public class MemberServiceImpl implements MemberService{
 		
 		// 아이디가 일치하면서 회원탈퇴하지 않은 회원 조회
 		Member loginMember = mapper.login(inputMember.getMemberId());
-		log.debug("ㅏ가가가가가가가가가가" + inputMember.getMemberId());
 		
 		// 일치하는 아이디가 없으면 리턴
 		if(loginMember == null) return null;
