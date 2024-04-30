@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="seed.project.myPage.model.mapper.MyPageMapper">
+
+	<!-- 닉네임, 전화번호, 이메일 수정하기 -->
+	<update id="updateInfo">
+		UPDATE "MEMBER" SET
+		MEMBER_NICKNAME = #{memberNickname},
+		MEMBER_TEL = #{memberTel},
+		MEMBER_EMAIL = #{memberEmail}
+		WHERE MEMBER_NO = #{memberNo}
+	</update>
+	
+	<!-- 비밀번호 수정하기 전 현재 비밀번호 검색 -->
+	<select id="selectPw">
+		SELECT MEMBER_PW
+		FROM "MEMBER"
+		WHERE MEMBER_NO = #{memberNo}
+	</select>
+
+	<!-- 비밀번호 수정하기 -->
+	<update id="updatePw">
+		UPDATE "MEMBER" SET
+		MEMBER_PW = #{encPw}
+		WHERE MEMBER_NO = #{memberNo}
+	</update>
+	
+
+
+</mapper>

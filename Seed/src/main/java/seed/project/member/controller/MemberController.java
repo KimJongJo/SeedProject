@@ -119,13 +119,18 @@ public class MemberController {
 	}
 	
 	
-//	마이페이지
-	@GetMapping("myPage")
-	public String myPage() {
-		
-		return "/member/myPage/myPage";
-	}
+
 	
+	// 로그아웃
+	@GetMapping("logout")
+	public String logout(SessionStatus status,
+						RedirectAttributes ra) {
+		status.setComplete();
+		ra.addFlashAttribute("message", "로그아웃 되었습니다.");
+		
+		return "redirect:/";
+	}
+
 //	비밀번호 변경
 	@GetMapping("updatePw")
 	public String changePw() {
