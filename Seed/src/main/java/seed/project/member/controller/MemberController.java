@@ -8,10 +8,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import seed.project.member.model.dto.Member;
@@ -37,10 +40,6 @@ public class MemberController {
 	}
 	
 	
-	
-	
-	
-	
 	/** 로그인
 	 * @param inputMember : 커맨드 객체 memberId, memberPw 세팅된 상태
 	 * @param ra : 리다이렉트 시 request scope로 데이터를 전달하는 객체
@@ -57,11 +56,15 @@ public class MemberController {
 						HttpServletResponse resp
 						) {
 		
+		
+		
 		// 로그인 서비스 호출
 		Member loginMember = service.login(inputMember);
 		
 		if(loginMember == null) {
 			ra.addFlashAttribute("message", "아이디 또는 비밀번호가 일치하지 않습니다.");
+			
+			return "redirect:/member/login";
 		}
 		
 		// 로그인 성공 시
@@ -84,6 +87,7 @@ public class MemberController {
 			// 클라이언트에 쿠키 전달
 			resp.addCookie(cookie);
 			
+			ra.addFlashAttribute("message", loginMember.getMemberNickname() + "님 환영합니다.");
 		}
 		return "redirect:/"; // 메인페이지 재요청
 	}
@@ -133,4 +137,31 @@ public class MemberController {
 		
 		return "/member/myPage/updateInfo";
 	}
+	
+//	invaliate()
+// 	로그아웃
+	@GetMapping("logout")
+	public String logout(
+				RedirectAttributes ra,
+				SessionStatus status
+			) {
+		
+		
+		status.setComplete(); // 세션을 완료
+		
+		ra.addFlashAttribute("message", "로그아웃 되었습니다.");
+		
+		return "redirect:/";
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

@@ -5,13 +5,21 @@
     <div></div>
 
     <!-- 2 -->
-    <div id="searchLine-right">
-        <span>###님 환영합니다</span>
-        <a href="/member/login">로그인</a>
-        <a href="/member/logout">로그아웃</a>
-        <a href="/member/myPage">마이페이지</a>
-        <a href="/member/itemList">장바구니</a>
-    </div>
+    <th:block th:unless="${session.loginMember}">
+        <div id="searchLine-right">
+            <a href="/member/login">로그인</a>
+            <a href="/member/itemList">장바구니</a>
+        </div>
+    </th:block>
+
+    <th:block th:if="${session.loginMember}">
+        <div id="searchLine-right">
+            <span th:text="|${session.loginMember.memberNickname}님 환영합니다|"></span>
+            <a href="/member/logout">로그아웃</a>
+            <a href="/member/myPage">마이페이지</a>
+            <a href="/member/itemList">장바구니</a>
+        </div>
+    </th:block>
 
     <!-- 2 -> 3 -->
     <div>

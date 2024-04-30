@@ -35,13 +35,12 @@ VALUES(SEQ_SEED_CODE.NEXTVAL, '호박');
 SELECT * FROM "SEED_TYPE"
 ORDER BY SEED_CODE;
 
+
 COMMIT;
 
 ROLLBACK;
 
 DELETE FROM MEMBER;
-
-
 
 
 
@@ -53,9 +52,22 @@ VALUES(SEQ_MEMBER_NO.NEXTVAL, 'user01', 'pass01', '유저일', 'user01@kh.com',
 			NULL, '01011112222', DEFAULT, DEFAULT, DEFAULT);
 
 
+-- 유저일 비밀번호 
+-- pass01 을 암호화된 $2a$10$2p01wv0FlCOJkGRcZCl.lOPXd1kYpmgxBNCZwdSNXiVzeQgthQuwe 로 업데이트
+UPDATE "MEMBER" SET 
+MEMBER_PW = '$2a$10$2p01wv0FlCOJkGRcZCl.lOPXd1kYpmgxBNCZwdSNXiVzeQgthQuwe'
+WHERE MEMBER_ID = 'user01';
+
+COMMIT;
 
 
 SELECT * FROM "MEMBER";
+
+ROLLBACK;
+
+
+
+
 
 
 
