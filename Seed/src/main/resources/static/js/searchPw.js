@@ -12,6 +12,11 @@ const findBtn = document.querySelector("#find-btn"); // 찾기 버튼
 const crossBtn = document.querySelector("#crossBtn");  // 모달창 close 버튼
 const modal = document.querySelector("#modal"); // 모달창
 
+const newPw = document.querySelector("#newPw"); // 새 비밀번호
+const newPwCh = document.querySelector("#newPwch"); // 새 비밀번호 확인
+
+const changeBtn = document.querySelector("#changeBtn"); // 변경하기 버튼
+
 const checkObj = {
     "authBtn" : false, // 인증번호를 발급 받았는지 확인
     "authKey" : false   // 인증번호가 맞는지 확인
@@ -112,3 +117,5 @@ findBtn.addEventListener("click", () => {
 crossBtn.addEventListener("click", () => {
     modal.style.display = "none";
 });
+
+
