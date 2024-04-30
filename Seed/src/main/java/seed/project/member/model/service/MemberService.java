@@ -9,7 +9,7 @@ import seed.project.member.model.dto.Member;
 
 
 
-@Transactional(rollbackFor=Exception.class)
+
 public interface MemberService {
 
 	/** 로그인 서비스

@@ -61,6 +61,8 @@ public class MemberController {
 		// 로그인 서비스 호출
 		Member loginMember = service.login(inputMember);
 		
+		System.out.println(loginMember);
+		
 		if(loginMember == null) {
 			ra.addFlashAttribute("message", "아이디 또는 비밀번호가 일치하지 않습니다.");
 			
