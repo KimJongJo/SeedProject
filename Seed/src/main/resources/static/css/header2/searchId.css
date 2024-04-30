@@ -6,6 +6,7 @@
 
 .main{
     height: 415px;
+    margin-bottom: 90px;
 }
 
 body > div:first-child{
@@ -48,13 +49,14 @@ body > div:first-child{
     align-items: center;
     text-align: center;
     height: 330px;
+    
 }
 
 
 
 /* 아이디 찾기 span */
 .find-id{
-    font-size: 35px;
+    font-size: 20px;
     background-color: #8AA6A3;
     width: 280px;
     margin-top: 20px;
@@ -72,8 +74,8 @@ body > div:first-child{
 
 /* 이메일 입력, 닉네임 입력 span */
 .email-span, .nickname-span{
-    font-size: 20px;
-    margin-right: 10px;
+    font-size: 18px;
+    margin-right: 20px;
 }
 
 /* 이메일 div, 닉네임 div */
@@ -88,13 +90,13 @@ body > div:first-child{
 
 /* 이메일 input, 닉네임 input 공통 */
 .email-input, .nickname-input{
-    width: 360px;
+    width: 315px;
     height: 50px;
     margin: 5px;
     border-radius: 5px;
     border: 1px solid #ddd;
     box-shadow: 0 3px 3px rgba(0,0,0,0.2);
-    font-size: 20px;
+    font-size: 18px;
     padding-left: 15px;
 }
 
@@ -102,14 +104,14 @@ body > div:first-child{
 
 /* 닉네임 input */
 .nickname-input{
-    width: 250px;
-    margin-right: 30px;
+    width: 230px;
+    margin-right: 15px;
 }
 
 /* 확인 버튼 */
 .nickname-btn{
-    width: 80px;
-    font-size: 20px;
+    width: 70px;
+    font-size: 18px;
     height: 50px;
     border: none;
     background-color: #4C5958;

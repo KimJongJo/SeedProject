@@ -60,7 +60,7 @@
 
                         
                         <div style="margin: 15px;" class="address-first">
-                            <input type="text" id="sample6_postcode" placeholder="우편번호"  class="address-input">
+                            <input type="text" id="postcode" placeholder="우편번호"  class="address-input">
                             <input type="button" onclick="sample6_execDaumPostcode()" value="검색">
                         </div>
                         <input style="margin: 15px;" type="text" id="sample6_address" placeholder="기본 주소" class="address-input">
@@ -80,7 +80,7 @@
 
 
 
-    <!-- 주소 -->
+    <!-- 주소 api -->
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script>
         function sample6_execDaumPostcode() {
@@ -101,10 +101,10 @@
 
 
                     // 우편번호와 주소 정보를 해당 필드에 넣는다.
-                    document.getElementById('sample6_postcode').value = data.zonecode;
-                    document.getElementById("sample6_address").value = addr;
+                    document.getElementById('postcode').value = data.zonecode;
+                    document.getElementById("address").value = addr;
                     // 커서를 상세주소 필드로 이동한다.
-                    document.getElementById("sample6_detailAddress").focus();
+                    document.getElementById("detailAddress").focus();
                 }
             }).open();
         }

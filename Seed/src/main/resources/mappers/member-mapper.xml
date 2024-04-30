@@ -13,6 +13,34 @@
 		AND MEMBER_DEL_FL = 'N'
 	</select>
 
+	
+	<!-- 이메일 인증번호 교체 -->
+	<update id="updateAuthKey">
+		UPDATE "TB_AUTH_KEY" SET
+		"AUTH_KEY" = #{randomString},
+		"CREATE_TIME" = SYSDATE
+		WHERE "EMAIL" = #{email}
+	</update>
+	
+	<!-- 인증 번호 처음 발급 -->
+	<insert id="insertAuthkey">
+		INSERT INTO "TB_AUTH_KEY"
+		VALUES(SEQ_KEY_NO.NEXTVAL, #{email}, #{randomString}, DEFAULT)
+	</insert>
+	
+	<!-- 인증번호 확인 -->
+	<select id="authCheck">
+		SELECT COUNT(*) FROM "TB_AUTH_KEY"
+		WHERE AUTH_KEY = #{authString}
+	</select>
 
+
+	
+	<select id="checkId" resultType="_int">
+		SELECT COUNT(*)
+		FROM "MEMBER"
+		WHERE MEMBER_DEL_FL = 'N'
+		AND MEMBER_ID = #{memberId}
+	</select>
 
 </mapper>
