@@ -4,7 +4,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 415px;
+    height: 550px;
+    margin-bottom: 80px;
+
 }
 
 /* 로고 + 브랜드 이름 */
@@ -32,6 +34,12 @@
 }
 
 /* 비밀번호 찾기 폼 */
+.find{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .find-form{
     display: flex;
     flex-direction: column;
@@ -40,36 +48,89 @@
 
 /* 비밀번호 찾기 span */
 .find-pw{
-    font-size: 35px;
+    font-size: 20px;
     background-color: #8AA6A3;
     width: 280px;
     margin-top: 20px;
     color: white;
     border-radius: 15px;
     padding: 10px;
-    margin-bottom: 15px;
+    margin-bottom: 40px;
     text-align: center;
 }
 
 /* 아이디를 입력해주세요 span */
-.id-span{
-    color: #706A6A;
-    font-size: 25px;
-    margin-bottom: 30px;
-}
 
 
 /* 아이디 input */
 .find-id-input{
     height: 50px;
-    width: 200px;
+    width: 275px;
     padding: 15px;
-    font-size: 20px;
+    font-size: 15px;
     border: 1px solid #ddd;
     border-radius: 5px;
     box-shadow: 0 3px 3px rgba(0,0,0,0.2);
     margin-bottom: 10px;
 }
+
+
+
+/* 이메일 input + 인증 btn */
+
+.email-div{
+    width: 275px;
+}
+
+
+.email-div > input{
+    width: 220px;
+}
+
+.email-div > button{
+    width: 50px;
+    height: 50px;
+    font-size: 15px;
+    border:none;
+    border-radius: 5px;
+    background-color: #127369;
+    color: white;
+    transition-duration: 0.3s;
+}
+
+.email-div > button:hover{
+    transition-duration: 0.3s;
+    background-color: #10403B;
+    cursor: pointer;
+}
+
+/* 이메일 인증 div */
+.auth-div{
+    width: 275px;
+}
+
+.auth-div > input{
+    width: 220px;
+}
+
+.auth-div > button{
+    width: 50px;
+    height: 50px;
+    font-size: 15px;
+    border:none;
+    border-radius: 5px;
+    background-color: #127369;
+    color: white;
+    transition-duration: 0.3s;
+}
+
+.auth-div > button:hover{
+    transition-duration: 0.3s;
+    background-color: #10403B;
+    cursor: pointer;
+}
+
+
 
 /* 찾기 버튼 */
 .find-btn{
@@ -82,6 +143,7 @@
     color: white;
     margin-bottom: 25px;
     transition-duration: 0.3s;
+    margin-top: 20px;
 }
 
 .find-btn:hover{
@@ -91,7 +153,98 @@
 }
 
 
-/* 아이디 찾기 버튼 */
-.find-id-btn{
+
+
+#count{
+    height: 10px;
+}
+
+
+
+/* 모달창 */
+.modal{
+    width: 400px;
+    height: 320px;
+    background-color: #EFEFEF;
+    border-radius: 15px;
+
+    border: 3px solid black;
+
+    margin:auto;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    display: none;
+}
+
+#crossBtn{
+    margin-left: 365px;
+    margin-right: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 30px;
+}
+
+#crossBtn:hover{
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.modal_body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal_body > h1{
     margin-bottom: 30px;
 }
+
+
+.pw_span{
+    font-size: 18px;
+    margin-right: 20px;
+}
+
+.modal_body input{
+    width: 170px;
+    height: 30px;
+    padding-left: 10px;
+    border-radius: 5px;
+    border: none;
+}
+
+
+.check_span{
+    text-align: center;
+    height: 30px;
+    margin-top: 5px;
+}
+
+.pw_div{
+    margin: 5px;
+}
+
+.modal_body button{
+    height: 40px;
+    width: 80px;
+    font-size: 15px;
+    border-radius: 5px;
+    border: none;
+    background-color: #8AA6A3;
+    color: white;
+}
+
+.modal_body button:hover{
+    cursor: pointer;
+    background-color: #127369;
+}
+
