@@ -151,5 +151,13 @@ public class MemberServiceImpl implements MemberService{
 		
 		return mapper.authCheck(authString);
 	}
-	
+
+  
+	// 회원가입 - 아이디 중복 체크
+	@Override
+	public int checkId(String memberId) {
+		
+		return mapper.checkId(memberId);
+	}
+
 }

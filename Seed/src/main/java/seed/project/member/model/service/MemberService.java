@@ -26,6 +26,12 @@ public interface MemberService {
 	 * @return result
 	 */
 	int authCheck(String authString);
+  
+	/** 회원가입 - 아이디 중복 체크
+	 * @param memberId
+	 * @return
+	 */
+	int checkId(String memberId);
 	
 	
 }

@@ -139,18 +139,21 @@ public class MemberController {
 		
 		return "/member/myPage/updateInfo";
 	}
-	
+
 	// 로그아웃
 	@GetMapping("logout")
-	public String logout(SessionStatus status,
-						RedirectAttributes ra
-			) {
+	public String logout(SessionStatus status, RedirectAttributes ra) {
+
 		status.setComplete();
 		ra.addFlashAttribute("message", "로그아웃 되었습니다.");
 		
 		return "redirect:/";
+
 	}
 	
+  
+  
+  
 	
 	// 이메일 인증번호 발급
 	@ResponseBody
@@ -180,5 +183,17 @@ public class MemberController {
 		}
 		
 		return 0;
+		
+	}
+	
+	/** 회원가입 - 아이디 중복 체크
+	 * @param memberId
+	 * @return
+	 */
+	@ResponseBody
+	@GetMapping("checkId")
+	public int checkId(@RequestParam("memberId") String memberId) {
+		
+		return service.checkId(memberId);
 	}
 }

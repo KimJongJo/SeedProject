@@ -1,19 +1,22 @@
 section {
-    height: 800px;
+    height: 1000px;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
+.confirm { color: #127369;}
+.error { color:  palevioletred;}
 
 /* 로고 / 언더더씨 가입하기 문구 */
 .logo-div {
     display: flex;
-    align-items: flex-end;
+
     justify-content: center;
     align-items: center;
     line-height: 80px;
     height: 100px;
+    margin-bottom: 50px;
 }
 
 /* 로고 */
@@ -32,34 +35,73 @@ section {
     text-decoration: none;
 }
 
-/* 입력부분 전체 */
+/* 입력 | 모달 */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 아이디 ~ 가입하기 버튼 구역 */
 .input-div {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    margin-bottom: 80px;
+    width: 550px;
 }
 
-table {
-    border-collapse: separate;
-    margin-right: 100px;
-    border-spacing: 26px;
+label {
+    margin-top: 30px;
+    font-size: 14px;
 }
 
-td {
-    text-align: right;
-    margin-right: 10px;
+
+/* 아이디 ~ 전화번호 입력창 */
+.signUp-input-area input {
+    border: none;
+    border-bottom: 1px solid #E1E1E1;
+    margin-left: 10px;
+    width: 100%;
+    padding: 8px 0;
 }
 
-table input {
-    width: 220px;
-    height: 36px;
-    padding: 5px;
-    border: 1px solid #ddd;
+.signUp-input-area input:focus {
+    outline: none;
+}
+
+
+span {
+    font-size: 12px;
+    color: #E1E1E1;
+    margin-left: 12px;
+}
+
+
+/* 이메일 인증 버튼 */
+.auth-area {
+    position: relative;
+}
+
+#emailAuth {
+    position: absolute;
+    width: 50px;
+    height: 30px;
+    top: 3;
+    bottom: 0;
+    right: -10px;
+    margin: auto 0;
+    border-radius: 3px;
+    border: none;
+    background-color: #4C5958;
     box-shadow: 0 3px 3px rgba(0,0,0,0.2);
-    border-radius: 5px;
+    cursor: pointer;
+    color: #E1E1E1;
+    
 }
+
+/*--------------------------------------*/
+
+
 
 /* 주소 부분 */
 .address-container {
@@ -69,19 +111,21 @@ table input {
 }
 
 
-.signUp-input-area {
+/* 검색 */
+.address-input-area {
     position: relative;
-    margin-bottom: 20px;
-    margin-top: 10px;
+    
 }
 
-.signUp-input-area input {
+/* 주소창 인풋 */
+.address-input-area > input {
     width: 100%;
-    height: 36px;
-    padding: 5px;
+    height: 40px;
+    padding: 10px;
     border: 1px solid #ddd;
     box-shadow: 0 3px 3px rgba(0,0,0,0.2);
     border-radius: 5px;
+    margin: 10px 0;    
 }
 
 /* 검색 버튼 */
@@ -97,20 +141,157 @@ table input {
     border: none;
     background: none;
     cursor: pointer;
-    
+    font-weight: bold;
 }
+
+
+#searchAddress:hover{ color: grey; }
+
+#searchAddress:active{ color : red; }
 
 /* 가입하기 버튼 */
 #signUpBtn {
-    width: 300px;
+    width: 100%;
     height: 40px;
-    margin-right: 60px;
     background-color: #4C5958;
     color: white;
     border-radius: 5px;
     font-size: 16px;
-    margin-top: 10px;
+    margin: 50px 0;
     border: 1px solid #ddd;
     box-shadow: 0 3px 3px rgba(0,0,0,0.2);
 }
 
+
+/* ------------------- 모달창 --------------------- */
+
+.modal_background {
+    position: fixed;
+    top:0; left: 0; bottom: 0; right: 0;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+#popupLayer{
+    width: 350px;
+    height: 250px;
+    border: 6px double #E1E1E1;
+    border-radius: 5px;
+    background-color: white;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); /* 그림자 효과 추가 */
+    
+    position: fixed; /* 브라우저에서 위치 고정 */
+  
+/* 브라우저 정가운데 배치 */
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    display: flex;
+    flex-direction: column;
+    padding: 10px 10px;
+}
+
+/* popup layer 숨기기/보이기 */
+.popup-hidden{ display: none !important; }
+
+
+/* 이메일 인증(X) 헤더 부분 */
+.popup-header {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    border-bottom: 1px solid #E1E1E1;
+}
+
+
+.popup-header div:nth-child(1){
+    flex-basis: 90%;
+    width: 10px;
+    padding: 5px 5px;
+    
+}
+
+.popup-header div:nth-child(2){
+    flex-basis: 10%;
+    padding: 5px 5px;
+}
+
+/* 팝업 X 버튼 */
+.popup-exit {
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#popup-exit:hover{ color :grey; }
+
+#popup-exit:active{ color : red; }
+
+/* 팝업 본문 */
+#popup-body {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+/* 빈공간 */
+#popup-body div:nth-child(1) {
+    height: 50px;
+}
+
+/* 인증번호 입력 공간 */
+.popup-input-area {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 10px;
+    margin-bottom: 10px;
+}
+
+/* 인증번호 입력창 */
+.popup-input-area input {
+    border: 1px solid #ddd;
+    box-shadow: 0 3px 3px rgba(0,0,0,0.2);
+    border-radius: 5px;
+    width: 150px;
+    height: 34px;
+    padding: 5px;
+}
+
+/* 인증번호 확인 / 취소  */
+.popup-btn-area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 120px;
+}
+
+.authConfirm {
+    background-color: #127369;
+    padding: 5px;
+    color: white;
+    width: 70px;
+    height: 40px;
+    margin: 10px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.authCancel {
+    background-color: #694E27;
+    padding: 5px;
+    color: white;
+
+    width: 70px;
+    height: 40px;
+    margin: 10px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}

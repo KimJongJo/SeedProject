@@ -34,4 +34,13 @@
 		WHERE AUTH_KEY = #{authString}
 	</select>
 
+
+	
+	<select id="checkId" resultType="_int">
+		SELECT COUNT(*)
+		FROM "MEMBER"
+		WHERE MEMBER_DEL_FL = 'N'
+		AND MEMBER_ID = #{memberId}
+	</select>
+
 </mapper>
