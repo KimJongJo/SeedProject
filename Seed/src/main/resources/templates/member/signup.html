@@ -21,23 +21,91 @@
                 <a href="/">
                     <img src="/images/씨앗.png" alt="메인 로고" id="homeLogo">
                 </a>
-                <span>언더 더 씨</span>
+                <h3>언더 더 씨 가입하기</h3>
 
             </div>
-            <div class="input-div">
-                <form>
-                    <label> 아이디
-                        <input>
-                    </label>
-                    <label> 비밀번호
-                        <input>
-                    </label>
-                    <label> 비밀번호 확인
-                        <input>
-                    </label>
+            <form>
+                <div class="input-div">
+                    <div>
+                        <table class="required-container">
+                            <!-- 아이디 -->
+                            <tr>
+                                <td>
+                                    <span style="color: red;" class="required">*</span>아이디</td>
+                                <td>
+                                    <input 
+                                    placeholder="아이디">
+                                </td>
+                            </tr>
 
-                </form>
-            </div>
+                            <!-- 비밀번호 -->
+                            <tr>
+                                <td>
+                                    <span style="color: red;" class="required">*</span>비밀번호</td>
+                                <td>
+                                    <input placeholder="비밀번호">
+                                </td>
+                            </tr>
+
+                            <!-- 비밀번호 확인 -->
+                            <tr>
+                                <td>
+                                    <span style="color: red;" class="required">*</span>비밀번호 확인</td>
+                                <td>
+                                    <input placeholder="비밀번호 확인">
+                                </td>
+                            </tr>
+
+                            <!-- 닉네임 -->
+                            <tr>
+                                <td>
+                                    <span style="color: red;" class="required">*</span>닉네임</td>
+                                <td>
+                                    <input placeholder="닉네임">
+                                </td>
+                            </tr>
+
+                            <!-- 이메일 -->
+                            <tr>
+                                <td>
+                                    <span style="color: red;" class="required">*</span>이메일</td>
+                                <td>
+                                    <input placeholder="이메일">
+                                </td>
+                            </tr>
+
+                            <!-- 전화번호 -->
+                            <tr>
+                                <td>
+                                    <span style="color: red;" class="required">*</span>전화번호</td>
+                                <td>
+                                    <input placeholder="연락처">
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+
+                    <div class="address-container">
+                        <p> 주소</p>
+                        <div class="signUp-input-area">
+                            <input type="text" name="memberAddress" placeholder="우편번호" maxlength="6" id="postcode">                       
+                        
+                            <button type="button" id="searchAddress">검색</button>
+                        </div>
+
+                        <div class="signUp-input-area">
+                            <input type="text" name="memberAddress" placeholder="도로명/지번 주소" id="address">
+                        </div>
+                        
+                        <div class="signUp-input-area">
+                            <input type="text" name="memberAddress" placeholder="상세 주소" id="detailAddress">
+                        </div>
+                    </div>
+
+                    <button id="signUpBtn">가입</button>
+                </div>
+            </form>
         </section>
     </main>
 
