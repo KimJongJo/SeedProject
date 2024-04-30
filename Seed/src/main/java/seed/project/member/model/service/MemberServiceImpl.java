@@ -40,7 +40,7 @@ public class MemberServiceImpl implements MemberService{
 		if(loginMember == null) return null;
 		
 		// 비번이 일치하는지 확인
-		if(!bcrypt.matches(inputMember.getMemberPw(), loginMember.getMemberPw())) {
+		if(!bcrypt.matches(inputMember.getMemberPw(), bc)) {
 			return null;
 		}
 		
