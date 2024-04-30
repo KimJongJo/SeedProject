@@ -22,8 +22,8 @@
         <section class="section">
             <!-- 왼쪽 nav -->
             <div class="left-nav">
-                <a href="/member/updateInfo">회원 정보 변경</a>
-                <a href="/member/updatePw">비밀번호 변경</a>
+                <a href="/myPage/updateInfo">회원 정보 변경</a>
+                <a href="/myPage/updatePw">비밀번호 변경</a>
                 <a href="#">장바구니</a>
                 <a href="#">주소록 관리</a>
                 <a href="#">작성한 댓글</a>
@@ -33,22 +33,19 @@
             <div class="blank">
                 <span class="title">비밀번호 변경</span>
                 <span class="content">새로운 비밀번호를 설정하려면 아래에 현재 비밀번호와 새 비밀번호를 입력해주세요.</span>
-                <form action="#" class="change-form">
+                <form action="updatePw" method="POST" class="change-form" id="updatePw">
                     <table class="table">
                         <tr>
                             <td class="th">현재 비밀번호</td>
-                            <td></td>
-                            <td><input type="password"></td>
+                            <td><input type="password" name="nowPw"></td>
                         </tr>
                         <tr>
                             <td class="th">새 비밀번호</td>
-                            <td></td>
-                            <td><input type="password"></td>
+                            <td><input type="password" name="updatePw"></td>
                         </tr>
                         <tr>
                             <td class="th">새 비밀번호 확인</td>
-                            <td></td>
-                            <td><input type="password"></td>
+                            <td><input type="password" name="updatePw2"></td>
                         </tr>
                     </table>
 

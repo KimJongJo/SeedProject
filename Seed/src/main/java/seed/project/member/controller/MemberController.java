@@ -117,26 +117,7 @@ public class MemberController {
 	}
 	
 	
-//	마이페이지
-	@GetMapping("myPage")
-	public String myPage() {
-		
-		return "/member/myPage/myPage";
-	}
-	
-//	비밀번호 변경
-	@GetMapping("updatePw")
-	public String changePw() {
-		
-		return "/member/myPage/updatePw";
-	}
-		
-//	회원정보 변경
-	@GetMapping("updateInfo")
-	public String changeInfo() {
-		
-		return "/member/myPage/updateInfo";
-	}
+
 	
 	// 로그아웃
 	@GetMapping("logout")
