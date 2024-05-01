@@ -40,5 +40,29 @@ public interface MemberMapper {
 	 */
 	int checkId(String memberId);
 
+	/** 존재하는 회원인지 조회(아이디, 이메일)
+	 * @param member
+	 * @return result
+	 */
+	int findResult(Member member);
+
+
+	/** 비밀번호 찾기 -> 변경
+	 * @param map
+	 * @return result
+	 */
+	int findPwCh(Map<String, String> map);
+
+	/** 기존과 같은 비밀번호인지 확인
+	 * @return brforeBc
+	 */
+	String beforeBc(String memberId);
+
+	/** 아이디 찾기
+	 * @param map
+	 * @return result
+	 */
+	String findId(Map<String, String> map);
+
 
 }

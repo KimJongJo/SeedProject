@@ -63,7 +63,7 @@ public class MemberServiceImpl implements MemberService{
 		// 랜덤 인증문자 생성
 		String randomString = randomString();
 		
-		log.debug("randomString : " + randomString);
+//		log.debug("randomString : " + randomString);
 		
 		try {
 			MimeMessage mail = mailSender.createMimeMessage();
@@ -85,7 +85,7 @@ public class MemberServiceImpl implements MemberService{
 		}
 		
 //		디버그 나와라
-		log.debug("randomString : " + randomString);
+//		log.debug("randomString : " + randomString);
 		
 		Map<String, String> map = new HashMap<>();
 		map.put("randomString", randomString);
@@ -158,6 +158,69 @@ public class MemberServiceImpl implements MemberService{
 	public int checkId(String memberId) {
 		
 		return mapper.checkId(memberId);
+	}
+
+	// 존재하는 회원인지 조회(아이디, 이메일)
+	@Override
+	public int findResult(Member member) {
+		
+		return mapper.findResult(member);
+	}
+
+	// 비밀번호 찾기 -> 변경
+	@Override
+	public int findPwCh(Map<String, String> map) {
+
+		
+		String bc = bcrypt.encode(map.get("memberPw"));
+		
+//		기존과 같은 비밀번호인지 확인
+		String beforeBc = mapper.beforeBc(map.get("memberId"));
+		
+		if(bcrypt.matches(map.get("memberPw"), beforeBc)) {
+			return -1;
+		};
+		
+		Map<String, String> bcMap = new HashMap<>();
+		bcMap.put("memberId", map.get("memberId"));
+		bcMap.put("memberPw", bc);
+
+		int result = mapper.findPwCh(bcMap);
+		
+		return result;
+	}
+
+	// 아이디 찾기
+	@Override
+	public int findId(Map<String, String> map) {
+		
+		String result = mapper.findId(map);
+		
+		// 회원 정보와 일치하는 아이디가 없을 때
+		if(result == null) {
+			return 0;
+		}
+		
+		// 있을때 -> 이메일로 회원 아이디 전송
+		try {
+			MimeMessage mail = mailSender.createMimeMessage();
+			
+			MimeMessageHelper helper = new MimeMessageHelper(mail, true, "UTF-8");
+			
+			helper.setTo(map.get("memberEmail")); // 받는 사람 이메일
+			helper.setSubject("[언더 더 씨] 아이디 찾기 요청 응답"); // 이메일 제목
+			helper.setText( loadHtml(result, "findId"), true);
+			
+			helper.addInline("logo", new ClassPathResource("static/images/씨앗.png"));
+			
+			mailSender.send(mail);
+			
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+
+		return 1;
 	}
 
 }
