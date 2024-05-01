@@ -1,5 +1,6 @@
 package seed.project.myPage.model.service;
 
+import java.util.List;
 import java.util.Map;
 
 import seed.project.member.model.dto.Member;
@@ -18,6 +19,14 @@ public interface MyPageService {
 	 * @return
 	 */
 	int updatePw(Map<String, Object> paramMap, int memberNo);
+
+	
+
+	/** 회원 주소 검색
+	 * @param memberNo
+	 * @return
+	 */
+	List<Map<String, Object>> selectAddressList(int memberNo);
 
 	
 
