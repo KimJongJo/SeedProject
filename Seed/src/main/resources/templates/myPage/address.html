@@ -47,10 +47,17 @@
                     <th:block th:unless="${#lists.isEmpty(addressList)}">
 
                         <tr th:each="address : ${addressList}">
-                            <td th:text="${address.addressNo}">주소 번호</td>
+
+                            <td th:text="${address['addressNo']}">주소 번호</td>
+                            <td>우편번호</td>
+                            <td th:text="${address['memberAddress'].split('^^^')[0]}">주소 1</td>
+                            <td th:text="${address['memberAddress'].split('^^^')[1]}">주소 2</td>
+                            <td th:text="${address['memberAddress'].split('^^^')[2]}">주소 3</td>
+
+                            <!-- <td th:text="${address.addressNo}">주소 번호</td>
                             <td th:text="${address.postCode}">우편번호</td>
                             <td th:text="${address.address}">기본주소</td>
-                            <td th:text="${address.detailAddress}">상세주소</td>
+                            <td th:text="${address.detailAddress}">상세주소</td> -->
                         </tr>
                     </th:block>
 
