@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>마이페이지</title>
+
+    <th:block th:replace="~{common/common}"></th:block>
+    <link rel="stylesheet" href="/css/myPage/myPage.css">
+
+    <link rel="stylesheet" href="/css/myPage/address.css">
+
+</head>
+<body>
+    
+    <!-- 헤더 추가 -->
+    <th:block th:replace="~{common/header}"></th:block>
+
+    <main>
+        <section class="section">
+            <!-- 왼쪽 nav -->
+            <div class="left-nav">
+                <a href="/myPage/updateInfo">회원 정보 변경</a>
+                <a href="/myPage/updatePw">비밀번호 변경</a>
+                <a href="/myPage/basket">장바구니</a>
+                <a href="/myPage/address">주소록 관리</a>
+                <a href="/myPage/comment">작성한 댓글</a>
+            </div>
+
+            <!-- 추가할 공간 -->
+            <div class="blank">
+                <button class="newAdressBtn">배송지 추가</button>
+                
+                
+
+                <table class="address-table">
+
+                    <!-- 주소지가 없을 때 -->
+                    <th:block th:if="${#lists.isEmpty(addressList)}">
+                        <tr>
+                            <td colspan="6">현재 저장된 주소가 없습니다.</td>
+                        </tr>
+                    </th:block>
+
+
+                    <!-- 주소지가 있을 때 -->
+                    <th:block th:unless="${#lists.isEmpty(addressList)}">
+
+                        <tr th:each="address : ${addressList}">
+                            <td th:text="${address.addressNo}">주소 번호</td>
+                            <td th:text="${address.postCode}">우편번호</td>
+                            <td th:text="${address.address}">기본주소</td>
+                            <td th:text="${address.detailAddress}">상세주소</td>
+                        </tr>
+                    </th:block>
+
+
+
+
+                </table>
+
+
+            </div>
+        </section>
+    </main>
+
+   
+    <th:block th:replace="~{common/footer}"></th:block>
+
+</body>
+</html>

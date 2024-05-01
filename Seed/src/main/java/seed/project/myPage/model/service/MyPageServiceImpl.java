@@ -1,5 +1,6 @@
 package seed.project.myPage.model.service;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.context.annotation.PropertySource;
@@ -53,5 +54,16 @@ public class MyPageServiceImpl implements MyPageService{
 		return mapper.updatePw(paramMap);
 	}
 
+	
+
+	// 회원 주소 검색
+	@Override
+	public List<Map<String, Object>> selectAddressList(int memberNo) {
+		
+		return mapper.selectAddressList(memberNo);
+	}
+	
+
+	
 	
 }

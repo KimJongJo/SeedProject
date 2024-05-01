@@ -1,5 +1,6 @@
 package seed.project.myPage.model.mapper;
 
+import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
@@ -26,6 +27,17 @@ public interface MyPageMapper {
 	 * @return
 	 */
 	int updatePw(Map<String, Object> paramMap);
+
+	/** 회원 주소 검색
+	 * @param memberNo
+	 * @return
+	 */
+	Map<String, Object> selectAddress(int memberNo);
+
+	/** 회원 주소 검색
+	 * @return
+	 */
+	List<Map<String, Object>> selectAddressList(int memberNo);
 
 	
 	
