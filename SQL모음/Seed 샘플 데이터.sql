@@ -76,14 +76,19 @@ VALUES(SEQ_BOARD_CODE.NEXTVAL, '팁과 노하우');
 
 
 
+
 -- 회원 주소
 INSERT INTO "ADDRESS"
 VALUES(1, 1, '22203^^^인천시 미추홀구 매소홀로 340^^^101동 101호');
-
 INSERT INTO "ADDRESS"
 VALUES(2, 1, '34753^^^서울시 강남구^^^101동 101호');
 
+
 COMMIT;
+
+SELECT * FROM BOARD_TYPE ;
+
+SELECT * FROM MEMBER;
 
 
 SELECT ADDRESS_NO "addressNo", MEMBER_ADDRESS "memberAddress"
