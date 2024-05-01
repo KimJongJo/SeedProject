@@ -26,17 +26,17 @@
 
             <span class="find-id">아이디 찾기</span>
 
-            <form action="#" class="search-id-form">
+            <div class="search-id-form">
                 <div class="email-div">
                     <span class="email-span">이메일 입력</span>
-                    <input type="text" name="memberEmail" class="email-input">
+                    <input type="text" name="memberEmail" class="email-input" id="memberEmail">
                 </div>
                 <div class="nickname-div">
                     <span class="nickname-span">닉네임 입력</span>
-                    <input type="text" name="memberNickname" class="nickname-input">
-                    <button class="nickname-btn">확인</button>
+                    <input type="text" name="memberNickname" class="nickname-input" id="memberNickname">
+                    <button class="nickname-btn" id="findIdBtn">확인</button>
                 </div>
-            </form>
+            </div>
 
             <a href="/member/searchPw">비밀번호 찾기</a>
         </section>
@@ -46,6 +46,8 @@
     
 
     <th:block th:replace="~{common/footer}"></th:block>
+
+    <script src="/js/searchId.js"></script>
 
 </body>
 </html>

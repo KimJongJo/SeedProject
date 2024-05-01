@@ -1,5 +1,7 @@
 package seed.project.member.controller;
 
+import java.util.Map;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -186,4 +188,41 @@ public class MemberController {
 		
 		return service.checkId(memberId);
 	}
+	
+	
+	
+	/** 존재하는 회원인지 조회 (아이디, 이메일)
+	 * @return result
+	 */
+	@ResponseBody
+	@PostMapping("findResult")
+	public int findResult(@RequestBody Member member) {
+		
+		return service.findResult(member);
+	}
+	
+	
+	
+	/** 비밀번호 찾기 -> 변경
+	 * @return result
+	 */
+	@ResponseBody
+	@PostMapping("findPwCh")
+	public int findPwCh(@RequestBody Map<String, String> map) {
+
+		return service.findPwCh(map);
+	}
+
+	
+	/** 아이디 찾기
+	 * @param map
+	 * @return result
+	 */
+	@ResponseBody
+	@PostMapping("findId")
+	public int findId(@RequestBody Map<String, String> map) {
+		
+		return service.findId(map);
+	}
+	
 }
