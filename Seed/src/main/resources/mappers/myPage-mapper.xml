@@ -27,7 +27,7 @@
 	
 
 	<!-- 회원 주소 검색 -->
-	<select id="selectAddressList">
+	<select id="selectAddressList" resultType="Address">
 		SELECT ADDRESS_NO, MEMBER_ADDRESS
 		FROM "ADDRESS"
 		WHERE MEMBER_NO = #{memberNo}

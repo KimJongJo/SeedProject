@@ -28,11 +28,7 @@ public interface MyPageMapper {
 	 */
 	int updatePw(Map<String, Object> paramMap);
 
-	/** 회원 주소 검색
-	 * @param memberNo
-	 * @return
-	 */
-	Map<String, Object> selectAddress(int memberNo);
+
 
 	/** 회원 주소 검색
 	 * @return
