@@ -124,3 +124,5 @@ VALUES(SEQ_MEMBER_NO.NEXTVAL, 'user02', 'pass02', '김종엽', 'abab1126@naver.c
 
 SELECT * FROM "MEMBER";
 
+
+
