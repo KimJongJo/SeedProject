@@ -160,6 +160,16 @@ public class MypageController {
 	
 	
 	
+	/** 회원 탈퇴 페이지 이동
+	 * @return
+	 */
+	@GetMapping("withdraw")
+	public String withdraw() {
+		
+		return "/myPage/withdraw";
+	}
+	
+	
 	
 	
 	
