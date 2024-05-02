@@ -40,10 +40,6 @@ COMMIT;
 
 ROLLBACK;
 
-DELETE FROM MEMBER;
-
-
-
 -- 씨앗 넣기
 
 -- 계정 추가
