@@ -72,9 +72,13 @@ label {
 
 span {
     font-size: 12px;
-    color: #E1E1E1;
+    color: #696666;
     margin-left: 12px;
+    font-weight: 400;
+    letter-spacing: 0.015em;
 }
+
+
 
 
 /* 이메일 인증 버튼 */
@@ -238,7 +242,7 @@ span {
 
 /* 빈공간 */
 #popup-body div:nth-child(1) {
-    height: 50px;
+    height: 46px;
 }
 
 /* 인증번호 입력 공간 */
@@ -248,7 +252,7 @@ span {
     justify-content: center;
     align-items: center;
     padding: 10px 10px;
-    margin-bottom: 10px;
+    margin-bottom: 30px;
 }
 
 /* 인증번호 입력창 */
@@ -261,12 +265,11 @@ span {
     padding: 5px;
 }
 
-/* 인증번호 확인 / 취소  */
+/* 인증번호 확인, 취소  */
 .popup-btn-area {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 120px;
 }
 
 .authConfirm {
@@ -294,4 +297,12 @@ span {
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
+}
+
+/* 인증번호 입력 잔여 시간 */
+.authMsg {
+
+    font-size: 12px;
+    margin-left: 12px;
+    color: black;
 }
