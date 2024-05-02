@@ -147,7 +147,6 @@ public class MemberController {
 		return "/member/myPage/updateInfo";
 	}
 
-
 	// 이메일 인증번호 발급
 	@ResponseBody
 	@PostMapping("sendEmail")
