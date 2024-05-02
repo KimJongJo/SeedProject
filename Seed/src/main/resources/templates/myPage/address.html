@@ -30,7 +30,7 @@
 
             <!-- 추가할 공간 -->
             <div class="blank">
-                <button class="newAdressBtn">배송지 추가</button>
+                <button class="newAddressBtn">배송지 추가</button>
                 
                 
 
@@ -47,24 +47,13 @@
                     <!-- 주소지가 있을 때 -->
                     <th:block th:unless="${#lists.isEmpty(addressList)}">
 
-                        <tr th:each="address : ${addressList}" th:object="Address">
+                        <tr th:each="address : ${addressList}">
 
-                            <td th:text="${address['addressNo']}"></td>
-                            <!-- <td th:text="${address}"></td> -->
-
-                            <!-- <td th:text="${address['addressNo']}"></td>
-                            <td th:text="${address['memberAddress']}"></td> -->
-
-                            <!-- <td th:text="${address['addressNo']}">주소 번호</td>
-                            <td>우편번호</td>
-                            <td th:text="${address['memberAddress'].split('^^^')[0]}">주소 1</td>
-                            <td th:text="${address['memberAddress'].split('^^^')[1]}">주소 2</td>
-                            <td th:text="${address['memberAddress'].split('^^^')[2]}">주소 3</td> -->
-
-                            <!-- <td th:text="${address.addressNo}">주소 번호</td>
-                            <td th:text="${address.postCode}">우편번호</td>
-                            <td th:text="${address.address}">기본주소</td>
-                            <td th:text="${address.detailAddress}">상세주소</td> -->
+                            <td th:text="|${address['addressNo']}번 주소|"></td>
+                            <td th:text="${address['postCode']}"></td>
+                            <td th:text="${address['address']}"></td>
+                            <td th:text="${address['detailAddress']}"></td>
+                            
                         </tr>
                     </th:block>
 
@@ -76,10 +65,34 @@
 
             </div>
         </section>
+
+
+        <div id="addPopup" class="popup-hidden">
+            <h4>주소지 추가</h4>
+            <span id="popupClose">&times;</span>
+            
+            <input type="text" name="memberAddress" id="postCode" placeholder="우편번호">
+            <input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
+            <input type="text" name="memberAddress" id="address" placeholder="주소"><br>
+            <input type="text" name="memberAddress" id="detailAddress" placeholder="상세주소">
+            <button id="addBtn">추가하기</button>
+        </div>
+
+
     </main>
 
+    <!-- address.js 에서 사용할 변수 설정 -->
+    <script th:inline="javascript">
+        
+        const memberNo = /*[[${session.loginMember.memberNo}]]*/ "로그인 회원 번호";
+        
+    </script>
+
+   
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script src="/js/myPage/address.js"></script>
+  
     <th:block th:replace="~{common/images3}"></th:block>
     <th:block th:replace="~{common/footer}"></th:block>
-
 </body>
 </html>

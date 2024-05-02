@@ -27,8 +27,8 @@
 	
 
 	<!-- 회원 주소 검색 -->
-	<select id="selectAddressList" resultType="Address">
-		SELECT ADDRESS_NO, MEMBER_ADDRESS
+	<select id="selectAddressList">
+		SELECT ADDRESS_NO "addressNo", MEMBER_ADDRESS "memberAddress"
 		FROM "ADDRESS"
 		WHERE MEMBER_NO = #{memberNo}
 	</select>
@@ -40,5 +40,27 @@
 		WHERE MEMBER_NO = #{memberNo}
 	</update>
 
+
+	<!-- 주소 추가하기전 저장된 주소 개수 조회 -->
+	<select id="addressCount">
+		SELECT COUNT(*)
+		FROM "ADDRESS"
+		WHERE MEMBER_NO = #{memberNo}
+	</select>
+	
+	
+	<!-- 회원 주소 추가 -->
+	<update id="addAddress">
+		INSERT INTO "ADDRESS"
+		VALUES(#{addressNo}, #{memberNo}, #{address})
+	</update>
+	
+	
+	
+	
+	
+	
+	
+	
 
 </mapper>
