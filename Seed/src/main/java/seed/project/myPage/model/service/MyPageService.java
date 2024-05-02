@@ -29,5 +29,12 @@ public interface MyPageService {
 	List<Map<String, Object>> selectAddressList(int memberNo);
 
 	
+	/** 회원 탈퇴
+	 * @param map
+	 * @return
+	 */
+	int withdraw(Map<String, Object> map);
+
+	
 
 }

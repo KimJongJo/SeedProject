@@ -7,12 +7,16 @@ import java.util.Map;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import lombok.RequiredArgsConstructor;
@@ -196,8 +200,38 @@ public class MypageController {
 	}
 	
 	
+	/** 회원 탈퇴
+	 * @param map
+	 * @return result
+	 */
+	@ResponseBody
+	@DeleteMapping("withdraw")
+	public int withdraw(@RequestBody Map<String, Object> map,
+				SessionStatus status
+			) {
+		
+		System.out.println("memberNo : " + map.get("memberNo"));
+		System.out.println("memberPw : " + map.get("memberPw"));
+		 
+		if(service.withdraw(map) == 1) {
+			status.setComplete();
+			
+			return 1;
+		}
+		
+		return 0;
+	}
 	
 	
+	
+	/** 장바구니 페이지로 이동
+	 * @return
+	 */
+	@GetMapping("basket")
+	public String basket() {
+		
+		return "/myPage/basket";
+	}
 	
 	
 	

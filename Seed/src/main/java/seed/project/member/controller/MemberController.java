@@ -97,7 +97,7 @@ public class MemberController {
 	}
 	
 	
-//	로그인
+//	회원가입
 	@GetMapping("signup")
 	public String signup() {
 		
