@@ -18,21 +18,22 @@
         <!-- 모달창 만들기 -->
         <div class="modal" id="modal">
             <span id="crossBtn">&times;</span>
-            <form action="#">
+            <div>
                 <div class="modal_body">
-                    <h1>비밀번호 변경</h1>
+                    <h1>비밀번호 설정</h1>
+                    <span class="newPw">6 ~ 20글자수 (영어 대소문자, 숫자, !,@,#,_,-)</span>
                     <div class="pw_div">
                         <span class="pw_span">새 비밀번호 입력</span>
-                        <input type="password">
+                        <input type="password" id="newPw" name="memberPw">
                     </div>
                     <div class="pw_div">
                         <span class="pw_span">새 비밀번호 확인</span>
-                        <input type="password">
+                        <input type="password" id="newPwCh">
                     </div>
-                    <span class="check_span">유효성 검사</span>
-                    <button>변경하기</button>
+                    <span class="check_span" id="check_span"></span>
+                    <button id="changeBtn">변경하기</button>
                 </div>
-            </form>
+            </div>
         </div>
     
         <div style="margin-right: 130px;" class="logo-line">

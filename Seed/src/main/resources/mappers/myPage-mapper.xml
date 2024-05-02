@@ -26,5 +26,12 @@
 	</update>
 	
 
+	<!-- 회원 주소 검색 -->
+	<select id="selectAddressList">
+		SELECT ADDRESS_NO, MEMBER_ADDRESS
+		FROM "ADDRESS"
+		WHERE MEMBER_NO = #{memberNo}
+	</select>
+
 
 </mapper>

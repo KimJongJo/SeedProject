@@ -25,7 +25,7 @@
             </div>
 
             <div class="container">
-                <form>
+                <form action="#">
                     <div class="input-div">
                         
                         <!-- 아이디 -->
@@ -41,7 +41,7 @@
                         <div class="signUp-input-area">
                             <input type="password" name="memberPw" id="memberPw" maxlength="20">
                         </div>
-                        <span id="pwMsg">6~14자의 영문 대/소문자, 숫자, 특수문자를 사용해 주세요.</span>                        
+                        <span id="pwMsg">6~20자의 영문 대/소문자, 숫자, 특수문자를 사용해 주세요.</span>                        
 
                         <!-- 비밀번호  확인 -->
                         <label for="memberPwConfirm"><em style="color: red;">*</em> 비밀번호 확인</label>                        
@@ -64,15 +64,17 @@
                         <div class="signUp-input-area">
                             <input type="text" name="memberNickname" id="memberNickname" maxlength="10" autocomplete="off">
                         </div>
-                        <span id="nameMsg">2~5자의 한글만 사용해 주세요.</span>
+                        <span id="nickMsg">2~5자의 한글만 사용해 주세요.</span>
 
 
                         <!-- 전화번호 -->
                         <label for="memberTel"><em style="color: red;">*</em> 전화번호</label>                        
                         <div class="signUp-input-area">
-                            <input type="tel" name="memberTel" id="memberTel">                        
+                            <input type="tel" name="memberTel" id="memberTel"
+                            onfocus="this.placeholder=''" maxlegth="13"
+                            oninput="phoneAutoHyphen(this)">
                         </div>
-                        <span id="telMsg">010-****-**** 형식으로 입력해 주세요.</span>
+                        <span id="telMsg"></span>
 
                         <!-- 주소 -->
                         <label for="memberAddress">주소</label>   
@@ -94,30 +96,34 @@
                     </div>
 
                     <!-- 모달창 -->
-                    <div class="modal_background popup-hidden">
+                    <div id="modalBackground" class="modal_background popup-hidden">
                         <div id="popupLayer" class="popup-hidden">
                             <div class="popup-header">
                                 <div>
                                     <h4 class="title">이메일 인증</h4>
                                 </div>
                                 <div>
-                                    <a class="popup-exit" id="popup-exit">&times;</a>
+                                    <a class="popup-exit" id="popupExit">&times;</a>
                                 </div>
                             </div>
                             <div id="popup-body">
-                                <form>
+                                <form accept="#">
+                                    <!-- 빈공간 -->
                                     <div></div>
-                                    <div>
-                                        <div class="popup-input-area">
-                                            <p>이메일에 전송된 인증번호를 입력해 주세요.</p>
-                                            <label for="authKey" style="font-size: 14px; font-weight: bold;">인증번호 
-                                                <input type="text" id="authKey" class="authKey" name="authKey" placeholder="입력">
-                                            </label>
-                                        </div>
 
+                                    
+                                    <div>
+                                        <!-- 팝업 인증번호 입력 -->
+                                        <div class="popup-input-area">
+                                            <p style="color: #4C5958; font-weight: bold;">이메일에 전송된 인증번호를 입력해 주세요.</p>
+                                            <label for="authKey" style="font-size: 14px; font-weight: bold;">인증번호 
+                                                <input type="text" id="authKey" class="authKey" name="authKey" placeholder="입력"><span id="authMsg" class="authMsg">05:00</span>
+                                            </label>
+                                            
+                                        </div>                        
                                         <div class="popup-btn-area"> 
-                                            <button class="authConfirm">확인</button>
-                                            <button class="authCancel">취소</button>
+                                            <button type="button" class="authConfirm">확인</button>
+                                            <button type="reset" class="authCancel">취소</button>
                                         </div>
                                     </div>
                                 </form>
@@ -129,38 +135,9 @@
         </section>
     </main>
 
-    <!-- 주소 api -->
-    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-    <script>
-        function sample6_execDaumPostcode() {
-            new daum.Postcode({
-                oncomplete: function(data) {
-                    // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
-
-                    // 각 주소의 노출 규칙에 따라 주소를 조합한다.
-                    // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
-                    var addr = ''; // 주소 변수
-
-                    //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
-                    if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
-                        addr = data.roadAddress;
-                    } else { // 사용자가 지번 주소를 선택했을 경우(J)
-                        addr = data.jibunAddress;
-                    }
-
-
-                    // 우편번호와 주소 정보를 해당 필드에 넣는다.
-                    document.getElementById('postcode').value = data.zonecode;
-                    document.getElementById("address").value = addr;
-                    // 커서를 상세주소 필드로 이동한다.
-                    document.getElementById("detailAddress").focus();
-                }
-            }).open();
-        }
-    </script>
 
     <th:block th:replace="~{common/footer}"></th:block>
-    <!-- 다음 주소 API 추가 -->
+    <!-- 다음 주소 API 추가 / API 호출 함수 JS에 작성되어 있음-->
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script src="/js/member/signup.js"></script>
 </body>

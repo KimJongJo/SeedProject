@@ -1,6 +1,8 @@
 package seed.project.member.model.service;
 
 
+import java.util.Map;
+
 import seed.project.member.model.dto.Member;
 
 
@@ -32,6 +34,24 @@ public interface MemberService {
 	 * @return
 	 */
 	int checkId(String memberId);
+
+	/** 존재하는 회원인지 조회(아이디, 이메일)
+	 * @param member
+	 * @return result
+	 */
+	int findResult(Member member);
+
+	/** 비밀번호 찾기 -> 변경
+	 * @param map
+	 * @return result
+	 */
+	int findPwCh(Map<String, String> map);
+
+	/** 아이디 찾기
+	 * @param map
+	 * @return result
+	 */
+	int findId(Map<String, String> map);
 	
 	
 }

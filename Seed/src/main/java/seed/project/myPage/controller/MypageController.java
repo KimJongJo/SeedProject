@@ -1,8 +1,11 @@
 package seed.project.myPage.controller;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,6 +25,8 @@ import seed.project.myPage.model.service.MyPageService;
 public class MypageController {
 
 	private final MyPageService service;
+	
+	
 	
 	
 	// 회원정보 변경 화면으로 이동
@@ -111,6 +116,59 @@ public class MypageController {
 		
 		return "redirect:" + path;
 	}
+	
+	
+	@GetMapping("address")
+	public String address(
+			@SessionAttribute("loginMember") Member loginMember,
+			Model model,
+			RedirectAttributes ra
+			) {
+		
+		// 필요한거 : loginMember, 주소 번호, 회원 주소
+		int memberNo = loginMember.getMemberNo();
+		
+		// 1. 회원의 주소 Map 검색
+		List<Map<String, Object>> selectAddressList = service.selectAddressList(memberNo);
+		
+		String addressNo = selectAddressList.get(memberNo-1).get("addressNo").toString();
+		
+		String memberAddress = selectAddressList.get(memberNo-1).get("memberAddress").toString();
+		
+		String[] arr = memberAddress.split("\\^\\^\\^");
+		
+		String postCode = arr[0];
+		String address = arr[1];
+		String detailAddress = arr[2];
+		
+		
+		List<String> addressList = new ArrayList<String>();
+		
+		addressList.add(addressNo);
+		addressList.add(postCode);
+		addressList.add(address);
+		addressList.add(detailAddress);
+		
+		model.addAttribute("addressList", addressList);
+		
+
+		
+		
+		return "/myPage/address";
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 		
 	
 }
