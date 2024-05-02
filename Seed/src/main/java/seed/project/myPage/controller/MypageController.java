@@ -1,5 +1,7 @@
 package seed.project.myPage.controller;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -130,17 +132,34 @@ public class MypageController {
 		// 1. 회원의 주소 Map 검색
 		List<Map<String, Object>> selectAddressList = service.selectAddressList(memberNo);
 		
-		for(Map<String, Object> address : selectAddressList) {
-			String memberAddress = ((String)address.get("memberAddress")).toString();
-			String[] addressArr = memberAddress.split("\\^\\^\\^");
-			address.put("postCode", addressArr[0]);
-			address.put("mainAddress", addressArr[1]);
-			address.put("detailAddress", addressArr[2]);
-			
+		List<Map<String, Object>> addressList = new ArrayList<>();
+		
+		for(int i = 0; i < 5; i++) {
+			Map<String, Object> map = new HashMap<>();
+			map.put("addressNo", selectAddressList.get(i).get("addressNo"));
+			String[] str = ((String) selectAddressList.get(i).get("memberAddress")).split("\\^\\^\\^");
+			map.put("postCode", str[0]);
+			map.put("mainAddress", str[1]);
+			map.put("detailAddress", str[2]);
+			addressList.add(map);
 		}
 		
-		model.addAttribute("addressList", selectAddressList);
 		
+		model.addAttribute("selectAddressList", addressList);
+		
+		
+		
+//		for(Map<String, Object> address : selectAddressList) {
+//			String memberAddressOrigin = ((String)address.get("memberAddress")).toString();
+//			String[] addressArr = memberAddressOrigin.split("\\^\\^\\^");
+//			address.put("postCode", addressArr[0]);
+//			address.put("mainAddress", addressArr[1]);
+//			address.put("detailAddress", addressArr[2]);
+//			
+//		}
+//		
+//		model.addAttribute("addressList", selectAddressList);
+		// ---------------------------------------
 //		String addressNo = selectAddressList.get(memberNo-1).get("addressNo").toString();
 //		
 //		String memberAddress = selectAddressList.get(memberNo-1).get("memberAddress").toString();
