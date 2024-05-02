@@ -75,3 +75,17 @@
     background-color: #127369;
     cursor: pointer;
 }
+
+
+
+
+#foot-div{
+    display: flex;
+    justify-content: space-around;
+    width: 700px;
+}
+
+#foot-div > img{
+    width: 100px;
+    height: 100px;
+}

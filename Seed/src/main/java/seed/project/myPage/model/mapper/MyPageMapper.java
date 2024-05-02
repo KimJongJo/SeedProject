@@ -36,6 +36,13 @@ public interface MyPageMapper {
 	List<Map<String, Object>> selectAddressList(int memberNo);
 
 	
+	/** 회원 탈퇴
+	 * @param memberNo
+	 * @return result
+	 */
+	int deleteMember(int memberNo);
+
+	
 	
 
 }

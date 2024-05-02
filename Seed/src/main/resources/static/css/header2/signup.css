@@ -311,3 +311,18 @@ span {
     margin-left: 12px;
     color: black;
 }
+
+
+
+
+#foot-div{
+    margin-top: 35px;
+    display: flex;
+    justify-content: space-around;
+    width: 700px;
+}
+
+#foot-div > img{
+    width: 100px;
+    height: 100px;
+}
