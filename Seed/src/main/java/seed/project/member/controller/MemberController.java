@@ -97,7 +97,9 @@ public class MemberController {
 	}
 	
 	
-//	회원가입
+
+//	회원가입 페이지로 이동
+
 	@GetMapping("signup")
 	public String signup() {
 		
@@ -223,6 +225,62 @@ public class MemberController {
 	public int findId(@RequestBody Map<String, String> map) {
 		
 		return service.findId(map);
+	}
+	
+	/** 회원가입 - 이메일 중복 체크
+	 * @param memberEmail
+	 * @return
+	 */
+	@ResponseBody
+	@GetMapping("checkEmail")
+	public int checkEmail(@RequestParam("memberEmail") String memberEmail) {
+		
+		return service.checkEmail(memberEmail);
+	}
+	
+	
+	/** 회원가입 - 닉네임 중복 체크
+	 * @param memberNickname
+	 * @return
+	 */
+	@ResponseBody
+	@GetMapping("checkNickname")
+	public int checkNickname(@RequestParam("memberNickname") String memberNickname) {
+		
+		return service.checkNickname(memberNickname);
+	}
+	
+
+	/** 회원가입(제출)
+	 * @param inputMember
+	 * @param memberAddress
+	 * @param ra
+	 * @return
+	 */
+	@PostMapping("signup")
+	public String signup(@ModelAttribute Member inputMember,
+						@RequestParam("memberAddress") String[] memberAddress,
+						RedirectAttributes ra) {
+		
+		
+		// 회원가입 서비스 호출
+		int result = service.signup(inputMember, memberAddress);
+		
+		String path = null;
+		String message = null;
+		
+		if(result > 0) { // 성공 시
+			message = inputMember.getMemberNickname() + "님의 가입을 환영합니다 :)";
+			path = "/";
+			
+		} else { // 실패
+			message = "회원가입 실패...";
+			path = "signup";
+		}
+		
+		ra.addFlashAttribute("message", message);
+		
+		return "redirect:" + path;
 	}
 	
 }

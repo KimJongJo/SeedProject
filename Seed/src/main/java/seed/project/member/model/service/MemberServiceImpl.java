@@ -223,4 +223,48 @@ public class MemberServiceImpl implements MemberService{
 		return 1;
 	}
 
+	
+	// 회원가입 - 이메일 중복 체크
+	@Override
+	public int checkEmail(String memberEmail) {
+		
+		
+		
+		return mapper.checkEmail(memberEmail);
+	}
+
+	
+	// 회원가입 - 닉네임 중복 체크
+	@Override
+	public int checkNickname(String memberNickname) {
+		
+		return mapper.checkNickname(memberNickname);
+	}
+
+	
+	// 회원가입(제출)
+	@Override
+	public int signup(Member inputMember, String[] memberAddress) {
+		
+		if(!inputMember.getMemberAddress().equals(",,")) {
+			
+			String address = String.join("^^^", memberAddress);
+			
+			// inputMember 주소로 합쳐진 주소를 세팅 
+			inputMember.setMemberAddress(address);
+			
+			
+		} else { // 주소 입력 X
+			
+			inputMember.setMemberAddress(null); // null 저장
+		}
+		
+		// 비밀번호를 암호화 하여 input member에 세팅
+		String encPw = bcrypt.encode(inputMember.getMemberPw()); 
+		
+		inputMember.setMemberPw(encPw);
+		
+		return mapper.signup(inputMember);
+	}
+
 }
