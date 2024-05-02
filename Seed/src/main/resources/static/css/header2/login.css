@@ -39,6 +39,7 @@
     align-items: center;
     width: 60%;
     flex-direction: column;
+    margin-bottom: 50px;
 }
 
 
@@ -119,3 +120,16 @@
 }
 
 /* -------- 로그인 끝 --------- */
+
+
+#foot-div{
+    margin-top: 35px;
+    display: flex;
+    justify-content: space-around;
+    width: 700px;
+}
+
+#foot-div > img{
+    width: 100px;
+    height: 100px;
+}

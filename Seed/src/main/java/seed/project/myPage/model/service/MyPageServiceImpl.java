@@ -62,6 +62,22 @@ public class MyPageServiceImpl implements MyPageService{
 		
 		return mapper.selectAddressList(memberNo);
 	}
+
+	// 회원 탈퇴
+	@Override
+	public int withdraw(Map<String, Object> map) {
+		
+		int memberNo = (int)map.get("memberNo");
+		
+		// 현재 로그인한 회원의 비밀번호가 일치한지 검사
+		String bcPw = mapper.selectPw(memberNo);
+		
+		if(!bcrypt.matches((String)map.get("memberPw"), bcPw)) {
+			return 0;
+		}
+		
+		return mapper.deleteMember(memberNo);
+	}
 	
 
 	
