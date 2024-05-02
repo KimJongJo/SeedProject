@@ -64,5 +64,23 @@ public interface MemberMapper {
 	 */
 	String findId(Map<String, String> map);
 
+	/** 회원가입 - 이메일 중복체크
+	 * @param memberEmail
+	 * @return
+	 */
+	int checkEmail(String memberEmail);
+
+	/** 회원가입 - 닉네임 중복체크
+	 * @param memberNickname
+	 * @return
+	 */
+	int checkNickname(String memberNickname);
+
+	/** 회원가입(제출)
+	 * @param inputMember
+	 * @return
+	 */
+	int signup(Member inputMember);
+
 
 }
