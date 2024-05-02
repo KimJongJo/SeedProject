@@ -1,5 +1,5 @@
 section {
-    height: 1000px;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -16,7 +16,7 @@ section {
     align-items: center;
     line-height: 80px;
     height: 100px;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
 }
 
 /* 로고 */
@@ -88,7 +88,7 @@ span {
 
 #emailAuth {
     position: absolute;
-    width: 50px;
+    width: 66px;
     height: 30px;
     top: 3;
     bottom: 0;
@@ -99,9 +99,12 @@ span {
     background-color: #4C5958;
     box-shadow: 0 3px 3px rgba(0,0,0,0.2);
     cursor: pointer;
-    color: #E1E1E1;
+    color: white;
     
 }
+
+#emailAuth:hover{ color: grey; background: rgba(0, 0, 0, 0.65)}
+#emailAuth:active{ color : red; }
 
 /*--------------------------------------*/
 
@@ -148,9 +151,7 @@ span {
     font-weight: bold;
 }
 
-
 #searchAddress:hover{ color: grey; }
-
 #searchAddress:active{ color : red; }
 
 /* 가입하기 버튼 */
@@ -161,11 +162,15 @@ span {
     color: white;
     border-radius: 5px;
     font-size: 16px;
-    margin: 50px 0;
+    margin-top: 60px;
+    margin-bottom: 100px;
     border: 1px solid #ddd;
     box-shadow: 0 3px 3px rgba(0,0,0,0.2);
+    cursor: pointer;
 }
 
+#signUpBtn:hover{ color: grey; background: rgba(0, 0, 0, 0.65)}
+#signUpBtn:active{ color : red; }
 
 /* ------------------- 모달창 --------------------- */
 
@@ -305,4 +310,19 @@ span {
     font-size: 12px;
     margin-left: 12px;
     color: black;
+}
+
+
+
+
+#foot-div{
+    margin-top: 35px;
+    display: flex;
+    justify-content: space-around;
+    width: 700px;
+}
+
+#foot-div > img{
+    width: 100px;
+    height: 100px;
 }

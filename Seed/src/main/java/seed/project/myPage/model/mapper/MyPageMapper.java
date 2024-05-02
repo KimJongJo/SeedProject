@@ -50,6 +50,13 @@ public interface MyPageMapper {
 
 
 	
+	/** 회원 탈퇴
+	 * @param memberNo
+	 * @return result
+	 */
+	int deleteMember(int memberNo);
+
+	
 	
 
 }

@@ -1,6 +1,4 @@
 /* 다음 주소 API 활용*/
-console.log("ㅎㅇ")
-
 function execDaumPostcode() {
     new daum.Postcode({
         oncomplete: function(data) {
@@ -187,34 +185,7 @@ memberPwConfirm.addEventListener("input", e => {
 
 
 
-// ---------------------------------------------------------------------
 
-// modal_background : 뒷 배경
-// popupLayer : 팝업창
-// popup-exit : X 아이콘
-
-
-// =============================== 유효성 검사 다하고, 메일 인증 연계 예정 ===============================
-
-// * 인증 버튼 클릭 시
-document.getElementById("emailAuth").addEventListener("click", () => {
-
-    const modalBackground = document.getElementById("modalBackground"); // 팝업 뒷 배경
-    const popupLayer = document.getElementById("popupLayer"); // 팝업창
-
-    modalBackground.classList.remove('popup-hidden');
-    popupLayer.classList.remove('popup-hidden');
-
-    
-    const popupExit = document.getElementById("popupExit"); // X 아이콘
-
-    popupExit.addEventListener("click", () => {
-
-        modalBackground.classList.add('popup-hidden');
-        popupLayer.classList.add('popup-hidden');
-    })
-;
-})
 
 // ======================================================================================================
 
@@ -222,14 +193,14 @@ document.getElementById("emailAuth").addEventListener("click", () => {
 // ***** 3. 이메일 유효성 검사 *******
 const memberEmail = document.getElementById("memberEmail");
 const emailMsg = document.getElementById("emailMsg"); // 이메일 입력 시 span
-const authMsg = document.getElementById("authMsg"); // 인증 팝업 span
+
 
 // 1) 이메일 입력 이벤트 생성
 memberEmail.addEventListener("input", e => {
 
     // 이메일 인증 후 이메일이 변경될 경우
-    // checkObj.authKey = false;
-    // document.querySelector("#authKeyMessage").innerText ="";
+    checkObj.authKey = false;
+    document.querySelector("#emailMsg").innerText ="";
 
     const inputEmail = e.target.value;
 
@@ -259,34 +230,217 @@ memberEmail.addEventListener("input", e => {
         return;
     }
 
+    fetch("/member/checkEmail?memberEmail=" + inputEmail)
+    .then( resp => resp.text() )
+    .then( count => {
 
-
-
-    // fetch("/member/checkEmail?memberEmail=" + inputEmail)
-    // .then( resp => resp.text() )
-    // .then( count => {
-
-    //     if(count == 1) { // 중복 O
-    //         emailMsg.innerText = "이미 사용중인 이메일입니다.";
-    //         emailMsg.classList.add('error');
-    //         emailMsg.classList.remove('confirm');
-    //         checkObj.memberEmail = false; 
-    //         return;
-    //     }
+        if(count == 1) { // 중복 O
+            emailMsg.innerText = "이미 사용중인 이메일입니다.";
+            emailMsg.classList.add('error');
+            emailMsg.classList.remove('confirm');
+            checkObj.memberEmail = false; 
+            return;
+        }
         
         // 중복 X 경우
-        emailMsg.innerText = "사용 가능한 이메일입니다.";
+        emailMsg.innerText = "이 이메일은 사용할 수 있습니다. '인증' 버튼을 클릭하여 계정을 인증해주세요.";
         emailMsg.classList.add('confirm');
         emailMsg.classList.remove('error'); 
         checkObj.memberEmail = true; 
-
-    // })
-    // .catch(error => {
-    //     console.log(error); 
-    // });
+    })
+    .catch(error => {
+        console.log(error); 
+    });
 
 });
 
+
+
+    // ============================ 메일 인증 ========================
+
+// 00 : 00 형식 함수
+function addZero(num) {
+    if(num < 10) {
+        return "0" + num;
+    } else {
+        return num;
+    }   
+}
+
+// modal_background : 뒷 배경
+// popupLayer : 팝업창
+// popup-exit : X 아이콘
+// 1. 변수 세팅
+
+// 인증번호 받기 버튼
+const emailAuth = document.getElementById('emailAuth');
+
+// 인증번호 입력 input
+const authKey = document.querySelector("#authKey");
+
+// 인증번호 입력 후 확인 버튼
+const authConfirm = document.getElementById('authConfirm');
+
+// 인증번호 관련 메시지 출력 span
+const authMsg = document.getElementById("authMsg"); // 인증 팝업 span
+
+let authTimer; // 타이머 역할을 할 setInterval을 저장할 변수
+
+const initMin = 4; // 타이머 초기값 (분)
+const initSec = 59; // 타이머 초기값 (초)
+const initTime = "05:00";
+
+// 실제 줄어드는 시간을 저장할 변수
+let min = initMin;
+let sec = initSec;
+
+const popupExit = document.getElementById("popupExit"); // X 아이콘
+
+// 2. 인증 버튼 클릭 시
+emailAuth.addEventListener("click", () => {
+
+    // 재클릭 시 처리
+    checkObj.authKey = false;
+    authKey.value = "";
+    emailMsg.innerText = "";
+
+    if(!checkObj.memberEmail) {
+        alert("이메일을 올바르게 입력 후 클릭해 주세요.");
+        emailMsg.innerText = "올바른 이메일 형식으로 입력해 주세요.";
+        emailMsg.classList.add('error'); 
+        emailMsg.classList.remove('confirm');
+        checkObj.memberEmail = false; 
+        return;
+    }
+    // 올바르게 입력하지 않은 경우 팝업창 뜨지 않음
+    const modalBackground = document.getElementById("modalBackground"); // 팝업 뒷 배경
+    const popupLayer = document.getElementById("popupLayer"); // 팝업창
+
+    modalBackground.classList.remove('popup-hidden');
+    popupLayer.classList.remove('popup-hidden');
+
+   // 클릭시 타이머 숫자 초기화
+    min = initMin;
+    sec = initSec;
+
+    // 이전 동작 중인 인터벌 클리어
+    clearInterval(authTimer);
+
+    // 비동기 메일 발송
+    fetch("/email/signup", {
+        method : "POST",
+        headers : {"Content-Type" : "application/json"},
+        body : memberEmail.value
+    })
+    .then(resp => resp.text())
+    .then(result => {
+        if(result == 1) {
+            console.log(memberEmail.value + "로 인증 번호 발송 성공");
+        } else {
+            console.log("인증번호 발송 실패")
+        }
+    }).catch(error => {
+        console.log(error);
+    });
+
+
+
+    authMsg.innerText = initTime; // 05:00
+    authMsg.classList.remove('confirm', 'error'); 
+
+    alert("인증번호가 발송되었습니다.")
+
+    // initTime-- 처리
+    authTimer = setInterval( () => {
+        
+
+        authMsg.innerText = `${addZero(min)}:${addZero(sec)}`; // 함수 아래에 별도 선언 예정
+
+        // 0분 0초인 경우
+        if(min == 0 && sec == 0) {
+            checkObj.authKey = false;
+            clearInterval(authTimer);
+            authMsg.classList.add('error');
+            authMsg.classList.remove('confirm');
+            return;
+        }
+
+        // 0초인 경우(분 감소)
+        if(sec == 0) {
+            sec = 60;
+            min--;
+        }
+
+        sec--;
+
+    }, 1000); // 1초(ms 기준)
+
+
+});
+
+// X 아이콘 클릭 시
+popupExit.addEventListener("click", () => {
+
+    modalBackground.classList.add('popup-hidden');
+    popupLayer.classList.add('popup-hidden');
+
+});
+
+
+/* ---------- 인증번호 입력 후 확인 클릭 시 ----------------- */
+
+authConfirm.addEventListener("click", () => {
+
+    // * 분기 처리 *
+    checkObj.authKey = false;
+    emailMsg.innerText = "";
+
+    // 시간 초과
+    if(min === 0 && sec === 0) {
+        
+        alert("인증번호 입력 제한시간을 초과하였습니다.");
+        return;
+    }
+
+    if(authKey.value.length < 6) {
+        alert("인증번호를 올바르게 입력해 주세요.");
+        return;
+    }
+
+    const obj = {
+        "email" : memberEmail.value,
+        "authKey" : authKey.value
+    };
+
+    // TB_AUTH_KEY 테이블 비동기 일치 여부 확인
+    fetch("/email/checkAuthKey", {
+        method : "POST",
+        headers : {"Content-Type" : "application/json"},
+        body : JSON.stringify(obj)
+    })
+    .then(resp => resp.text())
+    .then(result => {
+
+        if(result == 0) {
+            alert("인증번호가 일치하지 않습니다.");
+            checkObj.authKey = false;
+            return;
+        }
+        
+        clearInterval(authTimer);
+
+        emailMsg.innerText = '\u2713 인증 완료'
+        emailMsg.classList.remove('error');
+        emailMsg.classList.add('confirm');
+        
+        checkObj.authKey = true;
+
+        modalBackground.classList.add('popup-hidden');
+        popupLayer.classList.add('popup-hidden');
+
+    })
+    
+});
 
 
 
@@ -325,24 +479,24 @@ memberNickname.addEventListener("input", e => {
         return;
     }
 
-    // fetch("/member/checkNickname?memberNickname=" + inputNickname)
-    // .then(resp => resp.text())
-    // .then(count => {
+    fetch("/member/checkNickname?memberNickname=" + inputNickname)
+    .then(resp => resp.text())
+    .then(count => {
 
-    //     if(count == 1) { // 중복 O
-    //         nickMsg.innerText = "이미 사용중인 닉네임입니다.";
-    //         nickMsg.classList.add("error");
-    //         nickMsg.classList.remove("confirm");
-    //         checkObj.memberNickname = false;
-    //         return;
-    //     }
+        if(count == 1) { // 중복 O
+            nickMsg.innerText = "이미 사용중인 닉네임입니다.";
+            nickMsg.classList.add("error");
+            nickMsg.classList.remove("confirm");
+            checkObj.memberNickname = false;
+            return;
+        }
 
         nickMsg.innerText = "사용 가능한 닉네임입니다.";
         nickMsg.classList.add("confirm");
         nickMsg.classList.remove("error");
         checkObj.memberNickname = true;
 
-    // });
+    });
     
 });
 
@@ -371,7 +525,7 @@ memberTel.addEventListener("input", e => {
 
     // 입력 X
     if(inputTel.trim().length === 0) {
-        telMsg.innerText = "010-****-**** 형식으로 전화번호를 입력해 주세요.";
+        telMsg.innerText = "010-XXXX-XXXX 형식으로 전화번호를 입력해 주세요.";
         telMsg.classList.remove("confirm", "error");
         memberTel.value = "";
         checkObj.memberTel = false;
@@ -408,4 +562,67 @@ memberTel.addEventListener("input", e => {
 
 
 // ********** 회원 가입 버튼 클릭 시 **************** / 
+
+
+const signUpForm = document.getElementById('signUpForm');
+
+// form 제출
+signUpForm.addEventListener("submit" , e => {
+
+    for(let key in checkObj) {
+        if(!checkObj[key]) {
+            let str;
+
+            switch(key) {
+                case "memberId" : 
+                    str = "아이디가 올바른 형식이 아니거나, 중복된 아이디입니다."; break;
+                
+                case "memberPw" : 
+                    str = "비밀번호가 올바르게 입력되지 않았습니다."; break;
+                
+                case "memberPwConfirm" :
+                    str = "비밀번호가 일치하지 않습니다."; break;
+                
+                case "memberEmail" :
+                    str = "이메일이 올바른 형식이 아니거나, 중복된 이메일입니다."; break;
+                
+                case "memberNickname" : 
+                    str = "닉네임이 올바른 형식이 아니거나, 중복된 닉네임입니다."; break;
+
+                case "memberTel" :
+                    str = "전화번호가 유효하지 않습니다."; break;
+
+                case "authKey" :
+                    str = "이메일이 인증이 정상적으로 진행되지 않았습니다."; break;
+            }
+
+            alert(str);
+
+            document.getElementById(key).focus();
+
+            e.preventDefault();
+
+            return;
+        }
+    }
+
+    const memberAddress = document.querySelectorAll("[name='memberAddress']");
+    const addr0 = memberAddress[0].value.trim().length == 0; // true / false
+    const addr1 = memberAddress[1].value.trim().length == 0;
+    const addr2 = memberAddress[2].value.trim().length == 0;
+
+    // 모두 true 인 경우만 true 저장
+    const result1 = addr0 && addr1 && addr2; // 아무것도 입력 x
+
+    // 모두 false 인 경우만 true 저장
+    const result2 = !(addr0 || addr1 || addr2); // 모두 다 입력
+
+    // 모두 입력 또는 모두 미입력이 아니면
+    if( !(result1 || result2)) {
+        alert("주소를 모두 작성 또는 미작성 해주세요.");
+        e.preventDefault();
+        return;
+    }
+
+});
 

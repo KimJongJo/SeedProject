@@ -35,7 +35,7 @@
 	</select>
 
 
-	
+	<!-- 회원가입 - 아이디 중복 체크 -->
 	<select id="checkId" resultType="_int">
 		SELECT COUNT(*)
 		FROM "MEMBER"
@@ -76,5 +76,39 @@
 		WHERE MEMBER_EMAIL = #{memberEmail}
 		AND MEMBER_NICKNAME = #{memberNickname}
 	</select>
+
+
+	<!-- 회원가입 - 이메일 중복 체크 -->
+	<select id="checkEmail" resultType="_int">
+		SELECT COUNT(*)
+		FROM "MEMBER"
+		WHERE MEMBER_DEL_FL = 'N'
+		AND MEMBER_EMAIL = #{memberEmail}
+	</select>
+	
+	<!-- 회원가입 - 이메일 중복 체크 -->
+	<select id="checkNickname" resultType="_int">
+		SELECT COUNT(*)
+		FROM "MEMBER"
+		WHERE MEMBER_DEL_FL = 'N'
+		AND MEMBER_NICKNAME = #{memberNickname}
+	</select>
+	
+	
+	<!-- 회원가입 -->
+	<insert id="signup">
+		INSERT INTO "MEMBER"
+		VALUES(SEQ_MEMBER_NO.NEXTVAL, 
+			 #{memberId},
+			 #{memberPw},
+			 #{memberNickname},
+			 #{memberEmail},
+			 #{memberAddress},
+			 #{memberTel},
+			 DEFAULT,
+			 DEFAULT,
+			 DEFAULT
+		)
+	</insert>
 
 </mapper>

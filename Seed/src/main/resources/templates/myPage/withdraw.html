@@ -19,6 +19,34 @@
     <th:black th:replace="~{common/header}"></th:black>
 
     <main>
+         <!-- 모달창 만들기 -->
+         <div class="modal" id="modal">
+            <span id="crossBtn">&times;</span>
+            <div>
+                <div class="modal_body">
+                    <h1>회원 탈퇴</h1>
+
+                    <div class="img_box">
+                        <div class="img_box_right">
+                            <span>언더 더 씨 회원탈퇴</span>
+                            <span>탈퇴 후에는 모든 작업 정보가 삭제되니 신중하게 결정해주세요!</span>
+                        </div>
+
+                    </div>
+
+                    
+                    <div class="pw_div">
+                        <span class="pw_span" id="memberPw">비밀번호 입력</span>
+                        <input type="password" id="newPw" name="memberPw">
+                    </div>
+                    <span class="newPw"> &#8251; 탈퇴하시면 복구가 불가능합니다 &#8251; </span>
+
+                    <button id="modal_withBtn">탈퇴하기</button>
+                </div>
+            </div>
+        </div>
+
+
         <section class="section">
             <!-- 왼쪽 nav -->
             <div class="left-nav">
@@ -54,20 +82,24 @@
                         </ul>
                     </div>
                     <div class="btn_div">
-                        <button>탈퇴하기</button>
+                        <button id="withdraw_btn">탈퇴하기</button>
                     </div>
-                    
-                   
                 </div>
             </div>
         </section>
     </main>
 
+
+    <th:block th:replace="~{common/images3}"></th:block>
     <!-- 푸터 추가 -->
     <th:block th:replace="~{common/footer}"></th:block>
 
+    <script th:inline="javascript">
+        const memberNo = /*[[${session.loginMember.memberNo}]]*/ "로그인한 회원 번호";
+    </script>
 
-    <script src="/js/member/myPage/myPage.js"></script>
+
+    <script src="/js/myPage/withdraw.js"></script>
 
 </body>
 </html>
