@@ -65,6 +65,18 @@
 
 
 
+#cart{
+    background: #00AE68;
+    box-shadow: 0px 5px 0px 0px #007144;
+    text-decoration: none;
+}
+
+
+#cart:hover{
+    margin-top: 15px;
+    margin-bottom: 5px;
+    box-shadow: 0px 0px 0px 0px #21825B;
+}
 
 
 

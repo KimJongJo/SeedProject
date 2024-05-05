@@ -38,19 +38,19 @@
                     <table class="table">
                         <tr>
                             <td class="th">현재 비밀번호</td>
-                            <td><input type="password" name="nowPw"></td>
+                            <td><input type="password" name="nowPw" id="nowPw"></td>
                         </tr>
                         <tr>
                             <td class="th">새 비밀번호</td>
-                            <td><input type="password" name="updatePw"></td>
+                            <td><input type="password" name="updatePw" id="newPw"></td>
                         </tr>
                         <tr>
                             <td class="th">새 비밀번호 확인</td>
-                            <td><input type="password" name="updatePw2"></td>
+                            <td><input type="password" name="updatePw2" id="newPw2"></td>
                         </tr>
                     </table>
 
-                    <button class="change-btn">변경하기</button>
+                    <button class="change-btn" id="change-btn">변경하기</button>
                 </form>
             </div>
         </section>
@@ -60,6 +60,8 @@
     <th:block th:replace="~{common/images3}"></th:block>
     <!-- 푸터 추가 -->
     <th:block th:replace="~{common/footer}"></th:block>
+
+    <script src="/js/myPage/updatePw.js"></script>
     
 </body>
 </html>
