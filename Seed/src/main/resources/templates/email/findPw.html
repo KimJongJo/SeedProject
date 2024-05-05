@@ -1,27 +1,28 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-<!-- 메일은 header 불필요 -->
-</head>
-<body>
-    <!-- css/js 파일은 이메일 첨부 불가 -->
-    <div style="display:flex; flex-direction: column; align-items: center;">
 
-        <!-- Content-ID로 등록된 이미지 중 logo를출력 -->
-        <img src="cid:logo" width="200px">
-        <h2>언더 더 씨</h2>
-        <h3>
-            아래 발급된 인증 번호를 제한 시간 내에
-            <br>
-            회원 가입 화면에 입력 후 인증 버튼을 눌러주세요
-        </h3>
-
-        <h3 style="text-align: center; border: 3px solid black; color: blue;
-             width: 400px; padding: 10px;">
-            <th:block th:text="${randomString}"></th:block>
-        </h3>
-
-
+<body style="font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;">
+    <div class="container" style="max-width: 600px;
+                            margin: 50px auto;
+                            background-color: #fff;
+                            border-radius: 10px;
+                            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+                            padding: 30px;">
+        <h1 style="color: #333; text-align: center;">언더 더 씨</h1>
+        <p style="color: #666; font-size: 16px; line-height: 1.6; text-align: center">
+            인증번호를 입력하여 계정을 확인하세요.</p>
+        <p class="verification-code" 
+                    style="font-size: 24px;
+                    color: #007bff;
+                    margin-top: 20px;
+                    margin-bottom: 30px;
+                    text-align: center;"
+        >인증번호: <strong th:text="${randomString}">123456</strong></p>
+        <p style="color: #666; font-size: 14px; line-height: 1.6; text-align: center">
+            이 이메일을 보낸 이메일 주소가 실제로 존재하는지 확인하기 위한 인증번호입니다.</p>
     </div>
 </body>
 </html>

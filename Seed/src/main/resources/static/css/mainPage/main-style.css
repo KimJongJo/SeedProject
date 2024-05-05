@@ -175,23 +175,23 @@ header > div:nth-child(2) > div:nth-child(2) button:hover{
 
 #nav-bottom{
     width: 900px;
+    display: flex;
 }
 
 div > nav{
     width: 1000px;
-    padding: 20px;
     border-bottom: 1px solid black;
 }
 
 
 #nav-bottom > a{
-    padding: 20px;
     text-decoration: none;
+    height: 50px;
+    padding: 0;
 }
 
 
 nav > a{
-    padding: 20px;
     text-decoration: none;
     font-size: 20px;
     color: black;
@@ -251,7 +251,6 @@ footer a {
 
 
 nav > a{
-    padding: 20px;
     text-decoration: none;
     font-size: 20px;
     color: black;
@@ -316,3 +315,65 @@ nav > a:hover{
     width: 100px;
     height: 100px;
 }
+
+
+
+
+
+
+
+.container {
+    padding-top: 1em;
+    margin-top: 1em;
+  }
+  
+  .container a {
+      text-decoration: none;
+      
+  }
+  
+  a.button {
+    display: block;
+    position: relative;
+    font-size: 20px;
+    width: 120px;
+    margin: 10px 5px 10px 5px;
+    text-align: center;
+    line-height: 50px;
+    color: #FFF;
+    border-radius: 5px;
+    transition: all 0.2s ;
+  }
+  
+  .btnBlueGreen {
+    background: #127369;
+  }
+  
+  
+  
+  
+/* 3D */
+.btnBlueGreen.btnPush {
+    box-shadow: 0px 5px 0px 0px #10403B;
+}
+
+.btnPush:hover {
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+.btnBlueGreen.btnPush:hover {
+    box-shadow: 0px 0px 0px 0px #10403B;
+}
+
+
+#point{
+    background-color: #10403B;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    box-shadow: none;
+}
+
+
+
+
