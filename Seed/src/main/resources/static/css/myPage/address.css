@@ -1,6 +1,7 @@
 .blank {
     display: flex;
     flex-direction: column;
+    flex-basis: 80%;
 }
 
 .newAdressBtn {
@@ -34,6 +35,7 @@
 
 .popup-hidden {
     display: none !important;
+}
 
 
 
