@@ -52,7 +52,7 @@
 	<!-- 회원 주소 추가 -->
 	<update id="addAddress">
 		INSERT INTO "ADDRESS"
-		VALUES(#{addressNo}, #{memberNo}, #{address})
+		VALUES(#{memberNo}, #{addressNo}, #{address})
 	</update>
 	
 	
