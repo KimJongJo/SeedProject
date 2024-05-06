@@ -1,0 +1,53 @@
+<!DOCTYPE html> 
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>아이디 찾기</title>
+    <th:block th:replace="~{common/common2}"></th:block>
+    <link rel="stylesheet" href="/css/header2/searchId.css">
+
+    
+</head>
+<body>
+    <!-- 헤더 추가 -->
+    <th:block th:replace="~{common/header2}"></th:block>
+
+    <main class="main">
+    
+        <div style="margin-right: 130px;" class="logo-line">
+            <a href="/">
+                <img src="/images/씨앗.png" alt="로고">
+            </a>
+            <span>언더 더 씨</span>
+        </div>
+
+        <section class="find-form">
+
+            <span class="find-id">아이디 찾기</span>
+
+            <div class="search-id-form">
+                <div class="email-div">
+                    <span class="email-span">이메일 입력</span>
+                    <input type="text" name="memberEmail" class="email-input" id="memberEmail">
+                </div>
+                <div class="nickname-div">
+                    <span class="nickname-span">닉네임 입력</span>
+                    <input type="text" name="memberNickname" class="nickname-input" id="memberNickname">
+                    <button class="nickname-btn" id="findIdBtn">확인</button>
+                </div>
+            </div>
+
+            <a href="/member/searchPw">비밀번호 찾기</a>
+        </section>
+
+    </main>
+
+    
+    <th:block th:replace="~{common/images1}"></th:block>
+    <th:block th:replace="~{common/footer}"></th:block>
+
+    <script src="/js/searchId.js"></script>
+
+</body>
+</html>

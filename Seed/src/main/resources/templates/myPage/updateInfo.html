@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원정보 변경</title>
+
+    <th:block th:replace="~{common/common}"></th:block>
+    <th:block th:replace="~{common/common3}"></th:block>
+
+    <link rel="stylesheet" href="/css/myPage/updateInfo.css">
+
+    
+
+</head>
+<body>
+
+    <!-- 헤더 추가 -->
+    <th:black th:replace="~{common/header}"></th:black>
+
+    <main>
+        <section class="section">
+            <!-- 왼쪽 nav -->
+            <div class="left-nav">
+                <a href="/myPage/updateInfo">회원 정보 변경</a>
+                <a href="/myPage/updatePw">비밀번호 변경</a>
+                <a href="/myPage/basket">장바구니</a>
+                <a href="/myPage/address">주소록 관리</a>
+                <a href="/myPage/comment">작성한 댓글</a>
+                <a href="/myPage/withdraw">회원 탈퇴</a>
+            </div>
+            <!-- 추가할 공간 -->
+            <div class="blank">
+                <span class="title">회원 정보 변경</span>
+                <span class="content">내 정보를 원하는 대로 수정할 수 있습니다.</span>
+                <form action="updateInfo" method="POST" class="change-info" id="updateInfo">
+
+                    <table class="table">
+                        <tr>
+                            <td class="th">닉네임</td>
+                            <td><input type="text" class="nickName" name="memberNickname"
+                                th:value="${session.loginMember.memberNickname}"></td>
+                        </tr>
+                        <tr>
+                            <td class="th">전화번호</td>
+                            <td><input type="text" class="telNo" name="memberTel"
+                                th:value="${session.loginMember.memberTel}"></td>
+                        </tr>
+                        <tr>
+                            <td class="th">이메일</td>
+                            <td><input type="email" class="email" name="memberEmail"
+                                th:value="${session.loginMember.memberEmail}"></td>
+                        </tr>
+
+                    </table>
+
+                   
+                    <!-- <div class="address">
+                        <span>주소</span>
+
+                        
+                        <div style="margin: 15px;" class="address-first">
+                            <input type="text" id="postcode" placeholder="우편번호"  class="address-input">
+                            <input type="button" onclick="sample6_execDaumPostcode()" value="검색">
+                        </div>
+                        <input style="margin: 15px;" type="text" id="sample6_address" placeholder="기본 주소" class="address-input">
+                        <input style="margin: 15px;" type="text" id="sample6_detailAddress" placeholder="나머지주소" class="address-input">
+
+                    </div> -->
+
+                    <button class="form-btn">수정하기</button>
+
+                </form>
+            </div>
+        </section>
+    </main>
+
+
+    <th:block th:replace="~{common/images3}"></th:block>
+    <!-- 푸터 추가 -->
+    <th:block th:replace="~{common/footer}"></th:block>
+
+
+    
+    <script src="/js/member/myPage/myPage.js"></script>
+
+</body>
+</html>
