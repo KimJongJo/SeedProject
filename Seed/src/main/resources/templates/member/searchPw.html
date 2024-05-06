@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>비밀번호 찾기</title>
+    <th:block th:replace="~{common/common2}"></th:block>
+    <link rel="stylesheet" href="/css/header2/searchPw.css">
+
+</head>
+<body>
+    <th:block th:replace="~{common/header2}"></th:block>
+
+    
+
+    <main class="main">
+
+        <!-- 모달창 만들기 -->
+        <div class="modal" id="modal">
+            <span id="crossBtn">&times;</span>
+            <div>
+                <div class="modal_body">
+                    <h1>비밀번호 설정</h1>
+                    <span class="newPw">6 ~ 20글자수 (영어 대소문자, 숫자, !,@,#,_,-)</span>
+                    <div class="pw_div">
+                        <span class="pw_span">새 비밀번호 입력</span>
+                        <input type="password" id="newPw" name="memberPw">
+                    </div>
+                    <div class="pw_div">
+                        <span class="pw_span">새 비밀번호 확인</span>
+                        <input type="password" id="newPwCh">
+                    </div>
+                    <span class="check_span" id="check_span"></span>
+                    <button id="changeBtn">변경하기</button>
+                </div>
+            </div>
+        </div>
+    
+        <div style="margin-right: 130px;" class="logo-line">
+            <a href="/">
+                <img src="/images/씨앗.png" alt="로고">
+            </a>
+            <span>언더 더 씨</span>
+        </div>
+
+        <section class="find">
+            <span class="find-pw">비밀번호 찾기</span>
+
+            <form action="" class="find-form">
+                <input type="text" placeholder="아이디" name="memberId" class="find-id-input" id="memberId">
+                <div class="email-div">
+                    <input type="text" placeholder="이메일" name="memberEmail" class="find-id-input" id="memberEmail">
+                    <button type="button" class="find-email-btn" id="auth">발송</button>
+                </div>
+                
+                <div class="auth-div">
+                    <input type="text" placeholder="인증번호" name="authNumber" class="find-id-input" id="authNumber">
+                    <button type="button" id="check">인증</button>
+                </div>
+                <span id="count"></span>
+                
+                <button type="button" class="find-btn" id="find-btn">찾기</button>
+            </form>
+            
+
+        </section>
+
+        <a href="/member/searchId" class="find-id-btn">아이디 찾기</a>
+
+        
+
+    </main>
+
+ 
+
+    <th:block th:replace="~{common/images1}"></th:block>
+    <script src="/js/searchPw.js"></script>
+
+    <th:block th:replace="~{common/footer}"></th:block>
+</body>
+</html>

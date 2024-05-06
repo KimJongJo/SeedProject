@@ -1,0 +1,71 @@
+<header>
+
+    <!-- 상단 녹색 부분 -->
+    <!-- 1 -->
+    <div></div>
+
+    <!-- 2 -->
+    <th:block th:unless="${session.loginMember}">
+        <div id="searchLine-right">
+            <a href="/member/login">로그인</a>
+            <a href="/member/signup">회원가입</a>
+        </div>
+    </th:block>
+
+    <th:block th:if="${session.loginMember}">
+        <div id="searchLine-right">
+            <span th:text="|${session.loginMember.memberNickname}님 환영합니다|"></span>
+            <a href="/member/logout">로그아웃</a>
+            <a href="/myPage/updateInfo">마이페이지</a>
+            <a href="/myPage/basket">장바구니</a>
+        </div>
+    </th:block>
+
+    <!-- 2 -> 3 -->
+    <div>
+        <!-- 공백 div -->
+        <!-- <div></div> -->
+        <!-- 검색창 라인 -->
+        <div>
+            <form action="#">
+                <input type="text" placeholder="검색어를 입력해주세요">
+                <button>검색</button>
+            </form>
+        </div>
+
+        <!-- <div id="searchLine-right">
+            <span>###님 환영합니다</span>
+            <a href="/member/login">로그인</a>
+            <a href="/member/logout">로그아웃</a>
+            <a href="/member/myPage">마이페이지</a>
+            <a href="/member/itemList">장바구니</a>
+        </div> -->
+    </div>
+   
+    <!-- 3 -> 4 -->
+    <div style="margin-right: 200px;">
+        <a href="/">
+            <img src="/images/씨앗.png" alt="로고" class="logo-img">
+        </a>
+        <span>언더 더 씨</span>
+    </div>
+</header>
+
+
+    
+</div>
+
+
+
+<div id="nav-top">
+    <nav id="nav-bottom" class="container">
+        <a href="/" class="button btnPush btnBlueGreen" id="point">쇼핑</a>
+        <th:block th:each="boardType : ${application.boardTypeList}">
+            <a th:text="${boardType.boardName}"
+                th:href="@{/board/{boardCode}(boardCode = ${boardType.boardCode})}"
+                class="button btnPush btnBlueGreen"
+                >게시판이름
+            </a>
+        </th:block>
+    </nav>
+</div>
