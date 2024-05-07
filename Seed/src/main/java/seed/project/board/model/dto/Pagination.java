@@ -1,11 +1,5 @@
 package seed.project.board.model.dto;
 
-/**
- * 
- */
-/**
- * 
- */
 public class Pagination {
 
 	private int currentPage;		// 현재 페이지 번호
@@ -28,6 +22,8 @@ public class Pagination {
 		super();
 		this.currentPage = currentPage;
 		this.listCount = listCount;
+		
+		calculate(); 
 	}
 
 	public Pagination(int currentPage, int listCount, int limit, int pageSize) {
@@ -36,6 +32,8 @@ public class Pagination {
 		this.listCount = listCount;
 		this.limit = limit;
 		this.pageSize = pageSize;
+		
+		calculate(); 
 	}
 
 	public int getCurrentPage() {
@@ -76,18 +74,22 @@ public class Pagination {
 
 	public void setCurrentPage(int currentPage) {
 		this.currentPage = currentPage;
+		calculate(); 
 	}
 
 	public void setListCount(int listCount) {
 		this.listCount = listCount;
+		calculate(); 
 	}
 
 	public void setLimit(int limit) {
 		this.limit = limit;
+		calculate(); 
 	}
 
 	public void setPageSize(int pageSize) {
 		this.pageSize = pageSize;
+		calculate(); 
 	}
 
 	@Override

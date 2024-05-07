@@ -132,8 +132,10 @@ span {
     border: 1px solid #ddd;
     box-shadow: 0 3px 3px rgba(0,0,0,0.2);
     border-radius: 5px;
-    margin: 10px 0;    
+    margin: 10px 0;
 }
+
+.address-input-area > input:focus { outline: 1px solid #127369;}
 
 /* 검색 버튼 */
 #searchAddress {
