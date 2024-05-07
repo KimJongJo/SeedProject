@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import lombok.RequiredArgsConstructor;
+import seed.project.board.model.dto.Board;
 import seed.project.board.model.mapper.BoardMapper;
 
 @Service
@@ -21,5 +22,12 @@ public class BoardServiceImpl implements BoardService{
 	@Override
 	public List<Map<String, Object>> selectBoardTypeList() {
 		return mapper.selectBoardTypeList();
+	}
+
+	// 문의 게시판 게시글 조회
+	@Override
+	public List<Board> selectBoard2List() {
+		
+		return mapper.selectBoard2List();
 	}
 }

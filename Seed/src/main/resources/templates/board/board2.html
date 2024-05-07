@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>문의 게시판</title>
+
+    <th:block th:replace="~{common/common}"></th:block>
+    <link rel="stylesheet" href="/css/board/board2.css">
+</head>
+<body>
+
+    <!-- 헤더 추가 -->
+    <th:block th:replace="~{common/header}"></th:block>
+
+    <h1>문의 게시판</h1>
+
+    <table>
+        <div>
+            <thead>
+                <th class="boardNo">번호</th>
+                <th class="boardTitle">제목</th>
+                <th class="boardWirter">작성자</th>
+                <th class="boardDate">작성일</th>
+                <th class="boardView">조회수</th>
+                <th class="boardLike">좋아요</th>
+            </thead>
+        </div>
+        
+
+        <tbody>
+            <!-- 게시글이 존재하지 않을 때 -->
+            <th:block th:if="${#lists.isEmpty(boardList)}">
+                <tr>
+                    <th colspan="6">게시글이 존재하지 않습니다.</th>
+                </tr>
+            </th:block>     
+            
+            <!-- 게시글이 존재할 때 -->
+            <th:block th:unless="${#lists.isEmpty(boardList)}">
+                <tr th:each="board : ${boardList}" th:object="${board}">
+                    <td>번호</td>
+                    <td>제목</td>
+                    <td>작성자</td>
+                    <td>작성일</td>
+                    <td>조회수</td>
+                    <td>좋아요</td>
+                </tr>
+                
+            </th:block>
+
+        </tbody>
+    </table>
+
+
+    <div>
+        <input type="text" placeholder="검색어를 입력해주세요">
+        <button>검색</button>
+    </div>
+    
+
+
+
+    <!-- 푸터 추가 -->
+    <!-- <th:block th:replace="~{common/images3}"></th:block> -->
+    <th:block th:replace="~{common/footer}"></th:block>
+    
+</body>
+</html>
