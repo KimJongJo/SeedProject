@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.session.RowBounds;
 
 import seed.project.board.model.dto.Board;
+import seed.project.board.model.dto.Comment;
 
 @Mapper
 public interface BoardMapper {
@@ -25,9 +26,50 @@ public interface BoardMapper {
   
   
 	/** 문의 게시판 게시글 조회
+	 * @param rowBounds 
+	 * @param boardCode 
 	 * @return
 	 */
+	List<Board> selectBoard2List(int boardCode, RowBounds rowBounds);
+
+	/** 게시글 정보 가져오기
+	 * @param boardNo
+	 * @return
+	 */
+	Board board2Detail(int boardNo);
+
+	/** 게시글 댓글 정보
+	 * @param boardNo
+	 * @return
+	 */
+	List<Comment> board2CommentList(int boardNo);
+  
 	List<Board> selectBoard2List();
+	
+	
+	/** [3] 팁과 노하우 게시글 목록 조회
+	 * @param boardCode
+	 * @param rowBounds
+	 * @return
+	 */
+	List<Board> selectBoard3(int boardCode, RowBounds rowBounds);
+
+	
+	
+	/** [3] 팁과 노하우 검색 조건이 맞는 게시글 수 조회
+	 * @param paramMap
+	 * @return
+	 */
+	int getSearchCount3(Map<String, Object> paramMap);
+
+	
+	/** [3] 팁과 노하우 검색 결과 목록 조회
+	 * @param paramMap
+	 * @param rowBounds
+	 * @return
+	 */
+	List<Board> selectSearchList3(Map<String, Object> paramMap, RowBounds rowBounds);
+
 
 	
 	

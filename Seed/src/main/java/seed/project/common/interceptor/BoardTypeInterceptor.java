@@ -32,7 +32,6 @@ public class BoardTypeInterceptor implements HandlerInterceptor{
 			
 			application.setAttribute("boardTypeList", boardTypeList);
 			
-			log.debug(boardTypeList + "보드타입리스트");
 		}
 		
 		

@@ -7,14 +7,14 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-@Builder
 public class Board {
-
+	
 	// BOARD 테이블 컬럼
 	private int boardNo;
 	private String boardTitle;
@@ -28,7 +28,10 @@ public class Board {
 	
 	// MEMBER 테이블 조인
 	private String memberNickname;
-	
+
+	// 댓글 수
+	private int commentCount;
+
 	// 목록 조회 시 상관 서브 쿼리 결과
 	private int commentCount;
 	private int likeCount;
@@ -39,13 +42,7 @@ public class Board {
 	// 게시글 목록 썸네일 이미지
 	private String thumbnail;
 	
-	// --- 추가 예정 ---
-	// 특정 게시글 이미지 목록
-	// board-mapper.xml 의 resultMap -> collection 안에있는 거랑 이름이 같아야한다
-//	private List<BoardImg> imageList;
-//	
-//	// 특정 게시글에 작성된 댓글 목록
-//	private List<Comment> commentList;
+
 	
 	// 좋아요 여부 확인
 	private int likeCheck;

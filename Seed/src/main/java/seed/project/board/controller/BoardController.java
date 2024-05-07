@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import seed.project.board.model.dto.Board;
+import seed.project.board.model.dto.Comment;
 import seed.project.board.model.service.BoardService;
 
 @Controller
@@ -78,24 +79,67 @@ public class BoardController {
 	
   
   @GetMapping("{boardCode:[2]}")
-	public String board2(Model model) {
+  public String board2(Model model,
+						@RequestParam(value="cp", required = false, defaultValue="1") int cp
+						) {
 		
-		List<Board> boardList = service.selectBoard2List(); 
+		Map<String, Object> map = service.selectBoard2List(2, cp); 
 		
-		model.addAttribute("boardList", boardList);
+		model.addAttribute("boardList", map.get("boardList"));
+		model.addAttribute("pagination", map.get("pagination"));
 		
 		return "board/board2";
-	}
+  }
   
-  @GetMapping("{boardCode:[3]}")
-	public String selectBoardList(@PathVariable("boardCode") int boardCode,
+  
+  @GetMapping("{boardCode:[2]}/detail")
+  public String board2Detail(
+		  			@RequestParam(value="boardNo") int boardNo,
+		  			Model model
+		  			) {
+	  
+	  Board boardInfo = service.board2Detail(boardNo);
+	  List<Comment> commentList = service.board2CommentList(boardNo);
+	  		
+	  model.addAttribute("boardInfo", boardInfo);
+	  model.addAttribute("commentList", commentList);
+	  
+	  return "board/board2Detail";
+  }
+  
+  
+  
+  
+  
+	@GetMapping("{boardCode:[3]}")
+	public String selectBoard3(@PathVariable("boardCode") int boardCode,
 								@RequestParam(value="cp", required = false, defaultValue = "1") int cp,
 								Model model,
 								@RequestParam Map<String, Object> paramMap) {
 		
-		 
+		Map<String, Object> map = null;
 		
-		return "board/board3"; // boardList.html로 forward
-    
-  }
+		if(paramMap.get("key") == null) {
+			
+			map = service.selectBoard3(boardCode, cp);
+			
+		} 
+		
+		else { // 검색인 경우 추후 구성
+			
+			paramMap.put("boardCode", boardCode); 
+			
+			// 검색 서비스 호출
+			map = service.searchList3(paramMap, cp);
+		}
+		
+		model.addAttribute("pagination", map.get("pagination"));
+		model.addAttribute("boardList", map.get("boardList"));
+		
+		return "board/board3"; // board3.html로 forward
+	    
+	}
+	
+	
+	
 }

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>문의 게시판</title>
+
+    <th:block th:replace="~{common/common}"></th:block>
+    <link rel="stylesheet" href="/css/board/board2.css">
+</head>
+<body>
+
+    <!-- 헤더 추가 -->
+    <th:block th:replace="~{common/header}"></th:block>
+
+    <div class="h1">
+        <h1>문의 게시판</h1>
+    </div>
+
+
+    <th:block th:object="${boardInfo}">
+        <div class="board">
+            <div class="board-top">
+                <div th:text="|*{boardNo}번|" class="boardNo">게시글 번호</div>
+                <div th:text="*{boardTitle}" class="boardTitle">게시글 제목</div>
+            </div>
+            <div>
+                <div class="board-middle">
+                    <div th:text="*{memberNickname}" class="memberNickname">작성자</div>
+                    <div th:text="|조회수 *{readCount} 회|" class="readCount">조회수</div>
+                </div><div>
+                    
+                </div>
+                <div class="like">
+                    <div th:text="|like *{likeCount} 개|" class="likeCount">좋아요</div>
+                </div>
+                <div>
+                    <div th:text="|작성일 : *{boardWriteDate}|" class="boardWriteDate">작성일</div>
+                    <div th:text="*{boardUpdateDate}" class="boardUpdateDate">마지막 수정일</div>
+                </div>
+                <div>
+                    
+                    
+                </div>
+            </div>
+            <div class="content">
+                <div th:text="*{boardContent}" class="boardContent">게시글 내용</div>
+            </div>
+        </div>
+    </th:block>
+    <div class="under">
+        <th:block th:each="comment : ${commentList}" th:object="${comment}">
+
+            <div class="comment">
+                <div class="comment-top">
+                    <div th:text="*{memberNickname}" class="memberNickname"></div>
+                    <div th:text="*{commentWriteDate}" class="commentWriteDate"></div>
+
+                    <th:block th:if="${session.loginMember?.memberNo} == *{memberNo}">
+                        <button>수정</button>
+                        <button>삭제</button>
+                    </th:block>
+                </div>
+                
+                <div th:text="*{commentContent}" class="comment-box"></div>
+            </div>
+        </th:block>
+    </div>
+
+
+
+
+
+    <!-- 푸터 추가 -->
+    <!-- <th:block th:replace="~{common/images3}"></th:block> -->
+    <th:block th:replace="~{common/footer}"></th:block>
+    
+</body>
+</html>
