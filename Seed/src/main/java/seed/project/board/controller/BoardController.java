@@ -1,6 +1,7 @@
 package seed.project.board.controller;
 
 import java.util.Map;
+import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -47,7 +48,18 @@ public class BoardController {
 		
 		
 		return "";
+    
+    
 	}
-	
-	
+  
+  @GetMapping("{boardCode:[2]}")
+	public String board2(Model model) {
+		
+		List<Board> boardList = service.selectBoard2List(); 
+		
+		model.addAttribute("boardList", boardList);
+		
+		return "board/board2";
+	}
+
 }

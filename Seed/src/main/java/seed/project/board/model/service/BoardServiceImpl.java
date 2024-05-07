@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import lombok.RequiredArgsConstructor;
 import seed.project.board.model.dto.Pagination;
+import seed.project.board.model.dto.Board;
 import seed.project.board.model.mapper.BoardMapper;
 
 @Service
@@ -35,9 +36,11 @@ public class BoardServiceImpl implements BoardService{
 		Pagination pagination = new Pagination(cp, listCount);
 		
 		
-		
-		
-		
 		return null;
+	// 문의 게시판 게시글 조회
+	@Override
+	public List<Board> selectBoard2List() {
+		
+		return mapper.selectBoard2List();
 	}
 }
