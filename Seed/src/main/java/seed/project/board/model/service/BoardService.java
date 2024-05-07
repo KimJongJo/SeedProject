@@ -38,10 +38,13 @@ public interface BoardService {
 	 * @return
 	 */
 	List<Comment> board2CommentList(int boardNo);
-  
-	List<Board> selectBoard2List();
 
 	/** 자유 게시판 검색 서비스
+	 * 
+	 * @param paramMap
+	 * @param cp
+	 * @return
+	 */
 	Map<String, Object> searchList1(Map<String, Object> paramMap, int cp);
   
   
@@ -59,4 +62,8 @@ public interface BoardService {
 	 * @return
 	 */
 	Map<String, Object> searchList3(Map<String, Object> paramMap, int cp);
+
+	
+	
+	List<Board> selectBoard2List(int boardNo);
 }

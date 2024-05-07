@@ -33,7 +33,7 @@ public class BoardServiceImpl implements BoardService{
 	public Map<String, Object> selectBoardList1(int boardCode, int cp) {
 		
 		// 게시글 수 조회
-		int listCount = mapper.getListCount1(boardCode);
+		int listCount = mapper.getListCount(boardCode);
 		
 		// listCount + cp
 		Pagination pagination = new Pagination(cp, listCount);
@@ -218,4 +218,11 @@ public class BoardServiceImpl implements BoardService{
 		
 		return map;
 	}
+
+	@Override
+	public List<Board> selectBoard2List(int boardNo) {
+		
+		return mapper.selectBoard2List(boardNo);
+	}
+
 }

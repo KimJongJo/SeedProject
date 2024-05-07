@@ -33,7 +33,6 @@ public class Board {
 	private int commentCount;
 
 	// 목록 조회 시 상관 서브 쿼리 결과
-	private int commentCount;
 	private int likeCount;
 	
 	// 게시글 작성자 프로필 이미지
