@@ -1,3 +1,10 @@
+#nav-bottom a:nth-child(4){
+    margin-top: 15px;
+    margin-bottom: 5px;
+    box-shadow: none;
+}
+
+
 section {
     height: 100%;
     display: flex;

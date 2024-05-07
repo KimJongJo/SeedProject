@@ -32,7 +32,6 @@ public class Pagination {
 		this.listCount = listCount;
 		this.limit = limit;
 		this.pageSize = pageSize;
-		
 		calculate(); 
 	}
 

@@ -1,10 +1,12 @@
 package seed.project.board.model.dto;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+
 
 @Getter
 @Setter
@@ -26,7 +28,10 @@ public class Board {
 	
 	// MEMBER 테이블 조인
 	private String memberNickname;
-	
+
+	// 댓글 수
+	private int commentCount;
+
 	// 목록 조회 시 상관 서브 쿼리 결과
 	private int commentCount;
 	private int likeCount;
