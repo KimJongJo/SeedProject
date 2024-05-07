@@ -4,17 +4,249 @@
     box-shadow: none;
 }
 
+.h1{
+    display: flex;
+    width: 850px;
+}
+
+div > h1{
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
 table{
-    border: 1px solid black;
-    width: 800px;
+    /* border: 1px solid black; */
+    width: 850px;
+    border-collapse: collapse;
 }
 
-table > div{
-    background-color: #127369;
+
+.tr{
+    background-color: #8AA6A3;
 }
 
+.tr > th{
+    color: white;
+}
+
+table th{
+    font-size: 20px;
+}
+
+.tr_line{
+    border-bottom: 1px solid black;
+}
+
+td > a{
+    text-decoration: none;
+    color: black;
+}
+
+
+table td{
+    text-align: center;
+    font-size: 18px;
+}
+
+table tr{
+    height: 60px;
+}
 
 
 .boardTitle{
     width: 300px;
+}
+
+
+
+.currentPage, .otherPage{
+    margin: 3px;
+    text-decoration: none;
+    color: black;
+}
+
+
+
+.currentPage{
+    color: red;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+
+
+
+
+
+.paging{
+    margin-top: 30px;
+}
+
+
+.searchLine{
+    margin-top: 50px;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+}
+
+
+.searchLine input{
+    height: 35px;
+    width: 300px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    box-shadow: 0 3px 3px rgba(0,0,0,0.2);
+    padding-left: 15px;
+    font-size: 18px;
+    outline: none;
+    margin: 5px;
+}
+
+.searchLine button{
+    height: 35px;
+    width: 50px;
+    border-radius: 5px;
+    border: none;
+    background-color: #127369;
+    color: white;
+    font-size: 18px;
+    transition-duration: 0.3s;
+}
+
+.searchLine button:hover, .wirte:hover{
+    transition-duration: 0.3s;
+    background-color: #10403B;
+    cursor: pointer;
+}
+
+
+.searchFilter{
+    height: 35px;
+    width: 100px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 15px;
+    text-align: center;
+    box-shadow: 0 3px 3px rgba(0,0,0,0.2);
+    outline: none;
+}
+
+
+
+.w-div{
+    width: 800px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.wirte{
+    width: 60px;
+    height: 40px;
+    background-color: #127369;
+    color: white;
+    margin-bottom: 50px;
+    border: none;
+    border-radius: 5px;
+    font-size: 15px;
+    transition-duration: 0.3s;
+}
+
+
+.board{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 800px;
+    height: 1000px;
+    margin-bottom: 50px;
+}
+
+
+/* 게시글 번호, 게시글 제목 */
+.board-top{
+    background-color: #8AA6A3;
+    color: white;
+    padding-left: 10px;
+    display: flex;
+    align-items: center;
+    width: 700px;
+}
+
+
+/* 작성자, 조회수 */
+.board-middle{
+    display: flex;
+    margin-top: 15px;
+    align-items: center;
+    justify-content: space-between;
+    width: 700px;
+}
+
+/* 좋아요 */
+.like{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+/* 게시글 내용 */
+.content{
+    margin-top: 20px;
+    border: 1px solid black;
+    width: 700px;
+    height: 500px;
+    padding: 20px;
+}
+
+.content > div{
+    font-size: 20px;
+}
+
+
+.boardNo{
+    font-size: 25px;
+    flex-basis: 30%;
+}
+
+.boardTitle{
+    font-size: 30px;
+    flex-basis: 70%;
+    margin-left: 30px;
+}
+
+.memberNickname{
+    font-size: 18px;
+}
+
+.comment{
+    width: 700px;
+}
+
+.comment-top{
+    display: flex;
+}
+
+
+.memberNickname{
+    margin-right: 30px;
+}
+
+.comment-box{
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 10px;
+    width: 500px;
+    height: 65px;
+    margin-bottom: 20px;
+
+
+}
+
+
+
+
+.under{
+    margin-bottom: 50px;
 }

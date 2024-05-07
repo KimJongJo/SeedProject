@@ -1,0 +1,5 @@
+#nav-bottom a:nth-child(2){
+    margin-top: 15px;
+    margin-bottom: 5px;
+    box-shadow: none;
+}
