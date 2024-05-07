@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <title>팁과 노하우</title>
+
+    <th:block th:replace="~{common/common}"></th:block>
+    <link rel="stylesheet" href="/css/board/board3.css">
+
+
+</head>
+<body>
+    <th:block th:replace="~{common/header}"></th:block>
+
+    <main>
+        <section>
+
+            <div class="list-div">
+                <th:block th:each="boardType : ${application.boardTypeList}">
+                    <h1 class="board-name"
+                        th:if="${boardType.boardCode} == ${boardCode}"
+                        th:text="${boardType.boardName}"
+                    >게시판 이름</h1>
+                </th:block>
+
+                <table class="list-table">
+                    <thead>
+                        <tr>
+                            <th>번호</th>
+							<th>제목</th>
+							<th>작성자</th>
+							<th>작성일</th>
+							<th>조회수</th>
+							<th>좋아요</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <!-- <th:block th:if="${#lists.isEmpty(boardList)}">
+							<tr>
+								<th colspan="6">게시글이 존재하지 않습니다.</th>
+                            </tr>
+						</th:block> -->
+
+                        <th:block th:unless="${#lists.isEmpty(boardList)}">
+                            <!-- DB 구성 후 넣기 -->
+                        </th:block>
+                        <tr th:each="boardList : ${boardList}" th:object="${board}">
+                            <td th:text="">게시글 번호</td>
+                            <td>
+                                <a 
+                                th:href="@{/board/{boardCode}/{boardNo} 
+                                        (boardCode=${boardCode}, boardNo=*{boardNo}, cp=${pagination.currentPage})}"
+                                th:text="*{boardTitle}">게시글 제목</a>
+                                
+                                <th:block th:text="|[*{commentCount}]|">댓글 수</th:block>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+
+    <th:block th:replace="~{common/footer}"></th:block>
+</body>
+</html>
