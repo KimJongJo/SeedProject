@@ -31,7 +31,10 @@ public class BoardTypeInterceptor implements HandlerInterceptor{
 			List<Map<String, Object>> boardTypeList = service.selectBoardTypeList();
 			
 			application.setAttribute("boardTypeList", boardTypeList);
+			
+			log.debug(boardTypeList + "보드타입리스트");
 		}
+		
 		
 		
 		return HandlerInterceptor.super.preHandle(request, response, handler);

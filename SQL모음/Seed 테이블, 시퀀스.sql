@@ -423,6 +423,8 @@ SELECT * FROM "TB_AUTH_KEY";
 		WHERE EMAIL = 'soowagger@gmail.com'
 		AND AUTH_KEY = 'sA6HEw';
 
+SELECT * FROM "MEMBER";
+
 
 /* 주소 테이블 생성 */
 CREATE TABLE "ADDRESS" (
@@ -448,6 +450,7 @@ COMMIT;
 SELECT * FROM ADDRESS;
 --ROLLBACK;
 
+SELECT * FROM BOARD_TYPE ;
 
 
 
