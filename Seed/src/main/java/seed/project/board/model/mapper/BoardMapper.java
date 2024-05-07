@@ -17,11 +17,11 @@ public interface BoardMapper {
 	 */
 	List<Map<String, Object>> selectBoardTypeList();
 
-	/** 게시글 수 조회
+	/** 자유 게시판 게시글 수 조회
 	 * @param boardCode
 	 * @return listCount
 	 */
-	int getListCount(int boardCode);
+	int getListCount1(int boardCode);
   
   
   
@@ -70,5 +70,27 @@ public interface BoardMapper {
 	 */
 	List<Board> selectSearchList3(Map<String, Object> paramMap, RowBounds rowBounds);
 
+
+	
+	
+	/** 자유 게시판 검색 조건이 맞는 게시글 수 조회
+	 * @param paramMap
+	 * @return count
+	 */
+	int getSearchCount1(Map<String, Object> paramMap);
+
+	/** 자유 게시판 목록 조회
+	 * @param boardCode
+	 * @param rowBounds
+	 * @return
+	 */
+	List<Board> selectBoardList1(int boardCode, RowBounds rowBounds);
+
+	/** 자유게시판 검색 결과 목록 조회
+	 * @param paramMap
+	 * @param rowBounds
+	 * @return
+	 */
+	List<Board> selectSearchList1(Map<String, Object> paramMap, RowBounds rowBounds);
 
 }

@@ -42,17 +42,41 @@ public class BoardController {
 		
 		Map<String, Object> map = null;
 		
-//		if(paramMap.get("key") = null) {
-//			
-//			// 게시글 목록 조회 서비스 호출
-//			map = service.selectBoardList(boardCode, cp);
-//		}
+		
+		// 검색 안할 때
+		if(paramMap.get("key") == null) { 
+			
+			// 게시글 목록 조회 서비스 호출
+			map = service.selectBoardList1(boardCode, cp);
+			
+		// 검색할 때
+		} else {
+			
+			paramMap.put("boardCode", boardCode);
+			// -> paramMap은 {key=t, quer=검색어, boardCode=1}
+			
+			map = service.searchList1(paramMap, cp);
+		}
+
+		
+		model.addAttribute("pagination", map.get("pagination"));
+		model.addAttribute("boardList", map.get("boardList"));
 		
 		
-		return "";
-    
-    
+		return "board/board1";
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
   
   @GetMapping("{boardCode:[2]}")
   public String board2(Model model,
