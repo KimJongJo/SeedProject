@@ -1,16 +1,18 @@
 package seed.project.board.controller;
 
-import java.util.Map;
 import java.util.List;
+import java.util.Map;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.SessionAttributes;
+
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import seed.project.board.model.dto.Board;
 import seed.project.board.model.service.BoardService;
 
 @Controller
@@ -39,17 +41,41 @@ public class BoardController {
 		
 		Map<String, Object> map = null;
 		
-//		if(paramMap.get("key") = null) {
-//			
-//			// 게시글 목록 조회 서비스 호출
-//			map = service.selectBoardList(boardCode, cp);
-//		}
+		
+		// 검색 안할 때
+		if(paramMap.get("key") == null) { 
+			
+			// 게시글 목록 조회 서비스 호출
+			map = service.selectBoardList1(boardCode, cp);
+			
+		// 검색할 때
+		} else {
+			
+			paramMap.put("boardCode", boardCode);
+			// -> paramMap은 {key=t, quer=검색어, boardCode=1}
+			
+			map = service.searchList1(paramMap, cp);
+		}
+
+		
+		model.addAttribute("pagination", map.get("pagination"));
+		model.addAttribute("boardList", map.get("boardList"));
 		
 		
-		return "";
-    
-    
+		return "board/board1";
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
   
   @GetMapping("{boardCode:[2]}")
 	public String board2(Model model) {

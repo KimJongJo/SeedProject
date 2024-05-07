@@ -1,0 +1,115 @@
+.board-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center;
+    width: 850px;
+    margin: 50px auto;
+}
+
+/* 자유게시판 위치 및 padding */
+.board-name {
+    width: 800px;
+    display: flex;
+    justify-content: flex-start;
+    padding: 20px 0;
+    font-size: 2em;
+}
+
+
+.list-wrapper {
+    height: auto;
+    width: 100%;
+}
+
+/* 게시판 (thead, tbody 이 2가지만 해당,   paginagion, 검색창 포함 X) */
+.table {
+    width: 100%;
+    padding: 20px;
+    border-collapse: collapse; /* 테이블 사이 공백 없애기 */
+}
+
+/* 게시판 머리 */
+.table > thead {
+    background-color: #127369;
+    color: white;
+}
+
+/* 게시글 위아래 공백 */
+.table tr {
+    height: 50px;
+}
+
+/* 게시글 가로/세로 가운데 정렬 */
+.table td {
+    text-align: center; /* 가로 가운데 정렬 */
+    vertical-align: middle; /* 세로 가운데 정렬 */
+    
+}
+
+
+
+
+/* Pagination 가로로 정렬 */
+.pagination {
+    list-style: none; /* 리스트의 점 제거 */
+    display: flex;
+    justify-content: center;
+    padding: 30px;
+}
+
+/* Pagination 사이 공백 띄우기 */
+.pagination > li {
+    padding: 10px;
+}
+
+
+
+
+
+
+/* -------------------------  검색창  ------------------------ */
+
+/* 검색창 공간 위쪽 공백 */
+.boardSearch {
+    padding-top: 50px;
+}
+
+/* 검색할 것 종류 (select태그) */
+#searchKey {
+    width: 100px;
+    height: 40px;
+    padding-left: 20px;
+    border: none;
+    font-size: 18px;
+    border-radius: 5px;
+    outline: none;
+    border: 1px solid #ddd;
+    box-shadow: 0 3px 3px rgba(0,0,0,0.2);
+}
+
+
+/* 검색창 */
+#searchQuery {
+    width: 350px;
+    height: 40px;
+    padding-left: 20px;
+    border: none;
+    font-size: 18px;
+    border-radius: 5px;
+    outline: none;
+    border: 1px solid #ddd;
+    box-shadow: 0 3px 3px rgba(0,0,0,0.2);
+}
+
+/* 검색창 검색 버튼 */
+.boardSearch > button {
+    width: 50px;
+    height: 40px;
+    background-color: #127369;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 15px;
+    transition-duration: 0.2s;
+}
