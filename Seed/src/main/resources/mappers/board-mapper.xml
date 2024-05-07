@@ -9,7 +9,21 @@
 		ORDER BY BOARD_CODE
 	</select>
 	
+	<!-- 게시글 수 조회 -->
+	<select id="getListCount">
+		SELECT COUNT(*)
+		FROM "BOARD"
+		WHERE BOARD_DEL_FL = 'N'
+		AND BOARD_CODE = #{boardCode}
 	
+	<!-- 문의 게시판 게시글 조회 -->
+	<select id="selectBoard2List">
+		SELECT BOARD_NO, BOARD_TITLE, MEMBER_NICKNAME, BOARD_WRITE_DATE, READ_COUNT,
+		LIKE_COUNT
+		FROM "BOARD"
+		JOIN "MEMBER" USING(MEMBER_NO)
+		WHERE BOARD_CODE = 2
+	</select>
 
 
 </mapper>

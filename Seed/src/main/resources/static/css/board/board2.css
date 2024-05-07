@@ -1,0 +1,20 @@
+#nav-bottom a:nth-child(3){
+    margin-top: 15px;
+    margin-bottom: 5px;
+    box-shadow: none;
+}
+
+table{
+    border: 1px solid black;
+    width: 800px;
+}
+
+table > div{
+    background-color: #127369;
+}
+
+
+
+.boardTitle{
+    width: 300px;
+}

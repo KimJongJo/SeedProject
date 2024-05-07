@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자유게시판</title>
+
+    <th:block th:replace="~{common/common}"></th:block>
+    <link rel="stylesheet" href="/css/header2/signup.css">
+</head>
+<body>
+    <main>
+
+        <!-- 헤더 -->
+        <th:black th:replace="~{common/header}"></th:black>
+        
+        
+        <div class="list-wrapper">
+            <table class="list-table">
+
+                <thead>
+                    <tr>
+                        <th>글번호</th>
+                        <th>제목</th>
+                        <th>작성자</th>
+                        <th>작성일</th>
+                        <th>조회수</th>
+                        <th>좋아요</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <!-- 게시글이 없을 때 -->
+                    <th:block th:if="${#lists.isEmpty(boardList)}">
+                        <tr>
+                            <th colspan="6">게시글이 존재하지 않습니다.</th>
+                        </tr>
+                    </th:block>
+                    
+                    <!-- 게시글이 있을 때 -->
+                    <th:block th:unless="${#lists.isEmpty(boardList)}">
+
+                        <tr th:each="board : ${boardList}" th:object="${board}">
+
+                            <td th:text="*{boardNo}">게시글 번호</td>
+
+
+                        </tr>
+
+
+                    </th:block>
+
+                </tbody>
+
+
+
+
+            </table>
+
+        </div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    </main>
+
+    <!-- 푸터 추가 -->
+    <!-- <th:block th:replace="~{common/images3}"></th:block> -->
+    <th:block th:replace="~{common/footer}"></th:block>
+</body>
+</html>
