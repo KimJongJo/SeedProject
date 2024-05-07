@@ -74,8 +74,6 @@ public class MemberServiceImpl implements MemberService{
 			helper.setSubject("[언더 더 씨] 회원 가입 인증번호"); // 이메일 제목
 			helper.setText( loadHtml(randomString, html), true);
 			
-			helper.addInline("logo", new ClassPathResource("static/images/씨앗.png"));
-			
 			mailSender.send(mail);
 			
 			
@@ -210,8 +208,6 @@ public class MemberServiceImpl implements MemberService{
 			helper.setTo(map.get("memberEmail")); // 받는 사람 이메일
 			helper.setSubject("[언더 더 씨] 아이디 찾기 요청 응답"); // 이메일 제목
 			helper.setText( loadHtml(result, "findId"), true);
-			
-			helper.addInline("logo", new ClassPathResource("static/images/씨앗.png"));
 			
 			mailSender.send(mail);
 			

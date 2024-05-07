@@ -267,6 +267,17 @@ public class MypageController {
 	
 	
 	
+	/** 작성한 댓글 페이지 이동
+	 * @return
+	 */
+	@GetMapping("comment")
+	public String comment() {
+		
+		return "myPage/comment";
+	}
+	
+	
+	
 	
 	
 	

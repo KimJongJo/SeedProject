@@ -17,7 +17,7 @@
             <span th:text="|${session.loginMember.memberNickname}님 환영합니다|"></span>
             <a href="/member/logout">로그아웃</a>
             <a href="/myPage/updateInfo">마이페이지</a>
-            <a href="/myPage/itemList">장바구니</a>
+            <a href="/myPage/basket">장바구니</a>
         </div>
     </th:block>
 
@@ -51,14 +51,21 @@
     </div>
 </header>
 
+
+    
+</div>
+
+
+
 <div id="nav-top">
-    <nav id="nav-bottom">
-        <a href="/">쇼핑</a>
+    <nav id="nav-bottom" class="container">
+        <a href="/" class="button btnPush btnBlueGreen" id="point">쇼핑</a>
         <th:block th:each="boardType : ${application.boardTypeList}">
-                <a th:text="${boardType.boardName}"
-                    th:href="@{/board/{boardCode}(boardCode = ${boardType.boardCode})}"
-                    >게시판이름
-                </a>
+            <a th:text="${boardType.boardName}"
+                th:href="@{/board/{boardCode}(boardCode = ${boardType.boardCode})}"
+                class="button btnPush btnBlueGreen"
+                >게시판이름
+            </a>
         </th:block>
     </nav>
 </div>

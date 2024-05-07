@@ -78,7 +78,6 @@ authBtn.addEventListener("click",() => {
     });
 
     count.innerText = initTime; // 05:00 세팅
-    count.classList.remove("confirm", "error"); // 검정색 글씨
     
     alert("인증번호가 발송되었습니다.");
 
@@ -93,8 +92,6 @@ authBtn.addEventListener("click",() => {
         if(min == 0 && sec == 0) {
             checkObj.authTime = false; // 인증 못함
             clearInterval(authTimer); // interval 멈춤
-            count.classList.add('error');
-            count.classList.remove('confirm');
             return;
         }
 
@@ -154,6 +151,8 @@ checkBtn.addEventListener("click", () => {
         }
         alert("인증되었습니다.");
         checkObj.authKey = true;
+        clearInterval(authTimer); // 타이머 멈춤
+        count.innerText = "인증 완료";
     });
 });
 
