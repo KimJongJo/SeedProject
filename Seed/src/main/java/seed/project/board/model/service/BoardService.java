@@ -38,4 +38,21 @@ public interface BoardService {
 	 * @return
 	 */
 	List<Comment> board2CommentList(int boardNo);
+  
+	List<Board> selectBoard2List();
+
+	
+	/** [3] 팁과 노하우 게시판 - 게시글 목록 조회
+	 * @param boardCode
+	 * @param cp
+	 * @return
+	 */
+	Map<String, Object> selectBoard3(int boardCode, int cp);
+
+	/** [3] 팁과 노하우 게시판 - 게시글 검색
+	 * @param paramMap
+	 * @param cp
+	 * @return
+	 */
+	Map<String, Object> searchList3(Map<String, Object> paramMap, int cp);
 }

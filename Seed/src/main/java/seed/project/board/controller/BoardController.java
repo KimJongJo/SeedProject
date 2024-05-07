@@ -86,15 +86,36 @@ public class BoardController {
   
   
   
-  @GetMapping("{boardCode:[3]}")
-	public String selectBoardList(@PathVariable("boardCode") int boardCode,
+  
+	@GetMapping("{boardCode:[3]}")
+	public String selectBoard3(@PathVariable("boardCode") int boardCode,
 								@RequestParam(value="cp", required = false, defaultValue = "1") int cp,
 								Model model,
 								@RequestParam Map<String, Object> paramMap) {
 		
-		 
+		Map<String, Object> map = null;
 		
-		return "board/board3"; // boardList.html로 forward
-    
-  }
+		if(paramMap.get("key") == null) {
+			
+			map = service.selectBoard3(boardCode, cp);
+			
+		} 
+		
+		else { // 검색인 경우 추후 구성
+			
+			paramMap.put("boardCode", boardCode); 
+			
+			// 검색 서비스 호출
+			map = service.searchList3(paramMap, cp);
+		}
+		
+		model.addAttribute("pagination", map.get("pagination"));
+		model.addAttribute("boardList", map.get("boardList"));
+		
+		return "board/board3"; // board3.html로 forward
+	    
+	}
+	
+	
+	
 }

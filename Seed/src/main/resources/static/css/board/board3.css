@@ -10,16 +10,230 @@ section {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
 }
 
+/* 목록 구역 div */
 .list-div {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.list-div h1 {
+    margin: 40px 0;
+    margin-right: 770px;
+}
+
+
+/* 게시글 목록 table */
+.list-table {
+    border-collapse: collapse;
+    border-spacing: 100px 0px;
+    width: 900px;
+    border-top: 1px solid #444444;
+    
     
 }
 
-.list-table {
-    border-spacing: 100px 0px;
+.list-table a, .pagination a {
+    text-decoration: none;
+    color: #222;
 }
+
+thead {
+    border-collapse: collapse;
+    border: none;
+}
+/* 게시글 구분 */
+.list-table th {
+    border-top: 1px solid #bbb;
+    border-bottom: 1px solid #bbb;
+    box-shadow: inset 0 -1px 0 #ccc;
+    font-size: 15px;
+    height: 40px;
+    background-color: #bee1de;
+    color: #555;
+    font-weight: 600;
+
+    
+}
+
+/* 게시글 */
+.list-table td {
+    border-bottom: 1px solid #e1e1e1;
+    text-align: center;
+    font-size: 13px;
+    height: 50px;
+    color: #222;
+}
+
+
+/* 검색, 글쓰기 버튼 구역 */
+.write-search-area {
+    width: 900px;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+
+.search-area {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+
+}
+
+/* 옵션 박스 */
+.search-area select {
+    padding: 6px 6px;
+    border: 1px solid #ddd;
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    height: 30px;
+}
+
+.search-area select:focus {outline: 1px solid #127369;}
+
+/* 검색 */
+.input-search {
+    position: relative;
+}
+
+/* 검색창 돋보기 버튼 */
+#searchBtn {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    background: none;
+    font-size: 18px;
+    border: none;
+    color: #127369;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+
+
+/* 검색 인풋 */
+#searchQuery {
+    padding: 6px 12px;
+    border: 1px solid #ddd;
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    width: 200px;
+    height: 30px;
+    margin-left: 6px;
+}
+
+#searchQuery:focus { outline: 1px solid #127369; }
+
+
+
+.write-area {
+    padding: 10px;
+}
+
+/* 글쓰기 버튼 */
+#writeBtn {
+    cursor: pointer;
+    background: none;
+    color: #127369;
+    padding: 6px 12px;
+    border-radius: 5px;
+    border: 1px solid #127369;
+    font-size: 12px;
+    font-weight: 600;
+    height: 30px;
+}
+
+/* 페이지네이션 ul */
+.pagination-area {
+    margin-top: 10px;
+    margin-bottom: 50px;
+    text-align: center; /* 페이지네이션을 수평 중앙 정렬 */
+    color: #555;
+    font-size: 14px;
+}
+
+.pagination {
+    display: inline-block; /* 페이지네이션을 가로로 배치 */
+    list-style: none; /* 기본 목록 스타일 제거 */
+    padding: 0; /* 내부 패딩 제거 */
+}
+
+.pagination li {
+    display: inline-block; /* 페이지 번호를 가로로 배치 */
+    
+}
+
+.pagination li a {
+    text-decoration: none; /* 링크에 밑줄 제거 */
+    padding: 5px 10px; /* 페이지 번호의 패딩 설정 */
+    cursor: pointer;
+}
+
+/* 현재 보고 있는 페이지 */
+.current {
+    background-color: #e9e9e9;
+    border: 1px solid #ccc; 
+    border-radius: 3px; 
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.6);
+    
+}
+
+.pagination li a:hover {
+    background-color: #e9e9e9; /* 호버 시 배경색 변경 */
+    border: 1px solid #ccc; /* 테두리 스타일 설정 */
+    border-radius: 3px; /* 테두리 둥글기 설정 */
+}
+
+
+/* ... 클릭 시 */
+.popup-area {
+    display: flex;
+    
+}
+
+.page-input-area {
+    border: 1px solid black;
+    width: 200px;
+    padding: 20px;
+}
+
+#pageText {
+    font-size: 12px;
+    color: #555;
+}
+
+#inputPageBtn {
+    height: 24px;
+    margin: 0 6px;
+    padding: 2px 8px;
+    text-align: center;
+    vertical-align: middle;
+    border: 1px solid;
+    border-color: #ccc #c6c6c6 #c3c3c3 #ccc;
+    border-radius: 3px;
+    box-shadow: inset 0 0 1px 1px #fff, 0 1px 1px rgba(0, 0, 0, .1);
+    text-shadow: 0 1px 0 #fff;
+    background: linear-gradient(to bottom, #fff 0, #f3f3f3 100%);
+}
+
+/* 검색창 */
+.inputPage {
+    padding: 6px 8px;
+    border: 1px solid #ddd;
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    height: 24px;
+    width: 64px;
+    font-size: 16px;
+    
+}
+
+.inputPage:focus { outline: 1px solid #127369; }
