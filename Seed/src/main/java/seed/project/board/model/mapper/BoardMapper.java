@@ -15,6 +15,14 @@ public interface BoardMapper {
 	 */
 	List<Map<String, Object>> selectBoardTypeList();
 
+	/** 게시글 수 조회
+	 * @param boardCode
+	 * @return listCount
+	 */
+	int getListCount(int boardCode);
+  
+  
+  
 	/** 문의 게시판 게시글 조회
 	 * @return
 	 */
