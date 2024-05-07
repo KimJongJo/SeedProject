@@ -85,8 +85,11 @@ public class BoardController {
 		
 		Map<String, Object> map = service.selectBoard2List(2, cp); 
 		
-		model.addAttribute("boardList", map.get("boardList"));
-		model.addAttribute("pagination", map.get("pagination"));
+		if(map != null) {
+			model.addAttribute("boardList", map.get("boardList"));
+			model.addAttribute("pagination", map.get("pagination"));
+		}
+		
 		
 		return "board/board2";
   }

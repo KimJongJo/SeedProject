@@ -74,12 +74,21 @@ table tr{
 }
 
 
+.i{
+    text-decoration: none;
+    color: black;
+}
+
 
 
 
 
 .paging{
     margin-top: 30px;
+}
+
+.paging a {
+    text-decoration: none;
 }
 
 
@@ -226,6 +235,7 @@ table tr{
 
 .comment-top{
     display: flex;
+    margin-bottom: 10px;
 }
 
 
@@ -238,7 +248,7 @@ table tr{
     border-radius: 5px;
     padding: 10px;
     width: 500px;
-    height: 65px;
+    height: 80px;
     margin-bottom: 20px;
 
 
@@ -249,4 +259,59 @@ table tr{
 
 .under{
     margin-bottom: 50px;
+}
+
+
+.commentPlus{
+    width: 850px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 50px;
+    border-top: 1px solid black;
+    padding: 20px;
+}
+
+.span{
+    align-self: flex-start;
+}
+
+.span-under{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.commentPlus  textarea{
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 20px;
+}
+
+.commentPlus  button{
+    border-radius: 5px;
+    margin-left: 10px;
+    height: 40px;
+    width: 55px;
+}
+
+/* 수정 or 삭제 버튼 */
+.UorD button{
+    margin-left: 10px;
+    width: 40px;
+    height: 30px;
+}
+
+.message{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.message > button{
+    margin-bottom: 20px;
+    margin-left: 10px;
+    height: 40px;
+    width: 55px;
 }

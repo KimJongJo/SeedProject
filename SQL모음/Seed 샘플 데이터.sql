@@ -138,22 +138,25 @@ BEGIN
 		VALUES(SEQ_BOARD_NO.NEXTVAL,
 					 SEQ_BOARD_NO.CURRVAL || '번째 게시글',
 					 SEQ_BOARD_NO.CURRVAL || '번째 게시글 내용 입니다',
-					 DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT,
-					 1, -- BOARD_CODE(게시판종류)
-					 1 -- MEMBER_NO(작성회원번호)
-SELECT * FROM BOARD;
+					 DEFAULT, DEFAULT, DEFAULT, DEFAULT,
+					 CEIL( DBMS_RANDOM.VALUE(0,3) ), -- BOARD_CODE(게시판종류)
+					 2 -- MEMBER_NO(작성회원번호)
+		);
+		
+	END LOOP;
+END;
 
 -- 문의 게시판 게시글 추가
 
 BEGIN
-	FOR I IN 1..5 LOOP
+	FOR I IN 1..500 LOOP
 		
 		INSERT INTO "BOARD"
 		VALUES(SEQ_BOARD_NO.NEXTVAL,
 					 SEQ_BOARD_NO.CURRVAL || '번째 문의 게시글',
 					 SEQ_BOARD_NO.CURRVAL || '번째 문의 게시글 내용 입니다',
 					 DEFAULT, NULL, DEFAULT, DEFAULT, DEFAULT,
-					 CEIL( DBMS_RANDOM.VALUE(0,2) ),
+					 CEIL( DBMS_RANDOM.VALUE(0,3) ),
 					 2
 		);
 		
@@ -162,15 +165,15 @@ END;
 
 -- 댓글 추가
 BEGIN
-	FOR I IN 1..100 LOOP
+	FOR I IN 1..300 LOOP
 	
 		INSERT INTO "COMMENT"	
 		VALUES(
 			SEQ_COMMENT_NO.NEXTVAL,
 			SEQ_COMMENT_NO.CURRVAL || '번째 댓글 입니다',
 			DEFAULT, DEFAULT,
-			CEIL( DBMS_RANDOM.VALUE(300, 421) ), -- 게시글번호
-			2, -- 댓글작성회원번호
+			CEIL( DBMS_RANDOM.VALUE(0, 500) ), -- 게시글번호
+			CEIL( DBMS_RANDOM.VALUE(0,3) ), -- 댓글작성회원번호
 			NULL -- 부모댓글번호
 		);
 	END LOOP;
@@ -209,5 +212,7 @@ ORDER BY 1 DESC;
 
 SELECT COUNT(*) FROM
 "COMMENT";
+
+
 
 

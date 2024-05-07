@@ -62,8 +62,4 @@ public interface BoardService {
 	 * @return
 	 */
 	Map<String, Object> searchList3(Map<String, Object> paramMap, int cp);
-
-	
-	
-	List<Board> selectBoard2List(int boardNo);
 }
