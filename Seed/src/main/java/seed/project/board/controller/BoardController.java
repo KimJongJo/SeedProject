@@ -114,6 +114,13 @@ public class BoardController {
   
   
   
+	/** [3] 팁과 노하우 게시글 목록 조회 + 검색 서비스
+	 * @param boardCode
+	 * @param cp
+	 * @param model
+	 * @param paramMap
+	 * @return
+	 */
 	@GetMapping("{boardCode:[3]}")
 	public String selectBoard3(@PathVariable("boardCode") int boardCode,
 								@RequestParam(value="cp", required = false, defaultValue = "1") int cp,
