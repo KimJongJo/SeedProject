@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <th:block th:replace="~{common/common}"></th:block>
+    <link rel="stylesheet" href="/css/board/board3Detail.css">
+</head>
+<body>
+    <th:block th:replace="~{common/header}"></th:block>
+    
+    <main>
+        <section>
+            <div class="board-Title"><a>게시판 이름</a></div>
+            
+            <div>
+                <div>
+                    <span>제목</span>
+                </div>
+                <div>
+                    <span>작성일</span>
+                </div>
+            </div>
+            
+            <div>
+                <div><a>작성자</a></div>
+                <div>
+                    <span>조회 수</span>
+                    <span>댓글 수</span>
+                    
+                    <!-- 하트 -->
+                    <span>
+                        <i class="fa-heart" id="boardLike"
+                        th:classappend="*{likeCheck == 1} ? fa-solid : fa-regular"
+                        ></i>
+                        <span>좋아요 개수</span>
+                    </span>
+                </div>
+            </div>
+
+            <!-- 콘텐츠 -->
+            <div>
+                내용
+            </div>
+
+            <!-- 버튼 영역 -->
+            <div>
+                <!-- 로그인한 회원과 게시글 작성한 회원의 번호가 같은 경우 -->
+                <th:block th:if="${board.memberNo == session.loginMember?.memberNo}">
+                    <button id="updateBtn">수정</button>
+                    <button id="deleteBtn">삭제</button>
+                </th:block>
+
+                <button id="goToListBtn">목록으로</button>
+            </div>
+            <!-- 댓글 영역 -->
+            <div>
+                <div>
+                    <span>댓글</span>
+                </div>
+                
+                <div>
+                    <ul>
+                        <!-- li 태그 사이에 삭제 댓글 및 답글 수정 등 버튼 넣기 -->
+                        <li>댓글1</li>
+                        <li>댓글2</li>
+                    </ul>
+                </div>
+                
+                <!-- 댓글 작성 부분 -->
+                <div>
+                    <textarea></textarea>
+                    <button>댓글등록</button>
+                </div>
+            </div>
+
+
+        </section>
+    </main>
+
+
+    
+    <th:block th:replace="~{common/footer}"></th:block>
+
+    <script src="/js/board/board3Detail.js"></script>
+</body>
+</html>

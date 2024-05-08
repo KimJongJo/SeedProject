@@ -7,8 +7,6 @@
 
     <th:block th:replace="~{common/common}"></th:block>
     <link rel="stylesheet" href="/css/board/board3.css">
-
-
 </head>
 <body>
     <th:block th:replace="~{common/header}"></th:block>
@@ -102,13 +100,13 @@
 
             <!-- 페이지네이션 구역 -->
             <div class="pagination-area">
-                <ul class="pagination" th:object="${pagination}">
+                <ul class="pagination" th:object="${pagination}" th:unless="${#lists.isEmpty(boardList)}">
                     <!-- <이전 버튼 -->
                     <li><a class="beforePage" th:href="@{/board/{boardCode}(boardCode=${boardCode}, cp=*{prevPage})}">&lt;&nbsp;이전</a></li>
                     
                     <th:block><li><a th:if="*{currentPage} > 10" th:href="@{/board/{boardCode}(boardCode=${boardCode}, cp=1)}">1</a></li></th:block>
 
-                    <th:block th:if="*{currentPage} > 10"><li><a>...</a></li></th:block>
+                    <th:block th:if="*{currentPage} > 10"><li><a id="pageMoveBtn1">...</a></li></th:block>
                     
                     <th:block th:each="i : *{#numbers.sequence(startPage, endPage)}">						
                         
@@ -125,7 +123,7 @@
 						
 					</th:block>
             
-                    <th:block th:if="*{currentPage} lt *{maxPage}-9"><li><a>...</a></li></th:block>
+                    <th:block th:if="*{currentPage} lt *{maxPage}-9"><li><a id="pageMoveBtn2">...</a></li></th:block>
                 
                     <!-- 다음> 버튼 -->
                     <li><a class="afterPage" th:href="@{/board/{boardCode}(boardCode=${boardCode}, cp=*{nextPage})}">다음&nbsp;&gt;</a></li>
@@ -135,16 +133,16 @@
             </div>
 
             <div class="popup-area">
-                <div class="page-popup page-input-area">
-                    <input id="inputPage" type="number" name="page" class="inputPage">
-                    <th:block><span id="pageText" th:text="| / ${pagination.maxPage}|">마지막페이지</span></th:block>
-                    <button type="submit" id="inputPageBtn">페이지</button>
+                <div id="pagePopup1" class="popup-hidden1 page-input-area1">
+                    <input id="inputPage1" type="number" name="page" class="inputPage" min="1">
+                    <th:block><span id="pageText1" th:text="| / ${pagination.maxPage}|">마지막페이지</span></th:block>
+                    <button type="button" id="inputPageBtn1">페이지</button>
                 </div>
 
-                <div class="page-popup page-input-area">
-                    <input id="inputPage" type="number" name="page" class="inputPage">
-                    <th:block><span id="pageText" th:text="| / ${pagination.maxPage}|">마지막페이지</span></th:block>
-                    <button type="submit" id="inputPageBtn">페이지</button>
+                <div id="pagePopup2" class="popup-hidden2 page-input-area2">
+                    <input id="inputPage2" type="number" name="page" class="inputPage">
+                    <th:block><span id="pageText2" th:text="| / ${pagination.maxPage}|">마지막페이지</span></th:block>
+                    <button type="submit" id="inputPageBtn2">페이지</button>
                 </div>
             </div>
 
@@ -157,6 +155,7 @@
     
     <script th:inline="javascript">
 		const boardCode = /*[[${boardCode}]]*/ "게시판 코드 번호";
+        const lastPage = /*[[${pagination.maxPage}]]*/ 1;
 	</script>
 
     <script src="/js/board/board3.js"></script>
