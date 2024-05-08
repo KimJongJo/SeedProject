@@ -225,13 +225,6 @@ public class BoardServiceImpl implements BoardService{
 		return map;
 	}
 
-	
-	@Override
-	public List<Board> selectBoard2List() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 
 }
 
