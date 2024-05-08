@@ -21,7 +21,7 @@ public interface BoardMapper {
 	 * @param boardCode
 	 * @return listCount
 	 */
-	int getListCount1(int boardCode);
+	int getListCount(int boardCode);
   
   
   
@@ -45,6 +45,13 @@ public interface BoardMapper {
 	List<Comment> board2CommentList(int boardNo);
   
 	List<Board> selectBoard2List();
+	
+	
+	/** [3] 팁과 노하우 게시글 수 조회
+	 * @param boardCode
+	 * @return
+	 */
+	int getListCount3(int boardCode);
 	
 	
 	/** [3] 팁과 노하우 게시글 목록 조회
