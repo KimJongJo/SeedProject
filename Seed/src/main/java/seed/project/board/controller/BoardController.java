@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
@@ -62,18 +61,56 @@ public class BoardController {
 			// -> paramMap은 {key=t, quer=검색어, boardCode=1}
 			
 			map = service.searchList1(paramMap, cp);
+			
 		}
-
-		
 		model.addAttribute("pagination", map.get("pagination"));
 		model.addAttribute("boardList", map.get("boardList"));
-		
 		
 		return "board/board1";
 	}
 	
 	
+
+	/** 자유게시판 상세조회
+	 * @param boardCode : 자유게시판
+	 * @param boardNo   : 게시판 번호
+	 * @param loginMember
+	 * @param req : 쿠키 가져오기
+	 * @param resp : 쿠키 보내기
+	 * @return
+	 */
+	@GetMapping("{boardCode:[1]}/{boardNo:[0-9]+}")
+	public String board1Detail(
+			@PathVariable("boardCode") int boardCode,
+			@PathVariable("boardNo") int boardNo,
+			@SessionAttribute(value="loginMember", required=false) Member loginMember,
+			HttpServletRequest req, // 쿠키 가져오기
+			HttpServletResponse resp,
+			Model model
+			) {
+		
+		// 전달할 파라미터들을 Map으로 묶기
+		Map<String, Object> map = new HashMap<>();
+		map.put("boardCode", boardCode);
+		map.put("boardNo", boardNo);
+		
+		// 로그인 했을 때 map에 로그인한 회원번호 넣기
+		if(loginMember != null) {
+			map.put("memberNo", loginMember.getMemberNo());
+		}
+		
+		// 게시글 상세조회
+		Board board = service.selectOne1(map);
+		
+		String path = null;
+		
 	
+		model.addAttribute("board", board);
+			
+			
+
+		return "board/board1Detail";
+	}
 	
 	
 	

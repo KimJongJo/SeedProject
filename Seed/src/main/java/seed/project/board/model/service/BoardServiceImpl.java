@@ -35,24 +35,27 @@ public class BoardServiceImpl implements BoardService{
 		// 게시글 수 조회
 		int listCount = mapper.getListCount(boardCode);
 		
-		// listCount + cp
-		Pagination pagination = new Pagination(cp, listCount);
-		
-		int limit = pagination.getLimit();
-		int offset = (cp - 1) * limit;
-		RowBounds rowBounds = new RowBounds(offset, limit);
-		
-		
-		List<Board> boardList = mapper.selectBoardList1(boardCode, rowBounds);
-		
-		
-		Map<String, Object> map = new HashMap<>();
-		
-		map.put("pagination", pagination);
-		map.put("boardList", boardList);
-		
-		
-		return map;
+		if(listCount > 0) {
+			
+			// listCount + cp
+			Pagination pagination = new Pagination(cp, listCount);
+			
+			int limit = pagination.getLimit();
+			int offset = (cp - 1) * limit;
+			RowBounds rowBounds = new RowBounds(offset, limit);
+			
+			
+			List<Board> boardList = mapper.selectBoardList1(boardCode, rowBounds);
+			
+			
+			Map<String, Object> map = new HashMap<>();
+			
+			map.put("pagination", pagination);
+			map.put("boardList", boardList);
+			
+			return map;
+		}
+		return null;
 	}
 
 	// 문의 게시판 게시글 조회
@@ -203,6 +206,13 @@ public class BoardServiceImpl implements BoardService{
 	public Board selectOne3(Map<String, Integer> map) {
 		
 		return mapper.selectOne3(map);
+	}
+
+	
+	// [1] 자유 게시판 - 게시글 상세조회
+	@Override
+	public Board selectOne1(Map<String, Object> map) {
+		return mapper.selectOne1(map);
 	}
 
 

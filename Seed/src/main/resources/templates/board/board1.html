@@ -11,7 +11,7 @@
 <body>
     
     <!-- 헤더 -->
-    <th:black th:replace="~{common/header}"></th:black>
+    <th:block th:replace="~{common/header}"></th:block>
     <main>
         
         
@@ -60,12 +60,12 @@
                                 <td>
                                     <!-- 검색 X -->
                                     <a th:unless="${param.key}"
-									th:href="@{/board/{boardCode}/{boardNo} (boardCode=${boardCode}, boardNo=*{boardNo}, ${pagination.currentPage})}"
+									th:href="@{/board/1/{boardNo} (boardNo=*{boardNo}, ${pagination.currentPage})}"
 									th:text="*{boardTitle}">게시글 제목</a>
 
 									<!-- 검색 O -->
 									<a th:if="${param.key}"
-									th:href="@{/board/{boardCode}/{boardNo} (boardCode=${boardCode}, boardNo=*{boardNo}, ${pagination.currentPage}, key=${param.key}, query=${param.query})}"
+									th:href="@{/board/1/{boardNo} (boardNo=*{boardNo}, ${pagination.currentPage}, key=${param.key}, query=${param.query})}"
 									th:text="*{boardTitle}">게시글 제목</a>
 									
 									<th:block th:text="|[*{commentCount}]|">댓글 수</th:block>
@@ -118,7 +118,7 @@
 
                         <!-- 보고있지 않은 페이지 -->
                         <li th:unless="${i} == *{currentPage}">
-                            <a th:href="@{/board/{boardCode}(boardCode=${boardCode}, cp=${i})}"
+                            <a th:href="@{/board/1(cp=${i})}"
                             th:text="${i}">이동할 페이지</a>
                         </li>
                     </th:block>
@@ -132,7 +132,7 @@
 
 
                 <!-- 검색할 경우 -->
-                <ul class="pagination" th:if="${param.key}" th:object="${pagination}">
+                <ul class="pagination" th:if="${param.key}" th:object="${pagination}" th:unless="${#lists.isEmpty(boardList)}">
 
                     <!-- 첫 페이지로 이동 -->
                     <li><a href="@{/board/{boardCode}(boardCode=${boardCode}, cp=1)}">&lt;&lt;</a></li>
