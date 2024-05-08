@@ -35,7 +35,7 @@
             <!-- 게시글이 존재하지 않을 때 -->
             <th:block th:if="${#lists.isEmpty(boardList)}">
                 <tr>
-                    <th colspan="6">게시글이 존재하지 않습니다.</th>
+                    <th colspan="7">게시글이 존재하지 않습니다.</th>
                 </tr>
             </th:block>     
             
@@ -60,31 +60,31 @@
 
 
     <!-- 페이징 -->
-    <div class="paging">
+    <div class="paging" th:if="${pagination}">
 
         <div th:object="${pagination}">
 
-            <a th:href="@{/board/2(cp=1)}"><i class="fa-solid fa-angles-left"></i></a>
+            <a th:href="@{/board/2(cp=1)}" class="i"><i class="fa-solid fa-angles-left"></i></a>
 
-            <a th:href="@{/board/2(cp=*{prevPage})}"><i class="fa-solid fa-angle-left"></i></a>
+            <a th:href="@{/board/2(cp=*{prevPage})}" class="i"><i class="fa-solid fa-angle-left"></i></a>
 
             <th:block th:each="i : *{#numbers.sequence(startPage, endPage)}">
             
                 <th:block th:if="${i} == *{currentPage}">
-                    <a th:text="${i}" class="currentPage">현재 페이지</ㅁ>
+                    <a th:text="${i}" class="currentPage">현재 페이지</a>
                 </th:block>
 
+                
                 <th:block th:unless="${i} == *{currentPage}">
                     <a th:href="@{/board/2(cp=${i})}" th:text="${i}" class="otherPage">다른 페이지</a>
                 </th:block>
 
-
             </th:block>
 
-            <a th:href="@{/board/2(cp=*{nextPage})}"><i class="fa-solid fa-angle-right"></i></a>
+            <a th:href="@{/board/2(cp=*{nextPage})}" class="i"><i class="fa-solid fa-angle-right"></i></a>
             
 
-            <a th:href="@{/board/2(cp=*{maxPage})}"><i class="fa-solid fa-angles-right"></i></a>
+            <a th:href="@{/board/2(cp=*{maxPage})}" class="i"><i class="fa-solid fa-angles-right"></i></a>
 
         </div>
 

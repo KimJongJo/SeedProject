@@ -46,14 +46,6 @@
 		WHERE BOARD_NO = #{boardNo}
 	</select>
 
-
-    <!-- 팁과 노하우 게시글 수 조회 -->
-    <select id="getListCount3">
-		SELECT COUNT(*)
-		FROM "BOARD"
-		WHERE BOARD_DEL_FL = 'N'
-		AND BOARD_CODE = #{boardCode}
-
 	<!-- 자유게시판 검색조건이 맞는 게시글 수 조회 -->
 	<select id="getSearchCount1">
 		
@@ -224,7 +216,6 @@
 		</choose>
 	</select>
 	
-	
 	<select id="selectSearchList3">
 			SELECT BOARD_NO, BOARD_TITLE, MEMBER_NICKNAME, READ_COUNT,
     
@@ -322,5 +313,14 @@
 		ORDER BY BOARD_NO DESC
 	
 	</select>
+
+
+
+
+
+
+
+
+		
 
 </mapper>

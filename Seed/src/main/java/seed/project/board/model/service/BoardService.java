@@ -38,8 +38,6 @@ public interface BoardService {
 	 * @return
 	 */
 	List<Comment> board2CommentList(int boardNo);
-  
-	List<Board> selectBoard2List();
 
 	/** 자유 게시판 검색 서비스
 	 * 

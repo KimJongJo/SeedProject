@@ -20,6 +20,12 @@
 
     <th:block th:object="${boardInfo}">
         <div class="board">
+            <th:block th:if="${session.loginMember}">
+                <div class="write-menu">
+                    <button>수정</button>
+                    <button>삭제</button>
+                </div>
+            </th:block>
             <div class="board-top">
                 <div th:text="|*{boardNo}번|" class="boardNo">게시글 번호</div>
                 <div th:text="*{boardTitle}" class="boardTitle">게시글 제목</div>
@@ -57,15 +63,32 @@
                     <div th:text="*{commentWriteDate}" class="commentWriteDate"></div>
 
                     <th:block th:if="${session.loginMember?.memberNo} == *{memberNo}">
-                        <button>수정</button>
-                        <button>삭제</button>
+                        <div class="UorD">
+                            <button>수정</button>
+                            <button>삭제</button>
+                        </div>
                     </th:block>
                 </div>
                 
-                <div th:text="*{commentContent}" class="comment-box"></div>
+                <div class="message">
+                    <div th:text="*{commentContent}" class="comment-box"></div>
+                    <button>답글</button>
+                </div>
             </div>
         </th:block>
     </div>
+
+    <th:block th:if="${session.loginMember}">
+        <div class="commentPlus">
+            <div class="span">
+                <span>댓글 쓰기</span>
+            </div>
+            <div class="span-under">
+                <textarea cols="55" rows="5" style="resize: none;"></textarea>
+                <button>등록</button>
+            </div>
+        </div>
+    </th:block>
 
 
 

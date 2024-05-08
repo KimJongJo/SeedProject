@@ -62,21 +62,27 @@ public class BoardServiceImpl implements BoardService{
 		// 삭제 되지 않은 게시판
 		int listCount = mapper.getListCount(boardCode);
 		
-		Pagination pagination = new Pagination(cp, listCount);
+		
+		// 게시글이 존재할때 페이징 객체 생성  
+		if(listCount > 0) {
+			Pagination pagination = new Pagination(cp, listCount);
+			
+			int offset = (cp - 1) * pagination.getLimit();
+			RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
+			
+			List<Board> boardList = mapper.selectBoard2List(boardCode, rowBounds);
+			
+			
+			Map<String, Object> map = new HashMap<>();
+			map.put("pagination", pagination);
+			map.put("boardList", boardList);
+			
+			return map;
+		}
 		
 		
-		int offset = (cp - 1) * pagination.getLimit();
-		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
+		return null;
 		
-		List<Board> boardList = mapper.selectBoard2List(boardCode, rowBounds);
-		
-		
-		Map<String, Object> map = new HashMap<>();
-		map.put("pagination", pagination);
-		map.put("boardList", boardList);
-		
-		
-		return map;
 	}
 
 	// 게시글 정보 받아오기
@@ -219,6 +225,7 @@ public class BoardServiceImpl implements BoardService{
 		return map;
 	}
 
+	
 	@Override
 	public List<Board> selectBoard2List() {
 		// TODO Auto-generated method stub

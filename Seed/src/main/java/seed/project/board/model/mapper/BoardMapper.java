@@ -43,8 +43,6 @@ public interface BoardMapper {
 	 * @return
 	 */
 	List<Comment> board2CommentList(int boardNo);
-  
-	List<Board> selectBoard2List();
 	
 	
 	/** [3] 팁과 노하우 게시글 수 조회
