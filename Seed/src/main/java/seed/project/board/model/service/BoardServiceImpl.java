@@ -35,24 +35,27 @@ public class BoardServiceImpl implements BoardService{
 		// 게시글 수 조회
 		int listCount = mapper.getListCount(boardCode);
 		
-		// listCount + cp
-		Pagination pagination = new Pagination(cp, listCount);
-		
-		int limit = pagination.getLimit();
-		int offset = (cp - 1) * limit;
-		RowBounds rowBounds = new RowBounds(offset, limit);
-		
-		
-		List<Board> boardList = mapper.selectBoardList1(boardCode, rowBounds);
-		
-		
-		Map<String, Object> map = new HashMap<>();
-		
-		map.put("pagination", pagination);
-		map.put("boardList", boardList);
-		
-		
-		return map;
+		if(listCount > 0) {
+			
+			// listCount + cp
+			Pagination pagination = new Pagination(cp, listCount);
+			
+			int limit = pagination.getLimit();
+			int offset = (cp - 1) * limit;
+			RowBounds rowBounds = new RowBounds(offset, limit);
+			
+			
+			List<Board> boardList = mapper.selectBoardList1(boardCode, rowBounds);
+			
+			
+			Map<String, Object> map = new HashMap<>();
+			
+			map.put("pagination", pagination);
+			map.put("boardList", boardList);
+			
+			return map;
+		}
+		return null;
 	}
 
 	// [2] 문의 게시판 게시글 조회
@@ -111,8 +114,6 @@ public class BoardServiceImpl implements BoardService{
 		// 1. 삭제되지 않은 게시글 수를 조회
 		int listCount = mapper.getListCount(boardCode);
 		
-		
-
 		// Pagination 객체를 생성
 		Pagination pagination = new Pagination(cp, listCount);
 		
@@ -137,6 +138,7 @@ public class BoardServiceImpl implements BoardService{
 		
 		return map;
 
+
 	}
 	
 	
@@ -146,7 +148,7 @@ public class BoardServiceImpl implements BoardService{
 		
 		int listCount = mapper.getSearchCount3(paramMap);
 		
-		
+			
 		Pagination pagination = new Pagination(cp, listCount);
 		
 		
@@ -163,8 +165,10 @@ public class BoardServiceImpl implements BoardService{
 		map.put("pagination", pagination);
 		map.put("boardList", boardList);
 		
-		
 		return map;
+			
+		
+
 	}
 
 	// [1] 자유 게시판 검색 서비스
@@ -194,6 +198,21 @@ public class BoardServiceImpl implements BoardService{
 		
 		
 		return map;
+	}
+	
+	
+	// [3] 팁과 노하우 게시판 - 게시글 상세 조회
+	@Override
+	public Board selectOne3(Map<String, Integer> map) {
+		
+		return mapper.selectOne3(map);
+	}
+
+	
+	// [1] 자유 게시판 - 게시글 상세조회
+	@Override
+	public Board selectOne1(Map<String, Object> map) {
+		return mapper.selectOne1(map);
 	}
 
 	

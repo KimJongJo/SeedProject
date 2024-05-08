@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="|${board.boardNo}번 글|">게시판 이름</title>
+
+    <th:block th:replace="~{common/common}"></th:block>
+    <link rel="stylesheet" href="/css/board/board1Detail.css">
+</head>
+<body>
+    <!-- 헤더 -->
+    <th:block th:replace="~{common/header}"></th:block>
+    
+    <main>
+
+        <section class="board1-detail" th:object="${board}">
+
+            <!-- 작성자, 작성일, 좋아요, 하트수 -->
+            <div class="board-header">
+                <div class="board-code-area">
+                    <span>자유게시판</span>
+                </div>
+
+                <div class="board-title-area">
+                    <h1 class="board-title" th:text="*{boardTitle}"
+                    >게시글 제목</h1>
+                </div>
+
+                <div class="board-header1">
+                    <span class="board-writer" th:text="|작성자 : *{memberNickname}|"></span>
+                    <span class="like-count" th:text="|좋아요 : *{likeCount}|"></span>
+                </div>
+
+                <div class="board-header2">
+                    <span class="board-write-date" th:text="|작성일 : *{boardWriteDate}|"></span>
+                    <span class="read-count" th:text="|조회수 : *{readCount}|"></span>
+                </div>
+
+            </div>
+
+            <div class="board-content" th:text="*{boardContent}"
+            >게시글 내용</div>
+
+            <div class="btn-area">
+
+                <!-- 로그인한 상태 + 작성자랑 로그인한 사람이 일치할 때 -->
+                <th:block th:if="${session.loginMember != null and board.memberNo == session.loginMember?.memberNo}">
+
+                    <button class="updateBtn">수정하기</button>
+                    <button class="deleteBtn">삭제하기</button>
+                </th:block>
+            </div>
+            
+        </section>
+
+
+
+
+        <div class="comment-area">
+            <h3>댓글</h3>
+
+            <div class="comment-list-area">
+
+                <ul class="commentList">
+                    <!-- 내일함 -->
+
+                </ul>
+
+            </div>
+
+
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </main>
+
+
+</body>
+</html>
