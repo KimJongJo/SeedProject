@@ -5,6 +5,7 @@
 
 	<!-- 자유게시판 검색조건이 맞는 게시글 수 조회 -->
 	<select id="getSearchCount1">
+
 		SELECT COUNT(*)
 		FROM "BOARD"
 		
@@ -15,7 +16,7 @@
 		
 		WHERE BOARD_DEL_FL = 'N'
 		AND BOARD_CODE = #{boardCode}
-		
+
 		<choose>
 			<!-- 제목 검색 (key 값이 "t"인 경우)-->
 			<when test='key=="t"'>
@@ -84,7 +85,7 @@
 		WHERE BOARD_DEL_FL = 'N'
 		AND BOARD_CODE = #{boardCode}
 		ORDER BY BOARD_NO DESC
-		
+
 	</select>
 	
 	
