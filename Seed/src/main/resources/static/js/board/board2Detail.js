@@ -9,9 +9,6 @@ const boardTitle = document.getElementById("boardTitle");   // 글 제목
 const boardContent = document.getElementById("boardContent");   // 글 내용
 
 
-// boardUpdate
-const updateBtn = document.getElementById("write-update-btn");  // 글 수정 버튼
-
 
 // 게시글 삭제
 if(boardDelete != null){
@@ -88,35 +85,4 @@ if(pushBtn != null){
     
     });
 
-}
-
-
-
-// 게시글 수정
-if(updateBtn != null){
-    updateBtn.addEventListener("click", () => {
-
-        const board = {
-            "boardNo" : boardNo,
-            "boardTitle" : boardTitle.value,
-            "boardContent" : boardContent.value
-        }
-
-
-        fetch("/board/2/board2Update", {
-            method : "PUT",
-            headers : {"Content-Type" : "application/json"},
-            body : JSON.stringify(board)
-        })
-        .then(resp => resp.text())
-        .then(result => {
-            if(result > 0){
-                alert("수정되었습니다.");
-                location.href = "/board/2/detail?boardNo=" + boardNo;
-            }else{
-                alert("수정 실패...");
-            }
-        })
-
-    })
 }

@@ -136,4 +136,19 @@ public interface BoardMapper {
 	Board selectOne1(Map<String, Object> map);
 
 
+	/** [2] 문의 게시판 검색 삭제되지 않은 게시글들
+	 * @param paramMap
+	 * @return
+	 */
+	List<Board> getSearchCount2(Map<String, Object> paramMap);
+
+
+	/** [2] 검색한 게시글 반환
+	 * @param paramMap
+	 * @param rowBounds
+	 * @return
+	 */
+	List<Board> getSearchCount2(Map<String, Object> paramMap, RowBounds rowBounds);
+
+
 }

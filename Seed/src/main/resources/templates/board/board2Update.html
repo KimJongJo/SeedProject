@@ -27,11 +27,13 @@
                 <span>내용</span>
                 <textarea cols="30" rows="10" class="write-content" style="resize: none;" name="boardContent" id="boardContent" th:text="*{boardContent}"></textarea>
             </div>
+
+            <input type="hidden" th:value="*{boardNo}" id="boardNo">
             
     
             <!-- 사진 넣기 -->
             <!-- <input type="file"> -->
-            <button type="submit" class="write-push-btn" id="write-update-btn">수정</button>
+            <button type="button" class="write-push-btn" id="write-update-btn">수정</button>
         </form>
     </div>
 
@@ -41,14 +43,14 @@
 
 
 
-    <script th:inline="javascript">
+    <!-- <script th:inline="javascript">
         const boardNo = /*[[${board.boardNo}]]*/ "게시글 번호";
-    </script>
+    </script> -->
 
     <!-- 푸터 추가 -->
     <!-- <th:block th:replace="~{common/images3}"></th:block> -->
     <th:block th:replace="~{common/footer}"></th:block>
 
-    <script src="/js/board/board2Detail.js"></script>
+    <script src="/js/board/board2Update.js"></script>
 </body>
 </html>
