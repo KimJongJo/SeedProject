@@ -53,6 +53,7 @@
 		FROM "BOARD"
 		WHERE BOARD_DEL_FL = 'N'
 		AND BOARD_CODE = #{boardCode}
+	</select>
 
 	<!-- 자유게시판 검색조건이 맞는 게시글 수 조회 -->
 	<select id="getSearchCount1">
