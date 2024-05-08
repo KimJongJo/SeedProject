@@ -51,7 +51,7 @@
 	</insert>
 	
 	<select id="board2Info">
-		SELECT BOARD_TITLE, BOARD_CONTENT
+		SELECT BOARD_TITLE, BOARD_CONTENT, BOARD_NO
 		FROM "BOARD"
 		WHERE BOARD_NO = #{boardNo}
 	</select>

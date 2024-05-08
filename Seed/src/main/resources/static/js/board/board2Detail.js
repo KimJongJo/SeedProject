@@ -102,6 +102,7 @@ if(updateBtn != null){
             "boardContent" : boardContent.value
         }
 
+
         fetch("/board/2/board2Update", {
             method : "PUT",
             headers : {"Content-Type" : "application/json"},
@@ -111,7 +112,7 @@ if(updateBtn != null){
         .then(result => {
             if(result > 0){
                 alert("수정되었습니다.");
-                
+                location.href = "/board/2/detail?boardNo=" + boardNo;
             }else{
                 alert("수정 실패...");
             }
