@@ -94,13 +94,14 @@ if(pushBtn != null){
 
 // 게시글 수정
 if(updateBtn != null){
-    updateBtn.addEventListener("click", () => {
+    updateBtn.addEventListener("click", (e) => {
 
         const board = {
             "boardNo" : boardNo,
             "boardTitle" : boardTitle.value,
             "boardContent" : boardContent.value
         }
+
 
         fetch("/board/2/board2Update", {
             method : "PUT",
@@ -111,7 +112,7 @@ if(updateBtn != null){
         .then(result => {
             if(result > 0){
                 alert("수정되었습니다.");
-                
+                location.href = "/board/2/detail?boardNo=" + boardNo;
             }else{
                 alert("수정 실패...");
             }
