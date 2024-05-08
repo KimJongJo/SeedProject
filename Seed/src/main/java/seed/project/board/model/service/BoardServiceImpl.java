@@ -58,7 +58,7 @@ public class BoardServiceImpl implements BoardService{
 		return null;
 	}
 
-	// 문의 게시판 게시글 조회
+	// [2] 문의 게시판 게시글 조회
 	@Override
 	public Map<String, Object> selectBoard2List(int boardCode, int cp) {
 		
@@ -88,7 +88,7 @@ public class BoardServiceImpl implements BoardService{
 		
 	}
 
-	// 게시글 정보 받아오기
+	// [2] 게시글 정보 받아오기
 	@Override
 	public Board board2Detail(int boardNo) {
 		
@@ -98,7 +98,7 @@ public class BoardServiceImpl implements BoardService{
 
 	
 	
-	// 게시글 댓글 정보
+	// [2] 게시글 댓글 정보
 	@Override
 	public List<Comment> board2CommentList(int boardNo) {
 		
@@ -171,7 +171,7 @@ public class BoardServiceImpl implements BoardService{
 
 	}
 
-	// 자유 게시판 검색 서비스
+	// [1] 자유 게시판 검색 서비스
 	@Override
 	public Map<String, Object> searchList1(Map<String, Object> paramMap, int cp) {
 		
@@ -213,6 +213,36 @@ public class BoardServiceImpl implements BoardService{
 	@Override
 	public Board selectOne1(Map<String, Object> map) {
 		return mapper.selectOne1(map);
+	}
+
+	
+	// [2] 게시글 삭제(업데이트)
+	@Override
+	public int board2Delete(int boardNo) {
+		
+		return mapper.board2Delete(boardNo);
+	}
+
+	// [2] 게시글 작성하기
+	@Override
+	public int board2Write(Map<String, String> board) {
+
+		return mapper.board2Write(board);
+	}
+
+	
+	// [2] 게시글 정보 가져오기
+	@Override
+	public Board board2Info(int boardNo) {
+		
+		return mapper.board2Info(boardNo);
+	}
+
+	// [2] 게시글 수정하기
+	@Override
+	public int board2Update(Map<String, Object> board) {
+		
+		return mapper.board2Update(board);
 	}
 
 

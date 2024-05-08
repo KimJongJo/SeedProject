@@ -123,7 +123,7 @@ table tr{
     transition-duration: 0.3s;
 }
 
-.searchLine button:hover, .wirte:hover{
+.searchLine button:hover, .write-btn:hover{
     transition-duration: 0.3s;
     background-color: #10403B;
     cursor: pointer;
@@ -149,7 +149,7 @@ table tr{
     justify-content: flex-end;
 }
 
-.wirte{
+.write-btn{
     width: 60px;
     height: 40px;
     background-color: #127369;
@@ -159,6 +159,8 @@ table tr{
     border-radius: 5px;
     font-size: 15px;
     transition-duration: 0.3s;
+    line-height: 40px;
+    text-align: center;
 }
 
 
@@ -318,11 +320,72 @@ table tr{
 
 
 .write-menu{
+    width: 700px;
     display: flex;
+    justify-content: flex-start;
     margin-top: 20px;
 }
 
 .write-menu > button{
-    width: 55px;
-    height: 40px;
+    width: 45px;
+    height: 30px;
+    margin: 5px;
 }
+
+.write-menu > a {
+    width: 45px;
+    height: 30px;
+    margin: 5px;
+    border: 1px solid black;
+    text-align: center;
+    line-height: 30px;
+    border-radius: 3px;
+    font-size: 14px;
+}
+
+
+
+
+.write{
+    display: flex;
+    flex-direction: column;
+}
+
+
+.write-form{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 70px;
+}
+
+.write  div{
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+}
+
+.write span{
+    font-size: 25px;
+}
+
+
+.write-title{
+    height: 50px;
+    font-size: 25px;
+    padding: 10px;
+}
+
+.write-content{
+    height: 500px;
+    font-size: 20px;
+    padding: 10px;
+}
+
+.write-push-btn{
+    margin-top: 10px;
+    width: 40px;
+    height: 30px;
+    align-self: flex-end;
+}
+
+

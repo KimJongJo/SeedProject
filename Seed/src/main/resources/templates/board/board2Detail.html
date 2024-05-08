@@ -20,10 +20,10 @@
 
     <th:block th:object="${boardInfo}">
         <div class="board">
-            <th:block th:if="${session.loginMember}">
+            <th:block th:if="${session.loginMember} and *{memberNo} == ${session.loginMember.memberNo}">
                 <div class="write-menu">
-                    <button>수정</button>
-                    <button>삭제</button>
+                    <a th:href="@{/board/2/board2Update(boardNo=${boardInfo.boardNo})}" id="boardUpdate">수정</a>
+                    <button id="boardDelete">삭제</button>
                 </div>
             </th:block>
             <div class="board-top">
@@ -91,12 +91,19 @@
     </th:block>
 
 
-
+    
 
 
     <!-- 푸터 추가 -->
     <!-- <th:block th:replace="~{common/images3}"></th:block> -->
     <th:block th:replace="~{common/footer}"></th:block>
+
     
+
+    <script th:inline="javascript">
+        const boardNo = /*[[${boardInfo.boardNo}]]*/ "게시글 번호";
+    </script>
+    
+    <script src="/js/board/board2Detail.js"></script>
 </body>
 </html>

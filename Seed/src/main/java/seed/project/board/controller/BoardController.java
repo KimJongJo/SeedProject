@@ -6,10 +6,15 @@ import java.util.Map;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import jakarta.servlet.http.HttpServletRequest;
@@ -119,9 +124,15 @@ public class BoardController {
 	
 	
 	
-	
+
+
   
-	  @GetMapping("{boardCode:[2]}")
+	  /** [2] 문의 게시판 페이지 이동
+	 * @param model
+	 * @param cp
+	 * @return
+	 */
+	@GetMapping("{boardCode:[2]}")
 	  public String board2(Model model,
 							@RequestParam(value="cp", required = false, defaultValue="1") int cp
 							) {
@@ -138,7 +149,12 @@ public class BoardController {
 	  }
 	  
 	  
-	  @GetMapping("{boardCode:[2]}/detail")
+	  /** [2] 문의 게시글 상세정보
+	 * @param boardNo
+	 * @param model
+	 * @return
+	 */
+	@GetMapping("{boardCode:[2]}/detail")
 	  public String board2Detail(
 			  			@RequestParam(value="boardNo") int boardNo,
 			  			Model model
@@ -153,6 +169,65 @@ public class BoardController {
 		  return "board/board2Detail";
 	  }
 	  
+	  
+	  /** [2] 문의 게시글 삭제
+	 * @param boardNo
+	 * @return
+	 */
+	@ResponseBody
+	@DeleteMapping("{boardCode:[2]}/delete")
+	public int board2Delete(@RequestBody int boardNo) {
+		  
+		return service.board2Delete(boardNo);
+	}
+	
+	/** [2] 문의 게시글 작성 페이지 이동
+	 * @return
+	 */
+	@GetMapping("board2Write")
+	public String board2Write() {
+		
+		return "board/board2Write";
+	}
+	
+	
+	
+	/** [2] 문의 게시글 작성 결과
+	 * @param board
+	 * @return
+	 */
+	@ResponseBody
+	@PostMapping("{boardCode:[2]}/board2Write")
+	public int board2Write(@RequestBody Map<String, String> board) {
+		
+		return service.board2Write(board);
+	}
+	
+	
+	/** 게시글 수정
+	 * @return
+	 */
+	@GetMapping("{boardCode:[2]}/board2Update")
+	public String board2Update(
+					@RequestParam(value = "boardNo") int boardNo,
+					Model model
+			) {
+		
+		Board board = service.board2Info(boardNo);
+		
+		model.addAttribute("board", board);
+		
+		return "board/board2Update";
+	}
+	
+	
+	@ResponseBody
+	@PutMapping("{boardCode:[2]}/board2Update")
+	public int board2Update(@RequestBody Map<String, Object> board) {
+		
+		return service.board2Update(board);
+	}
+	
   
   
   
