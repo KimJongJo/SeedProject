@@ -111,8 +111,6 @@ public class BoardServiceImpl implements BoardService{
 		// 1. 삭제되지 않은 게시글 수를 조회
 		int listCount = mapper.getListCount(boardCode);
 		
-		
-
 		// Pagination 객체를 생성
 		Pagination pagination = new Pagination(cp, listCount);
 		
@@ -137,6 +135,7 @@ public class BoardServiceImpl implements BoardService{
 		
 		return map;
 
+
 	}
 	
 	
@@ -146,7 +145,7 @@ public class BoardServiceImpl implements BoardService{
 		
 		int listCount = mapper.getSearchCount3(paramMap);
 		
-		
+			
 		Pagination pagination = new Pagination(cp, listCount);
 		
 		
@@ -163,8 +162,10 @@ public class BoardServiceImpl implements BoardService{
 		map.put("pagination", pagination);
 		map.put("boardList", boardList);
 		
-		
 		return map;
+			
+		
+
 	}
 
 	// 자유 게시판 검색 서비스
@@ -194,6 +195,14 @@ public class BoardServiceImpl implements BoardService{
 		
 		
 		return map;
+	}
+	
+	
+	// [3] 팁과 노하우 게시판 - 게시글 상세 조회
+	@Override
+	public Board selectOne3(Map<String, Integer> map) {
+		
+		return mapper.selectOne3(map);
 	}
 
 
