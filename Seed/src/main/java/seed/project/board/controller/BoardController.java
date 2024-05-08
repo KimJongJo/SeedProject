@@ -78,38 +78,38 @@ public class BoardController {
 	
 	
   
-  @GetMapping("{boardCode:[2]}")
-  public String board2(Model model,
-						@RequestParam(value="cp", required = false, defaultValue="1") int cp
-						) {
-		
-		Map<String, Object> map = service.selectBoard2List(2, cp); 
-		
-		if(map != null) {
-			model.addAttribute("boardList", map.get("boardList"));
-			model.addAttribute("pagination", map.get("pagination"));
-		}
-		
-		
-		return "board/board2";
-  }
-  
-  
-  @GetMapping("{boardCode:[2]}/detail")
-  public String board2Detail(
-		  			@RequestParam(value="boardNo") int boardNo,
-		  			Model model
-		  			) {
+	  @GetMapping("{boardCode:[2]}")
+	  public String board2(Model model,
+							@RequestParam(value="cp", required = false, defaultValue="1") int cp
+							) {
+			
+			Map<String, Object> map = service.selectBoard2List(2, cp); 
+			
+			if(map != null) {
+				model.addAttribute("boardList", map.get("boardList"));
+				model.addAttribute("pagination", map.get("pagination"));
+			}
+			
+			
+			return "board/board2";
+	  }
 	  
-	  Board boardInfo = service.board2Detail(boardNo);
-	  List<Comment> commentList = service.board2CommentList(boardNo);
-	  		
-	  model.addAttribute("boardInfo", boardInfo);
-	  model.addAttribute("commentList", commentList);
 	  
-	  return "board/board2Detail";
-  }
-  
+	  @GetMapping("{boardCode:[2]}/detail")
+	  public String board2Detail(
+			  			@RequestParam(value="boardNo") int boardNo,
+			  			Model model
+			  			) {
+		  
+		  Board boardInfo = service.board2Detail(boardNo);
+		  List<Comment> commentList = service.board2CommentList(boardNo);
+		  		
+		  model.addAttribute("boardInfo", boardInfo);
+		  model.addAttribute("commentList", commentList);
+		  
+		  return "board/board2Detail";
+	  }
+	  
   
   
   

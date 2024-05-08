@@ -2,10 +2,8 @@ package seed.project.board.model.mapper;
 
 import java.util.List;
 import java.util.Map;
-
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.session.RowBounds;
-
 import seed.project.board.model.dto.Board;
 import seed.project.board.model.dto.Comment;
 
@@ -97,7 +95,5 @@ public interface BoardMapper {
 	 * @return
 	 */
 	List<Board> selectSearchList1(Map<String, Object> paramMap, RowBounds rowBounds);
-
-	
 
 }
