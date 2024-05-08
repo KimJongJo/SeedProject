@@ -386,6 +386,14 @@ popupExit.addEventListener("click", () => {
 
 });
 
+// 취소 버튼 클릭 시
+authCancel.addEventListener("click", () => {
+
+    modalBackground.classList.add('popup-hidden');
+    popupLayer.classList.add('popup-hidden');
+
+    alert("인증 절차가 취소되었습니다.")
+});
 
 /* ---------- 인증번호 입력 후 확인 클릭 시 ----------------- */
 
