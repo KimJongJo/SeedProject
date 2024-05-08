@@ -2,10 +2,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="seed.project.board.model.mapper.BoardMapper">
 
-	
-
-	
-
 
 	<!-- 자유게시판 검색조건이 맞는 게시글 수 조회 -->
 	<select id="getSearchCount1">
