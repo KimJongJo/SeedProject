@@ -17,15 +17,5 @@
 		AND BOARD_CODE = #{boardCode}
 	</select>
 	
-
-	
-
-
-
-
-
-
-
-		
 		
 </mapper>
