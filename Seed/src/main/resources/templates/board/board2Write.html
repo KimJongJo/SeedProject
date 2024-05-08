@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>문의 게시판 글쓰기</title>
+
+    <th:block th:replace="~{common/common}"></th:block>
+    <link rel="stylesheet" href="/css/board/board2.css">
+</head>
+<body>
+
+    <!-- 헤더 추가 -->
+    <th:block th:replace="~{common/header}"></th:block>
+
+    <div class="h1">
+        <h1>문의 게시글 작성</h1>
+    </div>
+
+    <div class="write">
+        <form class="write-form">
+            <div>
+                <span>제목</span>
+                <input type="text" maxlength="20" class="write-title" name="boardTitle" id="boardTitle">
+            </div>
+            <div>
+                <span>내용</span>
+                <textarea cols="30" rows="10" class="write-content" style="resize: none;" name="boardContent" id="boardContent"></textarea>
+            </div>
+            
+    
+            <!-- 사진 넣기 -->
+            <!-- <input type="file"> -->
+            <button type="submit" class="write-push-btn" id="write-push-btn">등록</button>
+        </form>
+    </div>
+
+    
+
+
+
+
+
+    <script th:inline="javascript">
+        const memberNo = /*[[${session.loginMember.memberNo}]]*/ "회원 번호";
+    </script>
+
+    <!-- 푸터 추가 -->
+    <!-- <th:block th:replace="~{common/images3}"></th:block> -->
+    <th:block th:replace="~{common/footer}"></th:block>
+
+    <script src="/js/board/board2Detail.js"></script>
+</body>
+</html>

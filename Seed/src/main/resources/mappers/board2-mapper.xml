@@ -13,6 +13,7 @@
 		FROM "BOARD" B
 		JOIN "MEMBER" USING(MEMBER_NO)
 		WHERE BOARD_CODE = 2
+		AND BOARD_DEL_FL = 'N'
 		ORDER BY 1 DESC
 	</select>
 	
@@ -20,18 +21,46 @@
 	<!-- 게시글 정보 가져오기 -->
 	<select id="board2Detail">
 		SELECT BOARD_NO, BOARD_TITLE, BOARD_CONTENT, MEMBER_NICKNAME, BOARD_WRITE_DATE, BOARD_UPDATE_DATE,
-		READ_COUNT, LIKE_COUNT
+		MEMBER_NO, READ_COUNT, LIKE_COUNT
 		FROM "BOARD"
 		JOIN "MEMBER" USING(MEMBER_NO)
 		WHERE BOARD_NO = #{boardNo}
 	</select>
 	
+	<!-- 댓글 정보 가져오기 -->
 	<select id="board2CommentList">
 		SELECT MEMBER_NICKNAME, COMMENT_CONTENT, COMMENT_WRITE_DATE, MEMBER_NO, PARENT_COMMENT_NO 
 		FROM "COMMENT"
 		JOIN "MEMBER" USING(MEMBER_NO)
 		WHERE BOARD_NO = #{boardNo}
 	</select>
-
+	
+	<!-- 게시글 삭제(업데이트) -->
+	<update id="board2Delete">
+		UPDATE "BOARD" SET 
+		BOARD_DEL_FL = 'Y'
+		WHERE BOARD_NO = #{boardNo}
+	</update>
+	
+	<!-- 게시글 작성하기 -->
+	<insert id="board2Write">
+		INSERT INTO "BOARD"
+		VALUES(SEQ_BOARD_NO.NEXTVAL, #{boardTitle}, #{boardContent},
+		DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT,
+		#{memberNo}, 2)
+	</insert>
+	
+	<select id="board2Info">
+		SELECT BOARD_TITLE, BOARD_CONTENT
+		FROM "BOARD"
+		WHERE BOARD_NO = #{boardNo}
+	</select>
+	
+	<update id="board2Update">
+		UPDATE "BOARD" SET
+		BOARD_TITLE = #{boardTitle},
+		BOARD_CONTENT = #{boardContent}
+		WHERE BOARD_NO = #{boardNo}
+	</update>
 	
 </mapper>

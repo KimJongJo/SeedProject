@@ -105,7 +105,7 @@
 
     <th:block th:if="${session.loginMember}">
         <div class="w-div">
-            <button class="wirte">글쓰기</button>
+            <a href="/board/board2Write" class="write-btn">글쓰기</a>
         </div>
     </th:block>
 
@@ -116,6 +116,5 @@
     <!-- 푸터 추가 -->
     <!-- <th:block th:replace="~{common/images3}"></th:block> -->
     <th:block th:replace="~{common/footer}"></th:block>
-    
 </body>
 </html>

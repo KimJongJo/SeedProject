@@ -93,4 +93,32 @@ public interface BoardMapper {
 	 */
 	List<Board> selectSearchList1(Map<String, Object> paramMap, RowBounds rowBounds);
 
+
+	/** [2] 게시글 삭제(업데이트)
+	 * @param boardNo
+	 * @return
+	 */
+	int board2Delete(int boardNo);
+
+
+	/** [2] 게시글 작성하기
+	 * @param board
+	 * @return
+	 */
+	int board2Write(Map<String, String> board);
+
+
+	/** [2] 게시글 정보 가져오기
+	 * @param boardNo
+	 * @return
+	 */
+	Board board2Info(int boardNo);
+
+
+	/** [2] 게시글 수정하기
+	 * @param board
+	 * @return
+	 */
+	int board2Update(Map<String, Object> board);
+
 }
