@@ -42,7 +42,11 @@ public interface BoardService {
 	List<Board> selectBoard2List();
 
 	/** 자유 게시판 검색 서비스
-	*/
+	 * 
+	 * @param paramMap
+	 * @param cp
+	 * @return
+	 */
 	Map<String, Object> searchList1(Map<String, Object> paramMap, int cp);
   
   
