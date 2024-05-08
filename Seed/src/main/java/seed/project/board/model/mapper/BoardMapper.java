@@ -22,8 +22,6 @@ public interface BoardMapper {
 	 * @return listCount
 	 */
 	int getListCount(int boardCode);
-	
-	
   
   
   
@@ -45,6 +43,13 @@ public interface BoardMapper {
 	 * @return
 	 */
 	List<Comment> board2CommentList(int boardNo);
+	
+	
+	/** [3] 팁과 노하우 게시글 수 조회
+	 * @param boardCode
+	 * @return
+	 */
+	int getListCount3(int boardCode);
 	
 	
 	/** [3] 팁과 노하우 게시글 목록 조회
@@ -93,5 +98,6 @@ public interface BoardMapper {
 	 */
 	List<Board> selectSearchList1(Map<String, Object> paramMap, RowBounds rowBounds);
 
+	int getListCount(int boardCode);
 
 }

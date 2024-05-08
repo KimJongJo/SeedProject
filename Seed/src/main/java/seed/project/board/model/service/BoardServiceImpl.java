@@ -226,5 +226,12 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	
+	@Override
+	public List<Board> selectBoard2List() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 }
+
