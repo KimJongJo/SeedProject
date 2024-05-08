@@ -62,4 +62,10 @@ public interface BoardService {
 	 * @return
 	 */
 	Map<String, Object> searchList3(Map<String, Object> paramMap, int cp);
+
+	/** [1] 자유 게시판 - 게시글 상세조회
+	 * @param map
+	 * @return
+	 */
+	Board selectOne1(Map<String, Object> map);
 }
