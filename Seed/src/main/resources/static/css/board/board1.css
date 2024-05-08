@@ -112,6 +112,7 @@
     color: white;
     font-size: 15px;
     transition-duration: 0.2s;
+}
   
 #nav-bottom a:nth-child(2){
     margin-top: 15px;

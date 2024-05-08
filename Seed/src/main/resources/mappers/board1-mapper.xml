@@ -5,6 +5,17 @@
 
 	<!-- 자유게시판 검색조건이 맞는 게시글 수 조회 -->
 	<select id="getSearchCount1">
+		SELECT COUNT(*)
+		FROM "BOARD"
+		
+		<!-- 작성자 검색인 경우 -->
+		<if test='key == "w"'>
+			JOIN "MEMBER" USING(MEMBER_NO)
+		</if>
+		
+		WHERE BOARD_DEL_FL = 'N'
+		AND BOARD_CODE = #{boardCode}
+		
 		<choose>
 			<!-- 제목 검색 (key 값이 "t"인 경우)-->
 			<when test='key=="t"'>
@@ -68,33 +79,12 @@
 			END BOARD_WRITE_DATE
 			]]>
 			
-		<!-- BOARD테이블의 자유게시판(1)에서 삭제되지않고 게시글 내림차순 조회 -->
-    	<choose>
-			<!-- 제목 검색 (key 값이 "t"인 경우)-->
-			<when test='key=="t"'>
-				AND BOARD_TITLE LIKE '%' || #{query} || '%'
-			</when>
-			
-			<!-- 내용 검색 (key 값이 "c"인 경우)-->
-			<when test='key=="c"'>
-				AND BOARD_CONTENT LIKE '%' || #{query} || '%'
-			</when>
-			
-			<!-- 제목 + 내용 검색 (key 값이 "tc"인 경우)-->
-			<when test='key=="tc"'>
-				AND (
-					BOARD_CONTENT LIKE '%' || #{query} || '%'
-					OR
-					BOARD_TITLE LIKE '%' || #{query} || '%'
-					) 
-			</when>
-			
-			<!-- 작성자 검색 (key 값이 "w"인 경우 -->
-			<otherwise>
-				AND MEMBER_NICKNAME LIKE '%' || #{query} || '%'
-			</otherwise>
-			
-		</choose>
+		FROM "BOARD" B
+		JOIN "MEMBER" USING(MEMBER_NO)
+		WHERE BOARD_DEL_FL = 'N'
+		AND BOARD_CODE = #{boardCode}
+		ORDER BY BOARD_NO DESC
+		
 	</select>
 	
 	
