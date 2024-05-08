@@ -93,4 +93,6 @@ public interface BoardMapper {
 	 */
 	List<Board> selectSearchList1(Map<String, Object> paramMap, RowBounds rowBounds);
 
+	int getListCount(int boardCode);
+
 }
