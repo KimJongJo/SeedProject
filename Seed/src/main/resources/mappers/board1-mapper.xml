@@ -85,6 +85,7 @@
 		WHERE BOARD_DEL_FL = 'N'
 		AND BOARD_CODE = #{boardCode}
 		ORDER BY BOARD_NO DESC
+
 	</select>
 	
 	
