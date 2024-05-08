@@ -315,3 +315,14 @@ table tr{
     height: 40px;
     width: 55px;
 }
+
+
+.write-menu{
+    display: flex;
+    margin-top: 20px;
+}
+
+.write-menu > button{
+    width: 55px;
+    height: 40px;
+}

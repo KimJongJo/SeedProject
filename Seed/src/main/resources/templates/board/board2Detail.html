@@ -20,6 +20,12 @@
 
     <th:block th:object="${boardInfo}">
         <div class="board">
+            <th:block th:if="${session.loginMember}">
+                <div class="write-menu">
+                    <button>수정</button>
+                    <button>삭제</button>
+                </div>
+            </th:block>
             <div class="board-top">
                 <div th:text="|*{boardNo}번|" class="boardNo">게시글 번호</div>
                 <div th:text="*{boardTitle}" class="boardTitle">게시글 제목</div>
