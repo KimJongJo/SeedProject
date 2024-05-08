@@ -94,7 +94,7 @@ if(pushBtn != null){
 
 // 게시글 수정
 if(updateBtn != null){
-    updateBtn.addEventListener("click", (e) => {
+    updateBtn.addEventListener("click", () => {
 
         const board = {
             "boardNo" : boardNo,
