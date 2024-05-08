@@ -2,20 +2,23 @@ package seed.project.board.model.mapper;
 
 import java.util.List;
 import java.util.Map;
+
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.session.RowBounds;
+
 import seed.project.board.model.dto.Board;
 import seed.project.board.model.dto.Comment;
 
 @Mapper
 public interface BoardMapper {
 
-	/** 게시판 종류 조회
+	/** [공통] 게시판 종류 조회
 	 * @return boardTypeList
 	 */
 	List<Map<String, Object>> selectBoardTypeList();
 
-	/** 자유 게시판 게시글 수 조회
+	
+	/** [공통] 게시판 게시글 수 조회
 	 * @param boardCode
 	 * @return listCount
 	 */
@@ -30,6 +33,7 @@ public interface BoardMapper {
 	 */
 	List<Board> selectBoard2List(int boardCode, RowBounds rowBounds);
 
+	
 	/** 게시글 정보 가져오기
 	 * @param boardNo
 	 * @return
@@ -68,7 +72,6 @@ public interface BoardMapper {
 	List<Board> selectSearchList3(Map<String, Object> paramMap, RowBounds rowBounds);
 
 
-	
 	
 	/** 자유 게시판 검색 조건이 맞는 게시글 수 조회
 	 * @param paramMap

@@ -16,5 +16,5 @@
 		WHERE BOARD_DEL_FL = 'N'
 		AND BOARD_CODE = #{boardCode}
 	</select>
-	
+
 </mapper>
