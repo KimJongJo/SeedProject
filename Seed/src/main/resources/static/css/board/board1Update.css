@@ -1,0 +1,59 @@
+/* 크기 변경 제한 */
+textarea {
+    resize: none;
+}
+
+main {
+    width: 900px;
+    min-height: 900px;
+    /* padding: 20px 0px; */
+}
+
+
+.board-name-area {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.board-name {
+    margin: 20px 0px;
+}
+
+/* 제목 input 창 꾸미기 */
+.board-title {
+    width: 100%;
+    height: 40px;
+    padding-left: 20px;
+    border: none;
+    font-size: 18px;
+    border-radius: 5px;
+    outline: none;
+    border: 1px solid #ddd;
+    box-shadow: 0 3px 3px rgba(0,0,0,0.2);
+}
+
+/* 제목 글씨 */
+.board-name-area > h3 {
+    margin: 10px 0px;
+}
+
+
+/* 내용 글씨 */
+.board-content-area > h3{
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+/* 게시판 내용 textarea 크기 지정 */
+.board-content {
+    width: 100%;
+    min-height: 500px;
+    padding: 20px;
+    border: none;
+    font-size: 18px;
+    border-radius: 5px;
+    outline: none;
+    border: 1px solid #ddd;
+    box-shadow: 0 3px 3px rgba(0,0,0,0.2);
+}
