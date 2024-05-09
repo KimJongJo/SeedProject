@@ -331,6 +331,13 @@ public class BoardServiceImpl implements BoardService{
 		return mapper.board1Delete(boardNo);
 	}
 
+	// [2] 댓글 수정하기
+	@Override
+	public int board2CommentUpdate(Map<String, Object> commentMap) {
+		
+		return mapper.board2CommentUpdate(commentMap);
+	}
+
 
 }
 
