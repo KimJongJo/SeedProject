@@ -163,6 +163,21 @@ public interface BoardMapper {
 	 * @return
 	 */
 	int board2CommentDelete(int commentNo);
+  
+	/** [1] 게시글 수정하기
+	 * @param board
+	 * @return
+	 */
+	int board1Update(Map<String, Object> board);
+
+
+	/** [1] 게시글 삭제하기
+	 * @param boardNo
+	 * @return
+	 */
+	int board1Delete(int boardNo);
+
+
 
 
 

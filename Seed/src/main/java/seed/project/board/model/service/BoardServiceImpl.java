@@ -274,6 +274,7 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	
+
 	// [2] 댓글 달기
 	@Override
 	public int board2Comment(Map<String, Object> commentMap) {
@@ -288,6 +289,21 @@ public class BoardServiceImpl implements BoardService{
 		return mapper.board2CommentDelete(commentNo);
 	}
 
+
+
+	// [1] 게시글 수정하기
+	@Override
+	public int board1Update(Map<String, Object> board) {
+		return mapper.board1Update(board);
+	}
+
+	// [1] 게시글 삭제하기
+	@Override
+	public int board1Delete(int boardNo) {
+		return mapper.board1Delete(boardNo);
+	}
+
+	
 
 
 }
