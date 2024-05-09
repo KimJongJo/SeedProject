@@ -496,6 +496,17 @@ public class BoardController {
 		return path;
 	}
 	
+	
+	/** [3] 팁과 노하우 - 게시글 작성 페이지로 이동
+	 * @param boardCode
+	 * @return
+	 */
+	@GetMapping("{boardCode:[3]}/write")
+	public String boardWrite(@PathVariable("boardCode") int boardCode) {
+		
+		return "board/board3Write";
+	}
+
 
 	
 }
