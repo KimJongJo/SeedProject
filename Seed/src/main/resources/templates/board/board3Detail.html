@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title th:text="|${board.boardTitle}| ">게시글 제목</title>
 
     <th:block th:replace="~{common/common}"></th:block>
     <link rel="stylesheet" href="/css/board/board3Detail.css">
@@ -12,57 +12,89 @@
     <th:block th:replace="~{common/header}"></th:block>
     
     <main>
-        <section>
-            <div class="board-Title"><a>게시판 이름</a></div>
+        <section class="board-detil" th:object="${board}">
+            <!-- 게시판 이름 영역 -->
+            <div class="hd1-nm-area">
+                <th:block th:each="boardType : ${application.boardTypeList}">
+                    <a 
+                        class="board-name"
+                        th:if="${boardType.boardCode} == ${boardCode}"
+                        th:text="${boardType.boardName}"
+                    >게시판 이름</a>
+                </th:block>
+            </div>            
             
-            <div>
-                <div>
-                    <span>제목</span>
+            <!-- 제목, 작성일 영역 -->
+            <div class="hd2-tt-wd-area">
+                <div class="board-title-area">
+                    <span class="board-title" th:text="*{boardTitle}">제목</span>
                 </div>
-                <div>
-                    <span>작성일</span>
+                <div class="board-writeDate-area">
+                    <th:block th:unless="*{boardUpdateDate}">
+                        <p><span class="board-writeDate" th:text="*{boardWriteDate}">작성일</span>(수정됨)</p>
+                    </th:block>
+
+                    <th:block th:if="*{boardUpdateDate}">
+                        <p><span class="board-writeDate" th:text="*{boardUpdateDate}">수정일</span>(수정됨)</p>
+                    </th:block> 
                 </div>
             </div>
             
-            <div>
-                <div><a>작성자</a></div>
-                <div>
-                    <span>조회 수</span>
-                    <span>댓글 수</span>
-                    
+            <div class="h3-wt-rc-cc-lc-area">
+                <div class="board-writer-area">
+                    <a class="board-writer"
+                        th:text="*{memberNickname}">작성자>
+                    </a>
+                </div>
+                
+                <div class="board-count-area">
+                    <span>조회 수 <span th:text="*{readCount}" style="font-weight: bold; color: rgb(102, 102, 102);"></span></span>
+                    <span>댓글 수 <span th:text="*{commentCount}" style="font-weight: bold; color: rgb(102, 102, 102);"></span></span>          
                     <!-- 하트 -->
                     <span>
                         <i class="fa-heart" id="boardLike"
                         th:classappend="*{likeCheck == 1} ? fa-solid : fa-regular"
                         ></i>
-                        <span>좋아요 개수</span>
+                        <span th:text="*{likeCount}" style="font-weight: bold; color: rgb(102, 102, 102)">좋아요 개수</span>
                     </span>
                 </div>
             </div>
 
             <!-- 콘텐츠 -->
-            <div>
-                내용
-            </div>
+            <div class="board-content-area">내용</div>
 
             <!-- 버튼 영역 -->
-            <div>
+
+            <!-- 이전, 목록, 다음 -->
+            <div class="goToBtn-area">
+                <div>
+                    <button id="goToBeforeBtn">&lt;&nbsp;이전 글</button>
+                </div>
+                <div>
+                    <button id="goToListBtn">목록으로</button>
+                </div>
+                <div>
+                    <button id="goToAfterBtn">다음 글&nbsp;&gt;</button>
+                </div>
+            </div>
+            <!-- 수정, 삭제 -->
+            <div class="update-delete-area">
                 <!-- 로그인한 회원과 게시글 작성한 회원의 번호가 같은 경우 -->
                 <th:block th:if="${board.memberNo == session.loginMember?.memberNo}">
-                    <button id="updateBtn">수정</button>
-                    <button id="deleteBtn">삭제</button>
+                    <button id="updateBtn">게시글 수정</button>
+                    <button id="deleteBtn">게시글 삭제</button>
                 </th:block>
 
-                <button id="goToListBtn">목록으로</button>
+                
             </div>
             <!-- 댓글 영역 -->
-            <div>
-                <div>
-                    <span>댓글</span>
+            <div class="comment-area">
+                <div class="comment-title">
+                    <span>댓글</span> [[*{commentCount}]] 개
                 </div>
                 
-                <div>
-                    <ul>
+                <div class="comment-list-area">
+                    <ul id="commentList">
                         <!-- li 태그 사이에 삭제 댓글 및 답글 수정 등 버튼 넣기 -->
                         <li>댓글1</li>
                         <li>댓글2</li>
@@ -70,7 +102,7 @@
                 </div>
                 
                 <!-- 댓글 작성 부분 -->
-                <div>
+                <div class="comment-write-area">
                     <textarea></textarea>
                     <button>댓글등록</button>
                 </div>

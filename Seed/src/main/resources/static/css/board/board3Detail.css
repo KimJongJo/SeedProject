@@ -19,5 +19,232 @@ section {
     align-items: center;
 }
 
+/* 게시판 제목 영역 */
+.hd1-nm-area {
+    
+    width: 100%;
+    text-align: left;
+    padding: 20px 0 20px 0;
+}
 
+.hd1-nm-area a {
+    font-size: 26px;
+    font-weight: 800;
+    color: #555;
+    text-decoration: none;
+    
+}
+
+
+/* ------------------------------------------------ */
+
+/* 제목, 작성일 영역 */
+.hd2-tt-wd-area {
+    display: flex;
+    width: 100%;
+    height: 40px;
+    border-top: 1px solid #bbb;
+    border-bottom: 1px solid #bbb;
+    padding: 24px 12px;
+    align-items: center;
+    background-color: #bee1de;
+    box-shadow: inset 0 -1px 0 #ccc;
+}
+
+/* 제목 부분 */
+.board-title-area {
+    width: 80%;
+    display: flex;
+
+}
+
+/* 제목 span 태그 */
+.board-title-area span {
+    font-size: 22px;
+    font-weight: 600;
+    width: 100%;
+}
+
+/* 작성일(수정일) 부분 */
+.board-writeDate-area {
+    width: 20%;
+    text-align: right;
+}
+
+/* 작성일(수정일) p 태그 */
+.board-writeDate-area p {
+    font-size: 14px;
+    color: #555;
+}
+
+/* ------------------------------------------------ */
+
+/* 유저 닉네임, 조회 수, 댓글 수, 좋아요 영역 */
+.h3-wt-rc-cc-lc-area {
+
+    width: 100%;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    padding: 20px 12px;
+    border-bottom: 1px solid rgb(233, 227, 227);
+}
+
+/* 작성자 */
+.board-writer-area {
+    width: 50%;
+}
+
+.board-writer-area a {
+    font-size: 16px;
+    font-weight: 800;
+    color: #555;
+    text-decoration: none;
+}
+
+
+/* 카운트 모음 */
+.board-count-area {
+    width: 50%;
+    text-align: right;
+}
+
+/* 조회수 ~ 댓글 수 */
+.board-count-area > span:nth-child(1), .board-count-area > span:nth-child(2) {
+    font-size: 16px;
+    color: rgb(140, 140, 140);
+    margin-right: 16px;
+}
+
+/* 하트 i */
+#boardLike {
+    font-size: 18px;
+}
+
+/* -------------------------------- */
+
+/* 콘텐츠 본문 */
+.board-content-area {
+    width: 100%;
+    height: 100%;
+    clear: both;
+    white-space: pre-wrap;
+    padding: 30px 12px;
+    font-size: 15px;
+    
+}
+
+/* 이전글, 목록으로, 다음글 영역 */
+.goToBtn-area {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 12px;
+    border-bottom: 1px solid rgb(233, 227, 227);
+}
+
+/* 이전글, 다음글 버튼 */
+#goToBeforeBtn, #goToAfterBtn {
+    background-color: #bee1de;
+    font-size: 14px;
+    border-radius: 3px;
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.6);
+    color: black;
+    border: 1px solid #cde8e6;
+    width: 90px;
+    height: 30px;
+    text-align: center;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* 목록으로 버튼 */
+#goToListBtn {
+    background-color: #bee1de;
+    font-size: 14px;
+    border-radius: 3px;
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.6);
+    color: black;
+    border: 1px solid #cde8e6;
+    width: 240px;
+    height: 30px;
+    text-align: center;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-weight: bold;
+
+}
+
+/* 수정, 삭제 영역 */
+.update-delete-area {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    padding: 12px;
+}
+
+
+#updateBtn, #deleteBtn {
+    background-color: #F9F9F9;
+    font-size: 14px;
+    border-radius: 3px;
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.6);
+    border: 1px solid #F9F9F9;
+    width: 120px;
+    height: 30px;
+    text-align: center;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-left: 20px;
+}
+
+#updateBtn { color: lightblue;}
+#deleteBtn { color: lightpink;}
+
+#updateBtn:hover {box-shadow: 0px 5px 0px 0px #F9F9F9;}
+#deleteBtn:hover {box-shadow: 0px 5px 0px 0px #F9F9F9;}
+
+/* ------ 댓글 영역 ------------ */
+
+.comment-area {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+
+    
+}
+
+
+.comment-title {
+
+    width: 100%;
+    padding: 12px;
+    margin-top: 20px;
+    border-top: 2px solid #cde8e6;
+    border-bottom: 1px solid rgb(233, 227, 227);
+    font-size: 18px;
+    font-weight: 700px;
+}
+
+.comment-list-area {
+
+    width: 100%;
+    padding: 24px 12px;
+}
+
+.comment-list-area li {
+    list-style: none;
+}
+
+
+.comment-write-area {
+	display: flex;
+	min-height: 60px;
+	justify-content: center;
+	
+
+}
 
