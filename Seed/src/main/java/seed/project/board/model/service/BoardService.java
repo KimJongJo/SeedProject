@@ -100,4 +100,11 @@ public interface BoardService {
 	 */
 	Board selectOne1(Map<String, Object> map);
 
+	/** [2] 문의 게시판 검색
+	 * @param paramMap
+	 * @param cp
+	 * @return
+	 */
+	Map<String, Object> selectBoard2SearchList(Map<String, Object> paramMap, int cp);
+
 }

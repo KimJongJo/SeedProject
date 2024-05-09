@@ -64,27 +64,74 @@
 
         <div th:object="${pagination}">
 
-            <a th:href="@{/board/2(cp=1)}" class="i"><i class="fa-solid fa-angles-left"></i></a>
+            <!--------------- 처음 페이지 << --------------->
+            <!-- 검색 기능 사용 X -->
+            <th:block th:unless="${option}">
+                <a th:href="@{/board/2(cp=1)}" class="i"><i class="fa-solid fa-angles-left"></i></a>
+            </th:block>
 
-            <a th:href="@{/board/2(cp=*{prevPage})}" class="i"><i class="fa-solid fa-angle-left"></i></a>
+            <!-- 검색 기능 사용 O -->
+            <th:block th:if="${option}">
+                <a th:href="@{/board/2(cp=1, option=${option}, keyWord=${keyWord})}" class="i"><i class="fa-solid fa-angles-left"></i></a>
+            </th:block>
+
+            <!--------------- 이전 페이지 < --------------->
+            <!-- 검색 기능 사용 X -->
+            <th:block th:unless="${option}">
+                <a th:href="@{/board/2(cp=*{prevPage})}" class="i"><i class="fa-solid fa-angle-left"></i></a>
+            </th:block>    
+
+            <!-- 검색 기능 사용 O -->
+            <th:block th:if="${option}">
+                <a th:href="@{/board/2(cp=*{prevPage}, option=${option}, keyWord=${keyWord})}" class="i"><i class="fa-solid fa-angle-left"></i></a>
+            </th:block>
 
             <th:block th:each="i : *{#numbers.sequence(startPage, endPage)}">
+            
             
                 <th:block th:if="${i} == *{currentPage}">
                     <a th:text="${i}" class="currentPage">현재 페이지</a>
                 </th:block>
 
-                
-                <th:block th:unless="${i} == *{currentPage}">
-                    <a th:href="@{/board/2(cp=${i})}" th:text="${i}" class="otherPage">다른 페이지</a>
+                <!-- 검색 기능 사용 X -->
+                <th:block th:unless="${option}">
+                    <th:block th:unless="${i} == *{currentPage}">
+                        <a th:href="@{/board/2(cp=${i})}" th:text="${i}" class="otherPage">다른 페이지</a>
+                    </th:block>
+                </th:block>
+
+                <!-- 검색 기능 사용 O -->
+                <th:block th:if="${option}">
+                    <th:block th:unless="${i} == *{currentPage}">
+                        <a th:href="@{/board/2(cp=${i}, option=${option}, keyWord=${keyWord})}" th:text="${i}" class="otherPage">다른 페이지</a>
+                    </th:block>
                 </th:block>
 
             </th:block>
 
-            <a th:href="@{/board/2(cp=*{nextPage})}" class="i"><i class="fa-solid fa-angle-right"></i></a>
             
+            <!--------------- 다음 페이지 > --------------->
+            <!-- 검색 기능 사용 X -->
+            <th:block th:unless="${option}">
+                <a th:href="@{/board/2(cp=*{nextPage})}" class="i"><i class="fa-solid fa-angle-right"></i></a>
+            </th:block>
 
-            <a th:href="@{/board/2(cp=*{maxPage})}" class="i"><i class="fa-solid fa-angles-right"></i></a>
+            <!-- 검색 기능 사용 O -->
+            <th:block th:if="${option}">
+                <a th:href="@{/board/2(cp=*{nextPage}, option=${option}, keyWord=${keyWord})}" class="i"><i class="fa-solid fa-angle-right"></i></a>
+            </th:block>
+
+
+            <!--------------- 끝 페이지 >> --------------->
+            <!-- 검색 기능 사용 X -->
+            <th:block th:unless="${option}">
+                <a th:href="@{/board/2(cp=*{maxPage})}" class="i"><i class="fa-solid fa-angles-right"></i></a>
+            </th:block>
+            
+            <!-- 검색 기능 사용 O -->
+            <th:block th:if="${option}">
+                <a th:href="@{/board/2(cp=*{maxPage}, option=${option}, keyWord=${keyWord})}" class="i"><i class="fa-solid fa-angles-right"></i></a>
+            </th:block>
 
         </div>
 
@@ -92,16 +139,16 @@
 
 
 
-    <div class="searchLine">
-        <select name="" class="searchFilter">
-            <option value="">제목</option>
-            <option value="">내용</option>
-            <option value="">제목+내용</option>
-            <option value="">작성자</option>
+    <form action="/board/2" method="GET" class="searchLine">
+        <select id="option" name="option" class="searchFilter">
+            <option value="title">제목</option>
+            <option value="content">내용</option>
+            <option value="sum">제목+내용</option>
+            <option value="writer">작성자</option>
         </select>
-        <input type="text" placeholder="검색어를 입력해주세요">
-        <button>검색</button>
-    </div>
+        <input type="text" placeholder="검색어를 입력해주세요" id="keyWord" name="keyWord">
+        <button id="search-btn">검색</button>
+    </form>
 
     <th:block th:if="${session.loginMember}">
         <div class="w-div">
@@ -116,5 +163,7 @@
     <!-- 푸터 추가 -->
     <!-- <th:block th:replace="~{common/images3}"></th:block> -->
     <th:block th:replace="~{common/footer}"></th:block>
+
+    <script src="/js/board/board2.js"></script>
 </body>
 </html>

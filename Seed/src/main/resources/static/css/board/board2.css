@@ -15,7 +15,6 @@ div > h1{
 }
 
 table{
-    /* border: 1px solid black; */
     width: 850px;
     border-collapse: collapse;
 }
@@ -129,6 +128,10 @@ table tr{
     cursor: pointer;
 }
 
+.write-btn:hover{
+    border-radius: 20px 5px 20px 5px;
+}
+
 
 .searchFilter{
     height: 35px;
@@ -161,6 +164,7 @@ table tr{
     transition-duration: 0.3s;
     line-height: 40px;
     text-align: center;
+    text-decoration: none;
 }
 
 
@@ -168,7 +172,6 @@ table tr{
     display: flex;
     flex-direction: column;
     align-items: center;
-
     width: 800px;
     height: 1000px;
     margin-bottom: 50px;
@@ -177,12 +180,12 @@ table tr{
 
 /* 게시글 번호, 게시글 제목 */
 .board-top{
-    background-color: #8AA6A3;
     color: white;
-    padding-left: 10px;
     display: flex;
+    flex-direction: column;
     align-items: center;
     width: 700px;
+    text-align: center;
 }
 
 
@@ -203,12 +206,15 @@ table tr{
 }
 
 /* 게시글 내용 */
-.content{
+.boardContent{
     margin-top: 20px;
     border: 1px solid black;
     width: 700px;
     height: 500px;
     padding: 20px;
+    font-size: 20px;
+    border-radius: 5px;
+    border: 5px solid #10403B;
 }
 
 .content > div{
@@ -217,14 +223,19 @@ table tr{
 
 
 .boardNo{
+    width: 100%;
     font-size: 25px;
     flex-basis: 30%;
+    background-color: #10403B;
+    border-radius: 15px 15px 0 0;
 }
 
 .boardTitle{
+    width: 100%;
     font-size: 30px;
     flex-basis: 70%;
-    margin-left: 30px;
+    background-color: #127369;
+    border-radius: 0 0 15px 15px;
 }
 
 .memberNickname{
@@ -373,19 +384,67 @@ table tr{
     height: 50px;
     font-size: 25px;
     padding: 10px;
+    border-radius: 5px;
+    border: 5px solid #10403B;
 }
 
 .write-content{
     height: 500px;
     font-size: 20px;
     padding: 10px;
+    border-radius: 5px;
+    border: 5px solid #10403B;
 }
 
 .write-push-btn{
     margin-top: 10px;
-    width: 40px;
-    height: 30px;
+    width: 50px;
+    height: 40px;
     align-self: flex-end;
+    font-size: 15px;
+    background-color: #8AA6A3;
+    border: none;
+    color: white;
+    transition-duration: 0.3s;
+    border-radius: 5px;
 }
 
+.write-push-btn:hover{
+    background-color: #127369;
+    border-radius: 20px 5px 20px 5px;
+    transition-duration: 0.3s;
+}
+
+/* 수정 버튼 */
+#boardUpdate{
+    text-decoration: none;
+}
+
+
+#boardUpdate, #boardDelete{
+    font-size: 14px;
+    color: white;
+    cursor: pointer;
+    background-color: #8AA6A3;
+    border-radius: 5px;
+    border: 1px solid black;
+    border: none;
+    transition-duration: 0.3s;
+}
+
+
+#boardUpdate:hover{
+    background-color: #127369;
+}
+
+#boardDelete:hover{
+    background-color: #CE9898;
+
+}
+
+
+#boardUpdate:hover, #boardDelete:hover{
+    border-radius: 20px 5px 20px 5px;
+    transition-duration: 0.3s;
+}
 

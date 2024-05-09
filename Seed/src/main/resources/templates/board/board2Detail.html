@@ -42,7 +42,9 @@
                 </div>
                 <div>
                     <div th:text="|작성일 : *{boardWriteDate}|" class="boardWriteDate">작성일</div>
-                    <div th:text="*{boardUpdateDate}" class="boardUpdateDate">마지막 수정일</div>
+                    <th:block th:if="*{boardUpdateDate}">
+                        <div th:text="|수정일 : *{boardUpdateDate}|" class="boardUpdateDate">마지막 수정일</div>
+                    </th:block>
                 </div>
                 <div>
                     

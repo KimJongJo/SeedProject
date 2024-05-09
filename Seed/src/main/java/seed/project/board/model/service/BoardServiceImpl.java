@@ -245,6 +245,34 @@ public class BoardServiceImpl implements BoardService{
 		return mapper.board2Update(board);
 	}
 
+	// [2] 문의 게시판 검색
+	@Override
+	public Map<String, Object> selectBoard2SearchList(Map<String, Object> paramMap, int cp) {
+		
+		// 삭제되지 않은 게시글 검색
+		List<Board> boardList = mapper.getSearchCount2(paramMap);
+		
+		// 게시글이 존재할 때 페이징 객체 생성
+		if(boardList.size() > 0) {
+			Pagination pagination = new Pagination(cp, boardList.size());
+			
+			int offset = (cp - 1) * pagination.getLimit();
+			RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
+
+			// 반환되는 boardList2
+			List<Board> boardList2 = mapper.getSearchCount2(paramMap, rowBounds);
+			
+			
+			Map<String, Object> map = new HashMap<>();
+			map.put("pagination", pagination);
+			map.put("boardList", boardList2);
+			
+			return map;
+		}
+		
+		return null;
+	}
+
 
 }
 

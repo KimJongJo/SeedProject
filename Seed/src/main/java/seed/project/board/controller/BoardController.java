@@ -134,15 +134,35 @@ public class BoardController {
 	 */
 	@GetMapping("{boardCode:[2]}")
 	  public String board2(Model model,
-							@RequestParam(value="cp", required = false, defaultValue="1") int cp
+							@RequestParam(value="cp", required = false, defaultValue="1") int cp,
+							@RequestParam(value= "option", required = false) String option,
+							@RequestParam(value= "keyWord", required = false) String keyWord
 							) {
 			
+		// 검색 기능을 사용하지 않음
+		if(option == null) {
 			Map<String, Object> map = service.selectBoard2List(2, cp); 
 			
 			if(map != null) {
 				model.addAttribute("boardList", map.get("boardList"));
 				model.addAttribute("pagination", map.get("pagination"));
 			}
+		}else {	// 검색 기능을 사용함
+			
+			Map<String, Object> paramMap = new HashMap<>();
+			paramMap.put("option", option);
+			paramMap.put("keyWord", keyWord);
+			
+			Map<String, Object> map = service.selectBoard2SearchList(paramMap, cp);
+			
+			if(map != null) {
+				model.addAttribute("boardList", map.get("boardList"));
+				model.addAttribute("pagination", map.get("pagination"));
+				model.addAttribute("option", option);
+				model.addAttribute("keyWord", keyWord);
+			}
+			
+		}
 			
 			
 			return "board/board2";
