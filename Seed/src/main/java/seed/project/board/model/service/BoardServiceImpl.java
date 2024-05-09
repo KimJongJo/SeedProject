@@ -3,11 +3,9 @@ package seed.project.board.model.service;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import org.apache.ibatis.session.RowBounds;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import lombok.RequiredArgsConstructor;
 import seed.project.board.model.dto.Board;
 import seed.project.board.model.dto.Comment;
@@ -303,6 +301,34 @@ public class BoardServiceImpl implements BoardService{
 		
 
 		return mapper.afterPage(map);
+	}
+
+	// [2] 댓글 달기
+	@Override
+	public int board2Comment(Map<String, Object> commentMap) {
+		
+		return mapper.board2Comment(commentMap);
+	}
+
+	// [2] 댓글 삭제
+	@Override
+	public int board2CommentDelete(int commentNo) {
+		
+		return mapper.board2CommentDelete(commentNo);
+	}
+
+
+
+	// [1] 게시글 수정하기
+	@Override
+	public int board1Update(Map<String, Object> board) {
+		return mapper.board1Update(board);
+	}
+
+	// [1] 게시글 삭제하기
+	@Override
+	public int board1Delete(int boardNo) {
+		return mapper.board1Delete(boardNo);
 	}
 
 

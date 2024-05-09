@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="|${board.boardNo}번글 수정|">게시글 수정</title>
+
+    <th:block th:replace="~{common/common}"></th:block>
+    <link rel="stylesheet" href="/css/board/board1Update.css">
+</head>
+<body>
+
+    <!-- 헤더 -->
+    <th:block th:replace="~{common/header}"></th:block>
+    
+    <main>
+
+        <section class="board1-update" th:object="${board}">
+
+            <form>
+
+                <div>                
+                    <h1 class="board-name"
+                    th:text="자유게시판"></h1>
+                </div>
+                
+                <!-- 수정할 제목 공간 -->
+                <div class="board-name-area">
+                    <h3>제목</h3>
+                    <input class="board-title" th:value="*{boardTitle}" type="text" maxlength="30"></input>
+                </div>
+                
+                
+                <!-- 수정할 내용 공간 -->
+                <div class="board-content-area">
+                    <h3>내용</h3>
+                    <textarea class="board-content" th:text="*{boardContent}"></textarea>
+                </div>
+                
+                <!-- js에서 boardNo 사용하려고 씀 -->
+                <input type="hidden" th:value="*{boardNo}" id="boardNo">
+                
+                
+                <button type="button" id="updateBtn">수정하기</button>
+                
+            </form>
+            
+        </section>
+    </main>
+
+    <th:block th:replace="~{common/footer}"></th:block>
+    <script src="/js/board/board1Update.js"></script>
+</body>
+</html>

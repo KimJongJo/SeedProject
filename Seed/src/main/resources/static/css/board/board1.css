@@ -4,12 +4,12 @@
     align-items: center; 
     justify-content: center;
     width: 850px;
-    margin: 50px auto;
+    margin: 0px auto;
 }
 
-/* 자유게시판 위치 및 padding */
+/* 자유게시판 글씨 위치 및 padding */
 .board-name {
-    width: 800px;
+    width: 100%;
     display: flex;
     justify-content: flex-start;
     padding: 20px 0;
@@ -72,7 +72,7 @@
 
 /* 검색창 공간 위쪽 공백 */
 .boardSearch {
-    padding-top: 50px;
+    padding-top: 30px;
 }
 
 /* 검색할 것 종류 (select태그) */

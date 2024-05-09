@@ -2,10 +2,8 @@ package seed.project.board.model.mapper;
 
 import java.util.List;
 import java.util.Map;
-
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.session.RowBounds;
-
 import seed.project.board.model.dto.Board;
 import seed.project.board.model.dto.Comment;
 
@@ -171,12 +169,39 @@ public interface BoardMapper {
 	 */
 	int beforePage(Map<String, Integer> map);
 
-
 	/** [3] 팁과 노하우 게시판 - 다음글
 	 * @param map
 	 * @return
 	 */
 	int afterPage(Map<String, Integer> map);
+  
+	/** [2] 댓글 달기
+	 * @param commentMap
+	 * @return
+	 */
+	int board2Comment(Map<String, Object> commentMap);
+
+
+	/** [2] 댓글 삭제
+	 * @param commentNo
+	 * @return
+	 */
+	int board2CommentDelete(int commentNo);
+  
+	/** [1] 게시글 수정하기
+	 * @param board
+	 * @return
+	 */
+	int board1Update(Map<String, Object> board);
+
+
+	/** [1] 게시글 삭제하기
+	 * @param boardNo
+	 * @return
+	 */
+	int board1Delete(int boardNo);
+
+
 
 
 }

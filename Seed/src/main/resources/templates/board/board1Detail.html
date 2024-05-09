@@ -19,38 +19,51 @@
             <!-- 작성자, 작성일, 좋아요, 하트수 -->
             <div class="board-header">
                 <div class="board-code-area">
-                    <span>자유게시판</span>
+                    <a th:href="@{/board/1}">자유게시판 ></a>
                 </div>
 
+                <!-- 게시글 제목 -->
                 <div class="board-title-area">
                     <h1 class="board-title" th:text="*{boardTitle}"
                     >게시글 제목</h1>
                 </div>
 
+                <!-- 작성자 -->
                 <div class="board-header1">
-                    <span class="board-writer" th:text="|작성자 : *{memberNickname}|"></span>
-                    <span class="like-count" th:text="|좋아요 : *{likeCount}|"></span>
+                    <span class="board-writer" th:text="*{memberNickname}"></span>
                 </div>
-
+                
+                <!-- 작성일, 조회수 -->
                 <div class="board-header2">
-                    <span class="board-write-date" th:text="|작성일 : *{boardWriteDate}|"></span>
-                    <span class="read-count" th:text="|조회수 : *{readCount}|"></span>
+                    <div>
+                        <span class="board-write-date" th:text="*{boardWriteDate}"></span>
+                        <span class="read-count" th:text="|조회수 : *{readCount}|"></span>
+                    </div>
+
+                    <input type="hidden" th:value="*{boardNo}" id="boardNo1">
+
+                    <th:block th:if="${session.loginMember != null and board.memberNo == session.loginMember?.memberNo}">
+                        <div class="btn-area">
+                            
+                            <!-- 로그인한 상태 + 작성자랑 로그인한 사람이 일치할 때 -->
+                            <a id="updateBtn" th:href="@{/board/1/board1Update(boardNo=*{boardNo})}">수정하기</a>
+                            <button id="deleteBtn">삭제하기</button>
+                        </div>
+                    </th:block>
                 </div>
-
+                
             </div>
-
+            
+            
             <div class="board-content" th:text="*{boardContent}"
             >게시글 내용</div>
 
-            <div class="btn-area">
 
-                <!-- 로그인한 상태 + 작성자랑 로그인한 사람이 일치할 때 -->
-                <th:block th:if="${session.loginMember != null and board.memberNo == session.loginMember?.memberNo}">
-
-                    <button class="updateBtn">수정하기</button>
-                    <button class="deleteBtn">삭제하기</button>
-                </th:block>
+            <div>
+                <span class="like-count" th:text="|좋아요 *{likeCount}|"></span>
+                <span class="comment-count" th:text="|댓글 *{commentCount}|"></span>
             </div>
+
             
         </section>
 
@@ -79,19 +92,14 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
     </main>
 
 
+
+
+
+
+
+    <script src="/js/board/board1Update.js"></script>
 </body>
 </html>
