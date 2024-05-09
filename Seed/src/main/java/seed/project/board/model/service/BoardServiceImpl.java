@@ -273,6 +273,38 @@ public class BoardServiceImpl implements BoardService{
 		return null;
 	}
 
+	
+	// [3] 팁과 노하우 게시판 - 조회수 증가(쿠키)
+	@Override
+	public int readCount3(int boardNo) {
+		
+		int result = mapper.readCount3(boardNo);
+		
+		if(result > 0) {
+			
+			return mapper.selectReadCount3(boardNo);
+		}
+		
+		return -1;
+	}
+
+	
+	// [3] 팁과 노하우 게시판 - 이전글
+	@Override
+	public int beforePage(Map<String, Integer> map) {
+		
+		return mapper.beforePage(map);
+	}
+
+	
+	// [3] 팁과 노하우 게시판 - 다음글
+	@Override
+	public int afterPage(Map<String, Integer> map) {
+		
+
+		return mapper.afterPage(map);
+	}
+
 
 }
 

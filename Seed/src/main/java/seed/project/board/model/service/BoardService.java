@@ -107,4 +107,23 @@ public interface BoardService {
 	 */
 	Map<String, Object> selectBoard2SearchList(Map<String, Object> paramMap, int cp);
 
+	/** [3] 팁과 노하우 게시판 - 조회수 증가(쿠키)
+	 * @param boardNo
+	 * @return
+	 */
+	int readCount3(int boardNo);
+
+	/** [3] 팁과 노하우 게시판 - 이전글
+	 * @param map
+	 * @return
+	 */
+	int beforePage(Map<String, Integer> map);
+
+	
+	/** [3] 팁과 노하우 게시판 - 다음글
+	 * @param map
+	 * @return
+	 */
+	int afterPage(Map<String, Integer> map);
+
 }

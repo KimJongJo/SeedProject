@@ -1,5 +1,6 @@
 /* 버튼 클릭 시 팝업 처리 */
 
+
 // 이전 ...
 const pageMoveBtn1 = document.getElementById("pageMoveBtn1");
 const pagePopup1 = document.getElementById("pagePopup1");
@@ -121,6 +122,46 @@ if(inputPageBtn2 != null) {
 
     })
 }
+
+
+
+/* 이전, 다음 버튼 (1페이지, 마지막 페이지 시) */
+
+const beforePageBtn = document.getElementById('beforePageBtn');
+const afterPageBtn = document.getElementById('afterPageBtn');
+
+function handleMouseOver1(event) {
+    // CSS에 정의된 스타일을 무시하고 인라인 스타일을 설정
+    beforePageBtn.style.backgroundColor = 'transparent';
+    beforePageBtn.style.border = 'none';
+    beforePageBtn.style.borderRadius = '0';
+    beforePageBtn.style.cursor = 'Auto';
+    
+}
+
+function handleMouseOver2(event) {
+    // CSS에 정의된 스타일을 무시하고 인라인 스타일을 설정
+    afterPageBtn.style.backgroundColor = 'transparent';
+    afterPageBtn.style.border = 'none';
+    afterPageBtn.style.borderRadius = '0';
+    afterPageBtn.style.cursor = 'Auto';
+    
+}
+
+if(currentPage == 1) {
+    beforePageBtn.removeAttribute('href');
+    beforePageBtn.style.color = "rgb(200, 200, 200)";
+    beforePageBtn.addEventListener('mouseover', handleMouseOver1);
+
+}
+
+if(currentPage == lastPage) {
+    afterPageBtn.removeAttribute('href');
+    afterPageBtn.style.color = "rgb(200, 200, 200)";
+    afterPageBtn.addEventListener('mouseover', handleMouseOver2);
+}
+
+
 
 
 /* 글쓰기 버튼 클릭 시 */

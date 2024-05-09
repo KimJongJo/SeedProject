@@ -52,4 +52,6 @@ public class Board {
 	
 	// 좋아요 여부 확인
 	private int likeCheck;
+	
+	
 }

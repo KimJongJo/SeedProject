@@ -1,3 +1,16 @@
+header > :first-child {
+    background-color: #10403B;
+    height: 70px;
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+header > div:nth-child(4) {
+    display: flex;
+    justify-content: center;
+    margin: 10px 30px;
+}
+
 #nav-bottom a:nth-child(4){
     margin-top: 15px;
     margin-bottom: 5px;
@@ -126,13 +139,60 @@ section {
 /* 콘텐츠 본문 */
 .board-content-area {
     width: 100%;
-    height: 100%;
+    height: 50vh;
     clear: both;
     white-space: pre-wrap;
     padding: 30px 12px;
     font-size: 15px;
+    border-bottom: 1px solid rgb(233, 227, 227);
+    margin-bottom: 5px;
     
 }
+/* 첨부파일명 */
+
+.file-name-area {
+    display: flex;
+    width: 100%;
+    padding: 12px;
+    align-items: center;
+    border-bottom: 1px solid rgb(233, 227, 227);
+}
+
+.file-name-area ul {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+}
+
+.file-name-area li {
+    margin-right: 20px;
+    font-size: 14px;
+}
+
+.file-name-area a {
+    color: rgb(140, 140, 140);
+    text-decoration: none;
+}
+
+
+
+
+/* 이미지 부분 */
+.images-area {
+    display: flex;
+    height: 20%;
+    width: 100%;
+    padding: 24px 12px;
+    justify-content: space-around;
+    
+}
+
+.images-area img {
+    width: 100%;
+    height: 100%;
+}
+
+
 
 /* 이전글, 목록으로, 다음글 영역 */
 .goToBtn-area {
@@ -143,6 +203,22 @@ section {
     border-bottom: 1px solid rgb(233, 227, 227);
 }
 
+.goToBtn-area div:nth-child(1), .goToBtn-area div:nth-child(3) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 30px;
+}
+
+.goToBtn-area div:nth-child(2) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 240px;
+    height: 30px;
+}
+
 /* 이전글, 다음글 버튼 */
 #goToBeforeBtn, #goToAfterBtn {
     background-color: #bee1de;
@@ -151,12 +227,12 @@ section {
     box-shadow: 0 3px 3px rgba(0, 0, 0, 0.6);
     color: black;
     border: 1px solid #cde8e6;
-    width: 90px;
-    height: 30px;
     text-align: center;
     padding: 5px 10px;
     cursor: pointer;
     font-weight: bold;
+    width: 100%;
+    text-decoration: none;
 }
 
 /* 목록으로 버튼 */
@@ -167,13 +243,12 @@ section {
     box-shadow: 0 3px 3px rgba(0, 0, 0, 0.6);
     color: black;
     border: 1px solid #cde8e6;
-    width: 240px;
-    height: 30px;
     text-align: center;
     padding: 5px 10px;
     cursor: pointer;
     font-weight: bold;
-
+    width: 100%;
+    text-decoration: none;
 }
 
 /* 수정, 삭제 영역 */
