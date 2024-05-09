@@ -64,44 +64,74 @@
 
         <div th:object="${pagination}">
 
-            <a th:href="@{/board/2(cp=1)}" class="i"><i class="fa-solid fa-angles-left"></i></a>
+            <!--------------- 처음 페이지 << --------------->
+            <!-- 검색 기능 사용 X -->
+            <th:block th:unless="${option}">
+                <a th:href="@{/board/2(cp=1)}" class="i"><i class="fa-solid fa-angles-left"></i></a>
+            </th:block>
 
-            <a th:href="@{/board/2(cp=*{prevPage})}" class="i"><i class="fa-solid fa-angle-left"></i></a>
+            <!-- 검색 기능 사용 O -->
+            <th:block th:if="${option}">
+                <a th:href="@{/board/2(cp=1, option=${option}, keyWord=${keyWord})}" class="i"><i class="fa-solid fa-angles-left"></i></a>
+            </th:block>
+
+            <!--------------- 이전 페이지 < --------------->
+            <!-- 검색 기능 사용 X -->
+            <th:block th:unless="${option}">
+                <a th:href="@{/board/2(cp=*{prevPage})}" class="i"><i class="fa-solid fa-angle-left"></i></a>
+            </th:block>    
+
+            <!-- 검색 기능 사용 O -->
+            <th:block th:if="${option}">
+                <a th:href="@{/board/2(cp=*{prevPage}, option=${option}, keyWord=${keyWord})}" class="i"><i class="fa-solid fa-angle-left"></i></a>
+            </th:block>
 
             <th:block th:each="i : *{#numbers.sequence(startPage, endPage)}">
             
-            <!-- 검색 기능 사용 X -->
-            <th:block th:uless="${option}"></th:block>
-                <th:block th:if="${i} == *{currentPage}">
-                    <a th:text="${i}" class="currentPage">현재 페이지</a>
-                </th:block>
-
-                <th:block th:unless="${i} == *{currentPage}">
-                    <a th:href="@{/board/2(cp=${i})}" th:text="${i}" class="otherPage">다른 페이지</a>
-                </th:block>
-            </th:block>
-
-
-            <!-- 검색 기능으로 검색한 경우 -->
-            <th:block th:if="${option}"></th:block>
-                <th:block th:if="${i} == *{currentPage}">
-                    <a th:text="${i}" class="currentPage">현재 페이지</a>
-                </th:block>
-
-                <th:block th:unless="${i} == *{currentPage}">
-                    <a th:href="@{/board/2(cp=${i}, option=${option}, keyWord=${keyWord})}" th:text="${i}" class="otherPage">다른 페이지</a>
-                </th:block>
-            </th:block>
-
-
-                
-
-            </th:block>
-
-            <a th:href="@{/board/2(cp=*{nextPage})}" class="i"><i class="fa-solid fa-angle-right"></i></a>
             
+                <th:block th:if="${i} == *{currentPage}">
+                    <a th:text="${i}" class="currentPage">현재 페이지</a>
+                </th:block>
 
-            <a th:href="@{/board/2(cp=*{maxPage})}" class="i"><i class="fa-solid fa-angles-right"></i></a>
+                <!-- 검색 기능 사용 X -->
+                <th:block th:unless="${option}">
+                    <th:block th:unless="${i} == *{currentPage}">
+                        <a th:href="@{/board/2(cp=${i})}" th:text="${i}" class="otherPage">다른 페이지</a>
+                    </th:block>
+                </th:block>
+
+                <!-- 검색 기능 사용 O -->
+                <th:block th:if="${option}">
+                    <th:block th:unless="${i} == *{currentPage}">
+                        <a th:href="@{/board/2(cp=${i}, option=${option}, keyWord=${keyWord})}" th:text="${i}" class="otherPage">다른 페이지</a>
+                    </th:block>
+                </th:block>
+
+            </th:block>
+
+            
+            <!--------------- 다음 페이지 > --------------->
+            <!-- 검색 기능 사용 X -->
+            <th:block th:unless="${option}">
+                <a th:href="@{/board/2(cp=*{nextPage})}" class="i"><i class="fa-solid fa-angle-right"></i></a>
+            </th:block>
+
+            <!-- 검색 기능 사용 O -->
+            <th:block th:if="${option}">
+                <a th:href="@{/board/2(cp=*{nextPage}, option=${option}, keyWord=${keyWord})}" class="i"><i class="fa-solid fa-angle-right"></i></a>
+            </th:block>
+
+
+            <!--------------- 끝 페이지 >> --------------->
+            <!-- 검색 기능 사용 X -->
+            <th:block th:unless="${option}">
+                <a th:href="@{/board/2(cp=*{maxPage})}" class="i"><i class="fa-solid fa-angles-right"></i></a>
+            </th:block>
+            
+            <!-- 검색 기능 사용 O -->
+            <th:block th:if="${option}">
+                <a th:href="@{/board/2(cp=*{maxPage}, option=${option}, keyWord=${keyWord})}" class="i"><i class="fa-solid fa-angles-right"></i></a>
+            </th:block>
 
         </div>
 
