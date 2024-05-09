@@ -26,7 +26,8 @@
 		, READ_COUNT,
 		LIKE_COUNT,
 			(SELECT COUNT(*) FROM
-			"COMMENT" C WHERE BOARD_NO = B.BOARD_NO) COMMENT_COUNT
+			"COMMENT" C WHERE BOARD_NO = B.BOARD_NO
+			AND COMMENT_DEL_FL = 'N') COMMENT_COUNT
 		FROM "BOARD" B
 		JOIN "MEMBER" USING(MEMBER_NO)
 		WHERE BOARD_CODE = 2
@@ -37,7 +38,39 @@
 	
 	<!-- 게시글 정보 가져오기 -->
 	<select id="board2Detail">
-		SELECT BOARD_NO, BOARD_TITLE, BOARD_CONTENT, MEMBER_NICKNAME, BOARD_WRITE_DATE, BOARD_UPDATE_DATE,
+		SELECT BOARD_NO, BOARD_TITLE, BOARD_CONTENT, MEMBER_NICKNAME,
+	    <![CDATA[
+	    CASE
+		    WHEN SYSDATE - BOARD_WRITE_DATE < 1 / 24 / 60
+		    THEN FLOOR((SYSDATE - BOARD_WRITE_DATE) * 24 * 60 * 60) || '초 전'
+		    
+		    WHEN SYSDATE - BOARD_WRITE_DATE < 1 / 24
+		    THEN FLOOR((SYSDATE - BOARD_WRITE_DATE) * 24 * 60) || '분 전'
+		    
+		    WHEN SYSDATE - BOARD_WRITE_DATE < 1
+		    THEN FLOOR((SYSDATE - BOARD_WRITE_DATE) * 24) || '시간 전'
+		    
+		    ELSE TO_CHAR(BOARD_WRITE_DATE, 'YYYY-MM-DD')
+		    
+		END BOARD_WRITE_DATE
+    	]]>
+		,
+	    <![CDATA[
+	    CASE
+		    WHEN SYSDATE - BOARD_UPDATE_DATE < 1 / 24 / 60
+		    THEN FLOOR((SYSDATE - BOARD_UPDATE_DATE) * 24 * 60 * 60) || '초 전'
+		    
+		    WHEN SYSDATE - BOARD_UPDATE_DATE < 1 / 24
+		    THEN FLOOR((SYSDATE - BOARD_UPDATE_DATE) * 24 * 60) || '분 전'
+		    
+		    WHEN SYSDATE - BOARD_UPDATE_DATE < 1
+		    THEN FLOOR((SYSDATE - BOARD_UPDATE_DATE) * 24) || '시간 전'
+		    
+		    ELSE TO_CHAR(BOARD_UPDATE_DATE, 'YYYY-MM-DD')
+		    
+		END BOARD_UPDATE_DATE
+    	]]>
+		 ,
 		MEMBER_NO, READ_COUNT, LIKE_COUNT
 		FROM "BOARD"
 		JOIN "MEMBER" USING(MEMBER_NO)
@@ -46,10 +79,27 @@
 	
 	<!-- 댓글 정보 가져오기 -->
 	<select id="board2CommentList">
-		SELECT MEMBER_NICKNAME, COMMENT_CONTENT, COMMENT_WRITE_DATE, MEMBER_NO, PARENT_COMMENT_NO 
+		SELECT MEMBER_NICKNAME, COMMENT_CONTENT, 
+	    <![CDATA[
+	    CASE
+		    WHEN SYSDATE - COMMENT_WRITE_DATE < 1 / 24 / 60
+		    THEN FLOOR((SYSDATE - COMMENT_WRITE_DATE) * 24 * 60 * 60) || '초 전'
+		    
+		    WHEN SYSDATE - COMMENT_WRITE_DATE < 1 / 24
+		    THEN FLOOR((SYSDATE - COMMENT_WRITE_DATE) * 24 * 60) || '분 전'
+		    
+		    WHEN SYSDATE - COMMENT_WRITE_DATE < 1
+		    THEN FLOOR((SYSDATE - COMMENT_WRITE_DATE) * 24) || '시간 전'
+		    
+		    ELSE TO_CHAR(COMMENT_WRITE_DATE, 'YYYY-MM-DD')
+		    
+		END COMMENT_WRITE_DATE
+    	]]>
+		, MEMBER_NO, PARENT_COMMENT_NO ,COMMENT_NO
 		FROM "COMMENT"
 		JOIN "MEMBER" USING(MEMBER_NO)
 		WHERE BOARD_NO = #{boardNo}
+		AND COMMENT_DEL_FL = 'N'
 	</select>
 	
 	<!-- 게시글 삭제(업데이트) -->
@@ -135,5 +185,21 @@
 		
 		ORDER BY 1 DESC
 	</select>
+	
+	
+	<!-- 댓글 달기 -->
+	<insert id="board2Comment">
+		INSERT INTO "COMMENT"
+		VALUES(SEQ_COMMENT_NO.NEXTVAL, #{comment}, DEFAULT, DEFAULT,
+		#{boardNo}, #{memberNo}, NULL)
+	</insert>
+	
+	<!-- 댓글 삭제 -->
+	<update id="board2CommentDelete">
+		UPDATE "COMMENT" SET
+		COMMENT_DEL_FL = 'Y'
+		WHERE COMMENT_NO = #{commentNo}
+	</update>
+
 	
 </mapper>

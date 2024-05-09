@@ -151,4 +151,19 @@ public interface BoardMapper {
 	List<Board> getSearchCount2(Map<String, Object> paramMap, RowBounds rowBounds);
 
 
+	/** [2] 댓글 달기
+	 * @param commentMap
+	 * @return
+	 */
+	int board2Comment(Map<String, Object> commentMap);
+
+
+	/** [2] 댓글 삭제
+	 * @param commentNo
+	 * @return
+	 */
+	int board2CommentDelete(int commentNo);
+
+
+
 }

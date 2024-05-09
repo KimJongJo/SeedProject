@@ -22,8 +22,8 @@
         <div class="board">
             <th:block th:if="${session.loginMember} and *{memberNo} == ${session.loginMember.memberNo}">
                 <div class="write-menu">
-                    <a th:href="@{/board/2/board2Update(boardNo=${boardInfo.boardNo})}" id="boardUpdate">수정</a>
-                    <button id="boardDelete">삭제</button>
+                    <a th:href="@{/board/2/board2Update(boardNo=${boardInfo.boardNo})}" class="boardUpdate" id="boardUpdate">수정</a>
+                    <button class="boardDelete" id="boardDelete">삭제</button>
                 </div>
             </th:block>
             <div class="board-top">
@@ -56,40 +56,50 @@
             </div>
         </div>
     </th:block>
-    <div class="under">
-        <th:block th:each="comment : ${commentList}" th:object="${comment}">
 
+    <!-- 댓글 -->
+    <div class="under" id="commentContainer">
+        <th:block th:each="comment : ${commentList}" th:object="${comment}">
             <div class="comment">
                 <div class="comment-top">
-                    <div th:text="*{memberNickname}" class="memberNickname"></div>
-                    <div th:text="*{commentWriteDate}" class="commentWriteDate"></div>
+                    <div th:text="*{memberNickname}" class="memberNickname">댓글 작성자</div>
+                    <div th:text="*{commentWriteDate}" class="commentWriteDate">댓글 작성일</div>
+                    
 
                     <th:block th:if="${session.loginMember?.memberNo} == *{memberNo}">
                         <div class="UorD">
-                            <button>수정</button>
-                            <button>삭제</button>
+                            <input type="hidden" th:value="*{commentNo}" id="commentNo" class="commentNo">
+                            <button th:onclick="|updateComment(*{commentNo})|" class="update">수정</button>
+                            <button th:onclick="|deleteComment(*{commentNo})|" class="delete">삭제</button>
                         </div>
                     </th:block>
                 </div>
                 
-                <div class="message">
-                    <div th:text="*{commentContent}" class="comment-box"></div>
-                    <button>답글</button>
+                <div class="message" id="message">
+                    <div th:text="*{commentContent}" class="comment-box" id="commentContent"></div>
+
+                    <div class="text">
+                        <div class="container">
+                            <textarea class="textarea" th:text="*{commentContent}" ></textarea>
+                            <button class="updateBtn">수정</button>
+                        </div>
+                    </div>
                 </div>
+                
             </div>
         </th:block>
     </div>
 
     <th:block th:if="${session.loginMember}">
-        <div class="commentPlus">
+        <form class="commentPlus">
             <div class="span">
                 <span>댓글 쓰기</span>
             </div>
             <div class="span-under">
-                <textarea cols="55" rows="5" style="resize: none;"></textarea>
-                <button>등록</button>
+                <textarea cols="55" rows="5" style="resize: none;" id="comment-content"></textarea>
+                <button type="button" id="comment-plus">등록</button>
             </div>
-        </div>
+        </form>
     </th:block>
 
 
@@ -104,6 +114,7 @@
 
     <script th:inline="javascript">
         const boardNo = /*[[${boardInfo.boardNo}]]*/ "게시글 번호";
+        const sessionMemberNo = /*[[${session.loginMember?.memberNo}]]*/  "회원 번호";
     </script>
     
     <script src="/js/board/board2Detail.js"></script>

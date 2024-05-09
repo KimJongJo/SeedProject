@@ -273,6 +273,22 @@ public class BoardServiceImpl implements BoardService{
 		return null;
 	}
 
+	
+	// [2] 댓글 달기
+	@Override
+	public int board2Comment(Map<String, Object> commentMap) {
+		
+		return mapper.board2Comment(commentMap);
+	}
+
+	// [2] 댓글 삭제
+	@Override
+	public int board2CommentDelete(int commentNo) {
+		
+		return mapper.board2CommentDelete(commentNo);
+	}
+
+
 
 }
 
