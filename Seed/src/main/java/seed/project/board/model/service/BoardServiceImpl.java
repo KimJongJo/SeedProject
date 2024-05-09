@@ -273,6 +273,24 @@ public class BoardServiceImpl implements BoardService{
 		return null;
 	}
 
+	
+	// [1] 게시글 수정하기
+	@Override
+	public int board1Update(Map<String, Object> board) {
+		return mapper.board1Update(board);
+	}
+
+	// [1] 게시글 삭제하기
+	@Override
+	public int board1Delete(int boardNo) {
+		return mapper.board1Delete(boardNo);
+	}
+
+	
+	
+	
+	
+	
 
 }
 

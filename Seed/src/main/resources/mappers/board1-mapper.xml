@@ -160,14 +160,23 @@
 		SELECT BOARD_NO, BOARD_TITLE, BOARD_CONTENT, BOARD_CODE, READ_COUNT,
 			MEMBER_NO, MEMBER_NICKNAME,
 			
-			TO_CHAR(BOARD_WRITE_DATE, 'YYYY"년" MM"월" DD"일" HH24:MI:SS') BOARD_WRITE_DATE,
+			TO_CHAR(BOARD_WRITE_DATE, 'YYYY"."MM"."DD"." HH24:MI:SS') BOARD_WRITE_DATE,
 			TO_CHAR(BOARD_UPDATE_DATE, 'YYYY"년" MM"월" DD"일" HH24:MI:SS') BOARD_UPDATE_DATE,
 			
 			<!-- 좋아요 개수 -->
-			(SELECT COUNT(*)
-			FROM "BOARD_LIKE"
-			WHERE MEMBER_NO = #{memberNo}
-			AND BOARD_NO = #{boardNo}) LIKE_COUNT
+			(
+				SELECT COUNT(*)
+				FROM "BOARD_LIKE"
+				WHERE MEMBER_NO = #{memberNo}
+				AND BOARD_NO = #{boardNo}
+			) LIKE_COUNT,
+			
+			<!-- 댓글 개수 -->
+			(
+				SELECT COUNT(*)
+				FROM "COMMENT"
+				WHERE BOARD_NO = #{boardNo}
+			) "commentCount"
 			
 			
 		FROM "BOARD"
@@ -179,7 +188,43 @@
 	</select>
 
 
-
+	<!-- [1] 게시글 수정하기 -->
+	<update id="board1Update">
+		UPDATE "BOARD" SET
+		BOARD_TITLE = #{boardTitle},
+		BOARD_CONTENT = #{boardContent},
+		BOARD_UPDATE_DATE = SYSDATE
+		WHERE BOARD_NO = #{boardNo}
+	</update>
 		
+	
+	
+	<!-- [1] 게시글 삭제하기 -->
+	<update id="board1Delete">
+		UPDATE "BOARD" SET
+		BOARD_DEL_FL = 'Y'
+		WHERE BOARD_NO = #{boardNo}
+	</update>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 		
 </mapper>

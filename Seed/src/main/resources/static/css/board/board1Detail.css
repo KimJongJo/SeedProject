@@ -3,7 +3,7 @@ main {
     flex-direction: column;
     justify-content: center;
     width: 900px;
-    margin: 10px auto;
+    margin: 10px 0px;
 }
 
 /* 상세조회 영역 */
@@ -13,7 +13,7 @@ main {
     flex-direction: column;
     
     /* margin: 50px auto; */
-    padding: 20px;
+    padding: 20px 0px;
     min-height: 700px;
 }
 
@@ -23,23 +23,30 @@ main {
     margin: 20px 0px;
 }
 
-/* 작성자 */
-.board-header1 {
-    margin: 10px 0px;
-}
-
 
 
 /* 작성일, 조회수 좌,우로 붙이기 */
 .board-header1, .board-header2 {
     display: flex;
     align-items: center;
+    /* justify-content: space-between; */
+}
+
+/* 작성자 */
+.board-header1 {
+    margin: 10px 0px;
+}
+
+.board-header2 {
     justify-content: space-between;
 }
+
+
 
 /* 조회수 */
 .read-count {
     justify-content: flex-end;
+    margin-left: 20px;
 }
 
 /* 게시글 내용 */
@@ -49,4 +56,8 @@ main {
     /* border-top: 1px solid #ddd; */
     border: 1px solid #ddd;
     height: 100%;
+}
+
+.comment-count {
+    margin-left: 10px;
 }
