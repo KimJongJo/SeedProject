@@ -2,10 +2,8 @@ package seed.project.board.model.mapper;
 
 import java.util.List;
 import java.util.Map;
-
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.session.RowBounds;
-
 import seed.project.board.model.dto.Board;
 import seed.project.board.model.dto.Comment;
 
@@ -151,6 +149,32 @@ public interface BoardMapper {
 	List<Board> getSearchCount2(Map<String, Object> paramMap, RowBounds rowBounds);
 
 
+	/** [3] 팁과 노하우 게시판 - 조회수 1 증가
+	 * @param boardNo
+	 * @return
+	 */
+	int readCount3(int boardNo);
+
+
+	/** [3] 팁과 노하우 게시판 - 조회수 조회
+	 * @param boardNo
+	 * @return
+	 */
+	int selectReadCount3(int boardNo);
+
+
+	/** [3] 팁과 노하우 게시판 - 이전글
+	 * @param map
+	 * @return
+	 */
+	int beforePage(Map<String, Integer> map);
+
+	/** [3] 팁과 노하우 게시판 - 다음글
+	 * @param map
+	 * @return
+	 */
+	int afterPage(Map<String, Integer> map);
+  
 	/** [2] 댓글 달기
 	 * @param commentMap
 	 * @return
@@ -176,7 +200,6 @@ public interface BoardMapper {
 	 * @return
 	 */
 	int board1Delete(int boardNo);
-
 
 
 

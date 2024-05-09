@@ -134,6 +134,7 @@
 			    
 			END BOARD_WRITE_DATE
 	    	]]>
+	    	
     	  
 		FROM "BOARD" B
 		JOIN "MEMBER" USING(MEMBER_NO)
@@ -198,4 +199,54 @@
 		AND BOARD_CODE = #{boardCode}
 		AND BOARD_NO = #{boardNo}
 	</select>
+	
+	
+	<!-- [3] 팁과 노하우 게시판 - 조회수 1 증가 -->
+	<update id="readCount3">
+		UPDATE "BOARD" SET
+		READ_COUNT = READ_COUNT + 1
+		WHERE BOARD_NO = #{boardNo}	
+	</update>
+	
+
+	<!-- [3] 팁과 노하우 게시판 - 조회수 조회 -->
+	<select id="selectReadCount3">
+		SELECT READ_COUNT
+		FROM "BOARD"
+		WHERE BOARD_NO = #{boardNo}
+	</select>
+	
+	<!-- [3] 팁과 노하우 게시판 - 이전글 -->
+	<select id="beforePage">
+
+		SELECT NVL(
+			(SELECT BOARD_NO 
+			FROM "BOARD"
+			WHERE BOARD_CODE = #{boardCode}
+			AND BOARD_NO <![CDATA[<]]> #{boardNo}
+			ORDER BY BOARD_NO DESC
+			FETCH FIRST 1 ROW ONLY), -1
+		)AS BOARD_NO 
+		FROM "BOARD"
+		WHERE BOARD_CODE = #{boardCode}
+		ORDER BY BOARD_NO DESC
+		FETCH FIRST 1 ROW ONLY
+	</select>
+	
+	<!-- [3] 팁과 노하우 게시판 - 다음글 -->
+	<select id="afterPage">	
+		SELECT NVL(
+			(SELECT BOARD_NO 
+			FROM "BOARD"
+			WHERE BOARD_CODE = #{boardCode}
+			AND BOARD_NO <![CDATA[>]]> #{boardNo}
+			ORDER BY BOARD_NO
+			FETCH FIRST 1 ROW ONLY), -1
+		) AS BOARD_NO
+		FROM "BOARD"
+		WHERE BOARD_CODE = ${boardCode}
+		ORDER BY BOARD_NO
+		FETCH FIRST 1 ROW ONLY
+	</select>
+	
 </mapper>

@@ -1,5 +1,7 @@
 package seed.project.board.controller;
 
+import java.time.Duration;
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
@@ -160,12 +162,6 @@ public class BoardController {
 	public int board1Delete(@RequestBody int boardNo) {
 		return service.board1Delete(boardNo);
 	}
-	
-	
-	
-	
-	
-	
 	
 
   
@@ -394,7 +390,8 @@ public class BoardController {
 		
 		// 상세 조회 서비스 호출
 		Board board = service.selectOne3(map);
-	
+			
+		
 		String path = null;
 		
 		// 조회 결과 X
@@ -405,87 +402,86 @@ public class BoardController {
 		// 조회 결과 O
 		} else {
 			
-			//  쿠키 조회수 추후 구성
+			// ------------ 조회수 증가(쿠키) --------------
 			
-			/* ************************ 쿠키를 이용한 조회수 증가 (시작) ************************ */
-			
-			// 1. 비회원 또는 로그인한 회원의 글이 아닌 경우
-			//    (글쓴이를 뺀 다른 사람)
-			
-			/*
-			if(loginMember == null || 
-					loginMember.getMemberNo() != board.getMemberNo()) {
+			// 1. 비회원 or 글쓴이 X
+			if(loginMember == null || loginMember.getMemberNo() != board.getMemberNo()) {
 				
-				// 요청에 담겨있는 모든 쿠키 얻어오기
 				Cookie[] cookies = req.getCookies();
 				
 				Cookie c = null;
 				
-				for(Cookie temp : cookies) {
-					
-					if(temp.getName().equals("readBoardNo")) {
-						c = temp;
-						break;
+				if(cookies != null) {
+					for(Cookie ck : cookies) {
+						
+						if(ck.getName().equals("readBoardNo")) {
+							c = ck;
+							break;
+						}
 					}
-					
 				}
 				
-				int result = 0; // 조회수 증가 결과를 저장할 변수
 				
-				// "readBoardNo"가 쿠키에 없을 때
+				int result = 0; // 결과값 변수
+				
+				String boardNoArr = "[" + boardNo + "]";
+				
 				if(c == null) {
 					
-					// 새 쿠키 생성 ("readBoardNo", [게시글 번호])
-					c = new Cookie("readBoardNo", "[" + boardNo + "]");
-					result = service.updateReadCount(boardNo);
+					// "readBoardNo" 없을 경우 새 쿠키 생성 [] 
+					c = new Cookie("readBoardNo", boardNoArr);
+					result = service.readCount3(boardNo);
 					
 				} else {
-					// "readBoardNo"가 쿠키에 있을 때
-					// "readBoardNo" : [2][30][400][2000][4000]
+					// "readBoardNo" 쿠키에 존재 O
 					
-					// 현재 글을 처음 읽은 경우
-					if(c.getValue().indexOf("[" + boardNo + "]") == -1) {
+					// 처음 읽은 경우(getValue는 특정 쿠키 값을 가져오는 용도로 사용됨)
+					if(c.getValue().indexOf(boardNoArr) == -1) {
 						
-						// 해당 글 번호를 쿠키에 누적 + 서비스 호출
-						c.setValue(c.getValue() + "[" + boardNo + "]" );
-						result = service.updateReadCount(boardNo);
+						// 현재 쿠키 + 해당 게시글 번호
+						c.setValue(c.getValue() + boardNoArr);
+						
+						result = service.readCount3(boardNo);
 					}
 				}
 				
-				// 조회수 증가 성공 / 조회 성공
+				// 조회수 증가
 				if(result > 0) {
 					
-					// 먼저 조회된 board의 readCount 값을
-					// result 값으로 변환
 					board.setReadCount(result);
 					
-					c.setPath("/"); // "/" 이하 경로 요청 시 쿠키 서버로 전달
+					c.setPath("/");
 					
-					// 쿠키 수명 지정
 					
-					// 현재 시간을 얻어오기
-					LocalDateTime now = LocalDateTime.now();
+					// ----- 쿠키 수명 ------
+					LocalDateTime now = LocalDateTime.now(); // 현재
+					LocalDateTime nextDayMidnight 
+								= now.plusDays(1).withHour(0).withMinute(0).withSecond(0).withNano(0); // 다음날 자정
 					
-					// 다음날 자정
-					LocalDateTime nextDayMidnight = now.plusDays(1).withHour(0).withMinute(0).withSecond(0).withNano(0);
-					
-					// 다음날 자정까지 남은 시간 계산(초단위)
-					long secondUntilNextDay = Duration.between(now, nextDayMidnight).getSeconds();
+					// 다음날 자정까지 남은 시간(초)
+					long untilTime = Duration.between(now, nextDayMidnight).getSeconds();
 					
 					// 쿠키 수명 설정
-					c.setMaxAge((int)secondUntilNextDay);
+					c.setMaxAge((int)untilTime);
 					
-					resp.addCookie(c); // 응답 객체를 이용해서 클라이언트에게 전달
+					resp.addCookie(c);
 					
 				}
-				
-				
-			} 
+			}
 			
-			*/
 			/* ************************ 쿠키를 이용한 조회수 증가 (끝) ************************ */
 			
+			// 이전글
+			int beforePage = service.beforePage(map);
 			
+			// 다음글
+			int afterPage = service.afterPage(map);
+
+
+			model.addAttribute("beforePage", beforePage);
+			model.addAttribute("afterPage", afterPage);
+			
+
 			path = "board/board3Detail"; // boardDetail3.html 포워드
 			
 			model.addAttribute("board", board); // 보드 실어서 전달
@@ -500,5 +496,6 @@ public class BoardController {
 		return path;
 	}
 	
+
 	
 }

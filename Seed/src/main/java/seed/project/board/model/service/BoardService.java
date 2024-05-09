@@ -2,7 +2,6 @@ package seed.project.board.model.service;
 
 import java.util.List;
 import java.util.Map;
-
 import seed.project.board.model.dto.Board;
 import seed.project.board.model.dto.Comment;
 
@@ -107,6 +106,23 @@ public interface BoardService {
 	 */
 	Map<String, Object> selectBoard2SearchList(Map<String, Object> paramMap, int cp);
 
+	/** [3] 팁과 노하우 게시판 - 조회수 증가(쿠키)
+	 * @param boardNo
+	 * @return
+	 */
+	int readCount3(int boardNo);
+
+	/** [3] 팁과 노하우 게시판 - 이전글
+	 * @param map
+	 * @return
+	 */
+	int beforePage(Map<String, Integer> map);
+
+	/** [3] 팁과 노하우 게시판 - 다음글
+	 * @param map
+	 * @return
+	 */
+	int afterPage(Map<String, Integer> map);
 
 	/** [2] 댓글 달기
 	 * @param commentMap
@@ -132,8 +148,6 @@ public interface BoardService {
 	 * @return
 	 */
 	int board1Delete(int boardNo);
-
-	
 
 
 }

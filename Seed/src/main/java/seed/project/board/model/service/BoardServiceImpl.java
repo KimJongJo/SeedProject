@@ -3,11 +3,9 @@ package seed.project.board.model.service;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import org.apache.ibatis.session.RowBounds;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import lombok.RequiredArgsConstructor;
 import seed.project.board.model.dto.Board;
 import seed.project.board.model.dto.Comment;
@@ -274,6 +272,36 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	
+	// [3] 팁과 노하우 게시판 - 조회수 증가(쿠키)
+	@Override
+	public int readCount3(int boardNo) {
+		
+		int result = mapper.readCount3(boardNo);
+		
+		if(result > 0) {
+			
+			return mapper.selectReadCount3(boardNo);
+		}
+		
+		return -1;
+	}
+
+	
+	// [3] 팁과 노하우 게시판 - 이전글
+	@Override
+	public int beforePage(Map<String, Integer> map) {
+		
+		return mapper.beforePage(map);
+	}
+
+	
+	// [3] 팁과 노하우 게시판 - 다음글
+	@Override
+	public int afterPage(Map<String, Integer> map) {
+		
+
+		return mapper.afterPage(map);
+	}
 
 	// [2] 댓글 달기
 	@Override
@@ -302,8 +330,6 @@ public class BoardServiceImpl implements BoardService{
 	public int board1Delete(int boardNo) {
 		return mapper.board1Delete(boardNo);
 	}
-
-	
 
 
 }
