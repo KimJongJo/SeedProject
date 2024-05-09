@@ -107,6 +107,20 @@ public interface BoardService {
 	 */
 	Map<String, Object> selectBoard2SearchList(Map<String, Object> paramMap, int cp);
 
+
+	/** [2] 댓글 달기
+	 * @param commentMap
+	 * @return
+	 */
+	int board2Comment(Map<String, Object> commentMap);
+
+	/** [2] 댓글 삭제
+	 * @param commentNo
+	 * @return
+	 */
+	int board2CommentDelete(int commentNo);
+
+
 	/** [1] 게시글 수정하기
 	 * @param board
 	 * @return
@@ -120,5 +134,6 @@ public interface BoardService {
 	int board1Delete(int boardNo);
 
 	
+
 
 }

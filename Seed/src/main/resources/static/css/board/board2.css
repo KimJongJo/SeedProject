@@ -240,6 +240,7 @@ table tr{
 
 .memberNickname{
     font-size: 18px;
+    width: 50px;
 }
 
 .comment{
@@ -263,8 +264,35 @@ table tr{
     width: 500px;
     height: 80px;
     margin-bottom: 20px;
+}
 
 
+
+.textarea {
+    height: 80px;
+    width: 500px;
+    padding: 10px;
+    font-size: 16px;
+    margin-bottom: 20px;
+    border: 2px solid black;
+    border-radius: 5px;
+    resize: none;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+}
+
+.text{
+
+    display: none;
+}
+
+.updateBtn{
+    align-self: flex-end;
 }
 
 
@@ -421,13 +449,12 @@ table tr{
 }
 
 
-#boardUpdate, #boardDelete{
+#boardUpdate, .boardDelete{
     font-size: 14px;
     color: white;
     cursor: pointer;
     background-color: #8AA6A3;
     border-radius: 5px;
-    border: 1px solid black;
     border: none;
     transition-duration: 0.3s;
 }
@@ -437,14 +464,18 @@ table tr{
     background-color: #127369;
 }
 
-#boardDelete:hover{
+.boardDelete:hover{
     background-color: #CE9898;
 
 }
 
 
-#boardUpdate:hover, #boardDelete:hover{
+#boardUpdate:hover, .boardDelete:hover{
     border-radius: 20px 5px 20px 5px;
     transition-duration: 0.3s;
 }
 
+
+.commentWriteDate{
+    width: 70px;
+}

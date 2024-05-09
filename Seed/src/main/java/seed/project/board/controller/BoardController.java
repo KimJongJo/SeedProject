@@ -266,7 +266,7 @@ public class BoardController {
 	}
 	
 	
-	/** 게시글 수정
+	/** [2] 게시글 수정 페이지 이동
 	 * @return
 	 */
 	@GetMapping("{boardCode:[2]}/board2Update")
@@ -283,6 +283,10 @@ public class BoardController {
 	}
 	
 	
+	/** [2] 게시글 수정
+	 * @param board
+	 * @return
+	 */
 	@ResponseBody
 	@PutMapping("{boardCode:[2]}/board2Update")
 	public int board2Update(@RequestBody Map<String, Object> board) {
@@ -290,7 +294,37 @@ public class BoardController {
 		return service.board2Update(board);
 	}
 	
+	
+	/** [2] 댓글 등록
+	 * @param commentMap
+	 * @return
+	 */
+	@ResponseBody
+	@PostMapping("{boardCode:[2]}/comment")
+	public int board2Comment(@RequestBody Map<String, Object> commentMap) {
+		
+		return service.board2Comment(commentMap);
+	}
+	
+	
+	/** [2] 댓글 목록 조회
+	 * @param boardNo
+	 * @return
+	 */
+	@ResponseBody
+	@GetMapping("{boardCode:[2]}/commentList2")
+	public List<Comment> commentList(@RequestParam("boardNo") int boardNo){
+		
+		return service.board2CommentList(boardNo);
+	}
   
+	
+	@ResponseBody
+	@DeleteMapping("{boardCode:[2]}/commentDelete")
+	public int commentDelete(@RequestBody int commentNo) {
+		
+		return service.board2CommentDelete(commentNo);
+	}
   
   
   
