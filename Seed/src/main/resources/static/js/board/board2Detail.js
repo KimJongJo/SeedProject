@@ -186,35 +186,42 @@ if(commentBtn != null){
     
 }
 
-// 댓글 수정이 닫혀있음
-let flag = true;
+
+
+// 수정 전 댓글
+
 
 // 댓글 수정
 const updateComment = commentNo => {
 
     const texts = document.querySelectorAll(".text");
+    const textareas = document.querySelectorAll(".textarea");
     const commentBox = document.querySelectorAll(".comment-box");
     const commentNos = document.querySelectorAll(".commentNo");
 
-    for(let i = 0; i < texts.length; i++){
-        /* 다른 댓글 수정 클릭 시 전부 다 닫기 */
-        texts[i].style.display = 'none';
-        commentBox[i].style.display = 'block';
-    }
+    let beforeDate = "";
 
+    /* 수정이 열려 있는지 모두 확인 */
     for(let i = 0; i < texts.length; i++){
 
+        /* 내가 클릭 한 것이 맞으면 if문 통과 */
         if(commentNos[i].value == commentNo){
-            if(!flag){
+           
+            /* 클릭한 수정 버튼이 이미 열려 있을때 닫아주기 */
+            if(texts[i].style.display == 'block'){
                 texts[i].style.display = 'none';
                 commentBox[i].style.display = 'block';
-                flag = true;
+
+            /* 클릭한 수정 버튼이 닫혀 있을때 열어주기 */
             }else{
                 texts[i].style.display = 'block';
                 commentBox[i].style.display = 'none';
-                flag = false;
             }
+
+        /* 아니면 닫기 수정 닫기 */
         }else{
+            beforeDate = commentBox[i].innerText;
+            textareas[i].innerText = beforeDate;
             texts[i].style.display = 'none';
             commentBox[i].style.display = 'block';
         }
