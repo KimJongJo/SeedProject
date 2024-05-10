@@ -205,6 +205,24 @@ table tr{
     justify-content: flex-end;
 }
 
+.like-box{
+    display: flex;
+}
+
+.like-box > :nth-child(2){
+    width: 80px;
+    text-align: end;
+}
+
+.view-box{
+    display: flex;
+}
+
+.view-box > :nth-child(2){
+    width: 80px;
+    text-align: end;
+}
+
 /* 게시글 내용 */
 .boardContent{
     margin-top: 20px;

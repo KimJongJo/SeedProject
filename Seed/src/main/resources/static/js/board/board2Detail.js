@@ -153,43 +153,7 @@ const commentList = () => {
 
 
 
-// 부모 요소 commentContainer
-const commentContainer = document.getElementById("commentContainer");
 
-// 부모 요소에 클릭 이벤트를 등록
-commentContainer.addEventListener("click", function(event) {
-    // 클릭된 요소가 수정 버튼인지 확인
-    if (event.target.classList.contains("updateBtn")) {
-        // 수정 버튼이 클릭된 경우에만 아래 로직을 수행
-        const commentNo = event.target.nextElementSibling.value;
-        const commentContent = event.target.previousElementSibling.value;
-
-        if(commentContent == ""){
-            alert("댓글을 입력해주세요");
-            return;
-        }
-
-        const obj = {
-            "commentNo": commentNo,
-            "commentContent": commentContent
-        };
-
-        fetch("/board/2/updateComment", {
-                method: "PUT",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(obj)
-            })
-            .then(resp => resp.text())
-            .then(result => {
-                if (result == 0) {
-                    console.log("수정 실패..");
-                    return;
-                }
-                alert("수정되었습니다.");
-                commentList();
-            });
-    }
-});
 
 
 
@@ -241,6 +205,48 @@ if(commentBtn != null){
 
 
 // 댓글 수정
+
+
+// 부모 요소 commentContainer
+const commentContainer = document.getElementById("commentContainer");
+
+// 부모 요소에 클릭 이벤트를 등록
+commentContainer.addEventListener("click", function(event) {
+    // 클릭된 요소가 수정 버튼인지 확인
+    if (event.target.classList.contains("updateBtn")) {
+        // 수정 버튼이 클릭된 경우에만 아래 로직을 수행
+        const commentNo = event.target.nextElementSibling.value;
+        const commentContent = event.target.previousElementSibling.value;
+
+        if(commentContent == ""){
+            alert("댓글을 입력해주세요");
+            return;
+        }
+
+        const obj = {
+            "commentNo": commentNo,
+            "commentContent": commentContent
+        };
+
+        fetch("/board/2/updateComment", {
+                method: "PUT",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(obj)
+            })
+            .then(resp => resp.text())
+            .then(result => {
+                if (result == 0) {
+                    console.log("수정 실패..");
+                    return;
+                }
+                alert("수정되었습니다.");
+                commentList();
+            });
+    }
+});
+
+
+// 댓글 수정 함수
 const updateComment = commentNo => {
 
     const texts = document.querySelectorAll(".text");
@@ -284,15 +290,6 @@ const updateComment = commentNo => {
 
     }
 };
-
-
-// 수정 이벤트 도전
-
-
-
-
-
-
 
 
 

@@ -315,7 +315,7 @@ public class BoardController {
 	}
   
 	
-	/** 댓글 삭제
+	/** [2] 댓글 삭제
 	 * @param commentNo
 	 * @return
 	 */
@@ -326,7 +326,7 @@ public class BoardController {
 		return service.board2CommentDelete(commentNo);
 	}
 	
-	/** 댓글 수정
+	/** [2] 댓글 수정
 	 * @param commentMap
 	 * @return
 	 */
@@ -336,6 +336,8 @@ public class BoardController {
 		
 		return service.board2CommentUpdate(commentMap);
 	}
+	
+	
   
   
   
