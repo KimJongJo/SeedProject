@@ -26,6 +26,7 @@ public class BoardServiceImpl implements BoardService{
 		return mapper.selectBoardTypeList();
 	}
 
+/*
 	// 자유 게시판의 지정된 페이지 목록 조회
 	@Override
 	public Map<String, Object> selectBoardList1(int boardCode, int cp) {
@@ -55,6 +56,8 @@ public class BoardServiceImpl implements BoardService{
 		}
 		return null;
 	}
+*/
+
 
 	// [2] 문의 게시판 게시글 조회
 	@Override
@@ -169,6 +172,7 @@ public class BoardServiceImpl implements BoardService{
 
 	}
 
+/*	
 	// [1] 자유 게시판 검색 서비스
 	@Override
 	public Map<String, Object> searchList1(Map<String, Object> paramMap, int cp) {
@@ -197,7 +201,7 @@ public class BoardServiceImpl implements BoardService{
 		
 		return map;
 	}
-	
+*/
 	
 	// [3] 팁과 노하우 게시판 - 게시글 상세 조회
 	@Override
@@ -206,13 +210,14 @@ public class BoardServiceImpl implements BoardService{
 		return mapper.selectOne3(map);
 	}
 
-	
+
+	/*
 	// [1] 자유 게시판 - 게시글 상세조회
 	@Override
 	public Board selectOne1(Map<String, Object> map) {
 		return mapper.selectOne1(map);
 	}
-
+*/
 	
 	// [2] 게시글 삭제(업데이트)
 	@Override
@@ -318,7 +323,7 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 
-
+/*
 	// [1] 게시글 수정하기
 	@Override
 	public int board1Update(Map<String, Object> board) {
@@ -330,6 +335,8 @@ public class BoardServiceImpl implements BoardService{
 	public int board1Delete(int boardNo) {
 		return mapper.board1Delete(boardNo);
 	}
+*/
+
 
 	// [2] 댓글 수정하기
 	@Override
@@ -338,6 +345,34 @@ public class BoardServiceImpl implements BoardService{
 		return mapper.board2CommentUpdate(commentMap);
 	}
 
+	
+	
+/*
+	// [1] 게시판 목록 조회 (검색했을 때)
+	@Override
+	public Map<String, Object> selectBoardSearchList1(Map<String, Object> paramMap, int cp) {
+		
+		// 삭제안되고 검색한 게시글 검색
+		List<Board> boardList = mapper.getSearchCount1(paramMap);
+		
+		// 검색한 게시글이 있을 때 pagination 실행
+		if(boardList.size() > 0) {
+			
+			
+			Pagination pagination = new Pagination(cp, boardList.size());
+			
+			int limit = pagination.getLimit();
+			int offset = (cp - 1) * limit;
+			RowBounds rowBounds = new RowBounds(offset, limit);
+			
+			List<Board> boardList1 = mapper.getSearchCount1(paramMap, rowBounds);
+			
+		}
+		
+		
+		return null;
+	}
+*/
 
 }
 
