@@ -33,12 +33,20 @@
             <div>
                 <div class="board-middle">
                     <div th:text="*{memberNickname}" class="memberNickname">작성자</div>
-                    <div th:text="|조회수 *{readCount} 회|" class="readCount">조회수</div>
-                </div><div>
-                    
+                    <div class="view-box">
+                        <div>
+                            <i class="fa-solid fa-eye"></i>
+                        </div>
+                        <div th:text="| 조회수 *{readCount} 회|" class="readCount">조회수</div>
+                    </div>
                 </div>
                 <div class="like">
-                    <div th:text="|like *{likeCount} 개|" class="likeCount">좋아요</div>
+                    <div class="like-box">
+                        <div>
+                            <i class="fa-regular fa-thumbs-up"></i>
+                        </div>
+                        <div th:text="| 좋아요 *{likeCount} 개|" class="likeCount">좋아요</div>
+                    </div>
                 </div>
                 <div>
                     <div th:text="|작성일 : *{boardWriteDate}|" class="boardWriteDate">작성일</div>
