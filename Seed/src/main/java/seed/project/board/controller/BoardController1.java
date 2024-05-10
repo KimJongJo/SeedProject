@@ -44,57 +44,36 @@ public class BoardController1 {
 			@PathVariable("boardCode") int boardCode,
 			@RequestParam(value="cp", required=false, defaultValue="1") int cp,
 			Model model,
-			@RequestParam(value="key", required=false) String key,
-			@RequestParam(value="query", required=false) String query
+			@RequestParam Map<String, Object> paramMap
 			) {
 		
+		Map<String, Object> map = null;
 		
 		// 검색 안할 때
-		if(query == null) { 
+		if(paramMap.get("key") == null) { 
 			
 			// 게시글 목록 조회 서비스 호출
-			Map<String, Object> map = service.selectBoardList1(boardCode, cp);
+			map = service.selectBoardList1(boardCode, cp);
 			
-			// boardNo, baordTitle, memberNickname, readCount, commentCount,
-			// likeCount, baordWriteDate
-			model.addAttribute("boardList", map.get("boardList"));
-			// 게시글 수 + 현제 페이지
-			model.addAttribute("pagination", map.get("pagination"));
+			
 			
 		// 검색할 때
 		} else {
 			
-			Map<String, Object> paramMap = new HashMap<>();
-			paramMap.put("key", key);
-			paramMap.put("query", query);			
 			paramMap.put("boardCode", boardCode);
 			// -> paramMap은 {key=t, quer=검색어, boardCode=1}
 			
-			
-			Map<String, Object> map = service.selectBoardSearchList1(paramMap, cp);
-			
 			map = service.searchList1(paramMap, cp);
 			
-			model.addAttribute("pagination", map.get("pagination"));
-			model.addAttribute("boardList", map.get("boardList"));
 			
-			
-			/*
-			Map<String, Object> paramMap = new HashMap<>();
-			paramMap.put("option", option);
-			paramMap.put("keyWord", keyWord);
-			
-			Map<String, Object> map = service.selectBoard2SearchList(paramMap, cp);
-			
-			if(map != null) {
-				model.addAttribute("boardList", map.get("boardList"));
-				model.addAttribute("pagination", map.get("pagination"));
-				model.addAttribute("option", option);
-				model.addAttribute("keyWord", keyWord);
-			}
-			
-			*/
 		}
+		
+		// boardNo, baordTitle, memberNickname, readCount, commentCount,
+		// likeCount, baordWriteDate
+		model.addAttribute("boardList", map.get("boardList"));
+		// 게시글 수 + 현제 페이지
+		model.addAttribute("pagination", map.get("pagination"));
+		
 		
 		return "board/board1";
 	}

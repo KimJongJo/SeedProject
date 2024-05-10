@@ -23,6 +23,11 @@ public interface BoardMapper1 {
 	int getListCount(int boardCode);
   
   
+	/** [1] 자유 게시판 검색 조건이 맞는 게시글 수 조회
+	 * @param paramMap
+	 * @return count
+	 */
+	int getSearchCount1(Map<String, Object> paramMap);
   
 
 
@@ -32,18 +37,13 @@ public interface BoardMapper1 {
 
 
 	
-	/** [1] 자유 게시판 검색 조건이 맞는 게시글 수 조회
-	 * @param paramMap
-	 * @return count
-	 */
-	List<Board> getSearchCount1(Map<String, Object> paramMap);
 
 	/** [1] 자유 게시판 검색한 게시글 목록 조회
 	 * @param paramMap
 	 * @param rowBounds
 	 * @return
 	 */
-	List<Board> getSearchCount1(Map<String, Object> paramMap, RowBounds rowBounds);
+//	List<Board> getSearchCount1(Map<String, Object> paramMap, RowBounds rowBounds);
 	
 	/** 자유 게시판 목록 조회
 	 * @param boardCode

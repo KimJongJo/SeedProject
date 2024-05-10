@@ -34,36 +34,34 @@ public class BoardServiceImpl1 implements BoardService1{
 		// 게시글 수 조회
 		int listCount = mapper.getListCount(boardCode);
 		
-		if(listCount > 0) {
 			
-			// listCount + cp
-			Pagination pagination = new Pagination(cp, listCount);
-			
-			int limit = pagination.getLimit();
-			int offset = (cp - 1) * limit;
-			RowBounds rowBounds = new RowBounds(offset, limit);
-			
-			
-			List<Board> boardList = mapper.selectBoardList1(boardCode, rowBounds);
-			
-			
-			Map<String, Object> map = new HashMap<>();
-			
-			map.put("pagination", pagination);
-			map.put("boardList", boardList);
-			
-			return map;
-		}
-		return null;
+		// listCount + cp
+		Pagination pagination = new Pagination(cp, listCount);
+		
+		int limit = pagination.getLimit();
+		int offset = (cp - 1) * limit;
+		RowBounds rowBounds = new RowBounds(offset, limit);
+		
+		
+		List<Board> boardList = mapper.selectBoardList1(boardCode, rowBounds);
+		
+		
+		Map<String, Object> map = new HashMap<>();
+		
+		map.put("pagination", pagination);
+		map.put("boardList", boardList);
+		
+		return map;
 	}
 
 
 		
 	
-/*
+
 	// [1] 자유 게시판 검색 서비스
 	@Override
 	public Map<String, Object> searchList1(Map<String, Object> paramMap, int cp) {
+		
 		
 		// 1. 자유 게시판에서 삭제되지 않은 게시글 수 조회
 		int listCount = mapper.getSearchCount1(paramMap);
@@ -89,7 +87,7 @@ public class BoardServiceImpl1 implements BoardService1{
 		
 		return map;
 	}
-	*/
+	
 	
 
 	
@@ -114,37 +112,14 @@ public class BoardServiceImpl1 implements BoardService1{
 		return mapper.board1Delete(boardNo);
 	}
 
-
-	// [1] 게시판 목록 조회 (검색했을 때)
 	@Override
 	public Map<String, Object> selectBoardSearchList1(Map<String, Object> paramMap, int cp) {
-		
-		// 삭제안되고 검색한 게시글 검색
-		List<Board> boardList = mapper.getSearchCount1(paramMap);
-		
-		// 검색한 게시글이 있을 때 pagination 실행
-		if(boardList.size() > 0) {
-			
-			
-			Pagination pagination = new Pagination(cp, boardList.size());
-			
-			int limit = pagination.getLimit();
-			int offset = (cp - 1) * limit;
-			RowBounds rowBounds = new RowBounds(offset, limit);
-			
-			List<Board> boardList1 = mapper.getSearchCount1(paramMap, rowBounds);
-			
-		}
-		
-		
-		return null;
-	}
-
-	@Override
-	public Map<String, Object> searchList1(Map<String, Object> paramMap, int cp) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+
+	
 
 
 }
