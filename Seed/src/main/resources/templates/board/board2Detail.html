@@ -17,7 +17,7 @@
         <h1>문의 게시판</h1>
     </div>
 
-    <a th:href="@{/board/2(cp=${cp})}" class="boardListBtn"><i class="fa-solid fa-person-walking-arrow-loop-left"></i> 목록으로</a>
+    <a th:href="@{/board/2(cp=${cp})}" class="boardListBtn"><i class="fa-solid fa-person-walking"></i> 목록</a>
     <th:block th:object="${boardInfo}">
         <div class="board">
             <th:block th:if="${session.loginMember} and *{memberNo} == ${session.loginMember.memberNo}">

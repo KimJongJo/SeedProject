@@ -187,5 +187,21 @@ public class BoardServiceImpl2 implements BoardService2{
 	}
 
 
+	// [2] 조회수 증가
+	@Override
+	public void boardView(int boardNo) {
+		
+		mapper.boardView(boardNo);
+	}
+
+
+	// [2] 게시글 글쓴이 번호
+	@Override
+	public int boardWriter(int boardNo) {
+		
+		return mapper.boardWriter(boardNo);
+	}
+
+
 }
 
