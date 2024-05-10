@@ -94,8 +94,46 @@ public class BoardController2 {
 			  			@RequestParam(value="boardNo") int boardNo,
 			  			@SessionAttribute(value="loginMember", required=false) Member loginMember,
 			  			Model model,
-			  			@RequestParam(value="cp", required=false, defaultValue = "1") int cp
+			  			@RequestParam(value="cp", required=false, defaultValue = "1") int cp,
+			  			HttpServletRequest request,
+			  			HttpServletResponse response
 			  			) {
+		
+		// 조회수 증가
+		Cookie[] cookies = request.getCookies();
+		
+		Cookie checkCookie = null;
+		
+		for(Cookie cookie : cookies) {
+			if(cookie.getName().equals("checkCookie")) {
+				checkCookie = cookie;
+				
+				// 현재 게시글 번호가 없는 경우
+				if(!checkCookie.getValue().contains("[" + boardNo + "]")) {
+					
+					// 게시글의 글쓴이 번호 가져오기
+					int memberNo = service.boardWriter(boardNo);
+					
+					if(loginMember == null || loginMember.getMemberNo() != memberNo) {
+						// 조회수 증가 시키는 메서드 생성
+						service.boardView(boardNo);
+						checkCookie.setValue(checkCookie.getValue() + "[" + boardNo + "]");
+					}
+					
+				}
+				break;
+			}
+		}
+		
+		if(checkCookie == null) {
+			service.boardView(boardNo);
+			checkCookie = new Cookie("checkCookie", "[" + boardNo + "]");
+		}
+		
+		// 쿠키 유효 기간
+		checkCookie.setMaxAge(60 * 60 * 24);
+		response.addCookie(checkCookie);
+		
 		  
 		  Board boardInfo = service.board2Detail(boardNo);
 		  List<Comment> commentList = service.board2CommentList(boardNo);
