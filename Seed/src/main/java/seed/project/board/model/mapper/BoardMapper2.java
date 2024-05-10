@@ -144,6 +144,19 @@ public interface BoardMapper2 {
 	int board2LikeCount(int boardNo);
 
 
+	/** [2] 조회수 증가
+	 * @param boardNo
+	 */
+	void boardView(int boardNo);
+
+
+	/** [2] 게시글 글쓴이 번호
+	 * @param boardNo
+	 * @return
+	 */
+	int boardWriter(int boardNo);
+
+
 
 
 

@@ -67,5 +67,12 @@
                 >게시판이름
             </a>
         </th:block>
+        <th:block th:if="${session.loginMember?.managerCheck == 'Y'}" id="addSeed">
+            <a
+            href="/seed/menu"
+            class="button btnPush btnBlueGreen"
+            >상품관리
+            </a>
+        </th:block>
     </nav>
 </div>

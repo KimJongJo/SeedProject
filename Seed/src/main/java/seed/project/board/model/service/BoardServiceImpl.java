@@ -26,9 +26,6 @@ public class BoardServiceImpl implements BoardService{
 		return mapper.selectBoardTypeList();
 	}
 
-
-
-
 	
 	// [3] 팁과 노하우 - 게시글 목록
 	@Override
@@ -105,9 +102,6 @@ public class BoardServiceImpl implements BoardService{
 
 
 	
-	
-
-	
 	// [3] 팁과 노하우 게시판 - 조회수 증가(쿠키)
 	@Override
 	public int readCount3(int boardNo) {
@@ -138,7 +132,6 @@ public class BoardServiceImpl implements BoardService{
 
 		return mapper.afterPage(map);
 	}
-
 
 
 

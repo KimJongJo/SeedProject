@@ -1,0 +1,15 @@
+*{
+    border: 1px solid black;
+}
+
+
+.menu{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.seed{
+    border: 1px solid black;
+    text-decoration: none;
+}
