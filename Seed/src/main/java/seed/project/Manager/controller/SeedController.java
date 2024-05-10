@@ -24,4 +24,33 @@ public class SeedController {
 		return "/seed/menu";
 	}
 	
+	
+	/** 상품 등록 페이지 이동
+	 * @return
+	 */
+	@GetMapping("add")
+	public String seedAdd() {
+		
+		return "/seed/seedAdd";
+	}
+	
+	
+	/** 상품 수정 페이지 이동
+	 * @return
+	 */
+	@GetMapping("update")
+	public String seedUpdate() {
+		
+		return "/seed/seedUpdate";
+	}
+	
+	
+	/** 상품 삭제 페이지 이동
+	 * @return
+	 */
+	@GetMapping("delete")
+	public String seedDelete() {
+		
+		return "/seed/seedDelete";
+	}
 }

@@ -18,12 +18,18 @@
 
 
     <main>
-        <nav id="nav-bottom" class="container">
-            <a href="#" class="seed button btnPush btnBlueGreen">상품 등록</a>
-            <a href="#" class="seed button btnPush btnBlueGreen">상품 수정</a>
-            <a href="#" class="seed button btnPush btnBlueGreen">상품 삭제</a>
-            <a class="seed"></a>
-        </nav>
+        <section class="sectionDiv">
+            <nav id="nav-bottom" class="container3">
+                <div class="first">
+                    <a href="/seed/add" class="seed button btnPush btnBlueGreen">씨앗 등록</a>
+                    <a href="/seed/update" class="seed button btnPush btnBlueGreen">가격 수정</a>
+                </div>
+                <div class="second">
+                    <a href="/seed/delete" class="seed button btnPush btnBlueGreen">씨앗 품절</a>
+                    <a class="seed button btnPush btnBlueGreen"></a>
+                </div>
+            </nav>
+        </section>
     </main>
     
     <th:block th:replace="~{common/footer}"></th:block>
