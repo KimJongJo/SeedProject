@@ -26,6 +26,7 @@
 
 #insertBtn-area {
     display: flex;
+    align-self: flex-end;
 }
 
 /* 글쓰기 버튼 */
@@ -38,9 +39,10 @@
     color: white;
     font-size: 15px;
     transition-duration: 0.2s;
-    /* align-items: center;
-    justify-content: center; */
-
+    display: flex;
+    align-items: center;
+    /* align-self: flex-end; */
+    justify-content: center;
 }
 
 
