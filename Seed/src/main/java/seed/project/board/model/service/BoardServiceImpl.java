@@ -27,8 +27,6 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	
-
-	
 	// [3] 팁과 노하우 - 게시글 목록
 	@Override
 	public Map<String, Object> selectBoard3(int boardCode, int cp) {
@@ -95,8 +93,6 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	
-	
-	
 	// [3] 팁과 노하우 게시판 - 게시글 상세 조회
 	@Override
 	public Board selectOne3(Map<String, Integer> map) {
@@ -104,7 +100,6 @@ public class BoardServiceImpl implements BoardService{
 		return mapper.selectOne3(map);
 	}
 
-	
 
 	
 	// [3] 팁과 노하우 게시판 - 조회수 증가(쿠키)
