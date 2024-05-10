@@ -17,7 +17,7 @@ public interface BoardService {
 	 * @param cp
 	 * @return map
 	 */
-	Map<String, Object> selectBoardList1(int boardCode, int cp);
+//	Map<String, Object> selectBoardList1(int boardCode, int cp);
   
 	/**[2] 문의 게시판 게시글 조회
 	 * @param cp 
@@ -44,7 +44,7 @@ public interface BoardService {
 	 * @param cp
 	 * @return
 	 */
-	Map<String, Object> searchList1(Map<String, Object> paramMap, int cp);
+//	Map<String, Object> searchList1(Map<String, Object> paramMap, int cp);
   
   
 	/** [3] 팁과 노하우 게시판 - 게시글 목록 조회
@@ -97,7 +97,7 @@ public interface BoardService {
 	 * @param map
 	 * @return
 	 */
-	Board selectOne1(Map<String, Object> map);
+//	Board selectOne1(Map<String, Object> map);
 
 	/** [2] 문의 게시판 검색
 	 * @param paramMap
@@ -141,13 +141,13 @@ public interface BoardService {
 	 * @param board
 	 * @return
 	 */
-	int board1Update(Map<String, Object> board);
+//	int board1Update(Map<String, Object> board);
 
 	/** [1] 게시글 삭제하기
 	 * @param boardNo
 	 * @return
 	 */
-	int board1Delete(int boardNo);
+//	int board1Delete(int boardNo);
 
 	/** [2] 댓글 수정하기
 	 * @param commentMap
@@ -155,5 +155,13 @@ public interface BoardService {
 	 */
 	int board2CommentUpdate(Map<String, Object> commentMap);
 
+
+	/** [1] 게시판 목록 조회 (검색했을 때)
+	 * @param paramMap
+	 * @param cp
+	 * @return
+	 */
+/*	Map<String, Object> selectBoardSearchList1(Map<String, Object> paramMap, int cp);
+*/
 
 }
