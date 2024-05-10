@@ -315,11 +315,26 @@ public class BoardController {
 	}
   
 	
+	/** 댓글 삭제
+	 * @param commentNo
+	 * @return
+	 */
 	@ResponseBody
 	@DeleteMapping("{boardCode:[2]}/commentDelete")
 	public int commentDelete(@RequestBody int commentNo) {
 		
 		return service.board2CommentDelete(commentNo);
+	}
+	
+	/** 댓글 수정
+	 * @param commentMap
+	 * @return
+	 */
+	@ResponseBody
+	@PutMapping("{boardCode:[2]}/updateComment")
+	public int commentUpdate(@RequestBody Map<String, Object> commentMap) {
+		
+		return service.board2CommentUpdate(commentMap);
 	}
   
   

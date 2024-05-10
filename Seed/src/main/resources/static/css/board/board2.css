@@ -245,11 +245,16 @@ table tr{
 
 .comment{
     width: 700px;
+    background-color: #e8e4e4;
+    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 15px;
 }
 
 .comment-top{
     display: flex;
     margin-bottom: 10px;
+    align-items: center;
 }
 
 
@@ -263,7 +268,7 @@ table tr{
     padding: 10px;
     width: 500px;
     height: 80px;
-    margin-bottom: 20px;
+    background-color: white;
 }
 
 
@@ -279,7 +284,7 @@ table tr{
     resize: none;
 }
 
-.container{
+.container2{
     display: flex;
     flex-direction: column;
     padding: 0;
@@ -293,9 +298,21 @@ table tr{
 
 .updateBtn{
     align-self: flex-end;
+    width: 40px;
+    height: 30px;
+    border: none;
+    background-color: #8AA6A3;
+    color: white;
+    border-radius: 5px;
+    transition-duration: 0.3s;
+    cursor: pointer;
 }
 
-
+.updateBtn:hover{
+    background-color: #10403B;
+    transition-duration: 0.3s;
+    border-radius: 20px 5px 20px 5px;
+}
 
 
 .under{
@@ -478,4 +495,45 @@ table tr{
 
 .commentWriteDate{
     width: 70px;
+}
+
+
+
+/* 댓글 */
+.update, .delete{
+    font-size: 14px;
+    color: white;
+    cursor: pointer;
+    background-color: #8AA6A3;
+    border-radius: 5px;
+    border: none;
+    transition-duration: 0.3s;
+}
+
+.update:hover{
+    background-color: #127369;
+}
+
+.delete:hover{
+    background-color: #CE9898;
+
+}
+
+
+.update:hover, .delete:hover{
+    border-radius: 20px 5px 20px 5px;
+    transition-duration: 0.3s;
+}
+
+
+#comment-plus{
+    border: none;
+    border-radius: 5px;
+    background-color: #DADADA;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+#comment-plus:hover{
+    background-color: #D0D0D0;
 }

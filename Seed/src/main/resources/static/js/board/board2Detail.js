@@ -115,6 +115,13 @@ const commentList = () => {
                     </div>
                     <div class="message">
                         <div class="comment-box">${comment.commentContent}</div>
+                        <div class="text">
+                            <div class="container2">
+                                <textarea class="textarea">${comment.commentContent}</textarea>
+                                <button class="updateBtn">저장</button>
+                                <input type="hidden" value="${comment.commentNo}" id="commentNo" class="commentNo">
+                            </div>
+                        </div>
                     </div>
                 </div>
             `;
@@ -137,10 +144,55 @@ const commentList = () => {
                 deleteComment(commentNo);
             });
         });
+
     });
 
 
 }
+
+
+
+
+// 부모 요소 commentContainer
+const commentContainer = document.getElementById("commentContainer");
+
+// 부모 요소에 클릭 이벤트를 등록
+commentContainer.addEventListener("click", function(event) {
+    // 클릭된 요소가 수정 버튼인지 확인
+    if (event.target.classList.contains("updateBtn")) {
+        // 수정 버튼이 클릭된 경우에만 아래 로직을 수행
+        const commentNo = event.target.nextElementSibling.value;
+        const commentContent = event.target.previousElementSibling.value;
+
+        if(commentContent == ""){
+            alert("댓글을 입력해주세요");
+            return;
+        }
+
+        const obj = {
+            "commentNo": commentNo,
+            "commentContent": commentContent
+        };
+
+        fetch("/board/2/updateComment", {
+                method: "PUT",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(obj)
+            })
+            .then(resp => resp.text())
+            .then(result => {
+                if (result == 0) {
+                    console.log("수정 실패..");
+                    return;
+                }
+                alert("수정되었습니다.");
+                commentList();
+            });
+    }
+});
+
+
+
 
 
 
@@ -186,41 +238,62 @@ if(commentBtn != null){
     
 }
 
-// 댓글 수정이 닫혀있음
-let flag = true;
+
 
 // 댓글 수정
 const updateComment = commentNo => {
 
     const texts = document.querySelectorAll(".text");
+    const textareas = document.querySelectorAll(".textarea");
     const commentBox = document.querySelectorAll(".comment-box");
     const commentNos = document.querySelectorAll(".commentNo");
 
-    for(let i = 0; i < texts.length; i++){
-        /* 다른 댓글 수정 클릭 시 전부 다 닫기 */
-        texts[i].style.display = 'none';
-        commentBox[i].style.display = 'block';
-    }
+    // let beforeDate = "";
 
+    /* 수정이 열려 있는지 모두 확인 */
     for(let i = 0; i < texts.length; i++){
 
+        /* 내가 클릭 한 것이 맞으면 if문 통과 */
         if(commentNos[i].value == commentNo){
-            if(!flag){
+
+            textareas[i].value = commentBox[i].innerText;
+
+            
+            /* 클릭한 수정 버튼이 이미 열려 있을때 닫아주기 */
+            if(texts[i].style.display == 'block'){
                 texts[i].style.display = 'none';
                 commentBox[i].style.display = 'block';
-                flag = true;
+
+            /* 클릭한 수정 버튼이 닫혀 있을때 열어주기 */
             }else{
+                textareas[i].innerText = commentBox[i].innerText;
                 texts[i].style.display = 'block';
                 commentBox[i].style.display = 'none';
-                flag = false;
             }
+
+
+
+            
+        /* 아니면 닫기 수정 닫기 */
         }else{
             texts[i].style.display = 'none';
             commentBox[i].style.display = 'block';
         }
-    }
 
+        
+
+    }
 };
+
+
+// 수정 이벤트 도전
+
+
+
+
+
+
+
 
 
 
