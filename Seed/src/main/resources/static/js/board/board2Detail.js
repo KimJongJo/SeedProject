@@ -7,6 +7,7 @@ const commentBtn = document.getElementById("comment-plus"); // 댓글 등록 버
 const commentUpdate = document.getElementById("commentUpdate"); // 댓글 수정
 const commentDelete = document.querySelectorAll(".commentDelete"); // 댓글 삭제
 const commentNo = document.getElementById("commentNo"); // 댓글 번호
+const thumbsUp = document.getElementById("thumbsUp");   // 좋아요
 
 // boardWrite
 const pushBtn = document.getElementById("write-push-btn");  // 글쓰기 버튼
@@ -149,7 +150,6 @@ const commentList = () => {
 
 
 }
-
 
 
 
@@ -326,3 +326,47 @@ const deleteComment = commentNo => {
     })
 
 };
+
+
+
+
+
+/* 좋아요 */
+thumbsUp.addEventListener("click", () => {
+
+    /* 로그인을 하지 않았으면 */
+    if(sessionMemberNo == null){
+        alert("로그인 후 이용해주세요");
+        return;
+    }
+
+    const like = {
+        "boardNo" : boardNo,
+        "memberNo" : sessionMemberNo
+    }
+
+    fetch("/board/2/board2Like", {
+        method : "POST",
+        headers : {"Content-Type" : "application/json"},
+        body : JSON.stringify(like)
+    })
+    .then(resp => resp.text())
+    .then(result => {
+        
+        
+        const likeCount = document.querySelector(".likeCount");
+        
+
+        likeCount.innerText = result + " 개";
+
+        if(thumbsUp.classList.contains("fa-solid")){
+            thumbsUp.classList.remove("fa-solid");
+            thumbsUp.classList.add("fa-regular");
+        }else{
+            thumbsUp.classList.remove("fa-regular");
+            thumbsUp.classList.add("fa-solid");
+        }
+
+    })
+
+})
