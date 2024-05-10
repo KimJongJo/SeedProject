@@ -199,6 +199,11 @@ table tr{
 }
 
 /* 좋아요 */
+
+#thumbsUp{
+    cursor: pointer;
+}
+
 .like{
     display: flex;
     align-items: center;
@@ -210,8 +215,9 @@ table tr{
 }
 
 .like-box > :nth-child(2){
-    width: 80px;
+    width: 40px;
     text-align: end;
+    line-height: 25px;
 }
 
 .view-box{
@@ -219,8 +225,13 @@ table tr{
 }
 
 .view-box > :nth-child(2){
-    width: 80px;
+    width: 40px;
     text-align: end;
+    line-height: 25px;
+}
+
+.view-box i, .like-box i{
+    font-size: 25px;
 }
 
 /* 게시글 내용 */
@@ -554,4 +565,25 @@ table tr{
 
 #comment-plus:hover{
     background-color: #D0D0D0;
+}
+
+
+
+
+.boardListBtn{
+    text-decoration: none;
+    font-size: 20px;
+    margin-bottom: 20px;
+    margin-right: 570px;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+    background-color: #8AA6A3;
+    transition-duration: 0.2s;
+}
+
+.boardListBtn:hover{
+    color: black;
+    transition-duration: 0.2s;
 }

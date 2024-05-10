@@ -19,25 +19,7 @@ public interface BoardService {
 	 */
 	Map<String, Object> selectBoardList1(int boardCode, int cp);
   
-	/**[2] 문의 게시판 게시글 조회
-	 * @param cp 
-	 * @param boardCode 
-	 * @return
-	 */
-	Map<String, Object> selectBoard2List(int boardCode, int cp);
-
-	/**[2] 게시글 정보
-	 * @param boardNo
-	 * @return
-	 */
-	Board board2Detail(int boardNo);
-
-	/** [2] 게시글 댓글 정보
-	 * @param boardNo
-	 * @return
-	 */
-	List<Comment> board2CommentList(int boardNo);
-
+	
 	/** 자유 게시판 검색 서비스
 	 * 
 	 * @param paramMap
@@ -63,29 +45,6 @@ public interface BoardService {
 	Map<String, Object> searchList3(Map<String, Object> paramMap, int cp);
 
 
-	/** [2] 게시글 삭제(업데이트)
-	 * @param boardNo
-	 * @return
-	 */
-	int board2Delete(int boardNo);
-
-	/** [2] 게시글 작성하기
-	 * @param board
-	 * @return
-	 */
-	int board2Write(Map<String, String> board);
-
-	/** [2] 게시글 정보 가져오기
-	 * @param boardNo
-	 * @return
-	 */
-	Board board2Info(int boardNo);
-
-	/** [2] 게시글 수정하기
-	 * @param board
-	 * @return
-	 */
-	int board2Update(Map<String, Object> board);
 
 	/** [3] 팁과 노하우 게시판 - 게시글 상세 조회
 	 * @param map
@@ -99,13 +58,7 @@ public interface BoardService {
 	 */
 	Board selectOne1(Map<String, Object> map);
 
-	/** [2] 문의 게시판 검색
-	 * @param paramMap
-	 * @param cp
-	 * @return
-	 */
-	Map<String, Object> selectBoard2SearchList(Map<String, Object> paramMap, int cp);
-
+	
 	/** [3] 팁과 노하우 게시판 - 조회수 증가(쿠키)
 	 * @param boardNo
 	 * @return
@@ -124,17 +77,7 @@ public interface BoardService {
 	 */
 	int afterPage(Map<String, Integer> map);
 
-	/** [2] 댓글 달기
-	 * @param commentMap
-	 * @return
-	 */
-	int board2Comment(Map<String, Object> commentMap);
-
-	/** [2] 댓글 삭제
-	 * @param commentNo
-	 * @return
-	 */
-	int board2CommentDelete(int commentNo);
+	
 
 
 	/** [1] 게시글 수정하기
@@ -149,11 +92,6 @@ public interface BoardService {
 	 */
 	int board1Delete(int boardNo);
 
-	/** [2] 댓글 수정하기
-	 * @param commentMap
-	 * @return
-	 */
-	int board2CommentUpdate(Map<String, Object> commentMap);
-
+	
 
 }
