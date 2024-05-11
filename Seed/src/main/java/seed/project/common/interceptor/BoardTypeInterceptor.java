@@ -11,13 +11,13 @@ import jakarta.servlet.ServletContext;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
-import seed.project.board.model.service.BoardService;
+import seed.project.board.model.service.BoardService3;
 
 @Slf4j
 public class BoardTypeInterceptor implements HandlerInterceptor{
 
 	@Autowired
-	private BoardService service;
+	private BoardService3 service;
 
 	// 전처리
 	@Override

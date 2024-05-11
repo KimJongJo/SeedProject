@@ -10,14 +10,14 @@ import lombok.RequiredArgsConstructor;
 import seed.project.board.model.dto.Board;
 import seed.project.board.model.dto.Comment;
 import seed.project.board.model.dto.Pagination;
-import seed.project.board.model.mapper.BoardMapper;
+import seed.project.board.model.mapper.BoardMapper3;
 
 @Service
 @Transactional
 @RequiredArgsConstructor
-public class BoardServiceImpl implements BoardService{
+public class BoardServiceImpl3 implements BoardService3{
 
-	private final BoardMapper mapper;
+	private final BoardMapper3 mapper;
 	
 	
 	// [공통] 게시판 종류 조회

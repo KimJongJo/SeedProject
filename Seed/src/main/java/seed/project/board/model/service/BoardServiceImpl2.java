@@ -10,7 +10,7 @@ import lombok.RequiredArgsConstructor;
 import seed.project.board.model.dto.Board;
 import seed.project.board.model.dto.Comment;
 import seed.project.board.model.dto.Pagination;
-import seed.project.board.model.mapper.BoardMapper;
+import seed.project.board.model.mapper.BoardMapper3;
 import seed.project.board.model.mapper.BoardMapper2;
 
 @Service
