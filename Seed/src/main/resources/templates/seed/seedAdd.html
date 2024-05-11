@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>관리자 - 상품 추가</title>
+
+    <th:block th:replace="~{common/common}"></th:block>
+    <link rel="stylesheet" href="/css/seed/menu.css">
+
+</head>
+<body>
+    <!-- 헤더 추가 -->
+    <th:block th:replace="~{common/header}"></th:block>
+
+    
+    <main class="addMain">
+
+        <h1>씨앗 등록</h1>
+        <section>
+            
+            <form action="" enctype="multipart/form-data" class="sectionForm">
+                <table>
+                    <tr>
+                        <td><span>상품 이름</span></td>
+                        <td><input type="text"></td>
+                    </tr>
+
+                    <tr>
+                        <td><span>상품 가격</span></td>
+                        <td><input type="number"></td>
+                    </tr>
+                    <tr>
+                        <td><span>적정 온도</span></td>
+                        <td><input type="text"></td>
+                        <td>~</td>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <td><span>모종 시기</span></td>
+                        <td><input type="text" placeholder="1~12월"></td>
+                        <td>~</td>
+                        <td><input type="text" placeholder="1~12월"></td>
+                    </tr>
+                    <tr>
+                        <td><span>재식 거리</span></td>
+                        <td><input type="text" placeholder="00cm"></td>
+                    </tr>
+                    <tr>
+                        <td><span>발아율</span></td>
+                        <td><input type="text" placeholder="0%"></td>
+                    </tr>
+                    <tr>
+                        <td><span>품종</span></td>
+                        <td>
+                            <select name="" id="">
+                                <option value="1">가지/오이</option>
+                                <option value="2">무/당근</option>
+                                <option value="3">민속채소</option>
+                                <option value="4">배추/양배추</option>
+                                <option value="5">부추</option>
+                                <option value="6">시금치</option>
+                                <option value="7">쌈채소</option>
+                                <option value="8">참외/수박</option>
+                                <option value="9">콩/옥수수</option>
+                                <option value="10">호박</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span>상품 이미지</span></td>
+                        <td><input type="file" class="seedImg" id="seedImg"></td>
+                    </tr>
+                </table>
+
+                <button class="addBtn">등록</button>
+            </form>
+
+        </section>
+    </main>
+    
+
+    
+    <th:block th:replace="~{common/footer}"></th:block>
+</body>
+</html>
