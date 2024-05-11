@@ -67,5 +67,11 @@ public interface BoardService1 {
 	 */
 	List<Comment> commentSelect(int boardNo);
 
+	/** 댓글 작성
+	 * @param comment
+	 * @return
+	 */
+	int commentInsert(Comment comment);
+
 
 }

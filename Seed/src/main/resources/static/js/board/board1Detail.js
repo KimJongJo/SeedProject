@@ -75,7 +75,7 @@ deleteBtn.addEventListener("click", () => {
 const commentList = () => {
 
 
-    fetch("/board/1/comment?boardNo=" + boardNo1.value)
+    fetch("/board/1/comment?boardNo=" + boardNo)
     .then(resp => resp.json())
     .then(commentList => {
         console.log(commentList);
@@ -110,7 +110,7 @@ const commentList = () => {
 
                 // 작성일
                 const commentDate = document.createElement("span");
-                commentDate.className.add("comment-date");
+                commentDate.classList.add("comment-date");
                 commentDate.innerText = comment.commentWriteDate;
 
                 commentWriter.append(nickname, commentDate);
@@ -170,3 +170,49 @@ const commentList = () => {
     });
 }
 commentList();
+
+
+const addComment = document.querySelector("#addComment");
+const commentContent = document.querySelector("#commentContent");
+
+addComment.addEventListener("click", e => {
+    console.log(loginMemberNo);
+    // 로그인 안했을 때
+    if(loginMemberNo == null){
+        alert("로그인 후 이용해 주세요");
+        return;
+    }
+
+    // 아무내용 안썻을 때
+    if(commentContent.value.trim().length == 0) {
+        alert("내용 입력후 버튼을 눌러주세요");
+        commentContent.focus();
+        return;
+    }
+
+    const data = {
+        "commentContent" : commentContent.value,
+        "boardNo"        : boardNo,
+        "memberNo"       : loginMemberNo
+    };
+
+    fetch("/board/1/comment", {
+        method : "POST",
+        headers : {"Content-Type" : "application/json"},
+        body : JSON.stringify(data)
+    })
+    .then(resp => resp.text())
+    .then(result => {
+        console.log(result);
+        if(result > 0) {
+            alert("댓글 등록 완료");
+            commentContent.value = "";
+            commentList();
+        } else {
+            alert("댓글 등록 실패");
+        }
+
+    })
+    .catch(err => console.log(err));
+
+})

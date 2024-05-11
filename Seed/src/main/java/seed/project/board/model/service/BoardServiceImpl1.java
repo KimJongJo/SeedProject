@@ -126,6 +126,13 @@ public class BoardServiceImpl1 implements BoardService1{
 		
 	}
 
+	// 댓글 작성
+	@Override
+	public int commentInsert(Comment comment) {
+		return mapper.commentInsert(comment);
+		
+	}
+
 
 	
 
