@@ -5,7 +5,7 @@ import java.util.Map;
 import seed.project.board.model.dto.Board;
 import seed.project.board.model.dto.Comment;
 
-public interface BoardService {
+public interface BoardService3 {
 
 	/** 게시판 종류 조회
 	 * @return boardTypeList

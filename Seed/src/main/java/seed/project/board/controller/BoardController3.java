@@ -26,16 +26,16 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import seed.project.board.model.dto.Board;
 import seed.project.board.model.dto.Comment;
-import seed.project.board.model.service.BoardService;
+import seed.project.board.model.service.BoardService3;
 import seed.project.member.model.dto.Member;
 
 @Controller
 @RequestMapping("board")
 @Slf4j
 @RequiredArgsConstructor
-public class BoardController {
+public class BoardController3 {
 
-	private final BoardService service;
+	private final BoardService3 service;
 	
 	
 	
