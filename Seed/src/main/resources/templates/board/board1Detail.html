@@ -69,20 +69,59 @@
 
 
 
+        <!-- 댓글 -->
+        <div id="commentArea">
 
-        <div class="comment-area">
-            <h3>댓글</h3>
-
+            <!-- 댓글 리스트 -->
             <div class="comment-list-area">
 
-                <ul class="commentList">
-                    <!-- 내일함 -->
+                <ul id="commentList">
 
+                    <li class="comment-row"
+                        th:each="comment : ${board.commentList}"
+                        th:classappend="${comment.parentCommentNo} != 0 ? child-comment"
+                        th:object="${comment}">
+
+                        <th:block th:if="*{commentDelFl} == 'Y'">
+                            삭제된 댓글 입니다
+                        </th:block>
+
+                        <th:block th:if="*{commentDelFl} == 'N'">
+                            <p class="comment-writer">
+                                <span th:text="*{memberNickname}">닉네임</span>
+                                <span class="coment-date" th:text="*{commentWriteDate}">작성일</span>
+                            </p>
+
+                            <p class="comment-content" th:text="*{commentContent}">댓글 내용</p>
+
+                            <div class="comment-btn-area">
+                                <button th:onclick="|showInsertComment(*{commentNo}, this)|">답글</button>
+	
+                                <th:block th:if="${session.loginMember != null and session.loginMember.memberNo == comment.memberNo}">
+                                    <button th:onclick="|showUpdateComment(*{commentNo}, this)|">수정</button>
+                                    <button th:onclick="|deleteComment(*{commentNo})|">삭제</button>
+                                </th:block>
+                            </div>
+                        </th:block>
+
+
+
+
+                    </li>
+
+                   
                 </ul>
-
             </div>
 
 
+
+            <!-- 댓글 작성 -->
+            <div class="comment-write-area">
+                <textarea id="commentContent"></textarea>
+                <button id="addComment">
+                    댓글<br>등록
+                </button>
+            </div>
 
         </div>
 
@@ -96,10 +135,17 @@
 
 
 
+    <script th:inline="javascript">
 
+        const loginMemberNo = /*[[${session.loginMember?.memberNo}]]*/ "로그인 회원 번호";
+        console.log(loginMemberNo);
 
+        const boardNo = /*[[${board.boardNo}]]*/ "게시글 번호";
+        console.log("boardNo:", /*[[${board.boardNo}]]*/ "게시글 번호");
+        console.log(boardNo);
 
+    </script>
 
-    <script src="/js/board/board1Update.js"></script>
+    <script src="/js/board/board1Detail.js"></script>
 </body>
 </html>

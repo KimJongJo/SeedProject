@@ -1,6 +1,7 @@
 package seed.project.board.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.stereotype.Controller;
@@ -20,6 +21,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import seed.project.board.model.dto.Board;
+import seed.project.board.model.dto.Comment;
 import seed.project.board.model.service.BoardService1;
 import seed.project.member.model.dto.Member;
 
@@ -165,6 +167,11 @@ public class BoardController1 {
 	}
 	
 
+	@ResponseBody
+	@GetMapping("{boardCode:[1]}/comment")
+	public List<Comment> commentSelect(@RequestParam("boardNo") int boardNo) {
+		return service.commentSelect(boardNo);
+	}
 
 	
 }
