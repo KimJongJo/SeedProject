@@ -20,32 +20,32 @@
         <h1>씨앗 등록</h1>
         <section>
             
-            <form action="seedAdd" method="POST" enctype="multipart/form-data" class="sectionForm">
+            <form action="seedAdd" method="POST" enctype="multipart/form-data" class="sectionForm" id="seedAdd">
                 <table>
                     <tr>
                         <td><span>상품 이름</span></td>
-                        <td><input type="text" name="seedName"></td>
+                        <td><input type="text" name="seedName" id="seedName"></td>
                     </tr>
 
                     <tr>
                         <td><span>상품 가격</span></td>
-                        <td><input type="text" placeholder="1,000원" name="seedPrice"></td>
+                        <td><input type="text" placeholder="1,000원" name="seedPrice" id="seedPrice"></td>
                     </tr>
                     <tr>
                         <td><span>적정 온도</span></td>
-                        <td><input type="text" placeholder="00~00도" name="seedTemp" ></td>
+                        <td><input type="text" placeholder="00~00도" name="seedTemp" id="seedTemp"></td>
                     </tr>
                     <tr>
                         <td><span>모종 시기</span></td>
-                        <td><input type="text" placeholder="1~12월" name="seedTime"></td>
+                        <td><input type="text" placeholder="1~12월" name="seedTime" id="seedTime"></td>
                     </tr>
                     <tr>
                         <td><span>재식 거리</span></td>
-                        <td><input type="text" placeholder="00cm" name="seedDistance"></td>
+                        <td><input type="text" placeholder="00cm" name="seedDistance" id="seedDistance"></td>
                     </tr>
                     <tr>
                         <td><span>발아율</span></td>
-                        <td><input type="text" placeholder="0%" name="seedRate"></td>
+                        <td><input type="text" placeholder="0%" name="seedRate" id="seedRate"></td>
                     </tr>
                     <tr>
                         <td><span>품종</span></td>
@@ -70,7 +70,7 @@
                     </tr>
                 </table>
 
-                <button class="addBtn">등록</button>
+                <button class="addBtn" id="addBtn">등록</button>
             </form>
 
         </section>
@@ -80,12 +80,8 @@
     
     <th:block th:replace="~{common/footer}"></th:block>
 
-    <script th:inline="javascript">
-        const message =  /*[[${message}]]*/ "전달 받은 message";
-      
-        if(message != null) alert(message);
-    </script>
-
     <script src="/js/seed/seed.js"></script>
+    
+
 </body>
 </html>

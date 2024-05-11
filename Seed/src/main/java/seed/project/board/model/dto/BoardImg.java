@@ -15,11 +15,11 @@ import lombok.ToString;
 @ToString
 public class BoardImg {
 	
-	private int imgNo;
-	private String imgPath;
-	private String imgOriginalName;
-	private String imgRename;
-	private int imgOrder;
+	private int boardImgNo;
+	private String boardImgPath;
+	private String boardImgOriginalName;
+	private String boardImgRename;
+	private int boardImgOrder;
 	private int boardNo;
 	
 	// 게시글 이미지 삽입/수정 때 사용

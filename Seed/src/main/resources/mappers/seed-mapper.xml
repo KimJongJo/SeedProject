@@ -5,7 +5,7 @@
 	<!-- 씨앗 등록 -->
 	<insert id="addSeed">
 		INSERT INTO "SEED"
-		VALUES(2, #{seedName}, #{seedImgPath},
+		VALUES(4, #{seedName}, #{seedImgPath},
 		#{seedPrice}, #{seedTemp}, #{seedTime}, #{seedDistance},
 		#{seedRate}, DEFAULT, #{seedCode})
 	</insert>
@@ -15,8 +15,54 @@
 	<select id="seedList">
 		SELECT SEED_IMG_PATH, SEED_NAME, SEED_PRICE
 		FROM "SEED"
+		WHERE SEED_SOLD_OUT = 'N'
 		ORDER BY SEED_NO
 	</select>
+	
+	<!-- 씨앗 가격 -->
+	<select id="seedPrice">
+		SELECT SEED_PRICE FROM "SEED"
+		WHERE SEED_NAME = #{seedName}
+	</select>
+	
+	<!-- 씨앗 가격 수정 -->
+	<update id="seedUpdatrPrice">
+		UPDATE "SEED" SET
+		SEED_PRICE = #{seedPrice}
+		WHERE SEED_NAME = #{seedName}
+	</update>
+	
+	<!-- 씨앗 품절 체크 -->
+	<select id="seedDeleteOnCheck">
+		SELECT COUNT(*) FROM "SEED"
+		WHERE SEED_NAME = #{seedName}
+		AND SEED_SOLD_OUT = 'Y'
+	</select>
+	
+	<!-- 씨앗 품절 -->
+	<update id="seedDeleteOn">
+		UPDATE "SEED" SET
+		SEED_SOLD_OUT = 'Y'
+		WHERE SEED_NAME = #{seedName}
+	</update>
+	
+	<!-- 씨앗 품절 체크 -->
+	<select id="seedDeleteOffCheck">
+		SELECT COUNT(*) FROM "SEED"
+		WHERE SEED_NAME = #{seedName}
+		AND SEED_SOLD_OUT = 'N'
+	</select>
+	
+	
+	<!-- 씨앗 품절 해제 -->
+	<update id="seedDeleteOff">
+		UPDATE "SEED" SET
+		SEED_SOLD_OUT = 'N'
+		WHERE SEED_NAME = #{seedName}
+	</update>
+	
+	
+	
 	
 		
 </mapper>

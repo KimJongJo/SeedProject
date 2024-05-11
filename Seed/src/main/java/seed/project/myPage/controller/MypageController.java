@@ -259,7 +259,9 @@ public class MypageController {
 	 * @return
 	 */
 	@GetMapping("basket")
-	public String basket() {
+	public String basket(Model model) {
+		
+//		List<>
 		
 		return "/myPage/basket";
 	}

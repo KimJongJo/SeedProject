@@ -34,17 +34,25 @@
                 
                 <div class="basket">
                     <!-- 장바구니가 비어있을 때 -->
-
-                    <i class="fa-solid fa-basket-shopping"></i>
-                    <span>장바구니가 비었습니다</span>
-
-                    <div class="container2">
-                        <a href="/" class="button btnPush btnBlueGreen" id="cart"><i class="fa-solid fa-cart-shopping"></i> 장보기 </a>
-                    </div>
-
-
+                    <th:block th:unless="${cartList}">
+                        <i class="fa-solid fa-basket-shopping"></i>
+                        <span>장바구니가 비었습니다</span>
+    
+                        <div class="container2">
+                            <a href="/" class="button btnPush btnBlueGreen" id="cart"><i class="fa-solid fa-cart-shopping"></i> 장보기 </a>
+                        </div>
+                    </th:block>
+                    
 
                     <!-- 장바구니가 비어있지 않을 때 -->
+                    <th:block th:if="${cartList}">
+
+                    
+
+                    </th:block>
+
+
+
                 </div>
 
 

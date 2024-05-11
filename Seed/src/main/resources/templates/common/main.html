@@ -31,82 +31,28 @@
             <!-- 상품 하드코딩 9종 (추후 시간 남으면 수정) -->
             <!-- 시간이 남을 경우 타임리프 반복으로 상품 정보 넣기 -->
 
-
-
-            
-
-            <div class="seed-area">
-                <div>
-                    <img src="/images/쌈채소씨앗9종/고수.png">
-                    <br>
-                    <a>고수 씨앗</a><span>0</span> Like           
-                    <p>1900원</p>
-                </div>
-                <div>
-                    <img src="/images/쌈채소씨앗9종/곰취.png">
-                    <br>
-                    <a>고수 씨앗</a><span>0</span> Like
-                    <p>1900원</p>
-                </div>
-                <div>
-                    <img src="/images/쌈채소씨앗9종/뚝섬적축면.png">
-                    <br>
-                    <a>고수 씨앗</a><span>0</span> Like
-                    <p>1900원</p>
-                </div>
-            </div>
-            
-            <div class="seed-area">
-                <div>
-                    <img src="/images/쌈채소씨앗9종/로메인상추.png">
-                    <br>
-                    <a>고수 씨앗</a><span>0</span> Like
-                    <p>1900원</p>
-                </div>
-                <div>
-                    <img src="/images/쌈채소씨앗9종/루꼴라.png">
-                    <br>
-                    <a>고수 씨앗</a><span>0</span> Like
-                    <p>1900원</p>
-                </div>
-                <div>
-                    <img src="/images/쌈채소씨앗9종/잎들깨.png">
-                    <br>
-                    <a>고수 씨앗</a><span>0</span> Like
-                    <p>1900원</p>
-                </div>
-            </div>
-            <div class="seed-area">
-                <div>
-                    <img src="/images/쌈채소씨앗9종/적치마상추.png">
-                    <br>
-                    <a>고수 씨앗</a><span>0</span> Like
-                    <p>1900원</p>
-                </div>
-                <div>
-                    <img src="/images/쌈채소씨앗9종/중엽쑥갓.png">
-                    <br>
-                    <a>고수 씨앗</a><span>0</span> Like
-                    <p>1900원</p>
-                </div>
-                <div>
-                    <img src="/images/쌈채소씨앗9종/포르투칼케일.png">
-                    <br>
-                    <a>고수 씨앗</a><span>0</span> Like
-                    <p>1900원</p>
-                </div>
-            </div>
         </section>
-
-        <th:block th:each="seed : ${seedList}" th:object="${seed}">
-            <div>
-                <img th:src="*{seedImgPath}">
-                <p th:text="*{seedImgPath}"></p>
-                <br>
-                <a th:text="*{seedName}">고수 씨앗</a>
-                <p th:text="*{seedPrice}">1900원</p>
-            </div>
-        </th:block>
+        <section class="content2">
+            <th:block th:each="seed : ${seedList}" th:object="${seed}">
+                <div class="allBox">
+                    <div class="imgBox">
+                        <img th:src="*{seedImgPath}" class="seedImg">
+                    </div>
+                    <br>
+                    <div class="select">
+                        <div>
+                            <a th:text="*{seedName}">고수 씨앗</a>
+                            <p th:text="*{seedPrice}">1900원</p>
+                        </div>
+                        <div>
+                            <button id="cartAdd">담기</button>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+            </th:block>
+        </section>
 
     </main>
     
