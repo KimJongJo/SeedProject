@@ -93,6 +93,13 @@ public interface BoardMapper1 {
 	List<Board> selectBoardSearchList1(Map<String, Object> paramMap);
 
 
+	/** [1] 댓글 조회
+	 * @param boardNo
+	 * @return commentList
+	 */
+	List<Comment> commentSelect(int boardNo);
+
+
 
 
 
