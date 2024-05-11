@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게시글 제목</title>
+
+    <th:block th:replace="~{common/common}"></th:block>
+    <link rel="stylesheet" href="/css/board/board3Write.css">
+</head>
+<body>
+    <th:block th:replace="~{common/header}"></th:block>
+    
+    <main>
+        <section class="board-detil">
+            
+            <!-- 제출 폼 -->
+            <form action="write"
+                method="post" class="board-write" id="boardWriteForm"
+                enctype="multipart/form-data">
+                
+                <!-- 게시판 이름 영역 -->
+                <div class="hd1-nm-area">
+                    <th:block th:each="boardType : ${application.boardTypeList}">
+                        <a 
+                            class="board-name"
+                            th:if="${boardType.boardCode} == ${boardCode}"
+                            th:text="${boardType.boardName}"
+                            th:attr="name=${boardType.boardName}"
+                        >게시판 이름</a>
+                    </th:block>
+                </div>            
+                
+                <!-- 제목, 작성일 영역 -->
+                <div class="hd2-tt-wd-area">
+                    <div class="board-title-area">
+                        <input class="board-title-input" placeholder="제목 입력"
+                            name="boardTitle" value="">
+                    </div>
+                </div>
+                
+                <!-- 작성자 영역 -->
+                <div class="h3-wt-rc-cc-lc-area">
+                    <div class="board-writer-area">
+                        <strong>작성자 : </strong>
+                        <a class="board-writer" th:text="${session.loginMember.memberNickname}"></a>
+                    </div>
+                </div>
+
+                <!-- 콘텐츠 -->
+                <div class="board-content-area">
+                    <textarea name="boardContent"></textarea>
+                </div>
+
+                <!-- 파일 첨부 영역 -->
+                <div class="filebox">
+                    <input class="upload-name upload-name1" value="첨부파일" placeholder="첨부파일">
+                    <label for="inputImage1">파일 찾기</label> 
+                    <input name="images" type="file" id="inputImage1" class="inputImage" accept="image/*">
+                    <!-- <button type="button" id="addImageBtn1">파일 첨부</button> -->
+                </div>
+
+                <div class="filebox">
+                    <input class="upload-name upload-name2" value="첨부파일" placeholder="첨부파일">
+                    <label for="inputImage2">파일 찾기</label> 
+                    <input name="images" type="file" id="inputImage2" class="inputImage" accept="image/*">
+                    <!-- <button type="button" id="addImageBtn2">파일 첨부</button> -->
+                </div>
+
+                <div class="filebox">
+                    <input class="upload-name upload-name3" value="첨부파일" placeholder="첨부파일">
+                    <label for="inputImage3">파일 찾기</label> 
+                    <input name="images" type="file" id="inputImage3" class="inputImage" accept="image/*">
+                    <!-- <button type="button" id="addImageBtn3">파일 첨부</button> -->
+                </div>
+
+                <!-- 첨부파일명 -->
+                <div class="file-name-area">
+                    <!-- <strong>첨부파일</strong>&nbsp;&nbsp;
+                    <ul>
+                        <li><a id="imageName1" class="imageName"></a></li>
+                        <li><a id="imageName2" class="imageName">123.jpg</a></li>
+                        <li><a id="imageName3" class="imageName">123.jpg</a></li>
+                    </ul> -->
+                </div>
+
+                <!-- 이미지 영역 -->
+                <div class="images-area">
+                    
+                    <!-- 1번이미지(썸네일) -->
+                    <div class="thumnail">
+                        <img id="preview1" class="preview" alt="썸네일" >
+                        <span id="delete1" class="delete-image">&times;</span>
+                    </div>
+
+                    <div>
+                        <img id="preview2" class="preview" alt="이미지">
+                        <span id="delete2" class="delete-image">&times;</span>
+                    </div>
+
+                    <div>
+                        <img id="preview3" class="preview" alt="이미지">
+                        <span id="delete3" class="delete-image">&times;</span>
+                    </div>
+                    
+                </div>
+
+                <!-- 버튼 영역 -->
+                <div class="writeBtn-area">
+                    <button id="insertBtn">등록</button>
+                </div>
+            
+
+            </form>  
+        </section>
+    </main>
+
+
+    
+    <th:block th:replace="~{common/footer}"></th:block>
+
+    <script th:inline="javascript">
+        document.getElementById("inputImage1").addEventListener('change', function() {
+            var fileName = this.value.split('\\').pop();
+            document.querySelector(".upload-name1").value = fileName;
+        });
+
+        document.getElementById("inputImage2").addEventListener('change', function() {
+            var fileName = this.value.split('\\').pop();
+            document.querySelector(".upload-name2").value = fileName;
+        });
+
+        document.getElementById("inputImage3").addEventListener('change', function() {
+            var fileName = this.value.split('\\').pop();
+            document.querySelector(".upload-name3").value = fileName;
+        });
+    </script>
+
+    <script src="/js/board/board3Write.js"></script>
+</body>
+</html>

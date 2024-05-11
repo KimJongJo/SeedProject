@@ -1,5 +1,6 @@
 package seed.project.board.controller;
 
+import java.io.IOException;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.HashMap;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -18,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
@@ -25,7 +28,9 @@ import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import seed.project.board.model.dto.Board;
+import seed.project.board.model.dto.BoardImg;
 import seed.project.board.model.dto.Comment;
+import seed.project.board.model.exception.BoardInsertException;
 import seed.project.board.model.service.BoardService3;
 import seed.project.member.model.dto.Member;
 
@@ -36,8 +41,6 @@ import seed.project.member.model.dto.Member;
 public class BoardController3 {
 
 	private final BoardService3 service;
-	
-	
 	
 	/** [3] 팁과 노하우 게시글 목록 조회 + 검색 서비스
 	 * @param boardCode
@@ -54,9 +57,12 @@ public class BoardController3 {
 		
 		Map<String, Object> map = null;
 		
+
+		
 		if(paramMap.get("key") == null) {
 			
 			map = service.selectBoard3(boardCode, cp);
+			
 			
 		} 
 		
@@ -66,10 +72,13 @@ public class BoardController3 {
 			
 			// 검색 서비스 호출
 			map = service.searchList3(paramMap, cp);
+			
 		}
+		
 		
 		model.addAttribute("pagination", map.get("pagination"));
 		model.addAttribute("boardList", map.get("boardList"));
+		
 		
 		
 		
@@ -201,9 +210,35 @@ public class BoardController3 {
 			
 			model.addAttribute("board", board); // 보드 실어서 전달
 			
+			model.addAttribute("imageList", board.getImageList());
 			// 이미지 추후 구성
 			
 			// --------------------
+			
+			
+			
+			// 조회된 이미지 목록(imageList)가 있을 경우
+			if( !board.getImageList().isEmpty() ) {
+				
+				BoardImg thumbnail = null;
+				
+				// imageList의 0번 인덱스 == 가장 빠른 순서(imgOrder)
+				
+				// 이미지 목록의 첫번째 행이 순서 0 == 썸네일인 경우
+				if(board.getImageList().get(0).getBoardImgOrder() == 0) {
+					
+					thumbnail = board.getImageList().get(0);
+					
+				}
+				
+				model.addAttribute("thumbnail", thumbnail);
+				
+				log.info("thumbnail : " + thumbnail);
+				
+			} else {
+				
+				model.addAttribute("thumbnail", null);
+			}
 			
 		}
 	
@@ -211,6 +246,63 @@ public class BoardController3 {
 		return path;
 	}
 	
+	
+	/** [3] 팁과 노하우 - 게시글 작성 페이지로 이동
+	 * @param boardCode
+	 * @return
+	 */
+	@GetMapping("{boardCode:[3]}/write")
+	public String boardWrite(@PathVariable("boardCode") int boardCode) {
+		
+		return "board/board3Write";
+	}
+	
+	
+	/** [3] 팁과 노하우 - 게시글 작성
+	 * @param boardCode
+	 * @param inputBoard
+	 * @param loginMember
+	 * @param images
+	 * @param ra
+	 * @return
+	 * @throws IllegalStateException
+	 * @throws IOException
+	 */
+	@PostMapping("{boardCode:[3]}/write")
+	public String boardWrite(
+					@PathVariable("boardCode") int boardCode,
+					@ModelAttribute Board inputBoard,
+					@SessionAttribute("loginMember") Member loginMember,
+					@RequestParam("images") List<MultipartFile> images,
+					RedirectAttributes ra) throws IllegalStateException, IOException {
+		
+		
+		// 1. 게시판 코드, 회원 번호 세팅
+		inputBoard.setBoardCode(boardCode);
+		inputBoard.setMemberNo(loginMember.getMemberNo());
+		
+		// 2. 삽입된 게시글 번호 반환 받기
+		int boardNo = service.boardWrite3(inputBoard, images);
+		
+		// 3. 서비스 결과에 따라 message, 리다이렉트 경로 지정
+		String path = null;
+		String message = null;
+		
+		if(boardNo > 0) {
+			path = "/board/" + boardCode + "/" + boardNo;
+			message = boardNo + "번 게시글이 작성 되었습니다!";
+		
+		} else {
+			path = "write";
+			message = "게시글 작성 실패..";
+	
+		}
+		
+		ra.addFlashAttribute("message", message);
+		
+		return "redirect:" + path;
+	}
+
 
 	
 }
