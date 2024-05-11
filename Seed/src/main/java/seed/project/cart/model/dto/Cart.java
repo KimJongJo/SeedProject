@@ -18,4 +18,8 @@ public class Cart {
 	private int seedNo;		// 씨앗 번호
 	private int count;		// 수량
 	
+	private String seedName;	// 씨앗 이름
+	private String seedPrice;	// 씨앗 가격
+	private String seedImgPath;	// 이미지 경로
+	
 }

@@ -1,16 +1,17 @@
-
+/* *{
+    border: 1px solid blue;
+} */
 
 .blank{
     flex-basis: 80%;
     display: flex;
-    align-items: center;
     justify-content: center;
 }
 
 .basket{
+    margin-top: 50px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
 }
 
@@ -80,21 +81,132 @@
 
 
 
+/* 장바구니 */
+.allBox{
+    width: 600px;
+    height: 100px;
+    border-bottom: 1px solid black;
+    padding-right: 20px;
+    padding-left: 20px;
+    padding-bottom: 20px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.seedImg{
+    width: 90px;
+    height: 90px;
+}
+
+.checkbox{
+    width: 20px;
+    height: 20px;
+    margin-right: 50px;
+    accent-color: #21825B;
+}
+
+.checkboxDiv{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.imgDiv{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 
 
+.seedinfo{
+    width: 400px;
+    display: flex;
+    justify-content: flex-end;
+}
 
 
+.seedleft{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-basis: 40%;
+}
 
 
+.span{
+    display: flex;
+    align-items: center;
+    margin-left: 40px;
+    flex-basis: 40%;
+}
+
+.span > button:first-child{
+    margin-left: 50px;
+}
+
+.span > span{
+    margin: 15px;
+    font-size: 18px;
+}
+
+.span > button{
+    font-size: 15px;
+    border: none;
+    background-color: #127369;
+    width: 20px;
+    height: 20px;
+    color: white;
+    border-radius: 5px;
+    transition-duration: 0.3s;
+}
+
+.span > button:hover{
+    transition-duration: 0.3s;
+    background-color: #10403B;
+    cursor: pointer;
+}
 
 
+.buy{
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 300px;
+}
 
+.price{
+    display: flex;
+    justify-content: space-around;
+    width: 170px;
+}
 
+.price > span{
+    font-size: 18px;
+}
 
+.buy > button{
+    width: 70px;
+    height: 40px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #8AA6A3;
+    color: white;
+    transition-duration: 0.3s;
+}
 
+.buy > button:hover{
+    background-color: #127369;
+    cursor: pointer;
+    transition-duration: 0.3s;
+}
 
-
-
-
+.count{
+    width: 10px;
+}
 

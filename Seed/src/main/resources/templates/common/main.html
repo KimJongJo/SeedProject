@@ -20,13 +20,13 @@
         <section class="content">
             <!-- 필터 부분 -->
             <div class="filter">
-                <select>
+                <!-- <select>
                     <option selected>-- 정렬 --</option>
                     <option>높은 가격순</option>
                     <option>낮은 가격순</option>
                     <option>종류별</option>
                     <option>인기순</option>
-                </select>
+                </select> -->
             </div>
             <!-- 상품 하드코딩 9종 (추후 시간 남으면 수정) -->
             <!-- 시간이 남을 경우 타임리프 반복으로 상품 정보 넣기 -->
@@ -45,7 +45,8 @@
                             <p th:text="*{seedPrice}">1900원</p>
                         </div>
                         <div>
-                            <button id="cartAdd">담기</button>
+                            <input type="hidden" th:value="*{seedNo}" class="seedNo">
+                            <button id="cartAdd" class="cartAdd">담기</button>
                         </div>
                     </div>
                     
@@ -58,5 +59,13 @@
     
     <th:block th:replace="~{common/images2}"></th:block>
     <th:block th:replace="~{common/footer}"></th:block>
+
+    <script th:inline="javascript">
+
+        const memberNo = /*[[${session.loginMember?.memberNo}]]*/ "로그인 한 회원 번호";
+
+    </script>
+
+    <script src="/js/common/main.js"></script>
 </body>
 </html>
