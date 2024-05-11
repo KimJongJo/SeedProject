@@ -46,22 +46,28 @@ END;
 
 COMMIT;
 
+
 SELECT * FROM BOARD_IMG ;
+
+
+ROLLBACK;
+SELECT * FROM BOARD
+WHERE BOARD_CODE = 3;
 
 SELECT * FROM "MEMBER";
 
 -- [1] 자유 게시판 샘플 
 -- ******* 아직 실행 안함 내용 수정하고 진행 ********
 BEGIN
-	FOR I IN 1..300 LOOP
+	FOR I IN 1..2 LOOP
 	
 		INSERT INTO "COMMENT"	
 		VALUES(
 			SEQ_COMMENT_NO.NEXTVAL,
 			SEQ_COMMENT_NO.CURRVAL || '번째 댓글 입니다',
 			DEFAULT, DEFAULT,
-			CEIL( DBMS_RANDOM.VALUE(0, 500) ), -- 게시글번호
-			CEIL( DBMS_RANDOM.VALUE(0,3) ), -- 댓글작성회원번호
+			CEIL( DBMS_RANDOM.VALUE(596, 596) ), -- 게시글번호
+			CEIL( DBMS_RANDOM.VALUE(5,5) ), -- 댓글작성회원번호
 			NULL -- 부모댓글번호
 		);
 	END LOOP;

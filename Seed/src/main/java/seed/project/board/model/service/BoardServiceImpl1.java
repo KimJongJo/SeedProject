@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import lombok.RequiredArgsConstructor;
 import seed.project.board.model.dto.Board;
+import seed.project.board.model.dto.Comment;
 import seed.project.board.model.dto.Pagination;
 import seed.project.board.model.mapper.BoardMapper1;
 
@@ -116,6 +117,20 @@ public class BoardServiceImpl1 implements BoardService1{
 	public Map<String, Object> selectBoardSearchList1(Map<String, Object> paramMap, int cp) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	// [1] 댓글 조회
+	@Override
+	public List<Comment> commentSelect(int boardNo) {
+		return mapper.commentSelect(boardNo);
+		
+	}
+
+	// 댓글 작성
+	@Override
+	public int commentInsert(Comment comment) {
+		return mapper.commentInsert(comment);
+		
 	}
 
 
