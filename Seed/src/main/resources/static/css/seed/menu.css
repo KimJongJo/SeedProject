@@ -1,0 +1,75 @@
+
+
+.menu{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.seed{
+    border: 1px solid black;
+    text-decoration: none;
+    width: 120px;
+    height: 80px;
+}
+
+.menu1, .menu2{
+    display: flex;
+}
+
+.menu  .seed{
+    flex-basis: 50%;
+    text-align: center;
+    line-height: 80px;
+    font-size: 23px;
+    margin: 20px;
+    color: white;
+    background-color: #8AA6A3;
+    border-radius: 5px;
+    border: none;
+}
+
+.container {
+    padding-top: 1em;
+    margin-top: 1em;
+  }
+  
+  .container a {
+      text-decoration: none;
+      
+  }
+  
+  a.button {
+    display: block;
+    position: relative;
+    font-size: 20px;
+    width: 120px;
+    margin: 10px 5px 10px 5px;
+    text-align: center;
+    line-height: 50px;
+    color: #FFF;
+    border-radius: 5px;
+    transition: all 0.2s ;
+  }
+  
+  .btnBlueGreen {
+    background: #127369;
+  }
+  
+  
+  
+  
+/* 3D */
+.btnBlueGreen.btnPush {
+    box-shadow: 0px 5px 0px 0px #10403B;
+}
+
+.btnPush:hover {
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+.btnBlueGreen.btnPush:hover {
+    box-shadow: 0px 0px 0px 0px #10403B;
+}

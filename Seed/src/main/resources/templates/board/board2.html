@@ -24,9 +24,9 @@
                 <th>제목</th>
                 <th>작성자</th>
                 <th>작성일</th>
-                <th>조회수</th>
-                <th>좋아요</th>
-                <th>댓글</th>
+                <th><i class="fa-regular fa-eye"></i></th>
+                <th><i class="fa-regular fa-thumbs-up"></i></th>
+                <th><i class="fa-regular fa-message"></i></th>
             </tr>
         </thead>
         
@@ -40,11 +40,11 @@
             </th:block>     
             
             <!-- 게시글이 존재할 때 -->
-            <th:block th:unless="${#lists.isEmpty(boardList)}">
+            <th:block th:unless="${#lists.isEmpty(boardList)}" th:object="${pagination}">
                 <tr th:each="board : ${boardList}" th:object="${board}" class="tr_line">
                     <td th:text="*{boardNo}">번호</td>
                     <td>
-                       <a th:href="@{/board/2/detail(boardNo=*{boardNo})}" th:text="*{boardTitle}">제목</a>
+                       <a th:href="@{/board/2/detail(boardNo=*{boardNo}, cp=${cp})}" th:text="*{boardTitle}">제목</a>
                     </td>
                     <td th:text="*{memberNickname}">작성자</td>
                     <td th:text="*{boardWriteDate}">작성일</td>

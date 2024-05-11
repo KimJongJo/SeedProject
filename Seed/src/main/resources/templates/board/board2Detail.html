@@ -17,7 +17,7 @@
         <h1>문의 게시판</h1>
     </div>
 
-
+    <a th:href="@{/board/2(cp=${cp})}" class="boardListBtn"><i class="fa-solid fa-person-walking"></i> 목록</a>
     <th:block th:object="${boardInfo}">
         <div class="board">
             <th:block th:if="${session.loginMember} and *{memberNo} == ${session.loginMember.memberNo}">
@@ -33,12 +33,31 @@
             <div>
                 <div class="board-middle">
                     <div th:text="*{memberNickname}" class="memberNickname">작성자</div>
-                    <div th:text="|조회수 *{readCount} 회|" class="readCount">조회수</div>
-                </div><div>
-                    
+                    <div class="view-box">
+                        <div>
+                            <i class="fa-solid fa-eye"></i>
+                        </div>
+                        <div th:text="|*{readCount} 회|" class="readCount">조회수</div>
+                    </div>
                 </div>
                 <div class="like">
-                    <div th:text="|like *{likeCount} 개|" class="likeCount">좋아요</div>
+                    <div class="like-box">
+                        <div>
+                            <th:block th:if="${session.loginMember}">
+                                <th:block th:if="${likeOn == 0}">
+                                    <i class="fa-regular fa-thumbs-up" id="thumbsUp"></i>
+                                </th:block>
+                                <th:block th:unless="${likeOn == 0}">
+                                    <i class="fa-solid fa-thumbs-up" id="thumbsUp"></i>
+                                </th:block>
+                            </th:block>
+
+                            <th:block th:unless="${session.loginMember}">
+                                <i class="fa-regular fa-thumbs-up" id="thumbsUp"></i>
+                            </th:block>
+                        </div>
+                        <div th:text="|*{likeCount} 개|" class="likeCount">좋아요</div>
+                    </div>
                 </div>
                 <div>
                     <div th:text="|작성일 : *{boardWriteDate}|" class="boardWriteDate">작성일</div>
@@ -65,10 +84,8 @@
                     <div th:text="*{memberNickname}" class="memberNickname">댓글 작성자</div>
                     <div th:text="*{commentWriteDate}" class="commentWriteDate">댓글 작성일</div>
                     
-
                     <th:block th:if="${session.loginMember?.memberNo} == *{memberNo}">
                         <div class="UorD">
-                            <input type="hidden" th:value="*{commentNo}" id="commentNo" class="commentNo">
                             <button th:onclick="|updateComment(*{commentNo})|" class="update">수정</button>
                             <button th:onclick="|deleteComment(*{commentNo})|" class="delete">삭제</button>
                         </div>
@@ -79,9 +96,10 @@
                     <div th:text="*{commentContent}" class="comment-box" id="commentContent"></div>
 
                     <div class="text">
-                        <div class="container">
+                        <div class="container2">
                             <textarea class="textarea" th:text="*{commentContent}" ></textarea>
-                            <button class="updateBtn">수정</button>
+                            <button class="updateBtn">저장</button>
+                            <input type="hidden" th:value="*{commentNo}" id="commentNo" class="commentNo">
                         </div>
                     </div>
                 </div>

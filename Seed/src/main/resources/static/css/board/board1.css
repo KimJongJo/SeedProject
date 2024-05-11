@@ -7,6 +7,14 @@
     margin: 0px auto;
 }
 
+/* 자유게시판 글씨, 글쓰기 버튼 공간 */
+.board-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 /* 자유게시판 글씨 위치 및 padding */
 .board-name {
     width: 100%;
@@ -15,6 +23,29 @@
     padding: 20px 0;
     font-size: 2em;
 }
+
+#insertBtn-area {
+    display: flex;
+    align-self: flex-end;
+}
+
+/* 글쓰기 버튼 */
+#insertBtn {
+    width: 50px;
+    height: 40px;
+    background-color: #127369;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 15px;
+    transition-duration: 0.2s;
+    display: flex;
+    align-items: center;
+    /* align-self: flex-end; */
+    justify-content: center;
+}
+
+
 
 
 .list-wrapper {
@@ -55,7 +86,7 @@
     list-style: none; /* 리스트의 점 제거 */
     display: flex;
     justify-content: center;
-    padding: 30px;
+    /* padding: 15px; */
 }
 
 /* Pagination 사이 공백 띄우기 */
@@ -72,7 +103,7 @@
 
 /* 검색창 공간 위쪽 공백 */
 .boardSearch {
-    padding-top: 30px;
+    padding-top: 20px;
 }
 
 /* 검색할 것 종류 (select태그) */
@@ -114,8 +145,8 @@
     transition-duration: 0.2s;
 }
 
-#nav-bottom a:nth-child(2){
+/* #nav-bottom a:nth-child(2){
     margin-top: 15px;
     margin-bottom: 5px;
     box-shadow: none;
-}
+} */

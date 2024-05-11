@@ -23,26 +23,12 @@ public interface BoardMapper {
 	int getListCount(int boardCode);
   
   
-  
-	/** 문의 게시판 게시글 조회
-	 * @param rowBounds 
-	 * @param boardCode 
-	 * @return
-	 */
-	List<Board> selectBoard2List(int boardCode, RowBounds rowBounds);
-
 	
 	/** 게시글 정보 가져오기
 	 * @param boardNo
 	 * @return
 	 */
 	Board board2Detail(int boardNo);
-
-	/** 게시글 댓글 정보
-	 * @param boardNo
-	 * @return
-	 */
-	List<Comment> board2CommentList(int boardNo);
 
 	
 	
@@ -71,12 +57,19 @@ public interface BoardMapper {
 
 
 	
-	/** 자유 게시판 검색 조건이 맞는 게시글 수 조회
+	/** [1] 자유 게시판 검색 조건이 맞는 게시글 수 조회
 	 * @param paramMap
 	 * @return count
 	 */
-	int getSearchCount1(Map<String, Object> paramMap);
+	List<Board> getSearchCount1(Map<String, Object> paramMap);
 
+	/** [1] 자유 게시판 검색한 게시글 목록 조회
+	 * @param paramMap
+	 * @param rowBounds
+	 * @return
+	 */
+	List<Board> getSearchCount1(Map<String, Object> paramMap, RowBounds rowBounds);
+	
 	/** 자유 게시판 목록 조회
 	 * @param boardCode
 	 * @param rowBounds
@@ -93,32 +86,6 @@ public interface BoardMapper {
 
 
 
-	/** [2] 게시글 삭제(업데이트)
-	 * @param boardNo
-	 * @return
-	 */
-	int board2Delete(int boardNo);
-
-
-	/** [2] 게시글 작성하기
-	 * @param board
-	 * @return
-	 */
-	int board2Write(Map<String, String> board);
-
-
-	/** [2] 게시글 정보 가져오기
-	 * @param boardNo
-	 * @return
-	 */
-	Board board2Info(int boardNo);
-
-
-	/** [2] 게시글 수정하기
-	 * @param board
-	 * @return
-	 */
-	int board2Update(Map<String, Object> board);
 
 	/** [3] 팁과 노하우 게시판 - 게시글 상세 조회
 	 * @param map
@@ -134,20 +101,7 @@ public interface BoardMapper {
 	Board selectOne1(Map<String, Object> map);
 
 
-	/** [2] 문의 게시판 검색 삭제되지 않은 게시글들
-	 * @param paramMap
-	 * @return
-	 */
-	List<Board> getSearchCount2(Map<String, Object> paramMap);
-
-
-	/** [2] 검색한 게시글 반환
-	 * @param paramMap
-	 * @param rowBounds
-	 * @return
-	 */
-	List<Board> getSearchCount2(Map<String, Object> paramMap, RowBounds rowBounds);
-
+	
 
 	/** [3] 팁과 노하우 게시판 - 조회수 1 증가
 	 * @param boardNo
@@ -175,18 +129,7 @@ public interface BoardMapper {
 	 */
 	int afterPage(Map<String, Integer> map);
   
-	/** [2] 댓글 달기
-	 * @param commentMap
-	 * @return
-	 */
-	int board2Comment(Map<String, Object> commentMap);
-
-
-	/** [2] 댓글 삭제
-	 * @param commentNo
-	 * @return
-	 */
-	int board2CommentDelete(int commentNo);
+	
   
 	/** [1] 게시글 수정하기
 	 * @param board
@@ -201,6 +144,13 @@ public interface BoardMapper {
 	 */
 	int board1Delete(int boardNo);
 
+
+
+	/** [1] 삭제안되고 검색한 게시글 조회
+	 * @param paramMap
+	 * @return
+	 */
+	List<Board> selectBoardSearchList1(Map<String, Object> paramMap);
 
 
 

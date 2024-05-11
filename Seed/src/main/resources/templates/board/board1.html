@@ -17,14 +17,12 @@
         
         <section class="board-list">
 
-            <th:block th:each="boardType : ${application.boardTypeList}">
-                <!-- <div  class="board-name"> -->
-                    <h1 class="board-name"
-                        th:if="${boardType.boardCode} == ${boardCode}"
-                        th:text="${boardType.boardName}">
-                    게시판 이름</h1>
-                <!-- </div> -->
-            </th:block>
+            <div class="board-header">
+
+                <h1 class="board-name">자유 게시판</h1>
+
+                
+            </div>
 
             
             
@@ -90,11 +88,14 @@
             </div>
 
 
-            <div class="btn-area">
+            
+            <div id="insertBtn-area">
                 <!-- 로그인 중일때만 버튼 노출 -->
-                <button id="insertBtn" th:if="${session.loginMember}">글쓰기</button>
+                <a id="insertBtn" th:if="${session.loginMember}">글쓰기</a>
             </div>
+            
 
+            <!-- ============================================================================================= -->
 
             <!-- 게시글이 있을때만 페이지네이션 보이게 하기 -->
             <div class="pagination-area">
@@ -135,14 +136,14 @@
                 <ul class="pagination" th:if="${param.key}" th:object="${pagination}" th:unless="${#lists.isEmpty(boardList)}">
 
                     <!-- 첫 페이지로 이동 -->
-                    <li><a href="@{/board/{boardCode}(boardCode=${boardCode}, cp=1)}">&lt;&lt;</a></li>
+                    <li><a th:href="@{/board/{boardCode}(boardCode=${boardCode}, cp=1, key=${param.key}, query=${param.query})}">&lt;&lt;</a></li>
 
                     <!-- 이전 목록 마지막 번호로 이동 -->
-                    <li><a href="@{/board/{boardCode}(boardCode=${boardCode}, cp=*{prevPage})}">&lt;</a></li>
+                    <li><a th:href="@{/board/{boardCode}(boardCode=${boardCode}, cp=*{prevPage}, key=${param.key}, query=${param.query})}">&lt;</a></li>
 
                     <!-- 특정 페이지로 이동 -->
                     <!-- startPage, endPage : pagination DTO에 있음 -->
-                    <th:block th:each="i : *{#numbers.sequence(startPage, endPage)}">
+                    <th:block th:if="*{startPage lt endPage}" th:each="i : *{#numbers.sequence(startPage, endPage)}">
 
                         <!-- 현재 보고 있는 페이지 -->
                         <li th:if="${i} == *{currentPage}">
@@ -151,7 +152,7 @@
 
                         <!-- 보고있지 않은 페이지 -->
                         <li th:unless="${i} == *{currentPage}">
-                            <a href="@{/board/{boardCode}(boardCode=${boardCode}, cp=${i})}"
+                            <a th:href="@{/board/{boardCode}(boardCode=${boardCode}, cp=${i}, key=${param.key}, query=${param.query})}"
                             th:text="${i}">이동할 페이지</a>
                         </li>
                     </th:block>
@@ -164,10 +165,10 @@
 					</th:block>
 
                     <!-- 다음 목록 시작 번호로 이동 -->
-                    <li><a href="@{/board/{boardCode}(boardCode=${boardCode}, cp=*{nextPage})}"></a></li>
+                    <li><a th:href="@{/board/{boardCode}(boardCode=${boardCode}, cp=*{nextPage}, key=${param.key}, query=${param.query})}">&gt;</a></li>
 
                     <!-- 끝 페이지로 이동 -->
-                    <li><a href="@{/board/{boardCode}(boardCode=${boardCode}, cp=*{maxPage})}"></a></li>
+                    <li><a th:href="@{/board/{boardCode}(boardCode=${boardCode}, cp=*{maxPage}, key=${param.key}, query=${param.query})}">&gt;&gt;</a></li>
                 </ul>
 
 
