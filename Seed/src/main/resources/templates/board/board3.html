@@ -47,10 +47,19 @@
                         <th:block th:unless="${#lists.isEmpty(boardList)}">
                             <tr th:each="board : ${boardList}" th:object="${board}">
                                 <td th:text="*{boardNo}">게시글 번호</td>
-                                <td>
+                                <td id="boardTitle-main">
     
                                     <!-- 썸네일 나중에 넣어보기 -->
-    
+                                    <th:block th:if="*{thumbnail} != null">
+                                        <a th:href="@{/board/{boardCode}/{boardNo} 
+                                        (boardCode=${boardCode}, boardNo=*{boardNo})}"><img th:src="*{thumbnail}" onerror="this.style.display='none'" ></a>
+                                    </th:block>
+
+                                    <th:block th:if="*{thumbnail} == null">
+                                        <a th:href="@{/board/{boardCode}/{boardNo} 
+                                        (boardCode=${boardCode}, boardNo=*{boardNo})}">
+                                            <img src="/images/no-thumbnail.jpg"></a>
+                                    </th:block>
                                     <a 
                                     th:href="@{/board/{boardCode}/{boardNo} 
                                             (boardCode=${boardCode}, boardNo=*{boardNo})}"

@@ -1,23 +1,41 @@
 package seed.project.board.model.service;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import org.apache.ibatis.session.RowBounds;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import seed.project.board.model.dto.Board;
-import seed.project.board.model.dto.Comment;
+import seed.project.board.model.dto.BoardImg;
 import seed.project.board.model.dto.Pagination;
-import seed.project.board.model.mapper.BoardMapper;
+import seed.project.board.model.exception.BoardInsertException;
+import seed.project.board.model.mapper.BoardMapper3;
+import seed.project.common.util.Utility;
 
 @Service
-@Transactional
+@Transactional(rollbackFor = Exception.class)
 @RequiredArgsConstructor
-public class BoardServiceImpl implements BoardService{
+@Slf4j
+public class BoardServiceImpl3 implements BoardService3{
 
-	private final BoardMapper mapper;
+	private final BoardMapper3 mapper;
+	
+	// config.properties
+	@Value("${my.board.web-path}")
+	private String webPath;
+	
+	@Value("${my.board.folder-path}")
+	private String folderPath;
+	
+	
 	
 	
 	// [공통] 게시판 종류 조회
@@ -59,7 +77,7 @@ public class BoardServiceImpl implements BoardService{
 		
 		return map;
 
-
+		
 	}
 	
 	
@@ -79,6 +97,7 @@ public class BoardServiceImpl implements BoardService{
 		
 
 		List<Board> boardList = mapper.selectSearchList3(paramMap, rowBounds);
+		
 		
 		
 		Map<String, Object> map = new HashMap<>();
@@ -132,6 +151,82 @@ public class BoardServiceImpl implements BoardService{
 
 		return mapper.afterPage(map);
 	}
+
+	
+	// [3] 팁과 노하우 게시판 - 게시글 작성
+	@Override
+	public int boardWrite3(Board inputBoard, List<MultipartFile> images) throws IllegalStateException, IOException {
+		
+		int result = mapper.boardWrite3(inputBoard);
+		
+		// result = 0 or 1
+		
+		if(result == 0) return 0;
+		
+		// 삽입된 게시글 번호 저장 - mapper3.xml selectKey 태그에 keyProperty="boardNo"
+		int boardNo = inputBoard.getBoardNo();
+		
+		// 업로드 이미지 List
+		List<BoardImg> uploadList = new ArrayList<>();
+		
+		for(int i=0; i < images.size(); i++) {
+			
+			if( !images.get(i).isEmpty()) {
+				
+				String originalName = images.get(i).getOriginalFilename(); // 원본명
+				
+				String rename = Utility.fileRename(originalName); // 변경명
+				
+				
+				BoardImg img = BoardImg.builder()
+								.boardNo(boardNo)
+								.boardImgPath(webPath)
+								.boardImgOriginalName(originalName)
+								.boardImgRename(rename)
+								.boardImgOrder(i)
+								.uploadFile(images.get(i))
+								.build();
+				
+				uploadList.add(img);
+			}
+			
+			
+		}
+		
+		
+		// 이미지 업로드 안한 경우
+		if(uploadList.isEmpty()) {
+			return boardNo;
+		}
+		
+		// 이미지 업로드 삽입
+		result = mapper.insertUploadList3(uploadList);
+		
+		// 다중 INSERT  성공 확인 (uploadList에 저장된 값이 모두 정상 삽입 되었나)
+		if(result == uploadList.size()) {
+			
+			// 서버에 파일 저장
+			for(BoardImg img : uploadList) {
+				
+				img.getUploadFile()
+					.transferTo(new File(folderPath + img.getBoardImgRename()));
+				
+			}
+			
+		} else {
+			// 부분적으로 삽입 실패 -> 전체 서비스 실패로판단
+			// -> 이전에 삽입된 내용 모두 rollback
+			
+			// -> rollback 하는 방법
+			// == RuntimeException 강제 발생 (@Transactional)
+			throw new BoardInsertException("이미지가 정상 삽입되지 않음");
+			
+		}
+		
+		return boardNo;
+		
+	}
+
 
 
 

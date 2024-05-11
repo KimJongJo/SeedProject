@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>관리자 - 상품 추가</title>
+
+    <th:block th:replace="~{common/common}"></th:block>
+    <link rel="stylesheet" href="/css/seed/menu.css">
+
+</head>
+<body>
+    <!-- 헤더 추가 -->
+    <th:block th:replace="~{common/header}"></th:block>
+
+    
+    
+    <main>
+
+        <h1>씨앗 품절</h1>
+
+
+        <div class="mainDiv">
+            <form action="" class="form">
+                <div>
+                    <h2>품절 등록</h2>
+                    <span>상품 이름</span>
+                    <input type="text">
+
+                    <button>품절</button>
+                </div>
+
+                
+
+                
+            </form>
+            <form action="" class="form center">
+                <div>
+                    <h2>품절 취소</h2>
+                    <span>상품 이름</span>
+                    <input type="text">
+
+                    <button>판매</button>
+                </div>
+
+                
+            </form>
+
+
+        </div>
+
+    </main>
+
+    
+    <th:block th:replace="~{common/footer}"></th:block>
+</body>
+</html>

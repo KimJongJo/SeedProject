@@ -65,22 +65,29 @@
             <div class="file-name-area">
                 <strong>첨부파일</strong>&nbsp;&nbsp;
                 <ul>
-                    <li><a>123.jpg</a></li>
-                    <li><a>123.jpg</a></li>
-                    <li><a>123.jpg</a></li>
+                    <th:block th:if="${not #lists.isEmpty(imageList)}">
+                        <li th:each="i : ${#numbers.sequence(0, imageList.size() - 1)}">
+                            <a th:href="|${imageList[i].boardImgPath}${imageList[i].boardImgRename}|"
+                                th:text="${imageList[i].boardImgOriginalName}"
+                                th:download="${imageList[i].boardImgOriginalName}"></a>
+                        </li>
+                    </th:block>
                 </ul>
                 
             </div>
             <div class="images-area">
-                <div>
-                    <img src="/images/쌈채소씨앗9종/고수.png">
-                </div>
-                <div>
-                    <img src="/images/쌈채소씨앗9종/고수.png">
-                </div>
-                <div>
-                    <img src="/images/쌈채소씨앗9종/고수.png">
-                </div>
+<!--                 
+                <th:block>
+
+
+                </th:block> -->
+
+                <th:block th:if="${not #lists.isEmpty(imageList)}">
+                    <div th:each="i : ${#numbers.sequence(0, imageList.size() - 1)}">
+                        <img th:src="|${imageList[i].boardImgPath}${imageList[i].boardImgRename}|">
+                    </div>
+                </th:block>
+                
                 
             </div>
             <!-- 버튼 영역 -->
@@ -93,7 +100,7 @@
                     <a th:unless="${beforePage} == -1" th:href="@{/board/{boardCode}/{boardNo}(boardCode=${boardCode}, boardNo=${beforePage})}" id="goToBeforeBtn">&lt;&nbsp;이전 글</a>
                 </div>
                 <div>
-                    <a href="javascript:history.back();" id="goToListBtn">목록으로</a>
+                    <a th:href="@{/board/{boardCode}(boardCode=${boardCode})}" id="goToListBtn">게시판 홈으로</a>
                 </div>
                 <div>
                     <a th:unless="${afterPage} == -1" th:href="@{/board/{boardCode}/{boardNo}(boardCode=${boardCode}, boardNo=${afterPage})}" id="goToAfterBtn">다음 글&nbsp;&gt;</a>
