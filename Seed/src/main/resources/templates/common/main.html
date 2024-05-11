@@ -98,6 +98,16 @@
             </div>
         </section>
 
+        <th:block th:each="seed : ${seedList}" th:object="${seed}">
+            <div>
+                <img th:src="*{seedImgPath}">
+                <p th:text="*{seedImgPath}"></p>
+                <br>
+                <a th:text="*{seedName}">고수 씨앗</a>
+                <p th:text="*{seedPrice}">1900원</p>
+            </div>
+        </th:block>
+
     </main>
     
     <th:block th:replace="~{common/images2}"></th:block>
