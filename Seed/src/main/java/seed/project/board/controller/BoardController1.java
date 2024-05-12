@@ -1,6 +1,7 @@
 package seed.project.board.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.stereotype.Controller;
@@ -8,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,6 +22,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import seed.project.board.model.dto.Board;
+import seed.project.board.model.dto.Comment;
 import seed.project.board.model.service.BoardService1;
 import seed.project.member.model.dto.Member;
 
@@ -165,6 +168,35 @@ public class BoardController1 {
 	}
 	
 
+	
+	/** 댓글 목록 조회
+	 * @param boardNo
+	 * @return
+	 */
+	@ResponseBody
+	@GetMapping("{boardCode:[1]}/comment")
+	public List<Comment> commentSelect(@RequestParam("boardNo") int boardNo) {
+		return service.commentSelect(boardNo);
+	}
 
+	
+	@ResponseBody
+	@PostMapping("{boardCode:[1]}/comment")
+	public int commentInsert(@RequestBody Comment comment) {
+		return service.commentInsert(comment);
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 }

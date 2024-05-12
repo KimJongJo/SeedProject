@@ -42,6 +42,7 @@ public class Board {
 	
 	// 게시글 목록 썸네일 이미지
 	private String thumbnail;
+
 	
 	// 특정 게시글 이미지 목록
 	private List<BoardImg> imageList;
