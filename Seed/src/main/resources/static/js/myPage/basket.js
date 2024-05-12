@@ -14,9 +14,13 @@ const crossBtns = document.querySelectorAll(".cross");  // 삭제 버튼
 
 const money = document.getElementById("money"); // 결제 금액
 
-payment.addEventListener("click", () => {
-    alert("준비중입니다...");
-});
+
+if(payment != null){
+    payment.addEventListener("click", () => {
+        alert("준비중입니다...");
+    });
+}
+
 
 
 
@@ -30,37 +34,175 @@ function refreshCart() {
     fetch("/cart/basket?memberNo=" + memberNo) // 서버로부터 장바구니 목록을 가져오는 요청
         .then(response => response.json()) // JSON 형태로 응답을 받음
         .then(cartList => {
-            // 새로운 장바구니 HTML 생성
-            let cartHTML = ''; // 새로운 장바구니 HTML을 담을 변수 초기화
-            cartList.forEach(cart => {
-                cartHTML += `
-                    <div class="allBox">
-                        <div class="checkboxDiv">
-                            <input type="checkbox" class="checkbox">
-                        </div>
-                        <div class="imgDiv">
-                            <img src="${cart.seedImgPath}" class="seedImg">
-                        </div>
-                        <div class="seedinfo">
-                            <div class="seedleft">
-                                <span class="seedName" data-seedName="${cart.seedName}">${cart.seedName}</span>
-                                <span class="seedPrice">${cart.seedPrice}</span>
-                            </div>
-                            <div class="span">
-                                <button class="minusBtn"><i class="fa-solid fa-minus"></i></button>
-                                <span class="count">${cart.count}</span>
-                                <button class="plusBtn"><i class="fa-solid fa-plus"></i></button>
-                            </div>
-                        </div>
-                        <span class="cross">&times;</span>
-                    </div>
-                `;
-            });
 
+            let cartHTML = '';
+            // 장바구니가 비어있을때
             
-            // 새로운 장바구니 HTML을 #cartList 요소에 삽입
-            document.getElementById('cartList').innerHTML = cartHTML;
-            
+            if(cartList.length == 0){
+                cartHTML = `
+                <div class="blank">
+                    <div class="basket">
+
+                        <i class="fa-solid fa-basket-shopping"></i>
+                        <span>장바구니가 비었습니다</span>
+
+                        <div class="container2">
+                            <a href="/" class="button btnPush btnBlueGreen" id="cart"><i class="fa-solid fa-cart-shopping"></i> 장보기 </a>
+                        </div>
+                    </div>
+                </div>    
+                `;
+
+                document.querySelector(".buy").style.display = 'none';
+
+                // 새로운 장바구니 HTML을 #cartList 요소에 삽입
+                document.getElementById('cartList').innerHTML = cartHTML;
+            }
+
+
+            // 새로운 장바구니 HTML 생성
+
+            // 장바구니가 비어있지 않을때
+            else{
+
+                
+                cartList.forEach(cart => {
+                    cartHTML += `
+
+
+
+                            <div class="allBox">
+                                <div class="checkboxDiv">
+                                    <input type="checkbox" class="checkbox">
+                                </div>
+                                <div class="imgDiv">
+                                    <img src="${cart.seedImgPath}" class="seedImg">
+                                </div>
+                                <div class="seedinfo">
+                                    <div class="seedleft">
+                                        <span class="seedName">${cart.seedName}</span>
+                                        <span class="seedPrice">${cart.seedPrice}</span>
+                                    </div>
+                                    <div class="span">
+                                        <button class="minusBtn"><i class="fa-solid fa-minus"></i></button>
+                                        <span class="count">${cart.count}</span>
+                                        <button class="plusBtn"><i class="fa-solid fa-plus"></i></button>
+                                    </div>
+                                </div>
+                                <span class="cross">&times;</span>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                
+                // 새로운 장바구니 HTML을 #cartList 요소에 삽입
+                document.getElementById('cartList').innerHTML = cartHTML;
+
+                // 장바구니를 삭제하는 기능 추가
+                const crossBtns = document.querySelectorAll('.cross');
+                crossBtns.forEach((cross, index) => {
+                    cross.addEventListener("click", () => {
+                        const answer = confirm("씨앗을 장바구니에서 삭제하시겠습니까?");
+                        if (answer) {
+                            deleteCart(memberNo, cartList[index].seedName);
+                        }
+                    });
+                });
+
+                // 체크박스에 체크가 되어 있으면 결제 금액에 가격 x 수량 추가
+                const checkBoxs = document.querySelectorAll('.checkbox');
+                checkBoxs.forEach((seed, index) => {
+                    seed.addEventListener("click", () => {
+                        let payMoney = 0;
+                        for(let i = 0; i < checkBoxs.length; i++){
+                            if(checkBoxs[i].checked){
+                                var priceString = document.querySelectorAll('.seedPrice')[i].innerText;
+                                // String으로 저장된 1,000원 -> 1000 숫자로 바꿈
+                                var priceInt = parseInt(priceString.replace(/[^\d]/g, ""));
+                                payMoney += priceInt * parseInt(document.querySelectorAll('.count')[i].innerText);
+                            }
+                        }
+                        // 1000 -> 1,000원 String 으로 바꿈
+                        document.getElementById('money').innerText = payMoney.toLocaleString() + "원";
+                    });
+                });
+
+                // 플러스 버튼에 이벤트 리스너 추가
+                const plusBtns = document.querySelectorAll('.plusBtn');
+                plusBtns.forEach((plus, index) => {
+                    plus.addEventListener("click", () => {
+                        let payMoney = 0;
+                        const counts = document.querySelectorAll('.count');
+                        const seedPrices = document.querySelectorAll('.seedPrice');
+                        const checkBoxs = document.querySelectorAll('.checkbox');
+                        counts[index].innerText = parseInt(counts[index].innerText) + 1;
+                        for(let i = 0; i < checkBoxs.length; i++){
+                            if(checkBoxs[i].checked){
+                                var priceString = seedPrices[i].innerText;
+                                // String으로 저장된 1,000원 -> 1000 숫자로 바꿈
+                                var priceInt = parseInt(priceString.replace(/[^\d]/g, ""));
+                                payMoney += priceInt * parseInt(counts[i].innerText);
+                            }
+                        }
+                        // 수량 증가하는 함수
+                        seedUp(memberNo, cartList[index].seedName);
+                        // 1000 -> 1,000원 String 으로 바꿈
+                        document.getElementById('money').innerText = payMoney.toLocaleString() + "원";
+                    });
+                });
+
+                // 마이너스 버튼에 이벤트 리스너 추가
+                const minusBtns = document.querySelectorAll('.minusBtn');
+                minusBtns.forEach((minus, index) => {
+                    minus.addEventListener("click", () => {
+                        let payMoney = 0;
+                        const counts = document.querySelectorAll('.count');
+                        const seedPrices = document.querySelectorAll('.seedPrice');
+                        const checkBoxs = document.querySelectorAll('.checkbox');
+
+                        // 현재 수량을 가져옴
+                        let currentCount = parseInt(counts[index].innerText);
+
+                        // 수량이 0이 되면 장바구니에서 제거
+                        if(currentCount === 1){
+                            const answer = confirm("씨앗을 장바구니에서 삭제하시겠습니까?");
+                            if(answer){
+                                deleteCart(memberNo, cartList[index].seedName);
+                                return;
+                            } else {
+                                return;
+                            }
+                        }
+
+                        // 수량 감소
+                        currentCount--;
+
+                        // 수량 업데이트
+                        counts[index].innerText = currentCount;
+
+                        for(let i = 0; i < checkBoxs.length; i++){
+                            if(checkBoxs[i].checked){
+                                var priceString = seedPrices[i].innerText;
+                                // String으로 저장된 1,000원 -> 1000 숫자로 바꿈
+                                var priceInt = parseInt(priceString.replace(/[^\d]/g, ""));
+                                payMoney += priceInt * parseInt(counts[i].innerText);
+                            } else {
+                                continue;
+                            }
+                        }
+
+                        // 수량 감소 함수
+                        seedDown(memberNo, cartList[index].seedName);
+
+                        // 1000 -> 1,000원 String 으로 바꿈
+                        document.getElementById('money').innerText = payMoney.toLocaleString() + "원";
+                    });
+                });
+
+            }
+
+
 
         })
         .catch(error => console.error('Error refreshing cart:', error));
@@ -93,6 +235,8 @@ const deleteCart = (memberNo, seedName) => {
         if(result > 0){
             console.log("삭제 완료");
 
+            money.innerText = '0원';
+
             // 장바구니를 새로 고침 하는 함수
             refreshCart();
         }else{
@@ -121,6 +265,7 @@ const seedDown = (memberNo, seedName) => {
             console.log("수량 감소")
         }else{
             console.log("수량 감소 실패..")
+            console.log(result);
         }
     })
 
@@ -150,6 +295,7 @@ const seedUp = (memberNo, seedName) => {
     })
 
 }
+
 
 
 
