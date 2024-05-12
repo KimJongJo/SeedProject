@@ -86,12 +86,20 @@ public class MyPageServiceImpl implements MyPageService{
 		return mapper.addressCount(memberNo);
 	}
 	
+
+
 	
-	
-	// 회원 주소 추가
+	// 회원 주소 검색
 	@Override
-	public int addAddress(Map<String, Object> addressMap) {
-		return mapper.addAddress(addressMap);
+	public String addressSelect(int memberNo) {
+		return mapper.addressSelect(memberNo);
+	}
+
+
+	// 회원 주소 변경
+	@Override
+	public int addressUpdate(Map<String, Object> addressMap) {
+		return mapper.addressUpdate(addressMap);
 	}
 
 

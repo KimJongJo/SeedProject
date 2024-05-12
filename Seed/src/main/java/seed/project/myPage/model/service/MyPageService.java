@@ -37,20 +37,28 @@ public interface MyPageService {
 	 */
 	int addressCount(int memberNo);
 
-	
-	
-	/** 회원 주소 추가
-	 * @param map
-	 * @return
-	 */
-	int addAddress(Map<String, Object> addressMap);
-
   
 	/** 회원 탈퇴
 	 * @param map
 	 * @return
 	 */
 	int withdraw(Map<String, Object> map);
+
+	/** 회원 주소 검색
+	 * @param memberNo
+	 * @return
+	 */
+	String addressSelect(int memberNo);
+
+
+
+
+
+	/** 회원 주소 수정
+	 * @param addressMap
+	 * @return
+	 */
+	int addressUpdate(Map<String, Object> addressMap);
 
 
 	

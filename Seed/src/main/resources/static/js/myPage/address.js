@@ -18,10 +18,10 @@ function sample6_execDaumPostcode() {
            
 
             // 우편번호와 주소 정보를 해당 필드에 넣는다.
-            document.getElementById('postCode').value = data.zonecode;
-            document.getElementById("address").value = addr;
+            document.getElementById('addPostCode').value = data.zonecode;
+            document.getElementById("addAddress").value = addr;
             // 커서를 상세주소 필드로 이동한다.
-            document.getElementById("detailAddress").focus();
+            document.getElementById("addDetailAddress").focus();
         }
     }).open();
 }
@@ -48,27 +48,11 @@ const popupClose = document.querySelector("#popupClose");
 const newAddressBtn = document.querySelector(".newAddressBtn");
 
 // 주소지 추가 버튼을 누를 때
-newAddressBtn.addEventListener("click", e => {
-
-    // 저장된 주소가 3개 일때
-    fetch("/myPage/addressCount", {
-        method : "POST",
-        headers : {"Content-Type" : "application/json"},
-        body : memberNo
-    })
-    .then(resp => resp.text())
-    .then(result => {
-        if(result >= 3) {
-            addPopup.classList.add("popup-hidden");
-            alert("주소는 최대 3개까지 저장됩니다\n추가를 원하시면 기존 주소 하나를 삭제해주세요");
-        }else{
-            // 모달창 보이게 하기
-            addPopup.classList.remove("popup-hidden");
-        }
-    });
-    
-
-
+newAddressBtn.addEventListener("click", () => {
+ 
+    // 모달창 보이게 하기
+    addPopup.classList.remove("popup-hidden");
+       
 })
 
 // 주소지 추가 모달창에 있는 X 버튼 클릭시 모달창 안보임
@@ -79,19 +63,31 @@ popupClose.addEventListener("click", () => {
 // 모달창에서 주소지 추가하는 버튼
 const addBtn = document.querySelector("#addBtn");
 // const memberAddress = document.querySelectorAll("[name='memberAddress']");
-const add0 = document.querySelector("#postCode"); // 우편번호
-const add1 = document.querySelector("#address"); // 주소
-const add2 = document.querySelector("#detailAddress"); // 상세주소
+const add0 = document.querySelector("#addPostCode"); // 우편번호
+const add1 = document.querySelector("#addAddress"); // 주소
+const add2 = document.querySelector("#addDetailAddress"); // 상세주소
 
 
 addBtn.addEventListener("click", e => {
-    
-    
 
-    console.log("주소 개수 확인 완료");
+    const ad0 = add0.value.trim().length == 0;
+    const ad1 = add1.value.trim().length == 0;
+    const ad2 = add2.value.trim().length == 0;
+
+    // 전부 값이 있을때
+    const result1 = ad0 && ad1 && ad2;
+
+    // 전부 값이 없을 때
+    const result2 = !(ad0 || ad1 || ad2);
+
+    if(!(result1 || result2)) {
+            alert("주소를 모두 작성 또는 미작성 해주세요");
+            e.preventDefault();
+            return;
+    }
+
 
     const obj = {
-        "memberNo" : memberNo,
         "postCode" : add0.value,
         "address"  : add1.value,
         "detailAddress" : add2.value
@@ -114,9 +110,9 @@ addBtn.addEventListener("click", e => {
 
     })
 
-    console.log("주소 추가 끝");
+    console.log("주소 수정 끝");
 
-    alert("주소 추가 성공");
+    alert("주소 수정 성공");
     location.href = "/myPage/address";
 
     
