@@ -21,24 +21,24 @@
 
 
         <div class="seedUpdate">
-            <form action="" class="seedUpdateForm">
+            <form class="seedUpdateForm">
                 <p>상품 가격을 모를때 상품 이름을 입력하고 검색을 눌러주세요!</p>
 
                 <div>
                     <span>상품 이름</span>
-                    <input type="text">
+                    <input type="text" id="updateSeedName">
 
                     
-                    <button type="button">검색</button>
+                    <button type="button" id="seedSearchPrice">검색</button>
                     
                 </div>
 
                 <div class="seedPrice">
                     <div class="seedPriceDiv">
                         <span>가격 수정</span>
-                        <input type="number">
+                        <input type="text" id="updateSeedPrice">
 
-                        <button>변경</button>
+                        <button type="button" id="seedUpdatePrice">변경</button>
                     </div>
                 </div>
 
@@ -49,5 +49,7 @@
     </main>
     
     <th:block th:replace="~{common/footer}"></th:block>
+
+    <script src="/js/seed/seed.js"></script>
 </body>
 </html>

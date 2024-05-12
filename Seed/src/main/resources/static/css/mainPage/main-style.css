@@ -21,6 +21,10 @@ body {
 
 main {
     width: 1140px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 /* @media (max-width : 1140px) {
@@ -372,3 +376,63 @@ nav > a:hover{
     margin-bottom: 5px;
     box-shadow: none;
 }
+
+.content2{
+    display: flex;
+    width: 1240px;
+}
+
+.seedImg{
+    width: 303px;
+    height: 303px;
+}
+
+.allBox{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.imgBox{
+    width: 310px;
+    height: 310px;
+    border: 1px solid black;
+}
+
+.select{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 250px;
+}
+
+.select  a, .select  p{
+    font-size: 18px;
+}
+
+.select div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+#cartAdd{
+    width: 50px;
+    height: 40px;
+    border-radius: 5px;
+    font-size: 18px;
+    background-color: #127369;
+    color: white;
+    border: none;
+    transition-duration: 0.3s;
+}
+
+#cartAdd:hover{
+    background-color: #10403B;
+    cursor: pointer;
+    transition-duration: 0.3s;
+}
+

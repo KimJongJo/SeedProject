@@ -1,6 +1,9 @@
 package seed.project.Manager.model.dto;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -11,10 +14,13 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
+@Builder
 public class Seed {
 
 	private int seedNo;			// 씨앗 번호
 	private String seedName;	// 씨앗 이름
+	private MultipartFile seedImg;	// 씨앗 이미지
+	private String seedImageFileName; // 씨앗 이미지 파일 이름
 	private String seedImgPath;	// 씨앗 이미지 경로
 	private	String seedPrice;	// 씨앗 가격
 	private String seedTemp;	// 온도

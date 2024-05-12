@@ -2,6 +2,7 @@ package seed.project.common.util;
 
 import java.text.SimpleDateFormat;
 
+
 public class Utility {
 	
 	public static int seqNum = 1; // 1~99999 반복;
@@ -15,16 +16,19 @@ public class Utility {
 		
 		// new java.util.Date() : 현재 시간을 저장한 자바 객체
 		String date = sdf.format(new java.util.Date());
+
 		
 		String number = String.format("%05d", seqNum);
 		
 		seqNum++; // 1증가
+
 		
 		if(seqNum == 100000) seqNum = 1;
 		
 		// 확장자
 		// "문자열".substring(인덱스)
-		// - 문자열을 인덱스부터 끝까지 잘라낸 결과를 반환
+
+    // - 문자열을 인덱스부터 끝까지 잘라낸 결과를 반환
 		
 		// "문자열".lastIndexOf(".")
 		// - 문자열에서 마지막 "."의 인덱스를 반환

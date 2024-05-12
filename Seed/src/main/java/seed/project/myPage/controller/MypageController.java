@@ -23,6 +23,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import seed.project.cart.model.dto.Cart;
+import seed.project.cart.model.service.CartService;
 import seed.project.member.model.dto.Member;
 import seed.project.myPage.model.service.MyPageService;
 
@@ -34,6 +36,8 @@ import seed.project.myPage.model.service.MyPageService;
 public class MypageController {
 
 	private final MyPageService service;
+	
+	private final CartService cartService;
 	
 	
 	
@@ -259,7 +263,18 @@ public class MypageController {
 	 * @return
 	 */
 	@GetMapping("basket")
-	public String basket() {
+	public String basket(
+					Model model,
+					@SessionAttribute("loginMember") Member loginMember
+			) {
+		
+		List<Cart> cartList = cartService.cartList(loginMember.getMemberNo());
+		
+		if(cartList.size() > 0) {
+			model.addAttribute("cartList", cartList);
+		}
+		
+		
 		
 		return "/myPage/basket";
 	}

@@ -56,6 +56,14 @@ public class FileConfig implements WebMvcConfigurer{
 	@Value("${my.board.resource-location}")
 	private String boardResourceLocation; // 연결된 서버 폴더 경로
 	
+	// ------------------------------------------------------------
+	// 상품 이미지
+	@Value("${seed.img.resource-handler}")
+	private String seedResourceHanlder; // 요청 주소
+	
+	@Value("${seed.img.resource-location}")
+	private String seedResourceLocation;// 연결된 서버 폴더 경로
+	
 	
 	
 	// ctrl + space로 자동완성함
@@ -85,6 +93,12 @@ public class FileConfig implements WebMvcConfigurer{
 		registry
 		.addResourceHandler(boardResourceHandler)
 		.addResourceLocations(boardResourceLocation);
+		
+		
+		// 씨앗 이미지 요청 - 서버 폴더 연결 추가
+		registry
+		.addResourceHandler(seedResourceHanlder)
+		.addResourceLocations(seedResourceLocation);
 	}
 	
 	
