@@ -25,6 +25,12 @@
 		WHERE MEMBER_NO = #{memberNo}
 	</update>
 	
+	<!-- 회원 탈퇴 -->
+	<update id="deleteMember">
+		UPDATE "MEMBER" SET
+		MEMBER_DEL_FL = 'Y'
+		WHERE MEMBER_NO = #{memberNo}
+	</update>
 
 	<!-- 회원 주소 검색 -->
 	<select id="selectAddressList">
@@ -33,12 +39,6 @@
 		WHERE MEMBER_NO = #{memberNo}
 	</select>
 	
-	<!-- 회원 탈퇴 -->
-	<update id="deleteMember">
-		UPDATE "MEMBER" SET
-		MEMBER_DEL_FL = 'Y'
-		WHERE MEMBER_NO = #{memberNo}
-	</update>
 
 
 	<!-- 주소 추가하기전 저장된 주소 개수 조회 -->
@@ -55,9 +55,19 @@
 		VALUES(#{memberNo}, #{addressNo}, #{address})
 	</update>
 	
+	<!-- 회원 주소 검색 -->
+	<select id="addressSelect">
+		SELECT MEMBER_ADDRESS
+		FROM "MEMBER"
+		WHERE MEMBER_NO = #{memberNo}
+	</select>
 	
 	
-	
+	<update id="addressUpdate">
+		UPDATE "MEMBER" SET
+		MEMBER_ADDRESS = #{address}
+		WHERE MEMBER_NO = #{memberNo}
+	</update>
 	
 	
 	

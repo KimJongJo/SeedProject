@@ -1,17 +1,101 @@
 .blank {
+    flex-basis: 80%;
+    width: 600px;
     display: flex;
     flex-direction: column;
-    flex-basis: 80%;
+    padding-top: 40px;
+    padding-left: 50px;
+    margin-top: 10px;
+    /* align-items: center; */
+    /* justify-content: center; */
 }
 
-.newAdressBtn {
-    width: 80px;
-    height: 20px;
-    margin-top: 40px;
-    align-self: flex-end;
-    
+
+/* 우편번호, 주소, 상세주소 글씨 크기 및 간격 띄우기 */
+#postCode-area span,
+#address-area span,
+#detailAddress-area span {
+    margin-right: 30px;
+    font-size: 18px;
 }
 
+/* 주소지 변경 글씨 크기 지정 */
+.addressText {
+    font-size: 30px;
+}
+
+/* 설명 span 글씨 크기 지정 */
+.content{
+    font-size: 18px;
+}
+
+/* 우편번호, 주소, 상세주소의 span, input 창 위치 지정 */
+#postCode-area,
+#address-area,
+#detailAddress-area {
+    display: flex;
+    width: 500px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin: 20px;
+}
+
+
+
+/* span태그 공간 */
+#postCode-area div:nth-child(1),
+#address-area div:nth-child(1),
+#detailAddress-area div:nth-child(1) {
+    width: 30%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* input태그 공간 */
+#postCode-area div:nth-child(2),
+#address-area div:nth-child(2),
+#detailAddress-area div:nth-child(2) {
+    width: 70%;
+}
+
+
+
+
+/* input 태그 크기 디자인 지정 */
+#postCode, #address, #detailAddress {
+    width: 350px;
+    height: 50px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 3px 3px rgba(0,0,0,0.2);
+    padding-left: 10px;
+    font-size: 20px;
+}
+
+/* 주소 변경하기 버튼 위치 지정 */
+#newAddressBtn-area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* 주소 변경하기 버튼 */
+.newAddressBtn {
+    margin-top: 20px;
+    border-radius: 5px;
+    background-color: #8AA6A3;
+    font-size: 18px;
+    border: none;
+    width: 100px;
+    height: 50px;
+    color: white;
+    transition-duration: 0.3s;
+}
+
+
+/* 모달창 */
 #addPopup {
     width: 400px;
     height: 400px;
@@ -31,23 +115,86 @@
   
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .popup-hidden {
     display: none !important;
 }
 
-
-
-
-
-#foot-div{
-    display: flex;
-    justify-content: space-around;
-    width: 700px;
+/* 모달창의 span 태그 글씨 지정 */
+#addPopup span {
+    font-size: 25px;
 }
 
-#foot-div > img{
+
+/* 모달창 주소, 상세주소 input */
+#addAddress, #addDetailAddress {
+    width: 300px;
+    height: 40px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 3px 3px rgba(0,0,0,0.2);
+    padding-left: 10px;
+    font-size: 18px;
+}
+
+
+
+/* 모달창 변경하기 버튼 */
+#addBtn {
+    margin-top: 20px;
+    border-radius: 5px;
+    background-color: #8AA6A3;
+    font-size: 18px;
+    border: none;
     width: 100px;
-    height: 100px;
+    height: 50px;
+    color: white;
+    transition-duration: 0.3s;
+    margin: 10px;
+}
+
+/* 모달창 취소하기 버튼 */
+#popupClose {
+    margin-top: 20px;
+    border-radius: 5px;
+    background-color: white;
+    font-size: 18px;
+    border: 1px solid #ddd;
+    width: 100px;
+    height: 50px;
+    color: #8AA6A3;
+    transition-duration: 0.3s;
+}
+
+/* 모달창 우편번호 input */
+#addPostCode {
+    width: 150px;
+    height: 40px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 3px 3px rgba(0,0,0,0.2);
+    padding-left: 10px;
+    font-size: 18px;
+    margin-right: 17px;
+}
+
+/* 모달창의 주소찾기 버튼 */
+#selectBtn {
+    width: 130px;
+    height: 40px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 3px 3px rgba(0,0,0,0.2);
+    padding-left: 10px;
+    font-size: 18px;
+}
+
+
+
+/* 모달창 간격 띄우기 */
+#addPopup div {
+    margin: 15px;
 }

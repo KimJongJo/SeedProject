@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,52 +31,66 @@
 
             <!-- 추가할 공간 -->
             <div class="blank">
-                <button class="newAddressBtn">배송지 추가</button>
                 
+                <span class="addressText">주소지 변경</span>
+                <span class="content">아래 주소지 변경 버튼을 눌러 주소지를 변경할 수 있습니다.</span>
+                <div id="postCode-area">
+                    <div>
+                        <span>우편번호</span>
+                    </div>
+                    <div>
+                        <input type="text" placeholder="우편번호"
+                        id="postCode" th:value="${postCode}">
+                    </div>
+                </div>
                 
-
-                <table class="address-table">
-
-                    <!-- 주소지가 없을 때 -->
-                    <th:block th:if="${#lists.isEmpty(addressList)}">
-                        <tr>
-                            <td colspan="6">현재 저장된 주소가 없습니다.</td>
-                        </tr>
-                    </th:block>
-
-
-                    <!-- 주소지가 있을 때 -->
-                    <th:block th:unless="${#lists.isEmpty(addressList)}">
-
-                        <tr th:each="address : ${addressList}">
-
-                            <td th:text="|${address['addressNo']}번 주소|"></td>
-                            <td th:text="${address['postCode']}"></td>
-                            <td th:text="${address['address']}"></td>
-                            <td th:text="${address['detailAddress']}"></td>
-                            
-                        </tr>
-                    </th:block>
-
-
-
-
-                </table>
-
-
+                <div id="address-area">
+                    <div>
+                        <span>도로명/지번 주소</span>
+                    </div>
+                    <div>
+                        <input type="text" placeholder="도로명/지번 주소"
+                        id="address" th:value="${address}">
+                    </div>
+                </div>
+                
+                <div id="detailAddress-area">
+                    <div>
+                        <span>상세주소</span>
+                    </div>
+                    <div>
+                        <input type="text" placeholder="상세 주소"
+                        id="detailAddress" th:value="${detailAddress}">
+                    </div>
+                </div>
+                
+                <div id="newAddressBtn-area">
+                    <button class="newAddressBtn">주소지 변경</button>
+                </div>
             </div>
         </section>
 
 
         <div id="addPopup" class="popup-hidden">
-            <h4>주소지 추가</h4>
-            <span id="popupClose">&times;</span>
-            
-            <input type="text" name="memberAddress" id="postCode" placeholder="우편번호">
-            <input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
-            <input type="text" name="memberAddress" id="address" placeholder="주소"><br>
-            <input type="text" name="memberAddress" id="detailAddress" placeholder="상세주소">
-            <button id="addBtn">추가하기</button>
+
+            <div>
+                <span>주소지 추가</span>
+            </div>
+            <!-- <span>&times;</span> -->
+            <div>
+                <input type="text" name="memberAddress" id="addPostCode" placeholder="우편번호">
+                <input type="button" id="selectBtn" onclick="sample6_execDaumPostcode()" value="우편번호 찾기">
+            </div>
+            <div>
+                <input type="text" name="memberAddress" id="addAddress" placeholder="주소">
+            </div>
+            <div>
+                <input type="text" name="memberAddress" id="addDetailAddress" placeholder="상세주소">
+            </div>
+            <div>
+                <button id="addBtn">변경하기</button>
+                <button id="popupClose">취소하기</button>
+            </div>
         </div>
 
 

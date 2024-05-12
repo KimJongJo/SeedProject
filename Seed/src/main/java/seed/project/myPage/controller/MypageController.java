@@ -1,8 +1,6 @@
 package seed.project.myPage.controller;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import org.springframework.stereotype.Controller;
@@ -11,7 +9,6 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
-
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -127,36 +124,33 @@ public class MypageController {
 	}
 	
 	
+	/** 주소록 관리 페이지 이동시 주소 조회
+	 * @param loginMember : 주소 조회용
+	 * @param model : 우편번호, 주소, 상세주소 전달용
+	 * @return
+	 */
 	@GetMapping("address")
 	public String address(
 			@SessionAttribute("loginMember") Member loginMember,
-			Model model,
-			RedirectAttributes ra
+			Model model
 			) {
 		
-		// 필요한거 : loginMember, 주소 번호, 회원 주소
-		int memberNo = loginMember.getMemberNo();
+		String memberAddress = loginMember.getMemberAddress();
 		
-		// 1. 회원번호를 이용해 로그인한 회원의 주소번호, 회원주소 검색
-		List<Map<String, Object>> selectAddressList = service.selectAddressList(memberNo);
-// 0번 리스트 : { {"addresesNo" : 1}, {"memberAddress" : "12345인천시101동101호"} }
 		
-		// 2. html 전송용 list(한줄로 되어있는 주소를 나눈 후 저장), 아래 for문으로 저장할 거임
-		List<Map<String, Object>> addressList = new ArrayList<>();
-// 0번 리스트 : { {"addresesNo" : 1}, {"postCode" : 12345}, {"mainAddress" : "서울시..."}, {"detail" : "101동 101호"} }
-
-		for(Map<String, Object> address : selectAddressList) {
+		if(memberAddress != null) {
 			
-			Map<String, Object> map = new HashMap<>();
-			map.put("addressNo", address.get("addressNo"));
-			String [] str = ((String) address.get("memberAddress")).split("\\^\\^\\^");
-			map.put("postCode", str[0]);
-			map.put("address", str[1]);
-			map.put("detailAddress", str[2]);
-			addressList.add(map);
-		}
+			// 우편번호^^^메인주소^^^상세주소 로 있는 주소를 나누기
+			String[] str = memberAddress.split("\\^\\^\\^");
+			
+			log.info(memberAddress);
+			
+			model.addAttribute("postCode", str[0]);
+			model.addAttribute("address", str[1]);
+			model.addAttribute("detailAddress", str[2]);
 		
-		model.addAttribute("addressList", addressList);
+		}
+
 		
 		return "/myPage/address";
 	}
@@ -176,41 +170,57 @@ public class MypageController {
 	@ResponseBody
 	@PutMapping("address")
 	public int addAddress(@RequestBody Map<String, Object> map,
+			@SessionAttribute("loginMember") Member loginMember,
+			Member inputMember,
 			RedirectAttributes ra) {
 		
 		// 나뉘어져있는 주소를 DB에 저장하기 위해 한줄로 합치기 위해 씀
 		
-		int memberNo = (int)map.get("memberNo");
+		int memberNo = loginMember.getMemberNo();
 		
 		String str = "";
-		
-//		int memberNo = (int) map.get("loginMember");
-		int addressNo = service.addressCount(memberNo) + 1;
 		String postCode = (String) map.get("postCode");
 		String address = (String) map.get("address");
 		String detailAddress = (String) map.get("detailAddress");
-		
-		str = postCode + "^^^" + address + "^^^" + detailAddress;
+		str += postCode + "^^^" + address + "^^^" + detailAddress;
 		
 		Map<String, Object> addressMap = new HashMap<>();
-		addressMap.put("addressNo", addressNo);
 		addressMap.put("memberNo", memberNo);
 		addressMap.put("address", str);
 		
-//		log.info(memberNo);
+		int result = service.addressUpdate(addressMap);
 		
-		
-		System.out.println("addressNo : " + addressNo);
-		System.out.println("memberNo : " + memberNo);
-		System.out.println("addressMap : " + addressMap);
-		log.info(str);
-//		log.info
-		
-		int result = service.addAddress(addressMap);
-		
-		if(result != 0) {
+		if(result > 0) {
+			
+			loginMember.setMemberAddress(str);
 			return 1;
 		}
+		
+//		String str = "";
+//		String postCode = (String) map.get("postCode");
+//		String address = (String) map.get("address");
+//		String detailAddress = (String) map.get("detailAddress");
+//		
+//		str = postCode + "^^^" + address + "^^^" + detailAddress;
+		
+//		Map<String, Object> addressMap = new HashMap<>();
+//		addressMap.put("memberNo", memberNo);
+//		addressMap.put("address", str);
+//		
+////		log.info(memberNo);
+//		
+//		System.out.println("memberNo : " + memberNo);
+//		System.out.println("addressMap : " + addressMap);
+//		log.info(str);
+////		log.info
+//		
+//		int result = service.addressUpdate(addressMap);
+//		
+//		if(result != 0) {
+//			loginMember.setMemberAddress(inputMember.getMemberAddress());
+//			
+//			return 1;
+//		}
 		
 		return -1;
 	}

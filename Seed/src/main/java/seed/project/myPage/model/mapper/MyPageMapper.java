@@ -42,19 +42,24 @@ public interface MyPageMapper {
 	int addressCount(int memberNo);
 	
 	
-	/** 회원 주소 추가
-	 * @param map
-	 * @return
-	 */
-	int addAddress(Map<String, Object> addressMap);
-
-
-	
 	/** 회원 탈퇴
 	 * @param memberNo
 	 * @return result
 	 */
 	int deleteMember(int memberNo);
+
+	/** 회원 주소 검색
+	 * @param memberNo
+	 * @return
+	 */
+	String addressSelect(int memberNo);
+
+
+	/** 회원 주소 변경
+	 * @param addressMap
+	 * @return
+	 */
+	int addressUpdate(Map<String, Object> addressMap);
 
 	
 	
