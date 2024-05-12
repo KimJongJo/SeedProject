@@ -57,4 +57,10 @@ public interface SeedMapper {
 	 */
 	int seedDeleteOff(String seedName);
 
+	/** 씨앗 상세 정보
+	 * @param seedNo
+	 * @return
+	 */
+	Seed seedDetail(int seedNo);
+
 }

@@ -35,21 +35,22 @@
         <section class="content2">
             <th:block th:each="seed : ${seedList}" th:object="${seed}">
                 <div class="allBox">
-                    <div class="imgBox">
-                        <img th:src="*{seedImgPath}" class="seedImg">
-                    </div>
-                    <br>
-                    <div class="select">
-                        <div>
-                            <a th:text="*{seedName}">고수 씨앗</a>
-                            <p th:text="*{seedPrice}">1900원</p>
+                    <a th:href="@{/seed/detail(seedNo=*{seedNo})}">
+                        <div class="imgBox">
+                            <img th:src="*{seedImgPath}" class="seedImg">
                         </div>
-                        <div>
-                            <input type="hidden" th:value="*{seedNo}" class="seedNo">
-                            <button id="cartAdd" class="cartAdd">담기</button>
+                        <br>
+                        <div class="select">
+                            <div>
+                                <a th:text="*{seedName}">고수 씨앗</a>
+                                <p th:text="*{seedPrice}">1900원</p>
+                            </div>
+                            <div>
+                                <input type="hidden" th:value="*{seedNo}" class="seedNo">
+                                <button id="cartAdd" class="cartAdd">담기</button>
+                            </div>
                         </div>
-                    </div>
-                    
+                    </a>
                 </div>
                 
             </th:block>

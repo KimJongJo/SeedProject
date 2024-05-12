@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title th:text="|상품정보 - ${seed.seedName}|"></title>
+
+    <th:block th:replace="~{common/common}"></th:block>
+    <link rel="stylesheet" href="/css/seed/detail.css">
+
+</head>
+<body>
+    <!-- 헤더 추가 -->
+    <th:block th:replace="~{common/header}"></th:block>
+
+    
+    
+    <main>
+
+        <section th:object="${seed}">
+            <div class="top">
+                <div class="second">
+                    <img th:src="*{seedImgPath}" class="seedImg">
+
+                    <div class="seedPrice">
+                        <span th:text="*{seedName}">씨앗이름</span>
+                        <span th:text="*{seedPrice}" >씨앗 가격</span>
+                        <div class="count">
+                            <button id="minus"><i class="fa-solid fa-minus"></i></button>
+                            <span class="countSpan" id="count">1</span>
+                            <button id="plus"><i class="fa-solid fa-plus"></i></button>
+                        </div>
+                        <button id="add">담기</button>
+                        
+                    </div>
+                </div>
+                
+                <div class="seedInfo">
+                    <div>
+                        <span>적정 온도</span>
+                        <span th:text="*{seedTemp}"></span>
+                    </div>
+                    <div>
+                        <span>모종 시기</span>
+                        <span th:text="*{seedTime}"></span>
+                    </div>
+                    <div>
+                        <span>재식 거리</span>
+                        <span th:text="*{seedDistance}"></span>
+                    </div>
+                    <div>
+                        <span>발아율</span>
+                        <span th:text="*{seedRate}"></span>
+                    </div>
+                </div>
+                <img src="/images/농사.png" class="img">
+            </div>
+        </section>
+
+    </main>
+
+    
+    <th:block th:replace="~{common/footer}"></th:block>
+
+    <script th:inline="javascript">
+
+        const seedNo = /*[[${seed.seedNo}]]*/ "씨앗 번호";
+        const memberNo = /*[[${session.loginMember?.memberNo}]]*/ "회원 번호";
+    </script>
+
+    <script src="/js/seed/seedDetail.js"></script>
+</body>
+</html>

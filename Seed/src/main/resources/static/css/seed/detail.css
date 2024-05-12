@@ -1,0 +1,122 @@
+
+main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+section{
+    width: 900px;
+    height: 900px;
+}
+
+.seedImg{
+    width: 300px;
+    height: 300px;
+}
+
+.top{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.second{
+    display: flex;
+    justify-content: center;
+}
+
+.seedPrice{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: 100px;
+}
+
+.count{
+    margin: 10px;
+    display: flex;
+    align-items: center;
+
+}
+
+.count > button{
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+    background-color: #127369;
+    color: white;
+    transition-duration: 0.3s;
+    border: none;
+    border-radius: 5px;
+}
+
+.count > button:hover{
+    transition-duration: 0.3s;
+    background-color: #10403B;
+    cursor: pointer;
+}
+
+
+
+.countSpan{
+    font-size: 20px;
+    width: 15px;
+    margin: 10px;
+    text-align: center;
+}
+
+.seedend{
+    margin-bottom: 10px;
+}
+
+.seedPrice > span{
+    font-size: 20px;
+}
+
+.seedPrice > button{
+    width: 50px;
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    background-color: #8AA6A3;
+    transition-duration: 0.3s;
+    font-size: 17px;
+}
+
+.seedPrice > button:hover{
+    transition-duration: 0.3s;
+    background-color: #127369;
+    cursor: pointer;
+}
+
+.seedInfo {
+    margin-top: 40px;
+    background-image: url("/images/농사 배경화면jpg");
+    width: 500px;
+}
+
+.img{
+    margin-top: 30px;
+    width: 500px;
+    height: 250px;
+    border-radius: 15px;
+}
+
+.seedInfo > div{
+    display: flex;
+}
+
+.seedInfo  span{
+    text-align: center;
+    width: 100px;
+    flex-basis: 50%;
+    font-size: 25px;
+}

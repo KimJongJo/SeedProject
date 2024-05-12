@@ -59,5 +59,29 @@
 						WHERE SEED_NAME = #{seedName})
 	</delete>
 	
+	
+	<!-- 장바구니에 씨앗이 있는지 확인 -->
+	<select id="cartSeedCheck">
+		SELECT COUNT(*) FROM "CART"
+		WHERE MEMBER_NO = #{memberNo}
+		AND SEED_NO = #{seedNo}
+	</select>
+	
+	
+	<!-- 기존에 있는 씨앗의 개수를 추가 -->
+	<update id="cartSumAdd">
+		UPDATE "CART" SET
+		COUNT = (SELECT COUNT FROM "CART"
+				WHERE MEMBER_NO = #{memberNo}
+				AND SEED_NO = #{seedNo}) + #{count}
+		WHERE MEMBER_NO = #{memberNo}
+		AND SEED_NO = #{seedNo}
+	</update>
+	
+	<!-- 기존에 없는 경우 씨앗 추가 -->
+	<insert id="cartAdd">
+		INSERT INTO "CART"
+		VALUES(SEQ_CART_NO.NEXTVAL, #{memberNo}, #{seedNo}, #{count})
+	</insert>
 
 </mapper>

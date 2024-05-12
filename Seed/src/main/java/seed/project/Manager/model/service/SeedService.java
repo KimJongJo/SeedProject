@@ -44,6 +44,12 @@ public interface SeedService {
 	 */
 	int seedDeleteOff(String seedName);
 
+	/** 씨앗 정보
+	 * @param seedNo
+	 * @return
+	 */
+	Seed seedDetail(int seedNo);
+
 
 
 

@@ -26,7 +26,8 @@ public class FilterConfig {
 		filter.setFilter(new LoginFilter());
 		
 		// /myPage/* : myPage로 시작한느 모든 요청
-		String[] filteringURL = {"/myPage/*", "/board/2/board2Wrtie", "/board/2/board2Update"};
+		String[] filteringURL = {"/myPage/*", "/board/2/board2Wrtie", "/board/2/board2Update",
+									"/seed/menu", "/seed/add", "/seed/update", "/seed/delete"};
 		
 		// 필터가 동작할 URL 을 세팅
 		// Arrays.asList(filteringURL)

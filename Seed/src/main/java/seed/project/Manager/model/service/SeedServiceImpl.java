@@ -136,6 +136,15 @@ public class SeedServiceImpl implements SeedService{
 	}
 
 
+	
+	// 씨앗 상세 정보
+	@Override
+	public Seed seedDetail(int seedNo) {
+		
+		return mapper.seedDetail(seedNo);
+	}
+
+
 
 
 }

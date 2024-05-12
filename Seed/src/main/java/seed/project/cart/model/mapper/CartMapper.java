@@ -50,4 +50,22 @@ public interface CartMapper {
 	 */
 	int cartDelete(Map<String, Object> cartMap);
 
+	/** 장바구니에 씨앗이 있는지 확인
+	 * @param cartMap
+	 * @return
+	 */
+	int cartSeedCheck(Map<String, Integer> cartMap);
+
+	/** 기존에 있는걸 더하기
+	 * @param cartMap
+	 * @return
+	 */
+	int cartSumAdd(Map<String, Integer> cartMap);
+
+	/** 새롭게 추가
+	 * @param cartMap
+	 * @return
+	 */
+	int cartAdd(Map<String, Integer> cartMap);
+
 }

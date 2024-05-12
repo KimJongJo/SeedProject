@@ -148,4 +148,19 @@ public class SeedController {
 	}
 	
 	
+	/** 씨앗 상세 페이지
+	 * @param seedNo
+	 * @return
+	 */
+	@GetMapping("detail")
+	public String seedDetail(@RequestParam("seedNo") int seedNo,
+							Model model) {
+		
+		Seed seed = service.seedDetail(seedNo);
+		
+		model.addAttribute("seed", seed);
+		
+		return "seed/seedDetail";
+	}
+	
 }
