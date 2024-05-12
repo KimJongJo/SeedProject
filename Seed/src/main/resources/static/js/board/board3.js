@@ -170,8 +170,7 @@ const writeBtn = document.getElementById('writeBtn');
 if(writeBtn != null) {
     writeBtn.addEventListener("click", () => {
 
-        location.href = `/Board/${boardCode}/write`;
-
+        location.href = `/board/${boardCode}/write`;
 
     });
 

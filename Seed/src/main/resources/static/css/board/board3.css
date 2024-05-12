@@ -69,6 +69,25 @@ thead {
     color: #222;
 }
 
+/* 썸네일 + 제목 */
+#boardTitle-main {
+    border-bottom: 1px solid #e1e1e1;
+    text-align: left;
+    font-size: 13px;
+    height: 50px;
+    color: #222;
+    padding-left: 50px;
+    height: auto; /* 이미지의 높이에 따라 조정되도록 자동으로 설정합니다. */
+    vertical-align: middle; /* 내용을 수직 중앙 정렬합니다. */
+}
+
+#boardTitle-main img {
+    width: 76px; /* 이미지가 테이블 셀을 넘어가지 않도록 최대 너비를 지정합니다. */
+    height: 60px; /* 필요에 따라 이미지의 최대 높이를 지정합니다. */
+    vertical-align: middle; /* 이미지를 수직 중앙 정렬합니다. */
+    margin-right: 10px; /* 이미지와 텍스트 사이의 간격을 조정합니다. */
+    
+}
 
 /* 검색, 글쓰기 버튼 구역 */
 .write-search-area {

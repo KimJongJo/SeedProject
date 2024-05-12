@@ -5,6 +5,7 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.session.RowBounds;
 import seed.project.board.model.dto.Board;
+import seed.project.board.model.dto.BoardImg;
 import seed.project.board.model.dto.Comment;
 
 @Mapper
@@ -82,7 +83,23 @@ public interface BoardMapper3 {
 	 * @return
 	 */
 	int afterPage(Map<String, Integer> map);
-  
+
+
+	/** [3] 팁과 노하우 게시판 - 게시글 작성
+	 * @param inputBoard
+	 * @return
+	 */
+	int boardWrite3(Board inputBoard);
+
+
+	/** 게시글 이미지 모두 삽입
+	 * @param uploadList
+	 * @return
+	 */
+	int insertUploadList3(List<BoardImg> uploadList);
+
+
+ 
 
 
 
