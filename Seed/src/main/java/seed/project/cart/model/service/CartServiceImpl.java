@@ -42,5 +42,29 @@ public class CartServiceImpl implements CartService{
 		
 		
 	}
+
+
+	// 씨앗 수량 추가
+	@Override
+	public int seedPlus(Map<String, Object> cartMap) {
+		
+		return mapper.seedPlus(cartMap);
+	}
+
+
+	// 씨앗 수량 감소
+	@Override
+	public int seedMinus(Map<String, Object> cartMap) {
+		
+		return mapper.seedMinus(cartMap);
+	}
+
+
+	// 장바구니에서 삭제
+	@Override
+	public int cartDelete(Map<String, Object> cartMap) {
+		
+		return mapper.cartDelete(cartMap);
+	}
 	
 }

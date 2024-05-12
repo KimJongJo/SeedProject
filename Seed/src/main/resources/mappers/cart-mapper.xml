@@ -23,7 +23,7 @@
 		AND SEED_NO = #{seedNo}
 	</select>
 	
-	<!-- 씨앗 개수 1 증가 -->
+	<!-- 쇼핑몰에서 씨앗 개수 1 증가 -->
 	<update id="seedUp">
 		UPDATE "CART" SET
 		COUNT = (SELECT COUNT FROM "CART"
@@ -31,7 +31,33 @@
 				AND SEED_NO = #{seedNo}) + 1
 		WHERE MEMBER_NO = #{memberNo}
 		AND SEED_NO = #{seedNo}
-
 	</update>
+	
+	<!-- 장바구니에서 씨앗 개수 1 증가 -->
+	<update id="seedPlus">
+		UPDATE "CART"
+		SET COUNT = COUNT + 1
+		WHERE MEMBER_NO = #{memberNo}
+		AND SEED_NO = (SELECT SEED_NO FROM "SEED"
+						WHERE SEED_NAME = #{seedName})
+	</update>
+	
+	<!-- 장바구니에서 씨앗 개수 1 감소 -->
+	<update id="seedMinus">
+		UPDATE "CART"
+		SET COUNT = COUNT + -1
+		WHERE MEMBER_NO = #{memberNo}
+		AND SEED_NO = (SELECT SEED_NO FROM "SEED"
+						WHERE SEED_NAME = #{seedName})
+	</update>
+	
+	<!-- 장바구니에서 삭제 -->
+	<delete id="cartDelete">
+		DELETE FROM "CART"
+		WHERE MEMBER_NO = #{memberNo}
+		AND SEED_NO = (SELECT SEED_NO FROM "SEED"
+						WHERE SEED_NAME = #{seedName})
+	</delete>
+	
 
 </mapper>

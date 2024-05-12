@@ -27,9 +27,27 @@ public interface CartMapper {
 	 */
 	int checkSeed(Map<String, Integer> cartMap);
 
-	/** 씨앗 개수 1 증가
+	/** 쇼핑몰에서 씨앗 개수 1 증가
 	 * @param cartMap
 	 */
 	int seedUp(Map<String, Integer> cartMap);
+
+	/** 장바구니에서 씨앗 개수 1 증가
+	 * @param cartMap
+	 * @return
+	 */
+	int seedPlus(Map<String, Object> cartMap);
+
+	/** 장바구니에서 씨앗 개수 1 감소
+	 * @param cartMap
+	 * @return
+	 */
+	int seedMinus(Map<String, Object> cartMap);
+
+	/** 장바구니에서 삭제
+	 * @param cartMap
+	 * @return
+	 */
+	int cartDelete(Map<String, Object> cartMap);
 
 }
