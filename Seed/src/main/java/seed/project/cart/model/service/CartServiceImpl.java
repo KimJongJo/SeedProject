@@ -66,5 +66,21 @@ public class CartServiceImpl implements CartService{
 		
 		return mapper.cartDelete(cartMap);
 	}
+
+
+	// 상세보기에서 장바구니 추가
+	@Override
+	public int seedAdd(Map<String, Integer> cartMap) {
+
+		// 장바구니에 추가한게 있는지 확인
+		int count = mapper.cartSeedCheck(cartMap);
+		
+		// 이미 존재하는 경우
+		if(count > 0) {
+			return mapper.cartSumAdd(cartMap);
+		}else {
+			return mapper.cartAdd(cartMap);
+		}
+	}
 	
 }

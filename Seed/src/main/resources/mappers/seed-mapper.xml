@@ -62,6 +62,17 @@
 	</update>
 	
 	
+	<!-- 씨앗 상세 정보 -->
+	<select id="seedDetail">
+		SELECT SEED_NAME, SEED_IMG_PATH, SEED_PRICE, SEED_NO,
+				SEED_TEMP, SEED_TIME, SEED_DISTANCE, SEED_RATE
+		FROM "SEED"
+		WHERE SEED_NO = #{seedNo}
+	</select>
+	
+
+	
+	
 	
 	
 		

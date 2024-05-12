@@ -36,4 +36,10 @@ public interface CartService {
 	 */
 	int cartDelete(Map<String, Object> cartMap);
 
+	/** 상세보기에서 장바구니 추가
+	 * @param cartMap
+	 * @return
+	 */
+	int seedAdd(Map<String, Integer> cartMap);
+
 }

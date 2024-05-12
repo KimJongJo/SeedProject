@@ -82,4 +82,12 @@ public class CartController {
 		
 		return service.cartList(memberNo);
 	}
+	
+	
+	@PostMapping("seedAdd")
+	public int seedAdd(@RequestBody Map<String, Integer> cartMap) {
+		
+		return service.seedAdd(cartMap);
+	}
+	
 }
