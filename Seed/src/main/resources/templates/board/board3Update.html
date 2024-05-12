@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>게시글 작성</title>
+    <title th:text="|${boardNo}번 게시글 수정|">게시글 작성</title>
 
     <th:block th:replace="~{common/common}"></th:block>
     <link rel="stylesheet" href="/css/board/board3Write.css">
@@ -15,8 +15,8 @@
         <section class="board-detil">
             
             <!-- 제출 폼 -->
-            <form action="write"
-                method="post" class="board-write" id="boardWriteForm"
+            <form th:action="@{update}" th:object="${board}"
+                method="post" class="board-write" id="boardUpdateForm"
                 enctype="multipart/form-data">
                 
                 <!-- 게시판 이름 영역 -->
@@ -35,7 +35,7 @@
                 <div class="hd2-tt-wd-area">
                     <div class="board-title-area">
                         <input class="board-title-input" placeholder="제목 입력"
-                            name="boardTitle" value="">
+                            name="boardTitle" th:value="*{boardTitle}">
                     </div>
                 </div>
                 
@@ -49,7 +49,7 @@
 
                 <!-- 콘텐츠 -->
                 <div class="board-content-area">
-                    <textarea name="boardContent"></textarea>
+                    <textarea name="boardContent" th:text="*{boardContent}"></textarea>
                 </div>
 
                 <!-- 파일 첨부 영역 -->
@@ -101,9 +101,15 @@
 
                 <!-- 버튼 영역 -->
                 <div class="writeBtn-area">
-                    <button id="insertBtn">등록</button>
+                    <button id="insertBtn">수정 완료</button>
                 </div>
             
+
+                <!-- 기존 이미지가 있다가 삭제된 이미지의 순서를 기록-->
+                <input type="hidden" name="deleteOrder" value="">
+
+                <!-- 수정 성공 시 주소(쿼리스트링) 유지용도 -->
+                <input type="hidden" name="querystring">
 
             </form>  
         </section>
@@ -128,8 +134,20 @@
             let fileName = this.value.split('\\').pop();
             document.querySelector(".upload-name3").value = fileName;
         });
+
+        const imageList = /*[[${board.imageList}]]*/ [];
+        const previewList = document.querySelectorAll('img.preview');
+
+        const orderList = []; // 기존에 존재하던 이미지 순서를 기록
+
+        for(let img of imageList) {
+            previewList[img.boardImgOrder].src = img.boardImgPath + img.boardImgRename;
+            
+            orderList.push(img.boardImgOrder);
+        }
+
     </script>
 
-    <script src="/js/board/board3Write.js"></script>
+    <script src="/js/board/board3Update.js"></script>
 </body>
 </html>

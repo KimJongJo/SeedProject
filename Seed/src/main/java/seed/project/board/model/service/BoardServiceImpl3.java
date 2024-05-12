@@ -6,17 +6,22 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
+
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import seed.project.board.model.dto.Board;
 import seed.project.board.model.dto.BoardImg;
+import seed.project.board.model.dto.Comment;
 import seed.project.board.model.dto.Pagination;
 import seed.project.board.model.exception.BoardInsertException;
+import seed.project.board.model.exception.ImageDeleteException;
+import seed.project.board.model.exception.ImageUpdateException;
 import seed.project.board.model.mapper.BoardMapper3;
 import seed.project.common.util.Utility;
 
@@ -155,9 +160,9 @@ public class BoardServiceImpl3 implements BoardService3{
 	
 	// [3] 팁과 노하우 게시판 - 게시글 작성
 	@Override
-	public int boardWrite3(Board inputBoard, List<MultipartFile> images) throws IllegalStateException, IOException {
+	public int board3Write(Board inputBoard, List<MultipartFile> images) throws IllegalStateException, IOException {
 		
-		int result = mapper.boardWrite3(inputBoard);
+		int result = mapper.board3Write(inputBoard);
 		
 		// result = 0 or 1
 		
@@ -228,7 +233,146 @@ public class BoardServiceImpl3 implements BoardService3{
 	}
 
 
+	// [3] 팁과 노하우 - 좋아요
+	@Override
+	public int boardLike3(Map<String, Integer> map) {
+		
+		int result = 0;
+		
+		// 좋아요 이미 1 -> delete
+		if(map.get("likeCheck") == 1) {
+			
+			result = mapper.deleteBoardLike3(map);
+		
+		// 좋아요 0인 상태 -> insert
+		} else {
+			
+			result = mapper.insertBoardLike3(map);
+		}
+		
+		if(result > 0) {
+			return mapper.selectLikeCount3(map.get("boardNo"));
+		}
+		
+		return -1;
+	}
 
+	
+	// [3] 팁과 노하우 - 게시글 수정
+	@Override
+	public int board3Update(Board inputBoard, List<MultipartFile> images, String deleteOrder) throws IllegalStateException, IOException {
+		
+		// 게시글 제목/내용 수정
+		int result = mapper.board3Update(inputBoard);
+		
+		if(result == 0) {
+			return 0;
+		}
+		
+		// ---------------- 이미지 -----------------
+		if(deleteOrder != null && !deleteOrder.equals("")) {
+			
+			Map<String, Object> map = new HashMap<>();
+			map.put("deleteOrder", deleteOrder);
+			map.put("boardNo", inputBoard.getBoardNo());
+			
+			result = mapper.deleteImage3(map);
+			
+			// 삭제 실패한 경우(부분 실패 포함) -> 롤백
+			if(result == 0) {
+				throw new ImageDeleteException();
+			}
+		}
+		
+		// 이미지 파일 존재 시
+		List<BoardImg> uploadList = new ArrayList<>();
+		
+		for(int i=0; i < images.size(); i++) {
+			
+			if( !images.get(i).isEmpty()) {
+				
+				String originalName = images.get(i).getOriginalFilename(); // 원본명
+				
+				String rename = Utility.fileRename(originalName); // 변경명
+				
+				
+				BoardImg img = BoardImg.builder()
+								.boardNo(inputBoard.getBoardNo())
+								.boardImgPath(webPath)
+								.boardImgOriginalName(originalName)
+								.boardImgRename(rename)
+								.boardImgOrder(i)
+								.uploadFile(images.get(i))
+								.build();
+				
+				uploadList.add(img);
+				
+				
+				result = mapper.updateImage3(img);
+				
+				
+				// 수정 실패 시 기존 이미지가 없었던 것
+				if(result == 0) {
+					result = mapper.insertImage3(img);
+				}
+				
+			}
+			
+			if(result == 0) {
+				
+				throw new ImageUpdateException();
+			}
+		}
+		
+		if(uploadList.isEmpty()) {
+			return result;
+		}
+		
+		// 수정, 새 이미지 파일을 서버에 저장
+		for(BoardImg img : uploadList) {
+			img.getUploadFile().transferTo(new File(folderPath + img.getBoardImgRename()));
+		}
+		
+		return result;
+		
+	}
+
+	// [3] 팁과 노하우 - 게시글 삭제
+	@Override
+	public int board3Delete(int boardNo) {
+		
+		
+		return mapper.board3Delete(boardNo);
+	}
+	
+	
+	// ---------------------------------------------
+
+	// [3] 팁과 노하우 - 목록 댓글 조회
+	@Override
+	public List<Comment> commentSelect3(int boardNo) {
+		// 
+		return mapper.commentSelect3(boardNo);
+	}
+
+	// [3] 팁과 노하우 - 댓글/답글 등록
+	@Override
+	public int commentInsert3(Comment comment) {
+		return mapper.commentInsert3(comment);
+	}
+
+	
+	// [3] 팁과 노하우 - 댓글 수정
+	@Override
+	public int commentUpdate3(Comment comment) {
+		return mapper.commentUpdate3(comment);
+	}
+
+	// [3] 팁과 노하우 - 댓글 삭제
+	@Override
+	public int commentDelete3(Comment comment) {
+		return mapper.commentDelete3(comment);
+	}
 
 }
 

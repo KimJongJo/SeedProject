@@ -1,11 +1,11 @@
-
 // img 3개
 const preview1 = document.getElementById('preview1'); // 썸네일
 const preview2 = document.getElementById('preview2');
 const preview3 = document.getElementById('preview3');
 
 
-const previewList = document.querySelectorAll('.preview'); // NodeList를 배열로 변환
+
+// const previewList = document.querySelectorAll('.preview');
 
 // X 3개
 const delete1 = document.getElementById('delete1'); // 썸네일
@@ -20,13 +20,17 @@ const inputImageList = document.querySelectorAll(".inputImage"); // 5개 리스�
 const addImage = document.getElementById('addImage'); // 파일첨부 버튼
 
 
-
 const addImageBtn1 = document.getElementById('addImageBtn1'); // 파일 첨부 버튼
 const addImageBtn2 = document.getElementById('addImageBtn2'); // 파일 첨부 버튼
 const addImageBtn3 = document.getElementById('addImageBtn3'); // 파일 첨부 버튼
 
 
 const uploadNames = document.querySelectorAll('.upload-name'); // 파일첨부명
+
+
+// ------------------------------------------------------------------
+// * Set : 중복 저장 X, 순서 유지 X
+const deleteOrder = new Set()
 
 // 이미지 선택 이후 취소를 누를 경우를 대비한 백업 이미지
 // (백업 원리 -> 복제품으로 기존 요소를 대체함)
@@ -64,7 +68,7 @@ const changeImageFn = (inputImage, order) => {
 
     // 백업본에 없는 이벤트 리스너를 다시 추가
     inputImage.addEventListener("change", e => {
-    
+        
         changeImageFn(e.target, order);
         
     })
@@ -83,8 +87,8 @@ const changeImageFn = (inputImage, order) => {
         if(backupInputList[order] == undefined
             || backupInputList[order].value == ''){
 
-            inputImage.value = ""; // 잘못 업로드된 파일 값 삭제
-            return;
+        inputImage.value = ""; // 잘못 업로드된 파일 값 삭제
+        return;
         }
 
         // 이전에 정상 선택 -> 다음 선택에서 이미지 크기 초과한 경우
@@ -119,6 +123,10 @@ const changeImageFn = (inputImage, order) => {
 
         // 같은 순서 backupInputList에 input태그를 복제해서 대입
         backupInputList[order] = inputImage.cloneNode(true);
+
+        // 이미지가 성공적으로 읽어진 경우
+        // deleteOrder에서 해당 순서를 삭제
+        deleteOrder.delete(order);
     });
 
     }
@@ -139,6 +147,18 @@ const changeImageFn = (inputImage, order) => {
 
         // img, input, backup의 인덱스가 모두 일치한다는 특징을 이용
 
+            // 삭제된 이미지 순서를 deleteOrder에 기록
+
+        // 미리보기 이미지가 있을 때에만
+        if(previewList[i].getAttribute("src") != null 
+        &&  previewList[i].getAttribute("src") != "") {
+
+            // 기존에 이미지가 존재하고 있을 경우에만
+            if( orderList.includes(i) ){
+                deleteOrder.add(i);
+            }
+        }
+
         previewList[i].src       = ""; // 미리보기 이미지 제거
         inputImageList[i].value  = ""; // input에 선택된 파일 제거
         backupInputList[i] = undefined; // 백업본 제거
@@ -151,14 +171,8 @@ const changeImageFn = (inputImage, order) => {
 
 
 
-
-
-
-
-
-
 // 작성 폼 유효성 검사
-document.querySelector("#boardWriteForm").addEventListener("submit", e => {
+document.querySelector("#boardUpdateForm").addEventListener("submit", e => {
 
     const boardTitle = document.querySelector("[name='boardTitle']");
     const boardContent = document.querySelector("[name='boardContent']");
@@ -176,6 +190,18 @@ document.querySelector("#boardWriteForm").addEventListener("submit", e => {
         e.preventDefault();
         return;
     }
+
+    // input 태그에 삭제할 이미지 순서(Set)를 배열로 만든 후 대입
+    // -> value(문자열) 저장 시 배열은 toString()호출되서 양쪽 []가 사라짐
+    document.querySelector("[name='deleteOrder']").value
+    = Array.from( deleteOrder );
+
+    console.log(document.querySelector("[name='deleteOrder']"));
+    // deleteOrder에 {2, 3} 이 있다면
+    // <input type="hidden" name="deleteOrder" value="2,3">
+
+    // 현재 페이지에서 얻어온 querystring을 input 태그 hidden 타입에 value 값으로 대입하기
+    document.querySelector("[name='querystring']").value = location.search;
 
 });
 

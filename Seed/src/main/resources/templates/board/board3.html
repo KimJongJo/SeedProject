@@ -48,23 +48,48 @@
                             <tr th:each="board : ${boardList}" th:object="${board}">
                                 <td th:text="*{boardNo}">게시글 번호</td>
                                 <td id="boardTitle-main">
-    
-                                    <!-- 썸네일 나중에 넣어보기 --> 
-                                    <!-- onerror="this.style.display='none'"  -->
-                                    <!-- onerror="this.onerror=null; this.src='대체 이미지 주소';" -->
+                                    
+                                    <!-- 썸네일 O --> 
                                     <th:block th:if="*{thumbnail} != null">
-                                        <a th:href="@{/board/{boardCode}/{boardNo} 
-                                        (boardCode=${boardCode}, boardNo=*{boardNo})}"><img th:src="*{thumbnail}" onerror="this.onerror=null; this.src='/images/server-error.jpg';"></a>
+
+                                        <!-- 검색 O -->
+                                        <a th:if="${param.key}"
+                                        th:href="@{/board/{boardCode}/{boardNo} 
+                                        (boardCode=${boardCode}, boardNo=*{boardNo}, cp=${pagination.currentPage}, key=${param.key}, query=${param.query})}">
+                                        <img th:src="*{thumbnail}" onerror="this.onerror=null; this.src='/images/server-error.jpg';"></a>
+
+                                        <!-- 검색 X -->
+                                        <a th:unless="${param.key}"
+                                        th:href="@{/board/{boardCode}/{boardNo} 
+                                        (boardCode=${boardCode}, boardNo=*{boardNo}, cp=${pagination.currentPage})}">
+                                        <img th:src="*{thumbnail}" onerror="this.onerror=null; this.src='/images/server-error.jpg';"></a>
                                     </th:block>
 
+                                    <!-- 썸네일 X  -->
                                     <th:block th:if="*{thumbnail} == null">
-                                        <a th:href="@{/board/{boardCode}/{boardNo} 
-                                        (boardCode=${boardCode}, boardNo=*{boardNo})}">
+                                        <!-- 검색 O -->
+                                        <a th:if="${param.key}"
+                                        th:href="@{/board/{boardCode}/{boardNo} 
+                                        (boardCode=${boardCode}, boardNo=*{boardNo}, cp=${pagination.currentPage}, key=${param.key}, query=${param.query})}">
+                                            <img src="/images/no-thumbnail.jpg"></a>
+
+                                        <!-- 검색 X -->
+                                        <a th:unless="${param.key}"
+                                        th:href="@{/board/{boardCode}/{boardNo} 
+                                        (boardCode=${boardCode}, boardNo=*{boardNo}, cp=${pagination.currentPage})}">
                                             <img src="/images/no-thumbnail.jpg"></a>
                                     </th:block>
-                                    <a 
+
+                                    <!-- 검색 X -->
+                                    <a th:unless="${param.key}"
                                     th:href="@{/board/{boardCode}/{boardNo} 
-                                            (boardCode=${boardCode}, boardNo=*{boardNo})}"
+                                            (boardCode=${boardCode}, boardNo=*{boardNo}, cp=${pagination.currentPage})}"
+                                    th:text="*{boardTitle}">게시글 제목</a>
+
+                                    <!-- 검색 O -->
+                                    <a th:if="${param.key}"
+                                    th:href="@{/board/{boardCode}/{boardNo} 
+                                            (boardCode=${boardCode}, boardNo=*{boardNo}, cp=${pagination.currentPage}, key=${param.key}, query=${param.query})}"
                                     th:text="*{boardTitle}">게시글 제목</a>
                                     
                                     <th:block th:text="|[*{commentCount}]|">댓글 수</th:block>
