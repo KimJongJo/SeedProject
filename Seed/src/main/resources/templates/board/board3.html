@@ -49,10 +49,12 @@
                                 <td th:text="*{boardNo}">게시글 번호</td>
                                 <td id="boardTitle-main">
     
-                                    <!-- 썸네일 나중에 넣어보기 -->
+                                    <!-- 썸네일 나중에 넣어보기 --> 
+                                    <!-- onerror="this.style.display='none'"  -->
+                                    <!-- onerror="this.onerror=null; this.src='대체 이미지 주소';" -->
                                     <th:block th:if="*{thumbnail} != null">
                                         <a th:href="@{/board/{boardCode}/{boardNo} 
-                                        (boardCode=${boardCode}, boardNo=*{boardNo})}"><img th:src="*{thumbnail}" onerror="this.style.display='none'" ></a>
+                                        (boardCode=${boardCode}, boardNo=*{boardNo})}"><img th:src="*{thumbnail}" onerror="this.onerror=null; this.src='/images/server-error.jpg';"></a>
                                     </th:block>
 
                                     <th:block th:if="*{thumbnail} == null">
