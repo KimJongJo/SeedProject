@@ -64,7 +64,60 @@ public interface BoardService3 {
 	 * @param images
 	 * @return
 	 */
-	int boardWrite3(Board inputBoard, List<MultipartFile> images) throws IllegalStateException, IOException;
+	int board3Write(Board inputBoard, List<MultipartFile> images) throws IllegalStateException, IOException;
+
+
+	/** [3] 팁과 노하우 - 좋아요
+	 * @param map
+	 * @return
+	 */
+	int boardLike3(Map<String, Integer> map);
+
+
+	/** [3] 팁과 노하우 - 게시글 수정
+	 * @param inputBoard
+	 * @param images
+	 * @param deleteOrder
+	 * @return
+	 */
+	int board3Update(Board inputBoard, List<MultipartFile> images, String deleteOrder) throws IllegalStateException, IOException;
+
+
+	/** [3] 팁과 노하우 - 게시글 삭제
+	 * @param boardNo
+	 * @return
+	 */
+	int board3Delete(int boardNo);
+
+
+	// ----------------------------------------------
+	
+	/** [3] 팁과 노하우 - 목록 댓글 조회
+	 * @param boardNo
+	 * @return
+	 */
+	List<Comment> commentSelect3(int boardNo);
+
+
+	/** [3] 팁과 노하우 - 댓글/답글 등록
+	 * @param comment
+	 * @return
+	 */
+	int commentInsert3(Comment comment);
+
+
+	/** [3] 팁과 노하우 - 댓글 수정
+	 * @param comment
+	 * @return
+	 */
+	int commentUpdate3(Comment comment);
+
+
+	/** [3] 팁과 노하우 - 댓글 삭제
+	 * @param comment
+	 * @return
+	 */
+	int commentDelete3(Comment comment);
 
 
 	

@@ -89,14 +89,101 @@ public interface BoardMapper3 {
 	 * @param inputBoard
 	 * @return
 	 */
-	int boardWrite3(Board inputBoard);
+	int board3Write(Board inputBoard);
 
 
-	/** 게시글 이미지 모두 삽입
+	/** [3] 팁과 노하우 - 게시글 이미지 모두 삽입
 	 * @param uploadList
 	 * @return
 	 */
 	int insertUploadList3(List<BoardImg> uploadList);
+
+
+	
+	/** [3] 팁과 노하우 -  좋아요 해제
+	 * @param map
+	 * @return
+	 */
+	int deleteBoardLike3(Map<String, Integer> map);
+
+
+	/** [3] 팁과 노하우 - 좋아요 체크
+	 * @param map
+	 * @return
+	 */
+	int insertBoardLike3(Map<String, Integer> map);
+
+
+	/** [3] 팁과 노하우 - 좋아요 개수 조회
+	 * @param integer
+	 * @return
+	 */
+	int selectLikeCount3(Integer integer);
+
+
+	/** [3] 팁과 노하우 - 제목/내용 (부분) 수정
+	 * @param inputBoard
+	 * @return
+	 */
+	int board3Update(Board inputBoard);
+
+
+	/** [3] 팁과 노하우 - 게시글 이미지 삭제
+	 * @param map
+	 * @return
+	 */
+	int deleteImage3(Map<String, Object> map);
+
+
+	/** [3] 팁과 노하우 - 게시글 이미지 수정
+	 * @param img
+	 * @return
+	 */
+	int updateImage3(BoardImg img);
+
+
+	/** [3] 팁과 노하우 - 게시글 이미지 삽입
+	 * @param img
+	 * @return
+	 */
+	int insertImage3(BoardImg img);
+
+
+	/** [3] 팁과 노하우 - 게시글 삭제
+	 * @param boardNo
+	 * @return
+	 */
+	int board3Delete(int boardNo);
+
+
+	// -----------------------------------------
+	
+	/** [3] 팁과 노하우 - 댓글 목록 조회
+	 * @param boardNo
+	 * @return
+	 */
+	List<Comment> commentSelect3(int boardNo);
+
+
+	/** [3] 팁과 노하우 - 댓글/답글 등록
+	 * @param comment
+	 * @return
+	 */
+	int commentInsert3(Comment comment);
+
+
+	/** [3] 팁과 노하우 - 댓글 수정
+	 * @param comment
+	 * @return
+	 */
+	int commentUpdate3(Comment comment);
+
+ 
+	/** [3] 팁과 노하우 - 댓글 삭제
+	 * @param comment
+	 * @return
+	 */
+	int commentDelete3(Comment comment);
 
 
  
