@@ -33,7 +33,7 @@
             <div class="main-area">
                 <div class="blank">
                     <div class="comment">
-                        
+
                         <!-- 작성한 댓글이 없을 때 -->
                         <th:block th:if="${#lists.isEmpty(commentList)}" >
                             <i class="fa-solid fa-comment-slash"></i>
@@ -45,6 +45,9 @@
                         
                         <!-- 작성한 댓글이 있을 때 -->
                         <th:block th:unless="${#lists.isEmpty(commentList)}" >
+                            
+                            <h1 style="font-size: 20px;" th:text="|${loginMember.memberNickname}님께서 작성한 댓글|"></h1><br>
+                            
                             <table class="commentList-table">
                                 <thead>
                                     <tr>
@@ -57,6 +60,7 @@
                                 <tbody>
                                     <tr th:each="comment : ${commentList}" th:object="${comment}">
                                         
+
                                         <td>
                                             <th:block th:each="boardType : ${application.boardTypeList}">
                                                 <a th:if="${boardType.boardCode} == *{boardCode}"
@@ -117,7 +121,7 @@
 	</script>
 
     
-    <script src="/js/member/myPage/myPage.js"></script>
+    <script src="/js/myPage/myPage.js"></script>
 
 </body>
 </html>
