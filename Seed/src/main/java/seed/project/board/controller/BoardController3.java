@@ -476,9 +476,9 @@ public class BoardController3 {
 	 */
 	@ResponseBody
 	@DeleteMapping("{boardCode:[3]}/comment")
-	public int commentDelete3(@RequestBody Comment comment) {
+	public int commentDelete3(@RequestBody int commentNo) {
 		
-		return service.commentDelete3(comment);
+		return service.commentDelete3(commentNo);
 	}
 	
 	

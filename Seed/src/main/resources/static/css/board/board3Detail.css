@@ -287,7 +287,6 @@ section {
     flex-direction: column;
     width: 100%;
 
-
     
 }
 
@@ -304,15 +303,106 @@ section {
 
 .comment-list-area {
 
-    width: 100%;
-    padding: 24px 12px;
+    width: 900px;
+    padding: 12px 0;
+    
+
 }
 
+/* 댓글 li 영역 */
 .comment-list-area li {
     list-style: none;
+    padding: 12px;
+    border-bottom: 1px solid rgb(233, 227, 227);
+    width: 900px;
+    text-align: left;
+    
+}
+
+.comment-writer span:first-child {
+    font-weight: bold;
+    font-size: 15px;
 }
 
 
+/* 댓글 텍스트 */
+.comment-content {
+    padding: 12px 12px;
+    color: #555;
+    font-size: 14px;
+}
+
+
+/* 댓글 작성일 */
+.comment-date {
+    margin-left: 10px;
+    font-size: 13px;
+    color: rgb(140, 140, 140);;
+}
+
+.comment-btn-area  {
+    padding: 0 12px 0 0;
+    width: 300px;
+}
+.comment-btn-area button  {
+    
+    padding: 3px 8px;
+    margin-right: 8px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-weight: 600;
+}
+
+
+/* 답글 클릭 시 등록, 취소 */
+.insert-cancel-area {
+    text-align: right;
+    padding: 0;
+}
+
+.insert-cancel-area button {
+    text-align: right;
+    padding: 0;
+    margin-right: 4px;
+    margin-left: 8px;
+}
+/* 답글 입력창 */
+.commentInsertContent {
+    width: 300px;
+    height: 60px;
+    resize: none;
+    margin-top : 20px;
+    padding: 5px;
+}
+
+/* 댓글 영역 */
+.child-comment {
+    position: relative;
+    padding-left: 60px !important;
+}
+
+/* 대댓글 작성자 영역 */
+.arrowNick {
+    font-size: 15px;
+    padding-left: 5px;
+}
+
+/* 대댓글 컨텐츠 */
+.arrowContent {
+    padding-left: 20px;
+}
+
+.update-textarea {
+    width: 200px;
+    height: 60px;
+    resize: none;
+    margin-top : 20px;
+    padding: 5px;
+}
+
+
+/* 하단 댓글 입력 전체 영역 */
 .comment-write-area {
 	display: flex;
     flex-direction: column;
@@ -330,6 +420,7 @@ section {
 
 }
 
+/* 댓글 입력창, 댓글등록 버튼 영역 */
 .comment-write-area2 {
     display: flex;
     width: 100%;
@@ -337,6 +428,7 @@ section {
     border: none;
 }
 
+/* 댓글 입력창 */
 #commentContent {
     resize: none;
     width: 90%;
@@ -348,14 +440,14 @@ section {
 
 }
 
-
+/* 댓글 입력창 미로그인 시 */
 .commentContent-logout {
     background-color: rgb(243, 243, 245);
     outline: none;
 }
 
 
-
+/* 댓글등록 버튼 */
 .addCommentBtn {
     width: 10%;
     margin-left: 5px;
@@ -365,6 +457,7 @@ section {
     cursor: pointer;
 }
 
+/* 댓글 등록 버튼 미로그인 시 */
 .addCommentBtn-logout {
     cursor: not-allowed;
 }
