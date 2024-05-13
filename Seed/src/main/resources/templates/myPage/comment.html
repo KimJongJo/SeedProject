@@ -48,7 +48,7 @@
                             <table class="commentList-table">
                                 <thead>
                                     <tr>
-                                        <th>게시글 번호</th>
+                                        <th>게시판 이름</th>
                                         <th>댓글 내용</th>
                                         <th>댓글 작성자</th>
                                         <th>댓글 작성일</th>
@@ -56,14 +56,23 @@
                                 </thead>
                                 <tbody>
                                     <tr th:each="comment : ${commentList}" th:object="${comment}">
-                                        <th:block th:each="boardType : ${application.boardTypeList}">
-                                            <td>
-                                                <a 
-                                                href="#" th:text="${boardType.boardName}">게시글 번호</a>
-                                            </td>
-                                        </th:block>
+                                        
                                         <td>
-                                            <a href="#" th:text="*{commentContent}">댓글 내용</a>
+                                            <th:block th:each="boardType : ${application.boardTypeList}">
+                                                <a th:if="${boardType.boardCode} == *{boardCode}"
+                                                th:text="${boardType.boardName}">게시글 번호</a>
+                                            </th:block>
+                                        </td>
+                                        
+                                        <td id="commentContent-area">
+                                            <a><i class="fa-regular fa-message fa fa-flip-horizontal "></i></a>
+                                            <a th:if="*{boardCode} == 2"
+                                            th:href="@{/board/{boardCode}/detail?boardNo={boardNo}(boardCode=*{boardCode}, boardNo=*{boardNo})}" 
+                                            th:text="*{commentContent}">댓글 내용</a>
+
+                                            <a th:if="*{boardCode} != 2"
+                                            th:href="@{/board/{boardCode}/{boardNo}(boardCode=*{boardCode}, boardNo=*{boardNo})}" 
+                                            th:text="*{commentContent}">댓글 내용</a>
                                         </td>
                                         <td th:text="*{memberNickname}">댓글 작성자</td>
                                         <td th:text="*{commentWriteDate}">댓글 작성일</td>
@@ -71,15 +80,27 @@
                                 </tbody>
                             </table>
                         </th:block>
-                       
                     </div>
                 </div>
 
                 <!-- 페이지 네이션 -->
-                <div>
-                    <ul>
-                        <li>
-                        </li>
+                <div class="pagination-area">
+                    <ul class="pagination" th:object="${pagination}" th:unless="${#lists.isEmpty(commentList)}">
+                        <th:block th:each="i : *{#numbers.sequence(startPage, endPage)}">
+                            
+                            <!-- 현재 보고 있는 페이지 -->
+                            <li th:if="${i} == *{currentPage}">
+                                <a class="current" th:text="${i}">현재페이지</a>
+                            </li>
+        
+                            <!-- 보고있지 않은 페이지 -->
+                            <li th:unless="${i} == *{currentPage}">
+                                <a th:href="@{/myPage/comment(cp=${i})}"
+                                    th:text="${i}">이동할 페이지</a>
+                            </li>
+
+
+                        </th:block>	
                     </ul>
                 </div>
             </div>
@@ -91,6 +112,9 @@
     <!-- 푸터 추가 -->
     <th:block th:replace="~{common/footer}"></th:block>
 
+    <script th:inline="javascript">
+		const boardCode = /*[[${boardCode}]]*/ "게시판 코드 번호";
+	</script>
 
     
     <script src="/js/member/myPage/myPage.js"></script>
