@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -193,12 +195,45 @@ public class BoardController1 {
 	
 	
 	
-	@GetMapping("{boardCode:[1]}/write")
+	/** 글쓰기 페이지로 이동
+	 * @param loginMember
+	 * @return
+	 */
+	@GetMapping("{boardCode:[1]}/insert")
 	public String boardWrite(@SessionAttribute("loginMember") Member loginMember) {
-		return "/board/1/write";
+		return "/board/board1Write";
 	}
 	
 	
+	@PostMapping("{boardCode:[1]}/insert")
+	public String boardInsert(
+			@PathVariable("boardCode") int boardCode,
+			@ModelAttribute Board inputBoard,
+			@SessionAttribute("loginMember") Member loginMember,
+			RedirectAttributes ra
+			) {
+		
+		
+		inputBoard.setBoardCode(boardCode);
+		inputBoard.setMemberNo(loginMember.getMemberNo());
+		
+		int boardNo = service.boardInsert(inputBoard);
+		
+		String path = null;
+		String message = null;
+		
+		if(boardNo > 0) {
+			path = "/board/" + boardCode + "/" + boardNo;
+			message = "게시글이 작성되었습니다";
+		} else {
+			path = "board1Write";
+			message = "게시글 작성 실패";
+		}
+		
+		ra.addFlashAttribute("message", message);
+		
+		return "redirect:" + path;
+	}
 	
 	
 	

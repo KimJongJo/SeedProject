@@ -73,5 +73,11 @@ public interface BoardService1 {
 	 */
 	int commentInsert(Comment comment);
 
+	/** 게시글 작성
+	 * @param inputBoard
+	 * @return
+	 */
+	int boardInsert(Board inputBoard);
+
 
 }

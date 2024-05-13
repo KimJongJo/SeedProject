@@ -327,8 +327,18 @@
 			DEFAULT, DEFAULT, #{boardNo}, #{memberNo}, NULL)
 	</insert>
 	
+	<!-- 게시글 작성 -->
+	<insert id="boardInsert" useGeneratedKeys="true" parameterType="Board">
+	
+		<selectKey order="BEFORE" resultType="_int" keyProperty="boardNo">
+			SELECT SEQ_BOARD_NO.NEXTVAL FROM DUAL
+		</selectKey>
 	
 	
+		 INSERT INTO "BOARD"
+		 VALUES(#{boardNo}, #{boardTitle}, #{boardContent}, DEFAULT, NULL,
+		 	DEFAULT,DEFAULT, DEFAULT, #{memberNo}, #{boardCode})
+	</insert>
 	
 	
 	
