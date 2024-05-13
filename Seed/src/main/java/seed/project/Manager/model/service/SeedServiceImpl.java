@@ -27,7 +27,7 @@ public class SeedServiceImpl implements SeedService{
 	private static String uploadDirectory = "/uploadFiles/seedImg"; // 상품 이미지를 저장할 디렉토리 경로
 	
 	
-	@Value("${my.profile.web-path}")
+	@Value("${seed.img.name-path}")
 	private String profileWebPath;	// /myPage/profile/
 	
 	@Value("${seed.img.forder-path}")
@@ -142,6 +142,20 @@ public class SeedServiceImpl implements SeedService{
 	public Seed seedDetail(int seedNo) {
 		
 		return mapper.seedDetail(seedNo);
+	}
+
+
+	// 씨앗 정렬
+	@Override
+	public List<Seed> seedSort(int sortType) {
+
+		// 1 높은 가격순,  2 낮은 가격순, 3 종류별
+		switch(sortType) {
+		case 1 : return mapper.highList();
+		case 2 : return mapper.lowList();
+		default : return mapper.typeList();
+		}
+		
 	}
 
 

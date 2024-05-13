@@ -31,7 +31,7 @@ const deleteBtn2 = document.getElementById("deleteBtn2");   // 풀절 취소 버
 
 // // 씨앗 등록
 if(addBtn != null){
-    seedAdd.addEventListener("click", (e) => {
+    addBtn.addEventListener("click", (e) => {
 
 
         if(seedName.value == "" || seedPrice.value == "" || seedTemp.value == "" || seedTime.value == "" || seedDistance.value == "" || seedRate.value == ""){

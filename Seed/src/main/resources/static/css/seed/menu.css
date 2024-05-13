@@ -1,3 +1,9 @@
+#manager{
+    margin-top: 15px;
+    margin-bottom: 5px;
+    box-shadow: none;
+}
+
 
 .sectionDiv{
     display: flex;

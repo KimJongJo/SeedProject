@@ -8,7 +8,7 @@
 		ORDER BY BOARD_CODE
 	</select>
 	
-	<!-- 자유 게시판 게시글 수 조회 -->
+	<!-- 게시판 게시글 수 조회 -->
 	<select id="getListCount">
 		SELECT COUNT(*)
 		FROM "BOARD"
@@ -127,6 +127,7 @@
 		JOIN "MEMBER" USING(MEMBER_NO)
 		WHERE BOARD_NO = #{boardNo}
 		AND COMMENT_DEL_FL = 'N'
+		ORDER BY COMMENT_WRITE_DATE
 	</select>
 	
 	<!-- 게시글 삭제(업데이트) -->

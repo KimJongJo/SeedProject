@@ -5,7 +5,7 @@
 	<!-- 씨앗 등록 -->
 	<insert id="addSeed">
 		INSERT INTO "SEED"
-		VALUES(4, #{seedName}, #{seedImgPath},
+		VALUES(SEQ_SEED_NO.NEXTVAL, #{seedName}, #{seedImgPath},
 		#{seedPrice}, #{seedTemp}, #{seedTime}, #{seedDistance},
 		#{seedRate}, DEFAULT, #{seedCode})
 	</insert>
@@ -71,6 +71,33 @@
 	</select>
 	
 
+
+	<!-- 높은 가격 순 정렬 -->
+	<select id="highList">
+		SELECT SEED_NO, SEED_NAME, SEED_IMG_PATH, SEED_PRICE, SEED_TEMP,
+		SEED_TIME, SEED_DISTANCE, SEED_RATE
+		FROM "SEED"
+		WHERE SEED_SOLD_OUT = 'N'
+		ORDER BY SEED_PRICE DESC
+	</select>
+	
+	<!-- 낮은 가격 순 정렬 -->
+	<select id="lowList">
+		SELECT SEED_NO, SEED_NAME, SEED_IMG_PATH, SEED_PRICE, SEED_TEMP,
+		SEED_TIME, SEED_DISTANCE, SEED_RATE
+		FROM "SEED"
+		WHERE SEED_SOLD_OUT = 'N'
+		ORDER BY SEED_PRICE
+	</select>
+	
+	<!-- 종류별 정렬 -->
+	<select id="typeList">
+		SELECT SEED_NO, SEED_NAME, SEED_IMG_PATH, SEED_PRICE, SEED_TEMP,
+		SEED_TIME, SEED_DISTANCE, SEED_RATE
+		FROM "SEED"
+		WHERE SEED_SOLD_OUT = 'N'
+		ORDER BY SEED_CODE, SEED_NO
+	</select>
 	
 	
 	

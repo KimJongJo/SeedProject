@@ -63,4 +63,25 @@ public interface SeedMapper {
 	 */
 	Seed seedDetail(int seedNo);
 
+	/** 씨앗 정렬
+	 * @param sortType
+	 * @return
+	 */
+	List<Seed> seedSort(int sortType);
+
+	/** 높은 가격 순 정렬
+	 * @return
+	 */
+	List<Seed> highList();
+
+	/** 낮은 가격 순 정렬
+	 * @return
+	 */
+	List<Seed> lowList();
+
+	/** 종류별 정렬
+	 * @return
+	 */
+	List<Seed> typeList();
+
 }
