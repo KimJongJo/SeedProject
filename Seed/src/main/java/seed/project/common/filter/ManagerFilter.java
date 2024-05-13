@@ -10,8 +10,9 @@ import jakarta.servlet.ServletResponse;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import seed.project.member.model.dto.Member;
 
-public class LoginFilter implements Filter{
+public class ManagerFilter implements Filter{
 
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
@@ -20,13 +21,20 @@ public class LoginFilter implements Filter{
 		HttpServletRequest req = (HttpServletRequest)request;
 		HttpServletResponse resp = (HttpServletResponse)response;
 		
-		
 		HttpSession session = req.getSession();
 		
-		if(session.getAttribute("loginMember") == null) {
+		Member loginMember = (Member)session.getAttribute("loginMember");
+		
+
+		if(loginMember == null) {
 			
 			resp.sendRedirect("/loginError");
-		}else {
+		}else if(loginMember.getManagerCheck().equals("N")) {
+			
+			resp.sendRedirect("/managerError");
+		}
+		
+		else {
 			chain.doFilter(request, response);
 		}
 		
