@@ -183,7 +183,7 @@ public interface BoardMapper3 {
 	 * @param comment
 	 * @return
 	 */
-	int commentDelete3(Comment comment);
+	int commentDelete3(int commentNo);
 
 
  

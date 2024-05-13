@@ -115,14 +115,14 @@
             <!-- 댓글 영역 -->
             <div class="comment-area">
                 <div class="comment-title">
-                    <span>댓글</span> [[*{commentCount}]] 개
+                    <span th:text="|댓글 ${board.commentCount}개|">댓글 0개</span>
                 </div>
                 
                 <div class="comment-list-area">
                     <ul id="commentList">                       
                                             
                         <li class="comment-row"
-                            th:each="coment : ${board.commentList}"
+                            th:each="comment : ${board.commentList}"
                             th:classappend="${comment.parentCommentNo} != 0 ? child-comment"
                             th:object="${comment}">
 
@@ -132,21 +132,23 @@
 
                             <th:block th:if="*{commentDelFl} == 'N'">
                                 <p class="comment-info">
-                                    <span class="comment-writer" th:text="*{memberNickname}">닉네임</span>
-                                    <span class="comment-writeDate" th:text="*{commentWriteDate}">작성일</span>
+                                    <!-- <span class="comment-writer" th:text="*{memberNickname}">닉네임</span> -->
+                                    <!-- <span class="comment-writeDate" th:text="*{commentWriteDate}">작성일</span> -->
                                 </p>
                                 <p class="comment-content" th:text="*{commentContent}">댓글 내용</p>
+                                <!-- 로그인 회원 == 댓글 작성자 -->
 
 
                                 <!-- 답글, 수정, 삭제 -->
                                 <div>
                                     <button>답글</button>
 
-                                    <!-- 로그인 회원 == 댓글 작성자 -->
+                                    
                                     <th:block th:if="${session.loginMember != null and session.loginMember.memberNo == comment.memberNo}">
                                         <button th:onclick="|showUpdateComment(*{commentNo}, this)|">수정</button>
                                         <button th:onclick="|deleteComment(*{commentNo})|">삭제</button>
                                     </th:block>
+
                                 </div>
 
                             </th:block>
@@ -154,6 +156,8 @@
                     </ul>
                 </div>
                 
+                <!-- <i class="fa fa-share fa-flip-vertical"></i> -->
+
                 <!-- 댓글 작성 부분 -->
                 <div class="comment-write-area">
                     <strong>댓글 쓰기</strong>
@@ -163,6 +167,7 @@
                         th:classappend="${session.loginMember} == null ? commentContent-logout"
                         th:readonly="${session.loginMember} == null ? readonly"
                         th:placeholder="${session.loginMember} == null ? '댓글을 작성하려면 로그인 해주세요.'"
+                        th:onclick="${session.loginMember == null} ? 'loginPageMove()'"
                         class="commentContent" id="commentContent"></textarea>
 
 
@@ -194,6 +199,19 @@
         const beforePage = /*[[${beforePage}]]*/ '이전 페이지';
 
         const afterPage = /*[[${afterPage}]]*/ '다음 페이지';
+
+
+        function loginPageMove() {
+        
+            if(confirm('로그인 페이지로 이동하시겠습니까?')) {
+                location.href = '/member/login'
+            } else {
+                alert('로그인 이동 안해보리기~')
+            }
+        
+        }
+
+
     </script>
 
     <script src="/js/board/board3Detail.js"></script>

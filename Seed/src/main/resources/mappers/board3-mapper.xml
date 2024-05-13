@@ -29,13 +29,13 @@
 		
 		
 		<!-- * 해당 게시글 댓글 목록 조회 후 필드에 저장 -->
-<!--		<collection 
+<!-- 		<collection 
 			property="commentList"
-			select = "selectCommentList"
+			select = "selectCommentList3"
 			column="BOARD_NO"
 			javaType="java.util.ArrayList"
 			ofType="Comment"
-		/>-->
+		/> -->
 	</resultMap>
 	
 	<!-- [공통] 보드 타입 검색 -->
@@ -60,7 +60,8 @@
     
 		    (SELECT COUNT(*)
 		    FROM "COMMENT" C
-		    WHERE C.BOARD_NO = B.BOARD_NO) COMMENT_COUNT,
+		    WHERE C.BOARD_NO = B.BOARD_NO
+		    AND COMMENT_DEL_FL = 'N') COMMENT_COUNT,
 		    
 		    (SELECT COUNT(*)
 		    FROM "BOARD_LIKE" L
@@ -210,6 +211,11 @@
 		SELECT BOARD_NO, BOARD_TITLE, BOARD_CONTENT, BOARD_CODE, READ_COUNT,
 			MEMBER_NO, MEMBER_NICKNAME,
 			
+			(SELECT COUNT(*)
+		    FROM "COMMENT"
+		    WHERE BOARD_NO = #{boardNo}
+		    AND COMMENT_DEL_FL = 'N') COMMENT_COUNT,
+			
 			TO_CHAR(BOARD_WRITE_DATE, 'YYYY"."MM"."DD HH24:MI') BOARD_WRITE_DATE, 
 			TO_CHAR(BOARD_UPDATE_DATE, 'YYYY"."MM"."DD HH24:MI') BOARD_UPDATE_DATE,
 			
@@ -225,7 +231,7 @@
 			 (SELECT COUNT(*) FROM "BOARD_LIKE"
 			  WHERE MEMBER_NO = #{memberNo}
 			  AND BOARD_NO = #{boardNo}) LIKE_CHECK
-	
+			  
 	
 		FROM "BOARD"
 		JOIN "MEMBER" USING(MEMBER_NO)
@@ -395,17 +401,33 @@
 		WHERE BOARD_NO = #{boardNo}
 	</update>
 	
-	
-	
-	
+
+
 	<!-- [3] 팁과 노하우 - 댓글 -->
 	
 	<!-- 댓글 목록 조회 -->
 	<select id="commentSelect3">
 		SELECT LEVEL, C.* FROM
 		(SELECT COMMENT_NO, COMMENT_CONTENT,
-				    TO_CHAR(COMMENT_WRITE_DATE, 'YYYY"년" MM"월" DD"일" HH24"시" MI"분" SS"초"') COMMENT_WRITE_DATE,
-				    BOARD_NO, MEMBER_NO, MEMBER_NICKNAME, PARENT_COMMENT_NO, COMMENT_DEL_FL
+				    <!-- TO_CHAR(COMMENT_WRITE_DATE, 'YYYY"."MM"."DD HH24":"MI') COMMENT_WRITE_DATE, -->
+				    BOARD_NO, MEMBER_NO, MEMBER_NICKNAME, PARENT_COMMENT_NO, COMMENT_DEL_FL,
+				 
+					<![CDATA[
+				    CASE
+					    WHEN SYSDATE - COMMENT_WRITE_DATE < 1 / 24 / 60
+					    THEN FLOOR((SYSDATE - COMMENT_WRITE_DATE) * 24 * 60 * 60) || '초 전'
+					    
+					    WHEN SYSDATE - COMMENT_WRITE_DATE < 1 / 24
+					    THEN FLOOR((SYSDATE - COMMENT_WRITE_DATE) * 24 * 60) || '분 전'
+					    
+					    WHEN SYSDATE - COMMENT_WRITE_DATE < 1
+					    THEN FLOOR((SYSDATE - COMMENT_WRITE_DATE) * 24) || '시간 전'
+					    
+					    ELSE TO_CHAR(COMMENT_WRITE_DATE, 'YYYY-MM-DD')
+					    
+					END COMMENT_WRITE_DATE
+			    	]]>
+				 	    
 				FROM "COMMENT"
 				JOIN MEMBER USING(MEMBER_NO)
 				WHERE BOARD_NO = #{boardNo}) C

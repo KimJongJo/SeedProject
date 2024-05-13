@@ -370,8 +370,8 @@ public class BoardServiceImpl3 implements BoardService3{
 
 	// [3] 팁과 노하우 - 댓글 삭제
 	@Override
-	public int commentDelete3(Comment comment) {
-		return mapper.commentDelete3(comment);
+	public int commentDelete3(int commentNo) {
+		return mapper.commentDelete3(commentNo);
 	}
 
 }
