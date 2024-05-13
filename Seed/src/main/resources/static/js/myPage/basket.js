@@ -233,7 +233,7 @@ const deleteCart = (memberNo, seedName) => {
     .then(resp => resp.text())
     .then(result => {
         if(result > 0){
-            console.log("삭제 완료");
+            
 
             money.innerText = '0원';
 
@@ -262,7 +262,7 @@ const seedDown = (memberNo, seedName) => {
     .then(resp => resp.text())
     .then(result => {
         if(result > 0){
-            console.log("수량 감소")
+            
         }else{
             console.log("수량 감소 실패..")
             console.log(result);
@@ -288,7 +288,7 @@ const seedUp = (memberNo, seedName) => {
     .then(resp => resp.text())
     .then(result => {
         if(result > 0){
-            console.log("수량 추가")
+            
         }else{
             console.log("수량 추가 실패..")
         }

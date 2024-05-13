@@ -381,14 +381,24 @@ nav > a:hover{
     display: flex;
     width: 1400px;
     flex-wrap: wrap;
-    
+    margin-top: 60px;
 }
+
+
+
+
 
 .seedImg{
     width: 303px;
     height: 303px;
     border-radius: 15px;
     border: 3px solid #8AA6A3;
+    transition-duration: 0.3s;
+}
+
+.seedImg:hover{
+    transition-duration: 0.3s;
+    filter: brightness(80%);
 }
 
 .allBox{
@@ -408,6 +418,8 @@ nav > a:hover{
     width: 310px;
     height: 310px;
 }
+
+
 
 .select{
     display: flex;
@@ -442,5 +454,45 @@ nav > a:hover{
     background-color: #10403B;
     cursor: pointer;
     transition-duration: 0.3s;
+}
+
+
+
+
+
+
+/* 씨앗 검색 */
+.noneSeed{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+.noneSeed > i{
+    font-size: 100px;
+}
+
+.seedDiv{
+    font-size: 30px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+
+.seedUnder{
+    display: flex;
+}
+
+.seedUnder > i{
+    font-size: 50px;
+    margin: 10px;
+}
+
+.noneSeed i, .noneSeed > div {
+    color: #D0D0D0;
 }
 

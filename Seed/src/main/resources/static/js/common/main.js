@@ -3,6 +3,10 @@
 
 const seedNo = document.querySelectorAll(".seedNo");
 
+// 검색어
+const searchBtn = document.getElementById("searchBtn"); // 검색 버튼
+const key = document.getElementById("key"); // 검색어
+
 
 
 
@@ -14,6 +18,8 @@ const cartAdd = seedNo => {
         location.href = "/member/login";
         return;
     }
+
+    
 
     const obj = {
         "seedNo" : seedNo,
@@ -32,12 +38,18 @@ const cartAdd = seedNo => {
 
         if(result > 0){
             alert("씨앗이 장바구니에 추가되었습니다!");
+            
+            confirm("장바구니 페이지로 이동하시겠습니까?") ? location.href="/myPage/basket" : alert("쇼핑을 계속합니다...");
+
         }else{
             alert("씨앗 추가 실패...");
         }
 
     })
 }
+
+
+
 
 
 

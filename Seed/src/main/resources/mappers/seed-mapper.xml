@@ -16,7 +16,7 @@
 		SELECT SEED_IMG_PATH, SEED_NAME, SEED_PRICE, SEED_NO
 		FROM "SEED"
 		WHERE SEED_SOLD_OUT = 'N'
-		ORDER BY SEED_NO
+		ORDER BY SEED_TEMP
 	</select>
 	
 	<!-- 씨앗 가격 -->
@@ -97,6 +97,25 @@
 		FROM "SEED"
 		WHERE SEED_SOLD_OUT = 'N'
 		ORDER BY SEED_CODE, SEED_NO
+	</select>
+	
+	<!-- 이름 정렬 -->
+	<select id="nameList">
+		SELECT SEED_NO, SEED_NAME, SEED_IMG_PATH, SEED_PRICE, SEED_TEMP,
+		SEED_TIME, SEED_DISTANCE, SEED_RATE
+		FROM "SEED"
+		WHERE SEED_SOLD_OUT = 'N'
+		ORDER BY SEED_NAME, SEED_NO		
+	</select>
+	
+	
+	<!-- 씨앗 검색 -->
+	<select id="seedSearch">
+		SELECT SEED_IMG_PATH, SEED_NAME, SEED_PRICE, SEED_NO
+		FROM "SEED"
+		WHERE SEED_SOLD_OUT = 'N'
+		AND SEED_NAME LIKE '%' || #{key} || '%'
+		ORDER BY SEED_TEMP
 	</select>
 	
 	

@@ -56,6 +56,12 @@ public interface SeedService {
 	 */
 	List<Seed> seedSort(int sortType);
 
+	/** 씨앗 검색
+	 * @param key
+	 * @return
+	 */
+	List<Seed> seedSearch(String key);
+
 
 
 

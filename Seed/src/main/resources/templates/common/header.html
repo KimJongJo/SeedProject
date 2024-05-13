@@ -27,9 +27,9 @@
         <!-- <div></div> -->
         <!-- 검색창 라인 -->
         <div>
-            <form action="#">
-                <input type="text" placeholder="검색할 씨앗을 입력해주세요">
-                <button>검색</button>
+            <form action="/seed/search?key=">
+                <input type="text" placeholder="검색할 씨앗을 입력해주세요" name="key" id="key">
+                <button id="searchBtn">검색</button>
             </form>
         </div>
 
@@ -59,7 +59,7 @@
 
 <div id="nav-top">
     <nav id="nav-bottom" class="container">
-        <a href="/" class="button btnPush btnBlueGreen" id="point">쇼핑</a>
+        <a href="/" class="button btnPush btnBlueGreen" id="point">씨앗</a>
         <th:block th:each="boardType : ${application.boardTypeList}">
             <a th:text="${boardType.boardName}"
                 th:href="@{/board/{boardCode}(boardCode = ${boardType.boardCode})}"
@@ -72,7 +72,7 @@
             href="/seed/menu"
             class="button btnPush btnBlueGreen"
             id="manager"
-            >상품관리
+            >씨앗관리
             </a>
         </th:block>
     </nav>
