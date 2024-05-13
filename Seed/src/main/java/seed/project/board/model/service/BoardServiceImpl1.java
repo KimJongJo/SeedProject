@@ -133,6 +133,20 @@ public class BoardServiceImpl1 implements BoardService1{
 		
 	}
 
+	
+	// 게시글 작성
+	@Override
+	public int boardInsert(Board inputBoard) {
+		
+		int result = mapper.boardInsert(inputBoard);
+		
+		if(result == 0) return 0;
+		
+		int boardNo = inputBoard.getBoardNo();
+				
+		return boardNo;
+	}
+
 
 	
 

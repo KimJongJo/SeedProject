@@ -7,10 +7,45 @@
 
     <th:block th:replace="~{common/common}"></th:block>
     <link rel="stylesheet" href="/css/board/board1.css">
+    <link rel="stylesheet" href="/css/board/board1Update.css">
 </head>
 <body>
     <th:block th:replace="~{common/header}"></th:block>
 
+    <main>
+
+        <section class="board1-write">
+
+            <form th:action="@{/board/1/insert}" method="POST">
+
+                <div>                
+                    <h1 class="board-name"
+                    th:text="|자유게시판 글쓰기|"></h1>
+                </div>
+                
+                <!-- 수정할 제목 공간 -->
+                <div class="board-name-area">
+                    <h3>제목</h3>
+                    <input name="boardTitle" class="board-title" type="text" maxlength="30"></input>
+                </div>
+                
+                
+                <!-- 수정할 내용 공간 -->
+                <div class="board-content-area">
+                    <h3>내용</h3>
+                    <textarea name="boardContent" class="board-content"></textarea>
+                </div>
+                
+                <!-- js에서 boardNo 사용하려고 씀 -->
+                <!-- <input type="hidden" th:value="*{boardNo}" id="boardNo"> -->
+                
+                
+                <button type="submit" id="updateBtn">글쓰기</button>
+                
+            </form>
+            
+        </section>
+    </main>
 
 
 
@@ -27,7 +62,6 @@
 
 
 
-    
     <th:block th:replace="~{common/footer}"></th:block>
 </body>
 </html>
