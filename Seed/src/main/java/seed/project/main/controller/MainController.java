@@ -36,4 +36,12 @@ public class MainController {
 		
 		return "redirect:/";
 	}
+	
+	@GetMapping("managerError")
+	public String managerError(RedirectAttributes ra) {
+		
+		ra.addFlashAttribute("message", "관리자 전용 페이지 입니다..");
+		
+		return "redirect:/";
+	}
 }
