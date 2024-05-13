@@ -53,6 +53,7 @@ add.addEventListener("click", () => {
     .then(result => {
         if(result > 0){
             alert("장바구니에 추가 했습니다!");
+            confirm("장바구니 페이지로 이동하시겠습니까?") ? location.href="/myPage/basket" : alert("쇼핑을 계속합니다...");
         }else{
             console.log("장바구니 추가 실패...");
         }

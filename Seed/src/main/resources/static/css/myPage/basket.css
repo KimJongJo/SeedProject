@@ -2,17 +2,48 @@
     border: 1px solid blue;
 } */
 
-.blank{
-    flex-basis: 80%;
+.section{
+    width: 900px;
+    height: 700px;
     display: flex;
-    justify-content: center;
 }
 
-.basket{
-    margin-top: 50px;
+.left-nav{
+    flex-basis: 20%;
+}
+
+.blankdiv{
+    flex-basis: 80%;
+}
+
+.blank{
+    
     display: flex;
     flex-direction: column;
     align-items: center;
+    height: 660px;
+    width: 720px;
+    padding-left: 50px;
+    
+}
+
+
+
+
+
+.basket{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: auto;
+    width: 660px;
+    flex-basis: 90%;
+}
+
+
+.buyDiv{
+    flex-basis: 10%;
 }
 
 
@@ -84,13 +115,13 @@
 /* 장바구니 */
 .allBox{
     width: 600px;
-    height: 100px;
+    height: 120px;
     border-bottom: 1px solid black;
+    padding-top: 20px;
     padding-left: 20px;
     padding-bottom: 20px;
     display: flex;
     align-items: center;
-    margin-bottom: 20px;
 }
 
 .seedImg{
@@ -113,6 +144,12 @@
 
 
 .imgDiv{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.imgA{
     display: flex;
     justify-content: center;
     align-items: center;

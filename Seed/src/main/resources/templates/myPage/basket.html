@@ -30,78 +30,80 @@
                 <a href="/myPage/withdraw">회원 탈퇴</a>
             </div>
             <!-- 추가할 공간 -->
-            <div class="blank">
-                
-                <div class="basket">
-                    <!-- 장바구니가 비어있을 때 -->
-                    <th:block th:unless="${cartList}">
-                        <i class="fa-solid fa-basket-shopping"></i>
-                        <span>장바구니가 비었습니다</span>
-    
-                        <div class="container2">
-                            <a href="/" class="button btnPush btnBlueGreen" id="cart">
-                                <i class="fa-solid fa-cart-shopping"></i> 장보기 
-                            </a>
-                        </div>
-                    </th:block>
+            <div class="blankdiv">
+                <div class="blank">
                     
+                    <div class="basket">
+                        <!-- 장바구니가 비어있을 때 -->
+                        <th:block th:unless="${cartList}">
+                            <i class="fa-solid fa-basket-shopping"></i>
+                            <span>장바구니가 비었습니다</span>
+        
+                            <div class="container2">
+                                <a href="/" class="button btnPush btnBlueGreen" id="cart">
+                                    <i class="fa-solid fa-cart-shopping"></i> 장보기 
+                                </a>
+                            </div>
+                        </th:block>
+                        
 
-                    <!-- 장바구니가 비어있지 않을 때 -->
-                    <th:block th:if="${cartList}">
-                        <div id="cartList">
-                            <th:block th:each="cart : ${cartList}" th:object="${cart}">
-                                <div class="allBox">
-                                    <div class="checkboxDiv">
-                                        <input type="checkbox" class="checkbox">
-                                    </div>
-                                    
-                                    <div class="imgDiv">
-                                        <img th:src="*{seedImgPath}" class="seedImg">
-                                    </div>
-                                    <div class="seedinfo">
-                                        <div class="seedleft">
-                                            <span th:text="*{seedName}" class="seedName">씨앗 이름</span>
-                                            <span th:text="*{seedPrice}" class="seedPrice">씨앗 가격</span>
-                                        </div>
-                                        <div class="span">
-                                            <button class="minusBtn"><i class="fa-solid fa-minus"></i></button>
-                                            <span th:text="*{count}" class="count">수량</span>
-                                            <button class="plusBtn"><i class="fa-solid fa-plus"></i></button>
+                        <!-- 장바구니가 비어있지 않을 때 -->
+                        <th:block th:if="${cartList}">
+                            <div id="cartList">
+                                <th:block th:each="cart : ${cartList}" th:object="${cart}">
+                                    <div class="allBox">
+                                        <div class="checkboxDiv">
+                                            <input type="checkbox" class="checkbox">
                                         </div>
                                         
+                                        <div class="imgDiv">
+                                            <a th:href="@{/seed/detail(seedNo=*{seedNo})}" class="imgA">
+                                                <img th:src="*{seedImgPath}" class="seedImg">
+                                            </a>
+                                        </div>
+                                        <div class="seedinfo">
+                                            <div class="seedleft">
+                                                <span th:text="*{seedName}" class="seedName">씨앗 이름</span>
+                                                <span th:text="*{seedPrice}" class="seedPrice">씨앗 가격</span>
+                                            </div>
+                                            <div class="span">
+                                                <button class="minusBtn"><i class="fa-solid fa-minus"></i></button>
+                                                <span th:text="*{count}" class="count">수량</span>
+                                                <button class="plusBtn"><i class="fa-solid fa-plus"></i></button>
+                                            </div>
+                                            
+                                        </div>
+                                        <span class="cross">&times;</span>
                                     </div>
-                                    <span class="cross">&times;</span>
-                                </div>
-                            </th:block>
-                        </div>
-
-                        <div class="buy">
-                            <div class="price">
-                                <span>결제 금액</span>
-                                <span id="money">0원</span>
+                                </th:block>
                             </div>
-                            <button id="payment">결제하기</button>
-                        </div>
+
+                        </th:block>
+
+                    </div>
+                    <div class="buyDiv">
+                        <th:block th:if="${cartList}">
+                            <div class="buy">
+                                <div class="price">
+                                    <span>결제 금액</span>
+                                    <span id="money">0원</span>
+                                </div>
+                                <button id="payment">결제하기</button>
+                            </div>
+                        </th:block>
+                    </div>
                     
-
-                    </th:block>
-
-
-
                 </div>
-
-
-                
             </div>
         </section>
     </main>
     
 
 
-    <th:block th:replace="~{common/images3}"></th:block>
+  
+  <th:block th:replace="~{common/images3}"></th:block>
     <!-- 푸터 추가 -->
     <th:block th:replace="~{common/footer}"></th:block>
-
 
     
     <script th:inline="javascript">
@@ -109,6 +111,8 @@
         const memberNo = /*[[${session.loginMember.memberNo}]]*/ "로그인한 회원 번호";
 
     </script>
+
+    
 
     <script src="/js/myPage/basket.js"></script>
 

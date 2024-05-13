@@ -153,9 +153,18 @@ public class SeedServiceImpl implements SeedService{
 		switch(sortType) {
 		case 1 : return mapper.highList();
 		case 2 : return mapper.lowList();
-		default : return mapper.typeList();
+		case 3 : return mapper.typeList();
+		default : return mapper.nameList();
 		}
 		
+	}
+
+
+	// 씨앗 검색
+	@Override
+	public List<Seed> seedSearch(String key) {
+		
+		return mapper.seedSearch(key);
 	}
 
 

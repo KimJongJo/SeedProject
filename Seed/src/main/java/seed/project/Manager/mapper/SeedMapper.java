@@ -84,4 +84,15 @@ public interface SeedMapper {
 	 */
 	List<Seed> typeList();
 
+	/** 씨앗 검색
+	 * @param key
+	 * @return
+	 */
+	List<Seed> seedSearch(String key);
+
+	/** 이름 정렬
+	 * @return
+	 */
+	List<Seed> nameList();
+
 }

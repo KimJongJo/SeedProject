@@ -177,4 +177,19 @@ public class SeedController {
 	}
 	
 	
+	/** 검색어를 입력해서 사이트 이동
+	 * @return
+	 */
+	@GetMapping("search")
+	public String seedSearch(Model model,
+							@RequestParam("key") String key) {
+		
+		List<Seed> seedList = service.seedSearch(key);
+		
+		model.addAttribute("seedList", seedList);
+		
+		return "seed/search";
+	}
+	
+	
 }
