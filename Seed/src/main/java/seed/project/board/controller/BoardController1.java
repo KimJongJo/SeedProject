@@ -180,6 +180,10 @@ public class BoardController1 {
 	}
 
 	
+	/** 댓글 작성
+	 * @param comment
+	 * @return
+	 */
 	@ResponseBody
 	@PostMapping("{boardCode:[1]}/comment")
 	public int commentInsert(@RequestBody Comment comment) {
@@ -189,8 +193,10 @@ public class BoardController1 {
 	
 	
 	
-	
-	
+	@GetMapping("{boardCode:[1]}/write")
+	public String boardWrite(@SessionAttribute("loginMember") Member loginMember) {
+		return "/board/1/write";
+	}
 	
 	
 	
