@@ -182,7 +182,7 @@ public class BoardController1 {
 	}
 
 	
-	/** 댓글 작성
+	/** 댓글/대댓글 작성
 	 * @param comment
 	 * @return
 	 */
