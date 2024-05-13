@@ -312,8 +312,8 @@ public class MypageController {
 		
 		map = service.selectCommentList(memberNo, cp);
 		
-//		log.info("pagenation" + map.get("pagination"));
-//		log.info("commentList" + map.get("commentList"));
+		//log.info("pagenation" + map.get("pagination"));
+		//log.info("commentList" + map.get("commentList"));
 		
 		model.addAttribute("pagination", map.get("pagination"));
 		model.addAttribute("commentList", map.get("commentList"));

@@ -21,4 +21,6 @@ public class Comment {
 	private int parentCommentNo;
 	
 	private String memberNickname;
+	
+	private int boardCode;
 }
