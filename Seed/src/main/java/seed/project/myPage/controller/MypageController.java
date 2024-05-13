@@ -21,6 +21,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import seed.project.board.model.dto.Comment;
 import seed.project.cart.model.dto.Cart;
 import seed.project.cart.model.service.CartService;
 import seed.project.member.model.dto.Member;
@@ -297,10 +298,32 @@ public class MypageController {
 	 * @return
 	 */
 	@GetMapping("comment")
-	public String comment() {
+	public String selectCommentList(
+					@SessionAttribute("loginMember") Member loginMember,
+					Model model,
+					@RequestParam(value="cp", required = false, defaultValue = "1") int cp
+
+					) {
+		
+		int memberNo = loginMember.getMemberNo();
+		
+		Map<String, Object> map = null;
+		
+		
+		map = service.selectCommentList(memberNo, cp);
+		
+//		log.info("pagenation" + map.get("pagination"));
+//		log.info("commentList" + map.get("commentList"));
+		
+		model.addAttribute("pagination", map.get("pagination"));
+		model.addAttribute("commentList", map.get("commentList"));
+		
 		
 		return "myPage/comment";
+		
 	}
+	
+	
 	
 	
 	

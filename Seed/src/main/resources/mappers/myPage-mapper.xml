@@ -69,6 +69,28 @@
 		WHERE MEMBER_NO = #{memberNo}
 	</update>
 	
+	<!-- 마이페이지 댓글 내역 -->
+	<select id="getCommentListCount">
+		SELECT COUNT(*)
+		FROM "COMMENT"
+		WHERE MEMBER_NO = #{memberNo}
+		AND COMMENT_DEL_FL ='N'
+	</select>
+	
+	<select id="selectCommentList">
+		SELECT BOARD_NO, COMMENT_CONTENT, MEMBER_NICKNAME, 
+		TO_CHAR(COMMENT_WRITE_DATE, 'YYYY"."MM"."DD"." HH24:MI') COMMENT_WRITE_DATE,
+				(SELECT COUNT(*)
+				FROM "COMMENT"
+				WHERE MEMBER_NO = #{memberNo}
+				AND COMMENT_DEL_FL = 'N'
+				) COMMENT_COUNT
+		FROM "COMMENT"
+		JOIN "MEMBER" USING(MEMBER_NO)
+		WHERE MEMBER_NO = #{memberNo}
+		AND COMMENT_DEL_FL = 'N'
+		ORDER BY BOARD_NO DESC
+	</select>
 	
 	
 	

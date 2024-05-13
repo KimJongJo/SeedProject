@@ -30,16 +30,58 @@
                 <a href="/myPage/withdraw">회원 탈퇴</a>
             </div>
             <!-- 추가할 공간 -->
-            <div class="blank">
-                <div class="comment">
-                    <!-- 작성한 댓글이 없을 때 -->
-                    <i class="fa-solid fa-comment-slash"></i>
-                    <span>작성한 댓글이 없습니다</span>
+            <div class="main-area">
+                <div class="blank">
+                    <div class="comment">
+                        
+                        <!-- 작성한 댓글이 없을 때 -->
+                        <th:block th:if="${#lists.isEmpty(commentList)}" >
+                            <i class="fa-solid fa-comment-slash"></i>
+                            <span>작성한 댓글이 없습니다</span>
+                        </th:block>
+                        
 
-                    <!-- 작성한 댓글이 있을 때 -->
+                        
+                        
+                        <!-- 작성한 댓글이 있을 때 -->
+                        <th:block th:unless="${#lists.isEmpty(commentList)}" >
+                            <table class="commentList-table">
+                                <thead>
+                                    <tr>
+                                        <th>게시글 번호</th>
+                                        <th>댓글 내용</th>
+                                        <th>댓글 작성자</th>
+                                        <th>댓글 작성일</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr th:each="comment : ${commentList}" th:object="${comment}">
+                                        <th:block th:each="boardType : ${application.boardTypeList}">
+                                            <td>
+                                                <a 
+                                                href="#" th:text="${boardType.boardName}">게시글 번호</a>
+                                            </td>
+                                        </th:block>
+                                        <td>
+                                            <a href="#" th:text="*{commentContent}">댓글 내용</a>
+                                        </td>
+                                        <td th:text="*{memberNickname}">댓글 작성자</td>
+                                        <td th:text="*{commentWriteDate}">댓글 작성일</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </th:block>
+                       
+                    </div>
                 </div>
-                
 
+                <!-- 페이지 네이션 -->
+                <div>
+                    <ul>
+                        <li>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </section>
     </main>
