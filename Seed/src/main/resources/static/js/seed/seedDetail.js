@@ -6,6 +6,7 @@ const plus = document.getElementById("plus");   // 플러스 버튼
 const count = document.getElementById("count"); // 수량
 
 const add = document.getElementById("add"); // 담기 버튼
+const buy = document.getElementById("buy"); // 구매 버튼
 
 
 // minus 버튼을 눌렀을때 수량 -1
@@ -18,6 +19,8 @@ minus.addEventListener("click", () => {
     count.innerText = parseInt(count.innerText) - 1;
 
 
+    total();
+
 });
 
 // plus 버튼을 눌렀을때 수량 +1
@@ -25,6 +28,28 @@ plus.addEventListener("click", () => {
     
     count.innerText = parseInt(count.innerText) + 1;
 
+    total();
+
+});
+
+
+const total = () => {
+
+    let payMoney = 0;
+    var count = parseInt(document.getElementById("count").innerText); // 개수
+    var seedPriceInt = parseInt(seedPrice.replace(/[^\d]/g, "")); // 씨앗 가격
+
+    payMoney = count * seedPriceInt;
+
+    document.getElementById("total").innerText = payMoney.toLocaleString() + "원";
+
+}
+
+
+
+
+buy.addEventListener("click", () => {
+    alert("준비중입니다...");
 });
 
 
