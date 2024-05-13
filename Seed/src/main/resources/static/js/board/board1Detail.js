@@ -68,7 +68,7 @@ deleteBtn.addEventListener("click", () => {
 
 
 
-// 댓글--------------------------------------------------
+// 댓글----------------------------------------------------------------------------------------
 
 
 // 댓글 조회
@@ -100,8 +100,8 @@ const commentList = () => {
             else{ // 삭제되지 않은 댓글
       
               // 프로필 이미지, 닉네임, 날짜 감싸는 요소
-            //   const commentWriter = document.createElement("p");
-            //   commentWriter.classList.add("comment-writer");
+              const commentWriter = document.createElement("p");
+              commentWriter.classList.add("comment-writer");
       
             //   // 프로필 이미지
             //   const profileImg = document.createElement("img");
@@ -193,13 +193,14 @@ const commentList = () => {
             // 댓글 목록(ul)에 행(li) 추가
             ul.append(commentRow);
       
-          } // for 끝
+        } // for 끝
 
     });
 }
 commentList();
 
 
+// 댓글 작성------------------------------------------------
 const addComment = document.querySelector("#addComment");
 const commentContent = document.querySelector("#commentContent");
 
@@ -244,3 +245,127 @@ addComment.addEventListener("click", e => {
     .catch(err => console.log(err));
 
 })
+
+
+// 답글 작성----------------------------------------------------------
+const showInsertComment = (parentCommentNo, btn) => {
+
+    const temp = document.getElementsByClassName("commentInsertContent");
+
+    if(temp.length > 0) {
+        
+        if(confirm("다른 답글을 작성 중입니다. 현재 댓글에 답글을 작성 하시겠습니까?")) {
+            temp[0].nextElementSibling.remove();
+            temp[0].remove();
+        } else {
+            return;
+        }
+    }
+
+    // 답글 요소 생성
+    const textarea = document.createElement("textarea");
+    textarea.classList.add("commentInsertContent");
+
+    // 답글 버튼 뒤에 textarea 추가
+    btn.parentElement.after(textarea);
+
+
+    // 답글 버튼 영역 + 등록/취소 버튼 생성 및 추가
+    const commentBtnArea = document.createElement("div");
+    commentBtnArea.classList.add("comment-btn-area");
+
+    const insertBtn = document.createElement("button");
+    insertBtn.innerText = "등록";
+    insertBtn.setAttribute("onclick", "insertChildComment("+parentCommentNo+", this)");
+
+    const cancelBtn = document.createElement("button");
+    cancelBtn.innerText = "취소";
+    cancelBtn.setAttribute("onclick", "insertCancel(this)");
+
+
+    commentBtnArea.append(insertBtn, cancelBtn);
+
+    textarea.after(commentBtnArea);
+
+}
+
+// 답글 작성 취소 버튼
+const insertCancel = (cancelBtn) => {
+
+    // 취소버튼 앞에 있는 textarea 삭제
+    cancelBtn.parentElement.previousElementSibling.remove();
+
+    // 취소 버튼이 있는 버튼영역 삭제
+    cancelBtn.parentElement.remove();
+
+}
+
+
+// 답글 등록
+const insertChildComment = (parentCommentNo, btn) => {
+
+    const textarea = btn.parentElement.previousElementSibling;
+
+    // 유호성 검사
+    if(textarea.value.trim().length == 0) {
+        alert("내용 작성 후 등록 버튼을 눌러주세요");
+        textarea.focus();
+        return;
+    }
+
+
+    const data = {
+        "commentContent"  : textarea.value,
+        "boardNo"         : boardNo,
+        "memberNo"        : loginMemberNo,
+        "parentCommentNo" : parentCommentNo
+    };
+
+    fetch("/board/1/comment", {
+        method : "POST",
+        headers : {"Content-Type" : "application/json"},
+        body : JSON.stringify(data)
+    })
+    .then(resp => resp.text())
+    .then(result => {
+
+        if(result > 0) {
+            alert("답글이 등록 되었습니다");
+            commentList(); // 댓글 목록 조회하기
+
+        } else {
+            alert("답글 등록 실패");
+        }
+
+    })
+    .catch(err => console.log(err));
+}
+
+
+// 댓글 삭제
+const deleteComment = commentNo => {
+
+    if(!confirm("삭제하시겠습니까?")) return;
+
+    fetch("board/1/comment", {
+        method : "DELETE",
+        headers : {"Content-Type" : "application/json"},
+        body : commentNo
+    })
+    .then(resp => resp.text())
+    .then(result => {
+
+        if(result > 0) {
+            alert("삭제되었습니다");
+            commentList();
+        } else {
+            alert("삭제 실패");
+        }
+    })
+    .catch(err => console.log(err));
+
+    
+
+
+
+}

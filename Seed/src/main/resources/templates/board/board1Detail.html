@@ -87,15 +87,15 @@
                         </th:block>
 
                         <th:block th:if="*{commentDelFl} == 'N'">
-                            <!-- <p class="comment-writer">
+                            <p class="comment-writer">
                                 
-                                <img th:unless="*{profileImg}" th:src="#{user.default.image}">
+                                <!-- <img th:unless="*{profileImg}" th:src="#{user.default.image}">
                                 
-                                <img th:if="*{profileImg}" th:src="*{profileImg}">
+                                <img th:if="*{profileImg}" th:src="*{profileImg}"> -->
             
                                 <span th:text="*{memberNickname}">닉네임</span>
                                 <span class="comment-date" th:text="*{commentWriteDate}">작성일</span>
-                            </p> -->
+                            </p>
             
                             <p class="comment-content" th:text="*{commentContent}">댓글 내용</p>
             
@@ -150,6 +150,7 @@
 
     </script>
 
+    <th:block th:replace="~{common/footer}"></th:block>
     <script src="/js/board/board1Detail.js"></script>
 </body>
 </html>
