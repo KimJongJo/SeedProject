@@ -20,39 +20,41 @@
         <section class="content">
             <!-- 필터 부분 -->
             <div class="filter">
-                <!-- <select>
-                    <option selected>-- 정렬 --</option>
-                    <option>높은 가격순</option>
-                    <option>낮은 가격순</option>
-                    <option>종류별</option>
-                    <option>인기순</option>
-                </select> -->
+                <select id="sort" name="sort" onchange="selectBoxChange(this.value);">
+                    <option value="0" selected>-- 정렬 --</option>
+                    <option value="1">높은 가격순</option>
+                    <option value="2">낮은 가격순</option>
+                    <option value="3">종류별</option>
+                    <!-- <option>인기순</option> -->
+                </select>
             </div>
-            <!-- 상품 하드코딩 9종 (추후 시간 남으면 수정) -->
-            <!-- 시간이 남을 경우 타임리프 반복으로 상품 정보 넣기 -->
+            
 
         </section>
         <section class="content2">
             <th:block th:each="seed : ${seedList}" th:object="${seed}">
-                <div class="allBox">
+                <div class="allBox seed-item">
                     <a th:href="@{/seed/detail(seedNo=*{seedNo})}">
                         <div class="imgBox">
-                            <img th:src="*{seedImgPath}" class="seedImg">
-                        </div>
-                        <br>
-                        <div class="select">
-                            <div>
-                                <a th:text="*{seedName}">고수 씨앗</a>
-                                <p th:text="*{seedPrice}">1900원</p>
-                            </div>
-                            <div>
-                                <input type="hidden" th:value="*{seedNo}" class="seedNo">
-                                <button id="cartAdd" class="cartAdd">담기</button>
-                            </div>
+                            <th:block th:if="*{seedImgPath}">
+                                <img th:src="*{seedImgPath}" class="seedImg">
+                            </th:block>
+                            <th:block th:unless="*{seedImgPath}">
+                                <img src="/images/중비중 이미지.gif" class="seedImg">
+                            </th:block>
                         </div>
                     </a>
+                    <br>
+                    <div class="select">
+                        <div class="select-div">
+                            <a class="select-a" th:text="*{seedName}">고수 씨앗</a>
+                            <p class="select-p" th:text="*{seedPrice}">1900원</p>
+                        </div>
+                        <div class="select-div">
+                            <button th:onclick="|cartAdd(*{seedNo})|" id="cartAdd" class="cartAdd">담기</button>
+                        </div>
+                    </div>
                 </div>
-                
             </th:block>
         </section>
 

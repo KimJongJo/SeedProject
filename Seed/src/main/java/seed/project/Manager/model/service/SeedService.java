@@ -50,6 +50,12 @@ public interface SeedService {
 	 */
 	Seed seedDetail(int seedNo);
 
+	/** 씨앗 정렬
+	 * @param sortType
+	 * @return
+	 */
+	List<Seed> seedSort(int sortType);
+
 
 
 

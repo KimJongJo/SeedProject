@@ -1,6 +1,7 @@
 package seed.project.Manager.controller;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.stereotype.Controller;
@@ -162,5 +163,18 @@ public class SeedController {
 		
 		return "seed/seedDetail";
 	}
+	
+	
+	/** 들어온 정렬 기준으로 정렬한 씨앗 리스트
+	 * @param sortType
+	 * @return
+	 */
+	@ResponseBody
+	@GetMapping("sort")
+	public List<Seed> seedSort(@RequestParam("sortType") int sortType) {
+		
+		return service.seedSort(sortType);
+	}
+	
 	
 }
