@@ -3,6 +3,7 @@ package seed.project.myPage.model.service;
 import java.util.List;
 import java.util.Map;
 
+import seed.project.board.model.dto.Comment;
 import seed.project.member.model.dto.Member;
 
 public interface MyPageService {
@@ -59,6 +60,13 @@ public interface MyPageService {
 	 * @return
 	 */
 	int addressUpdate(Map<String, Object> addressMap);
+
+	/** 마이페이지 - 작성한 댓글
+	 * @param memberNo
+	 * @param cp
+	 * @return
+	 */
+	Map<String, Object> selectCommentList(int memberNo, int cp);
 
 
 	

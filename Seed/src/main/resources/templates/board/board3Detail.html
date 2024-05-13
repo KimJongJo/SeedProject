@@ -31,12 +31,12 @@
                     <span class="board-title" th:text="|[*{boardNo}] *{boardTitle}|">제목</span>
                 </div>
                 <div class="board-writeDate-area">
-                    <th:block th:unless="*{boardUpdateDate}">
-                        <p><span class="board-writeDate" th:text="*{boardWriteDate}">작성일</span>(수정됨)</p>
+                    <th:block th:if="*{boardUpdateDate} == null">
+                        <p><span class="board-writeDate" th:text="*{boardWriteDate}">작성일</span></p>
                     </th:block>
 
-                    <th:block th:if="*{boardUpdateDate}">
-                        <p><span class="board-writeDate" th:text="*{boardUpdateDate}">수정일</span>(수정됨)</p>
+                    <th:block th:if="*{boardUpdateDate} != null">
+                        <p><span class="board-writeDate" th:text="|*{boardUpdateDate}(수정됨)|">수정일</span></p>
                     </th:block> 
                 </div>
             </div>

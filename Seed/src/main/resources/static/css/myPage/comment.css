@@ -1,17 +1,23 @@
+.section {
+    width: 900px;
+}
 
-
-.blank{
+.main-area {
     flex-basis: 80%;
+    width: 100%;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
-.comment{
+.comment {
+
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    width: 100%;
+    
 }
 
 
@@ -25,10 +31,6 @@
     font-size: 20px;
     margin-bottom: 20px;
 }
-
-
-
-
 
 
 
@@ -46,17 +48,42 @@
 
 
 
+.commentList-table {
+    border-collapse: collapse;
+    border-spacing: 100px;
+    width: 600px;
+    border-top: 1px solid #444444;
+}
 
+.commentList-table a {
+    text-decoration: none;
+    color: #222;
+}
 
+thead {
+    border-collapse: collapse;
+    border: none;
+}
 
+.commentList-table th {
+    border-top: 1px solid #bbb;
+    border-bottom: 1px solid #bbb;
+    box-shadow: inset 0 -1px 0 #ccc;
+    font-size: 15px;
+    height: 40px;
+    background-color: #bee1de;
+    color: #555;
+    font-weight: 600;
 
+}
 
-
-
-
-
-
-
+.commentList-table td {
+    border-bottom: 1px solid #e1e1e1;
+    text-align: center;
+    font-size: 13px;
+    height: 50px;
+    color: #222;
+}
 
 
 

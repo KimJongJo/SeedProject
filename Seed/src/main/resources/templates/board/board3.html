@@ -79,13 +79,13 @@
                                         (boardCode=${boardCode}, boardNo=*{boardNo}, cp=${pagination.currentPage})}">
                                             <img src="/images/no-thumbnail.jpg"></a>
                                     </th:block>
-
                                     <!-- 검색 X -->
                                     <a th:unless="${param.key}"
                                     th:href="@{/board/{boardCode}/{boardNo} 
                                             (boardCode=${boardCode}, boardNo=*{boardNo}, cp=${pagination.currentPage})}"
-                                    th:text="*{boardTitle}">게시글 제목</a>
-
+                                            th:text="*{boardTitle}">
+                                            <!-- $(#strings.length(str)} -->
+                                    게시글 제목</a>
                                     <!-- 검색 O -->
                                     <a th:if="${param.key}"
                                     th:href="@{/board/{boardCode}/{boardNo} 

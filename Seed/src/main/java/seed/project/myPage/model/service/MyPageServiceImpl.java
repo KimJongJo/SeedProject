@@ -1,14 +1,18 @@
 package seed.project.myPage.model.service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.session.RowBounds;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import lombok.RequiredArgsConstructor;
+import seed.project.board.model.dto.Comment;
+import seed.project.board.model.dto.Pagination;
 import seed.project.member.model.dto.Member;
 import seed.project.myPage.model.mapper.MyPageMapper;
 
@@ -100,6 +104,29 @@ public class MyPageServiceImpl implements MyPageService{
 	@Override
 	public int addressUpdate(Map<String, Object> addressMap) {
 		return mapper.addressUpdate(addressMap);
+	}
+	
+	// 마이페이지 - 작성한 댓글
+	@Override
+	public Map<String, Object> selectCommentList(int memberNo, int cp) {
+		
+		int commentCount = mapper.getCommentListCount(memberNo);
+		
+		Pagination pagination = new Pagination(cp, commentCount);
+		
+		int limit = pagination.getLimit();
+		int offset = (cp - 1) * limit;
+		RowBounds rowBounds = new RowBounds(offset, limit);
+		
+		List<Comment> commentList = mapper.selectCommentList(memberNo, rowBounds);
+		
+		Map<String, Object> map = new HashMap<>();
+		
+		map.put("pagination", pagination);
+		map.put("commentList", commentList);
+		
+				
+		return map;
 	}
 
 
