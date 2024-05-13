@@ -40,23 +40,26 @@ function refreshCart() {
             
             if(cartList.length == 0){
                 cartHTML = `
-                <div class="blank">
-                    <div class="basket">
 
-                        <i class="fa-solid fa-basket-shopping"></i>
-                        <span>장바구니가 비었습니다</span>
+                        <div class="basket2">
+                            <i class="fa-solid fa-basket-shopping"></i>
+                            <span>장바구니가 비었습니다</span>
 
-                        <div class="container2">
-                            <a href="/" class="button btnPush btnBlueGreen" id="cart"><i class="fa-solid fa-cart-shopping"></i> 장보기 </a>
+                            <div class="container2">
+                                <a href="/" class="button btnPush btnBlueGreen" id="cart"><i class="fa-solid fa-cart-shopping"></i> 장보기 </a>
+                            </div>
                         </div>
-                    </div>
-                </div>    
+  
                 `;
 
                 document.querySelector(".buy").style.display = 'none';
 
+                
+
+                
+
                 // 새로운 장바구니 HTML을 #cartList 요소에 삽입
-                document.getElementById('cartList').innerHTML = cartHTML;
+                document.getElementById('basket').innerHTML = cartHTML;
             }
 
 
@@ -69,8 +72,7 @@ function refreshCart() {
                 cartList.forEach(cart => {
                     cartHTML += `
 
-
-
+                        <div class="cartList"> 
                             <div class="allBox">
                                 <div class="checkboxDiv">
                                     <input type="checkbox" class="checkbox">
@@ -97,7 +99,7 @@ function refreshCart() {
 
                 
                 // 새로운 장바구니 HTML을 #cartList 요소에 삽입
-                document.getElementById('cartList').innerHTML = cartHTML;
+                document.getElementById('basket').innerHTML = cartHTML;
 
                 // 장바구니를 삭제하는 기능 추가
                 const crossBtns = document.querySelectorAll('.cross');

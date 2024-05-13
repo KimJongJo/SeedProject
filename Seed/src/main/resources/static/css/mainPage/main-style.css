@@ -448,12 +448,14 @@ nav > a:hover{
     color: white;
     border: none;
     transition-duration: 0.3s;
+    
 }
 
 #cartAdd:hover{
     background-color: #10403B;
     cursor: pointer;
     transition-duration: 0.3s;
+    border-radius: 20px 5px 20px 5px;
 }
 
 
@@ -496,3 +498,24 @@ nav > a:hover{
     color: #D0D0D0;
 }
 
+
+
+.upBtn{
+    position: fixed;
+    bottom: 70px;
+    right: 120px;
+    background-color: #8AA6A3;
+    font-size: 30px;
+    color: white;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 20px;
+    padding-left: 20px;
+    border-radius: 50px;
+    transition-duration: 0.3s;
+}
+
+.upBtn:hover{
+    background-color: #127369;
+    transition-duration: 0.3s;
+}
