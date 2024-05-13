@@ -123,6 +123,7 @@ public class MyPageServiceImpl implements MyPageService{
 		
 		Map<String, Object> map = new HashMap<>();
 		
+		
 		map.put("pagination", pagination);
 		map.put("commentList", commentList);
 		

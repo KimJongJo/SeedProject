@@ -17,13 +17,14 @@
     flex-direction: column;
     justify-content: center;
     width: 100%;
+    margin-left: 20px;
     
 }
 
 
 .comment > i{
     font-size: 200px;
-    margin-bottom: 20px;
+    margin-top: 150px;
     color: #BFBFBF;
 }
 
@@ -51,7 +52,7 @@
 .commentList-table {
     border-collapse: collapse;
     border-spacing: 100px;
-    width: 700px;
+    width: 660px;
     border-top: 1px solid #444444;
 }
 
@@ -87,14 +88,14 @@ thead {
 
 #commentContent-area {
     color: #222;
-    padding-left: 58px;
+    padding-left: 64px;
     height: auto; /* 이미지의 높이에 따라 조정되도록 자동으로 설정합니다. */
     vertical-align: middle; /* 내용을 수직 중앙 정렬합니다. */
     text-overflow: ellipsis;
     white-space: nowrap; 
     overflow: hidden;
-    width: 300px;
-    max-width: 300px;
+    width: 350px;
+    max-width: 350px;
     text-align: left;
     font-size: 13px;
 }
@@ -146,7 +147,4 @@ thead {
     border: 1px solid #ccc; /* 테두리 스타일 설정 */
     border-radius: 3px; /* 테두리 둥글기 설정 */
 }
-
-
-
 
