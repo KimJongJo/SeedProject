@@ -6,13 +6,18 @@ main{
 }
 
 section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 900px;
     height: 900px;
+    margin-bottom: 100px;
+    height: 2600px;
 }
 
 .seedImg{
-    width: 300px;
-    height: 300px;
+    width: 400px;
+    height: 400px;
 }
 
 .top{
@@ -21,11 +26,29 @@ section{
     justify-content: center;
     align-items: center;
     margin-top: 50px;
+    border: 5px solid #127369;
+    height: 950px;
+    border-radius: 15px;
+    width: 900px;
 }
 
 .second{
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 20px;
+    width: 800px;
+}
+
+.allSeedInfo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.btn{
+    display: flex;
 }
 
 .seedPrice{
@@ -33,7 +56,9 @@ section{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-left: 100px;
+    width: 300px;
+    height: 200px;
+    border-radius: 15px;
 }
 
 .count{
@@ -76,11 +101,25 @@ section{
     margin-bottom: 10px;
 }
 
-.seedPrice > span{
-    font-size: 20px;
+
+
+
+.seedPrice > .span{
+    font-size: 18px;
 }
 
-.seedPrice > button{
+.money{
+    font-size: 22px;
+}
+
+.btn{
+    width: 150px;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+}
+
+.btn > button{
     width: 50px;
     height: 40px;
     border: none;
@@ -91,23 +130,36 @@ section{
     font-size: 17px;
 }
 
-.seedPrice > button:hover{
+.btn > button:hover{
     transition-duration: 0.3s;
     background-color: #127369;
+    border-radius: 20px 5px 20px 5px;
     cursor: pointer;
 }
 
 .seedInfo {
-    margin-top: 40px;
-    background-image: url("/images/농사 배경화면jpg");
-    width: 500px;
+    margin-top: 20px;
+    width: 300px;
+    height: 180px;
+    /* background-color: #8AA6A3; */
+    /* color: white; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border-radius: 15px;
+}
+
+#seedName{
+    font-size: 30px;
+    font-weight: bold;
 }
 
 .img{
     margin-top: 30px;
-    width: 500px;
-    height: 250px;
-    border-radius: 15px;
+    width: 890px;
+    height: 350px;
+    border-radius: 5px;
+    border: 3px solid #127369;
 }
 
 .seedInfo > div{
@@ -119,4 +171,38 @@ section{
     width: 100px;
     flex-basis: 50%;
     font-size: 25px;
+}
+
+
+
+#foot-div{
+    margin-top: 35px;
+    display: flex;
+    justify-content: space-around;
+    width: 700px;
+}
+
+#foot-div > img{
+    width: 100px;
+    height: 100px;
+}
+
+.upBtn{
+    position: fixed;
+    bottom: 70px;
+    right: 120px;
+    background-color: #8AA6A3;
+    font-size: 30px;
+    color: white;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 20px;
+    padding-left: 20px;
+    border-radius: 50px;
+    transition-duration: 0.3s;
+}
+
+.upBtn:hover{
+    background-color: #127369;
+    transition-duration: 0.3s;
 }

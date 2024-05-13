@@ -120,7 +120,9 @@ public class MyPageServiceImpl implements MyPageService{
 		
 		List<Comment> commentList = mapper.selectCommentList(memberNo, rowBounds);
 		
+		
 		Map<String, Object> map = new HashMap<>();
+		
 		
 		map.put("pagination", pagination);
 		map.put("commentList", commentList);

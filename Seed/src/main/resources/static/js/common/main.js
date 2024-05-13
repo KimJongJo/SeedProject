@@ -39,7 +39,9 @@ const cartAdd = seedNo => {
         if(result > 0){
             alert("씨앗이 장바구니에 추가되었습니다!");
             
-            confirm("장바구니 페이지로 이동하시겠습니까?") ? location.href="/myPage/basket" : alert("쇼핑을 계속합니다...");
+            if(confirm("장바구니 페이지로 이동하시겠습니까?")){
+                location.href="/myPage/basket";
+            }
 
         }else{
             alert("씨앗 추가 실패...");
