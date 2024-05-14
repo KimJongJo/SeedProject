@@ -1,4 +1,4 @@
-console.log("메인 js 연결");
+// console.log("메인 js 연결");
 
 
 const seedNo = document.querySelectorAll(".seedNo");
