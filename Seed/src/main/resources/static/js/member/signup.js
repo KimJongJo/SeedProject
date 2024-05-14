@@ -130,6 +130,8 @@ const checkPw = () => {
     pwConfirmMsg.classList.add("error");
     pwConfirmMsg.classList.remove("confirm");
     checkObj.memberPwConfirm = false;
+
+
 };
 
 
@@ -144,10 +146,8 @@ memberPw.addEventListener("input", e => {
         pwMsg.classList.remove("confirm", "error");
         checkObj.memberPw = false;
         memberPw.value = ""; // 처음 공백 방지
-        return;
     }
 
-    
     const regExp = /^[a-zA-Z0-9!@#_-]{6,20}$/;
 
     // 정규식 X
@@ -174,15 +174,16 @@ memberPw.addEventListener("input", e => {
 // 비밀번호가 유효하다면 일치 여부 확인
 memberPwConfirm.addEventListener("input", e => {
     
+
     if(checkObj.memberPw) {
         checkPw(); // 비교하는 함수 호출
         return;
     }
 
+
     // memberPw = false
     checkObj.memberPwConfirm = false;
 });
-
 
 
 
