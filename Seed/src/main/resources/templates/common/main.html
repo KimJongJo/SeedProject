@@ -52,10 +52,22 @@
                             <a class="select-a" th:text="*{seedName}">고수 씨앗</a>
                             <p class="select-p" th:text="*{seedPrice}">1900원</p>
                         </div>
-                        <div class="select-div">
-                            <button th:onclick="|cartAdd(*{seedNo})|" id="cartAdd" class="cartAdd">담기</button>
+                        <div class="select_second">
+                            <div class="button_div">
+                                <button id="leftBtn" class="leftBtn">
+                                    <i class="fa-solid fa-minus"></i>
+                                </button>
+                                <span id="count" class="count">1</span>
+                                <button id="rightBtn" class="rightBtn">
+                                    <i class="fa-solid fa-plus"></i>
+                                </button>
+                            </div>
+                            <div class="select-div">
+                                <input type="hidden" class="seedNo" th:value="*{seedNo}">
+                                <button id="cartAdd" class="cartAdd">담기</button>
+                            </div>
                         </div>
-
+                       
                     </div>
                 </div>
             </th:block>

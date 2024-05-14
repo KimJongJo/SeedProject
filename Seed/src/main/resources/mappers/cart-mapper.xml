@@ -13,7 +13,7 @@
 	<!-- 장바구니 추가 -->
 	<insert id="addCart">
 		INSERT INTO "CART"
-		VALUES(SEQ_CART_NO.NEXTVAL, #{memberNo}, #{seedNo}, DEFAULT)
+		VALUES(SEQ_CART_NO.NEXTVAL, #{memberNo}, #{seedNo}, #{count})
 	</insert>
 	
 	<!-- 장바구니에 같은 씨앗이 존재한지 확인 -->
@@ -23,12 +23,12 @@
 		AND SEED_NO = #{seedNo}
 	</select>
 	
-	<!-- 쇼핑몰에서 씨앗 개수 1 증가 -->
+	<!-- 쇼핑몰에서 씨앗 개수 수량만큼 증가 -->
 	<update id="seedUp">
 		UPDATE "CART" SET
 		COUNT = (SELECT COUNT FROM "CART"
 				WHERE MEMBER_NO = #{memberNo}
-				AND SEED_NO = #{seedNo}) + 1
+				AND SEED_NO = #{seedNo}) + #{count}
 		WHERE MEMBER_NO = #{memberNo}
 		AND SEED_NO = #{seedNo}
 	</update>

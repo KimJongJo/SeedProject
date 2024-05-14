@@ -1,4 +1,4 @@
-// console.log("메인 js 연결");
+console.log("메인 js 연결");
 
 
 const seedNo = document.querySelectorAll(".seedNo");
@@ -9,9 +9,8 @@ const key = document.getElementById("key"); // 검색어
 
 
 
-
 // 장바구니에 담는 함수
-const cartAdd = seedNo => {
+const cartAdd = (seedNo, count) => {
 
     if(memberNo == null){
         alert("로그인 후 이용해주세요");
@@ -23,7 +22,8 @@ const cartAdd = seedNo => {
 
     const obj = {
         "seedNo" : seedNo,
-        "memberNo" : memberNo
+        "memberNo" : memberNo,
+        "count" : count
     }
 
 
@@ -49,6 +49,93 @@ const cartAdd = seedNo => {
 
     })
 }
+
+
+
+
+
+// 이벤트 리스너를 추가하는 함수
+const addEventListeners = () => {
+
+    const minusBtns = document.querySelectorAll(".leftBtn");
+    const counts = document.querySelectorAll(".count");
+    const plusBtns = document.querySelectorAll(".rightBtn");
+
+    const seedNos = document.querySelectorAll(".seedNo");
+
+    const addBtns = document.querySelectorAll(".cartAdd");
+
+
+
+
+
+
+    for(let i = 0; i < addBtns.length; i++){
+
+        // 수량 감소시키는 버튼
+        minusBtns[i].addEventListener("click", () => {
+
+        let countString = counts[i].innerText;
+        let countInt = parseInt(countString);
+
+        if(countInt == 1){
+            alert("1개 이상의 씨앗을 담아주세요!");
+            return;
+        }
+        
+        countInt -= 1;
+        counts[i].innerText = countInt;
+    
+    
+        });
+    
+
+        // 수량 증가시키는 버튼
+        plusBtns[i].addEventListener("click", () => {
+    
+            let countString = counts[i].innerText;
+            let countInt = parseInt(countString);
+    
+            countInt += 1;
+            counts[i].innerText = countInt;
+    
+        });
+
+        
+        // 수량만큼 장바구니에 담는 버튼
+        addBtns[i].addEventListener("click", () => {
+
+            const count = parseInt(counts[i].innerText);
+            const seedNo = seedNos[i].value;
+
+
+            cartAdd(seedNo, count);
+
+        })
+
+        
+        
+        
+    }
+
+    
+    
+    // console.log("초기화!!");
+
+}
+
+
+
+
+
+
+
+// 시작 하자마자 이벤트 리스너를 추가하는 함수를 작동해서 이벤트 리스너 추가(마이너스, 플러스, 담기)
+addEventListeners();
+
+
+
+
 
 
 
@@ -102,16 +189,68 @@ const seedSort = sortType => {
             seedPrice.classList.add('select-p');
             seedPrice.textContent = seed.seedPrice;
 
+            const selectSecond = document.createElement('div');
+            selectSecond.classList.add('select_second');
+
+
+
             const buttonDiv = document.createElement('div');
-            buttonDiv.classList.add('select-div');
+            buttonDiv.classList.add('button_div');
+            
+
+            // 마이너스 버튼 조립
+            const minusButton = document.createElement('button');
+            minusButton.classList.add('leftBtn');
+
+            const minus = document.createElement('i');
+            minus.classList.add('fa-solid', 'fa-minus');
+
+            minusButton.appendChild(minus);
+
+            // 수량
+            const countSpan = document.createElement('span');
+            countSpan.textContent = '1';
+            countSpan.classList.add('count');
+
+
+            // 플러스 버튼 조립
+            const plusButton = document.createElement('button');
+            plusButton.classList.add('rightBtn');
+
+            const plus = document.createElement('i');
+            plus.classList.add('fa-solid', 'fa-plus');
+
+            plusButton.appendChild(plus);
+
+
+            // 버튼 조립
+            buttonDiv.appendChild(minusButton);
+            buttonDiv.appendChild(countSpan);
+            buttonDiv.appendChild(plusButton);
+
+            // select_second 조립
 
             const addButton = document.createElement('button');
             addButton.textContent = '담기';
             addButton.classList.add('cartAdd');
-            addButton.onclick = function() {
-                cartAdd(seed.seedNo);
-            };
 
+
+            const buttonDiv2 = document.createElement('div');
+            buttonDiv2.classList.add('select-div');
+
+            const seedNoInput = document.createElement('input');
+            seedNoInput.classList.add('seedNo');
+            seedNoInput.value = seed.seedNo;
+            seedNoInput.type = "hidden";
+            
+
+
+            buttonDiv2.appendChild(seedNoInput);
+            buttonDiv2.appendChild(addButton);
+
+            selectSecond.appendChild(buttonDiv);
+            selectSecond.appendChild(buttonDiv2);
+            
 
 
             // 조립
@@ -123,8 +262,7 @@ const seedSort = sortType => {
             namePriceDiv.appendChild(seedPrice);
             selectDiv.appendChild(namePriceDiv);
 
-            buttonDiv.appendChild(addButton);
-            selectDiv.appendChild(buttonDiv);
+            selectDiv.appendChild(selectSecond);
 
             
 
@@ -133,11 +271,15 @@ const seedSort = sortType => {
             seedItem.appendChild(selectDiv);
 
             content2.appendChild(seedItem);
+
         });
+
+
+        // 이벤트 리스너를 추가하는 함수 작동
+        addEventListeners();
+
     });
 }
-
-
 
 
 
@@ -154,5 +296,4 @@ const selectBoxChange = sort => {
     seedSort(sortType);
 
 };
-
 
