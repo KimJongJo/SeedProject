@@ -52,6 +52,12 @@
 }
 
 
+/* 게시글 제목 */
+.boardTitle{
+    text-decoration: none;
+    color: black;
+}
+
 
 
 .list-wrapper {
