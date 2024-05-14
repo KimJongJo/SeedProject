@@ -222,6 +222,7 @@ const allFunction = () => {
 
 
 
+
 // 장바구니 새로 고침 함수
 function refreshCart() {
     fetch("/cart/basket?memberNo=" + memberNo) // 서버로부터 장바구니 목록을 가져오는 요청
