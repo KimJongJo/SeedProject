@@ -146,6 +146,7 @@ memberPw.addEventListener("input", e => {
         pwMsg.classList.remove("confirm", "error");
         checkObj.memberPw = false;
         memberPw.value = ""; // 처음 공백 방지
+        return;
     }
 
     const regExp = /^[a-zA-Z0-9!@#_-]{6,20}$/;
