@@ -282,8 +282,6 @@ nav > a:hover{
 }
 
 .filter > select{
-    display: flex;
-    flex-direction: column;
     width: 100px;
     height: 30px;
     font-size: 15px;
@@ -561,3 +559,5 @@ nav > a:hover{
     transition-duration: 0.3s;
     cursor: pointer;
 }
+
+
