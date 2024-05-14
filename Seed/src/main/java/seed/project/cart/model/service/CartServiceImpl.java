@@ -31,7 +31,7 @@ public class CartServiceImpl implements CartService{
 		// 기존에 같은 씨앗을 추가한게 있는지 확인
 		int result = mapper.checkSeed(cartMap);
 		
-		// 같은 씨앗이 존재하면 update -> 수량 1 증가
+		// 같은 씨앗이 존재하면 update -> 갖고온 수량 만큼 증가
 		if(result > 0) {
 			return mapper.seedUp(cartMap);
 			

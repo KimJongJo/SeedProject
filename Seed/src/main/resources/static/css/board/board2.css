@@ -248,6 +248,7 @@ table tr{
     font-size: 20px;
     border-radius: 5px;
     border: 5px solid #10403B;
+    white-space: pre-wrap;
 }
 
 .content > div{
@@ -302,6 +303,8 @@ table tr{
     width: 500px;
     height: 80px;
     background-color: white;
+    white-space: pre-wrap;
+    overflow: auto;
 }
 
 

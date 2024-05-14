@@ -282,6 +282,8 @@ nav > a:hover{
 }
 
 .filter > select{
+    display: flex;
+    flex-direction: column;
     width: 100px;
     height: 30px;
     font-size: 15px;
@@ -423,6 +425,7 @@ nav > a:hover{
 
 .select{
     display: flex;
+    flex-direction: column;
     justify-content: space-around;
     align-items: center;
     width: 250px;
@@ -451,7 +454,7 @@ nav > a:hover{
     
 }
 
-#cartAdd:hover{
+.cartAdd:hover{
     background-color: #10403B;
     cursor: pointer;
     transition-duration: 0.3s;
@@ -518,4 +521,43 @@ nav > a:hover{
 .upBtn:hover{
     background-color: #127369;
     transition-duration: 0.3s;
+}
+
+
+
+
+.select_second{
+    display: flex;
+    width: 200px;
+    justify-content: space-around;
+    align-items: center;
+}
+
+
+.count{
+    font-size: 17px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.button_div{
+    display: flex;
+    justify-content: space-around;
+    width: 75px;
+}
+
+.leftBtn, .rightBtn{
+    width: 25px;
+    height: 25px;
+    background-color: #8AA6A3;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    transition-duration: 0.3s;
+}
+
+.leftBtn:hover, .rightBtn:hover{
+    background-color: #127369;
+    transition-duration: 0.3s;
+    cursor: pointer;
 }
