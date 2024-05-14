@@ -55,7 +55,7 @@
                                     <th:block th:each="cart : ${cartList}" th:object="${cart}">
                                         <div class="allBox">
                                             <div class="checkboxDiv">
-                                                <input type="checkbox" class="checkbox">
+                                                <input type="checkbox" class="checkbox" checked>
                                             </div>
                                             
                                             <div class="imgDiv">
@@ -88,7 +88,7 @@
                             <div class="buy">
                                 <div class="price">
                                     <span>결제 금액</span>
-                                    <span id="money">0원</span>
+                                    <span id="money"></span>
                                 </div>
                                 <button id="payment">결제하기</button>
                             </div>
