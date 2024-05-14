@@ -29,6 +29,67 @@ if(payment != null){
 
 
 
+document.addEventListener("DOMContentLoaded", function() {
+
+    refreshCart();
+    total();
+
+
+
+});
+
+
+const total = () => {
+
+    const checkBoxs2 = document.querySelectorAll(".checkBox");
+    const counts2 = document.querySelectorAll(".count");
+    const seedPrices2 = document.querySelectorAll(".seedPrice");
+    console.log(checkBoxs2);
+
+    let payMoney2 = 0;
+
+    for(let i = 0; i < checkBoxs2.length; i++){
+    
+        if(checkBoxs2[i].checked){
+            var priceString = seedPrices2[i].innerText;
+            var priceInt = parseInt(priceString.replace(/[^\d]/g, ""));
+    
+            payMoney2 += priceInt * parseInt(counts2[i].innerText);
+        }
+    
+    }
+
+   
+    
+    document.getElementById('money').innerText = payMoney2.toLocaleString() + "원";
+
+
+}
+
+
+// checkBoxs.forEach((seed, index) => {
+//     seed.addEventListener("click", () => {
+//         let payMoney = 0;
+//         for(let i = 0; i < checkBoxs.length; i++){
+//             if(checkBoxs[i].checked){
+//                 var priceString = document.querySelectorAll('.seedPrice')[i].innerText;
+//                 // String으로 저장된 1,000원 -> 1000 숫자로 바꿈
+//                 var priceInt = parseInt(priceString.replace(/[^\d]/g, ""));
+//                 payMoney += priceInt * parseInt(document.querySelectorAll('.count')[i].innerText);
+//             }
+//         }
+//         // 1000 -> 1,000원 String 으로 바꿈
+//         document.getElementById('money').innerText = payMoney.toLocaleString() + "원";
+//     });
+// });
+
+
+
+
+
+
+
+
 // 장바구니 새로 고침 함수
 function refreshCart() {
     fetch("/cart/basket?memberNo=" + memberNo) // 서버로부터 장바구니 목록을 가져오는 요청
@@ -75,7 +136,7 @@ function refreshCart() {
                         <div class="cartList"> 
                             <div class="allBox">
                                 <div class="checkboxDiv">
-                                    <input type="checkbox" class="checkbox">
+                                    <input type="checkbox" class="checkbox" checked>
                                 </div>
                                 <div class="imgDiv">
                                     <img src="${cart.seedImgPath}" class="seedImg">
@@ -201,6 +262,29 @@ function refreshCart() {
                         document.getElementById('money').innerText = payMoney.toLocaleString() + "원";
                     });
                 });
+
+                
+
+                const seedNames = document.querySelectorAll(".seedName");
+            
+                let payMoney2 = 0;
+            
+                for(let i = 0; i < checkBoxs.length; i++){
+            
+                    if(checkBoxs[i].checked){
+                        var priceString = seedPrices[i].innerText;
+                        var priceInt = parseInt(priceString.replace(/[^\d]/g, ""));
+            
+                        payMoney2 += priceInt * parseInt(counts[i].innerText);
+                        
+                        console.log(seedNames[i].innerText);
+                        console.log(counts[i].innerText);
+                    }
+            
+                }
+            
+                document.getElementById('money').innerText = payMoney2.toLocaleString() + "원";
+
 
             }
 
