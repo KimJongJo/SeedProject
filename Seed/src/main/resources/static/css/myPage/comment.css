@@ -90,7 +90,7 @@ thead {
 
 #commentContent-area {
     color: #222;
-    padding-left: 64px;
+    padding-left: 88px;
     height: auto; /* 이미지의 높이에 따라 조정되도록 자동으로 설정합니다. */
     vertical-align: middle; /* 내용을 수직 중앙 정렬합니다. */
     text-overflow: ellipsis;

@@ -33,6 +33,21 @@ const uploadNames = document.querySelectorAll('.upload-name'); // 파일첨부�
 const backupInputList = new Array(inputImageList.length);
 
 
+
+document.addEventListener("DOMContentLoaded", function() {
+    
+    previewList.forEach(function(preview) {
+        preview.addEventListener("error", function() {
+            // 이미지 로드 중에 오류가 발생한 경우
+            if (this.id === "preview1") {
+                this.alt = "썸네일 이미지";
+            } else {
+                this.alt = "일반 이미지";
+            }
+        });
+    });
+});
+
 /* ***** input 태그 값 변경 시(파일 선택 시) 실행할 함수 ***** */
 /**
  * @param inputImage : 파일이 선택된 input 태그
