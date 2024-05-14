@@ -147,6 +147,18 @@ public class BoardServiceImpl1 implements BoardService1{
 		return boardNo;
 	}
 
+	@Override
+	public int commentDelete(int commentNo) {
+		return mapper.commentDelete(commentNo);
+		
+	}
+
+	// 댓글 수정
+	@Override
+	public int commentUpdate(Comment comment) {
+		return mapper.commentUpdate(comment);
+	}
+
 
 	
 

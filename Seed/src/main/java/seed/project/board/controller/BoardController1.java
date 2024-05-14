@@ -235,6 +235,19 @@ public class BoardController1 {
 		return "redirect:" + path;
 	}
 	
+	@ResponseBody
+	@DeleteMapping("{boardCode:[1]}/comment")
+	public int commentDelete(@RequestBody int commentNo) {
+		
+		return service.commentDelete(commentNo);
+	}
+	
+	
+	@ResponseBody
+	@PutMapping("{boardCode:[1]}/comment")
+	public int commentUpdate(@RequestBody Comment comment) {
+		return service.commentUpdate(comment);
+	}
 	
 	
 	
