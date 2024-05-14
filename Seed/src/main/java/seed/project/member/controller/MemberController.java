@@ -77,9 +77,9 @@ public class MemberController {
 			// Session scope 에 loginMember 추가
 			model.addAttribute("loginMember", loginMember);
 			
-			Cookie cookie = new Cookie("savedId", loginMember.getMemberId());
+			Cookie cookie = new Cookie("saveId", loginMember.getMemberId());
 			
-			cookie.setPath("/");
+			cookie.setPath("/member/login");
 			
 			// 쿠키 만료 기간 지정
 			if(saveId != null) { // 아이디 저장 체크시
