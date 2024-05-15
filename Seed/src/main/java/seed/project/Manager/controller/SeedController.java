@@ -187,6 +187,7 @@ public class SeedController {
 		List<Seed> seedList = service.seedSearch(key);
 		
 		model.addAttribute("seedList", seedList);
+		model.addAttribute("key", key);
 		
 		return "seed/search";
 	}

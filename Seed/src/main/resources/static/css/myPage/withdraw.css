@@ -52,6 +52,7 @@
     border: 3px double black;
     padding: 30px;
     border-radius: 5px;
+    width: 630px;
 }
 
 .title{
@@ -224,3 +225,15 @@
 
 
 
+.checkBox{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+
+.checkBox_box{
+    margin-right: 10px;
+    accent-color: #21825B;
+}
