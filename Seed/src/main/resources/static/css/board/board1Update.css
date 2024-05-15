@@ -16,6 +16,7 @@ main {
     width: 100%;
 }
 
+
 .board-name {
     margin: 20px 0px;
 }
@@ -56,4 +57,15 @@ main {
     outline: none;
     border: 1px solid #ddd;
     box-shadow: 0 3px 3px rgba(0,0,0,0.2);
+}
+
+#updateBtn {
+    width: 70px;
+    height: 40px;
+    background-color: #127369;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 15px;
+    transition-duration: 0.2s;
 }

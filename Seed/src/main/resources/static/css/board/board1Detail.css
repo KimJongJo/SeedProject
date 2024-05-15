@@ -23,6 +23,11 @@ main {
     min-height: 700px;
 }
 
+.board-code-area a {
+    color: black;
+    text-decoration-line: none;
+}
+
 
 /* 게시글 제목 위아래 공백 */
 .board-title-area {
