@@ -37,18 +37,19 @@
 
 /* 글쓰기 버튼 */
 #insertBtn {
-    width: 50px;
-    height: 40px;
+    width: 75px;
+    height:40px;
     background-color: #127369;
     border: none;
     border-radius: 5px;
     color: white;
-    font-size: 15px;
+    font-size: 18px;
     transition-duration: 0.2s;
     display: flex;
     align-items: center;
     /* align-self: flex-end; */
     justify-content: center;
+    text-decoration-line: none;
 }
 
 
@@ -98,6 +99,7 @@
     list-style: none; /* 리스트의 점 제거 */
     display: flex;
     justify-content: center;
+    align-items: center;
     /* padding: 15px; */
 }
 
@@ -106,7 +108,24 @@
     padding: 10px;
 }
 
+.pagination > li a {
+cursor: pointer;
+}
 
+
+/* Pagination 밑줄 없애고 글자색 검정 */
+.pagination a {
+    text-decoration-line: none;
+    color: black;
+}
+
+
+.current {
+    font-size: 25px;
+    font-weight: bold;
+    color: red !important;
+    border: none;
+}
 
 
 
