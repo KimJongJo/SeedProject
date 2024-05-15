@@ -60,36 +60,26 @@ const addEventListeners = () => {
     const minusBtns = document.querySelectorAll(".leftBtn");
     const counts = document.querySelectorAll(".count");
     const plusBtns = document.querySelectorAll(".rightBtn");
-
     const seedNos = document.querySelectorAll(".seedNo");
-
     const addBtns = document.querySelectorAll(".cartAdd");
-
-
-
-
-
 
     for(let i = 0; i < addBtns.length; i++){
 
         // 수량 감소시키는 버튼
         minusBtns[i].addEventListener("click", () => {
 
-        let countString = counts[i].innerText;
-        let countInt = parseInt(countString);
+            let countString = counts[i].innerText;
+            let countInt = parseInt(countString);
 
-        if(countInt == 1){
-            alert("1개 이상의 씨앗을 담아주세요!");
-            return;
-        }
-        
-        countInt -= 1;
-        counts[i].innerText = countInt;
-    
+            if(countInt == 1){
+                alert("1개 이상의 씨앗을 담아주세요!");
+                return;
+            }
+            countInt -= 1;
+            counts[i].innerText = countInt;
     
         });
     
-
         // 수량 증가시키는 버튼
         plusBtns[i].addEventListener("click", () => {
     
@@ -101,7 +91,6 @@ const addEventListeners = () => {
     
         });
 
-        
         // 수량만큼 장바구니에 담는 버튼
         addBtns[i].addEventListener("click", () => {
 
@@ -113,14 +102,7 @@ const addEventListeners = () => {
 
         })
 
-        
-        
-        
     }
-
-    
-    
-    // console.log("초기화!!");
 
 }
 
