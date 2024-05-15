@@ -28,7 +28,7 @@
         <!-- 검색창 라인 -->
         <div>
             <form action="/seed/search?key=">
-                <input type="text" placeholder="검색할 씨앗을 입력해주세요" name="key" id="key">
+                <input type="text" placeholder="검색할 씨앗을 입력해주세요" name="key" id="key" th:value="${key} ? ${key} : ''">
                 <button id="searchBtn">검색</button>
             </form>
         </div>

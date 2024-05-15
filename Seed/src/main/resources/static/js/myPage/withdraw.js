@@ -3,6 +3,8 @@
 const modal = document.querySelector("#modal"); // 모달창
 const crossBtn = document.querySelector("#crossBtn");  // 모달창 close 버튼
 
+const checkBox = document.querySelector(".checkBox_box");
+
 const withBtn = document.querySelector("#withdraw_btn"); // 탈퇴하기 버튼
 const modalWithBtn = document.querySelector("#modal_withBtn"); // 모달창 안에 탈퇴하기 버튼
 const memberPw = document.querySelector("#memberPw"); // 입력한 비밀번호
@@ -11,7 +13,16 @@ const memberPw = document.querySelector("#memberPw"); // 입력한 비밀번호
 
 // 모달창 열기
 withBtn.addEventListener("click", () => {
-    modal.style.display = "block";
+
+    if(checkBox.checked){
+        modal.style.display = "block";
+    }else{
+        alert("회원 탈퇴 내용에 동의해주세요.");
+    }
+
+
+
+    
 });
 
 // 모달창 닫기
