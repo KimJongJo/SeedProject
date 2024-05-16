@@ -146,6 +146,12 @@ memberPw.addEventListener("input", e => {
         pwMsg.classList.remove("confirm", "error");
         checkObj.memberPw = false;
         memberPw.value = ""; // 처음 공백 방지
+
+        pwConfirmMsg.innerText = "비밀번호가 일치하지 않습니다.";
+        pwConfirmMsg.classList.add("error");
+        pwConfirmMsg.classList.remove("confirm");
+        checkObj.memberPwConfirm = false;
+
         return;
     }
 
