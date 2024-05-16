@@ -145,6 +145,11 @@ memberPw.addEventListener("input", e => {
         pwMsg.innerText = "6~20자의 영문 대/소문자, 숫자, 특수문자를 사용해 주세요.";
         pwMsg.classList.remove("confirm", "error");
         checkObj.memberPw = false;
+
+        pwConfirmMsg.innerText = "비밀번호가 일치하지 않습니다.";
+        pwConfirmMsg.classList.add("error");
+        pwConfirmMsg.classList.remove("confirm");
+        checkObj.memberPwConfirm = false;
         memberPw.value = ""; // 처음 공백 방지
         return;
     }
