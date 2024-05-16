@@ -68,6 +68,7 @@ main {
     border: 1px solid #ddd;
     height: 100%;
     white-space: pre-wrap;
+    overflow: auto;
 }
 
 .comment-count {

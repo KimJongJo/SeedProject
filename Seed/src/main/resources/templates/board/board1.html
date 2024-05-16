@@ -137,10 +137,12 @@
                 <ul class="pagination" th:if="${param.key}" th:object="${pagination}" th:unless="${#lists.isEmpty(boardList)}">
 
                     <!-- 첫 페이지로 이동 -->
-                    <li><a th:href="@{/board/{boardCode}(boardCode=${boardCode}, cp=1, key=${param.key}, query=${param.query})}">&lt;&lt;</a></li>
+                    <li><a th:href="@{/board/{boardCode}(boardCode=${boardCode}, cp=1,
+                        key=${param.key}, query=${param.query})}">&lt;&lt;</a></li>
 
                     <!-- 이전 목록 마지막 번호로 이동 -->
-                    <li><a th:href="@{/board/{boardCode}(boardCode=${boardCode}, cp=*{prevPage}, key=${param.key}, query=${param.query})}">&lt;</a></li>
+                    <li><a th:href="@{/board/{boardCode}(boardCode=${boardCode}, cp=*{prevPage},
+                        key=${param.key}, query=${param.query})}">&lt;</a></li>
 
                     <!-- 특정 페이지로 이동 -->
                     <!-- startPage, endPage : pagination DTO에 있음 -->
@@ -153,7 +155,8 @@
 
                         <!-- 보고있지 않은 페이지 -->
                         <li th:unless="${i} == *{currentPage}">
-                            <a th:href="@{/board/{boardCode}(boardCode=${boardCode}, cp=${i}, key=${param.key}, query=${param.query})}"
+                            <a th:href="@{/board/{boardCode}(boardCode=${boardCode}, cp=${i},
+                            key=${param.key}, query=${param.query})}"
                             th:text="${i}">이동할 페이지</a>
                         </li>
                     </th:block>
@@ -166,10 +169,12 @@
 					</th:block>
 
                     <!-- 다음 목록 시작 번호로 이동 -->
-                    <li><a th:href="@{/board/{boardCode}(boardCode=${boardCode}, cp=*{nextPage}, key=${param.key}, query=${param.query})}">&gt;</a></li>
+                    <li><a th:href="@{/board/{boardCode}(boardCode=${boardCode}, cp=*{nextPage},
+                        key=${param.key}, query=${param.query})}">&gt;</a></li>
 
                     <!-- 끝 페이지로 이동 -->
-                    <li><a th:href="@{/board/{boardCode}(boardCode=${boardCode}, cp=*{maxPage}, key=${param.key}, query=${param.query})}">&gt;&gt;</a></li>
+                    <li><a th:href="@{/board/{boardCode}(boardCode=${boardCode}, cp=*{maxPage},
+                        key=${param.key}, query=${param.query})}">&gt;&gt;</a></li>
                 </ul>
 
 

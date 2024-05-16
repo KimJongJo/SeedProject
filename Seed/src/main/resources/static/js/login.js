@@ -17,6 +17,7 @@ loginBtn.addEventListener("click", (e) => {
 });
 
 
+
 // 쿠키 -------------------------------------
 
 const getCookie = (key) => {
@@ -40,6 +41,8 @@ const getCookie = (key) => {
 
 
 const loginId = document.querySelector("#login-area input[name='memberId']");
+const inputSaveId = document.querySelector("#login-area input[name='saveId']");
+
 
 if(loginId != null) {
 
@@ -51,5 +54,6 @@ if(loginId != null) {
         document.querySelector("input[name='saveId']").checked = true;
 
     }
+
 
 }
