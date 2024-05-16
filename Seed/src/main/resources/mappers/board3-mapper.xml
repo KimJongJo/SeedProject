@@ -385,14 +385,14 @@
 	</update>
 	
 	<!-- [3] 팁과 노하우 - 게시글 이미지 삽입  -->
-	<insert id="insertImage">
+	<insert id="insertImage3">
 		INSERT INTO "BOARD_IMG"
 		VALUES(NEXT_IMG_NO(), 
-				#{img.boardImgPath}, 
-				#{img.boardImgOriginalName}, 
-				#{img.boardImgRename}, 
-				#{img.boardImgOrder}, 
-				#{img.boardNo})
+				#{boardImgPath}, 
+				#{boardImgOriginalName}, 
+				#{boardImgRename}, 
+				#{boardImgOrder}, 
+				#{boardNo})
 	</insert>
 	
 	
