@@ -313,27 +313,9 @@ allFunction();
 
 
 
-
 document.addEventListener("load", () => {
     sumSeed();
 });
-
-
-// 새로운 항목을 체크할 때 로컬 스토리지에 저장
-document.querySelectorAll('.checkbox').forEach((checkbox, index) => {
-    checkbox.addEventListener('change', () => {
-        localStorage.setItem(`checkbox_${index}`, checkbox.checked);
-    });
-
-    // 로컬 스토리지에서 체크 여부를 가져와 적용
-    const isChecked = localStorage.getItem(`checkbox_${index}`);
-    if (isChecked === 'true') {
-        checkbox.checked = true;
-    } else {
-        checkbox.checked = false;
-    }
-});
-
 
 
 document.addEventListener("DOMContentLoaded", function() {

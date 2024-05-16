@@ -15,6 +15,15 @@ findIdBtn.addEventListener("click", () => {
         return;
     }
 
+    const regExp = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+    if(!regExp.test(memberEmail.value)){
+        alert("이메일 형식으로 입력해주세요");
+        return;
+    }
+
+    
+
     const member = {
         "memberEmail" : memberEmail.value,
         "memberNickname" : memberNickname.value
@@ -33,5 +42,6 @@ findIdBtn.addEventListener("click", () => {
         }
 
         alert("회원 아이디를 이메일로 전송했습니다. 이메일을 확인해주세요");
+
     });
 });

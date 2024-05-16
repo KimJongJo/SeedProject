@@ -138,3 +138,8 @@ body > div:first-child{
     width: 100px;
     height: 100px;
 }
+
+.sorry{
+    margin: 10px;
+    color: #ddd;
+}

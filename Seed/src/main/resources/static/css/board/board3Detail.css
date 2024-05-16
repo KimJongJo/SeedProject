@@ -146,6 +146,7 @@ section {
     font-size: 15px;
     border-bottom: 1px solid rgb(233, 227, 227);
     margin-bottom: 5px;
+    overflow: auto;
     
 }
 /* 첨부파일명 */
