@@ -27,14 +27,14 @@
                 <!-- 수정할 제목 공간 -->
                 <div class="board-name-area">
                     <h3>제목</h3>
-                    <input name="boardTitle" class="board-title" type="text" maxlength="30"></input>
+                    <input name="boardTitle" class="board-title" type="text" maxlength="30" id="title"></input>
                 </div>
                 
                 
                 <!-- 수정할 내용 공간 -->
                 <div class="board-content-area">
                     <h3>내용</h3>
-                    <textarea name="boardContent" class="board-content"></textarea>
+                    <textarea name="boardContent" class="board-content" id="content"></textarea>
                 </div>
                 
                 <!-- js에서 boardNo 사용하려고 씀 -->
@@ -64,5 +64,7 @@
 
 
     <th:block th:replace="~{common/footer}"></th:block>
+
+    <script src="/js/board/board1Write.js"></script>
 </body>
 </html>
