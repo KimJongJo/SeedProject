@@ -19,7 +19,7 @@
 	<!-- 문의 게시판 게시글 조회 -->
 	<select id="selectBoard2List">
 		SELECT BOARD_NO, BOARD_TITLE, MEMBER_NICKNAME,
-		
+		 
 	    <![CDATA[
 	    CASE
 		    WHEN SYSDATE - BOARD_WRITE_DATE < 1 / 24 / 60
