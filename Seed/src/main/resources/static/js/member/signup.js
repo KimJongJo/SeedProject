@@ -301,6 +301,8 @@ const popupExit = document.getElementById("popupExit"); // X 아이콘
 // 2. 인증 버튼 클릭 시
 emailAuth.addEventListener("click", () => {
 
+
+
     // 재클릭 시 처리
     checkObj.authKey = false;
     authKey.value = "";
@@ -385,7 +387,11 @@ popupExit.addEventListener("click", () => {
 
     modalBackground.classList.add('popup-hidden');
     popupLayer.classList.add('popup-hidden');
+    memberEmail.value = "";
+    checkObj.authKey = false;
+    checkObj.memberEmail = false;
 
+    return;
 });
 
 // 취소 버튼 클릭 시
@@ -393,7 +399,9 @@ authCancel.addEventListener("click", () => {
 
     modalBackground.classList.add('popup-hidden');
     popupLayer.classList.add('popup-hidden');
-
+    memberEmail.value = "";
+    checkObj.authKey = false;
+    checkObj.memberEmail = false;
     alert("인증 절차가 취소되었습니다.")
 });
 
