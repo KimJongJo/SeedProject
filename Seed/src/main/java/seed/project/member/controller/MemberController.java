@@ -2,6 +2,7 @@ package seed.project.member.controller;
 
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,15 +32,25 @@ public class MemberController {
 
 	private final MemberService service;
 	
+	@Value("${kakao.api.key}")
+	private String kakaoApiKey;
+	
+	@Value("${kakao.redirect.uri}")
+	private String kakaoApiUri;
+	
 	
 	/** 로그인 페이지 이동
 	 * @return
 	 */
 	@GetMapping("login")
-	public String login() {
+	public String login(Model model) {
+		
+		model.addAttribute("REST_API_KEY", kakaoApiKey);
+		model.addAttribute("REDIRECT_URI", kakaoApiUri);		
 		
 		return "/member/login";
 	}
+	
 	
 	
 	/** 로그인
@@ -57,6 +68,8 @@ public class MemberController {
 						@RequestParam(value="saveId", required = false) String saveId,
 						HttpServletResponse resp
 						) {
+		
+		
 		
 		
 		
@@ -282,5 +295,17 @@ public class MemberController {
 		
 		return "redirect:" + path;
 	}
+
+	
+	@GetMapping("/kakao")
+	public String kakaoApiTest(@RequestParam("code") String code) {
+		
+		System.out.println("code ======== " + code);
+		
+		
+		return null;
+	}
+	
+	
 	
 }

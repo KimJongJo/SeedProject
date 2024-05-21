@@ -65,13 +65,14 @@
               <a href="/member/searchPw">비밀번호 찾기</a>
             </div>
           </div>
+
           <div>
-            <a
-              href="https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}"
-            >
-              <img src="/images/kakao_login_small.png" />
+            <a th:href="@{|https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}|}">
+              <img src="/images/kakao_login_small.png">
             </a>
           </div>
+          
+
 
           <div class="signupBtn">
             <a href="/member/signup">회원가입</a>
