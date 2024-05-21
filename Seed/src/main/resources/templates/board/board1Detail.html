@@ -1,157 +1,151 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title th:text="|${board.boardNo}번 글|">게시판 이름</title>
 
     <th:block th:replace="~{common/common}"></th:block>
-    <link rel="stylesheet" href="/css/board/board1Detail.css">
-    <link rel="icon" href="/images/씨앗.png">
-</head>
-<body>
+    <link rel="stylesheet" href="/css/board/board1Detail.css" />
+    <link rel="icon" href="/images/씨앗.png" />
+  </head>
+  <body>
     <!-- 헤더 -->
     <th:block th:replace="~{common/header}"></th:block>
-    
+
     <main>
+      <section class="board1-detail" th:object="${board}">
+        <!-- 작성자, 작성일, 좋아요, 하트수 -->
+        <div class="board-header">
+          <div class="board-code-area">
+            <a th:href="@{/board/1}">자유게시판 ></a>
+          </div>
 
-        <section class="board1-detail" th:object="${board}">
+          <!-- 게시글 제목 -->
+          <div class="board-title-area">
+            <h1 class="board-title" th:text="*{boardTitle}">게시글 제목</h1>
+          </div>
 
-            <!-- 작성자, 작성일, 좋아요, 하트수 -->
-            <div class="board-header">
-                <div class="board-code-area">
-                    <a th:href="@{/board/1}">자유게시판 ></a>
-                </div>
+          <!-- 작성자 -->
+          <div class="board-header1">
+            <span class="board-writer" th:text="*{memberNickname}"></span>
+          </div>
 
-                <!-- 게시글 제목 -->
-                <div class="board-title-area">
-                    <h1 class="board-title" th:text="*{boardTitle}"
-                    >게시글 제목</h1>
-                </div>
-
-                <!-- 작성자 -->
-                <div class="board-header1">
-                    <span class="board-writer" th:text="*{memberNickname}"></span>
-                </div>
-                
-                <!-- 작성일, 조회수 -->
-                <div class="board-header2">
-                    <div>
-                        <span class="board-write-date" th:text="*{boardWriteDate}"></span>
-                        <span class="read-count" th:text="|조회수 : *{readCount}|"></span>
-                    </div>
-
-                    <input type="hidden" th:value="*{boardNo}" id="boardNo1">
-
-                    <th:block th:if="${session.loginMember != null and board.memberNo == session.loginMember?.memberNo}">
-                        <div class="btn-area">
-                            
-                            <!-- 로그인한 상태 + 작성자랑 로그인한 사람이 일치할 때 -->
-                            <a id="updateBtn" th:href="@{/board/1/board1Update(boardNo=*{boardNo})}">수정하기</a>
-                            <button id="deleteBtn">삭제하기</button>
-                        </div>
-                    </th:block>
-                </div>
-                
-            </div>
-            
-            
-            <div class="board-content" th:text="*{boardContent}"
-            >게시글 내용</div>
-
-
+          <!-- 작성일, 조회수 -->
+          <div class="board-header2">
             <div>
-                <span class="like-count" th:text="|좋아요 *{likeCount}|"></span>
-                <span class="comment-count" th:text="|댓글 *{commentCount}|"></span>
+              <span class="board-write-date" th:text="*{boardWriteDate}"></span>
+              <span class="read-count" th:text="|조회수 : *{readCount}|"></span>
             </div>
 
-            
-        </section>
+            <input type="hidden" th:value="*{boardNo}" id="boardNo1" />
 
-
-
-        <!-- 댓글 -->
-        <div id="commentArea">
-
-            <!-- 댓글 리스트 -->
-            <div class="comment-list-area">
-
-                <ul id="commentList">
-
-                    <li class="comment-row"
-                        th:each="comment : ${board.commentList}"
-                        th:classappend="${comment.parentCommentNo} != 0 ? child-comment"
-                        th:object="${comment}">
-
-                        <th:block th:if="*{commentDelFl} == 'Y'">
-                            삭제된 댓글 입니다
-                        </th:block>
-
-                        <th:block th:if="*{commentDelFl} == 'N'">
-                            <p class="comment-writer">
-                                
-                                <!-- <img th:unless="*{profileImg}" th:src="#{user.default.image}">
-                                
-                                <img th:if="*{profileImg}" th:src="*{profileImg}"> -->
-            
-                                <span th:text="*{memberNickname}">닉네임</span>
-                                <span class="comment-date" th:text="*{commentWriteDate}">작성일</span>
-                            </p>
-            
-                            <p class="comment-content" th:text="*{commentContent}">댓글 내용</p>
-            
-                            <!-- 버튼 영역 -->
-                            <div class="comment-btn-area">
-                                <button class="btn" th:onclick="|showInsertComment(*{commentNo}, this)|">답글</button>
-            
-                                <th:block th:if="${session.loginMember != null and session.loginMember.memberNo == comment.memberNo}">
-                                    <button th:onclick="|showUpdateComment(*{commentNo}, this)|" class="btn">수정</button>
-                                    <button th:onclick="|deleteComment(*{commentNo})|" class="btn">삭제</button>
-                                </th:block>
-                                <!-- 로그인 회원과 댓글 작성자가 같은 경우 -->
-            
-                            </div>
-                        </th:block>
-                    </li>
-
-                   
-                </ul>
-            </div>
-
-
-
-            <!-- 댓글 작성 -->
-            <div class="comment-write-area">
-                <textarea id="commentContent"></textarea>
-                <button id="addComment">
-                    댓글<br>등록
-                </button>
-            </div>
-
+            <th:block
+              th:if="${session.loginMember != null and board.memberNo == session.loginMember?.memberNo}"
+            >
+              <div class="btn-area">
+                <!-- 로그인한 상태 + 작성자랑 로그인한 사람이 일치할 때 -->
+                <a
+                  id="updateBtn"
+                  th:href="@{/board/1/board1Update(boardNo=*{boardNo})}"
+                  >수정하기</a
+                >
+                <button id="deleteBtn">삭제하기</button>
+              </div>
+            </th:block>
+          </div>
         </div>
 
+        <div class="board-content" th:text="*{boardContent}">게시글 내용</div>
 
+        <div>
+          <span class="like-count" th:text="|좋아요 *{likeCount}|"></span>
+          <span class="comment-count" th:text="|댓글 *{commentCount}|"></span>
+        </div>
+      </section>
 
+      <!-- 댓글 -->
+      <div id="commentArea">
+        <!-- 댓글 리스트 -->
+        <div class="comment-list-area">
+          <ul id="commentList">
+            <li
+              class="comment-row"
+              th:each="comment : ${board.commentList}"
+              th:classappend="${comment.parentCommentNo} != 0 ? child-comment"
+              th:object="${comment}"
+            >
+              <th:block th:if="*{commentDelFl} == 'Y'">
+                삭제된 댓글 입니다
+              </th:block>
 
+              <th:block th:if="*{commentDelFl} == 'N'">
+                <p class="comment-writer">
+                  <!-- <img th:unless="*{profileImg}" th:src="#{user.default.image}">
+                                
+                                <img th:if="*{profileImg}" th:src="*{profileImg}"> -->
 
+                  <span th:text="*{memberNickname}">닉네임</span>
+                  <span class="comment-date" th:text="*{commentWriteDate}"
+                    >작성일</span
+                  >
+                </p>
 
+                <p class="comment-content" th:text="*{commentContent}">
+                  댓글 내용
+                </p>
 
+                <!-- 버튼 영역 -->
+                <div class="comment-btn-area">
+                  <button
+                    class="btn"
+                    th:onclick="|showInsertComment(*{commentNo}, this)|"
+                  >
+                    답글
+                  </button>
+
+                  <th:block
+                    th:if="${session.loginMember != null and session.loginMember.memberNo == comment.memberNo}"
+                  >
+                    <button
+                      th:onclick="|showUpdateComment(*{commentNo}, this)|"
+                      class="btn"
+                    >
+                      수정
+                    </button>
+                    <button
+                      th:onclick="|deleteComment(*{commentNo})|"
+                      class="btn"
+                    >
+                      삭제
+                    </button>
+                  </th:block>
+                  <!-- 로그인 회원과 댓글 작성자가 같은 경우 -->
+                </div>
+              </th:block>
+            </li>
+          </ul>
+        </div>
+
+        <!-- 댓글 작성 -->
+        <div class="comment-write-area">
+          <textarea id="commentContent"></textarea>
+          <button id="addComment">댓글<br />등록</button>
+        </div>
+      </div>
     </main>
 
-
-
     <script th:inline="javascript">
+      const loginMemberNo =
+        /*[[${session.loginMember?.memberNo}]]*/ "로그인 회원 번호";
+      console.log(loginMemberNo);
 
-        const loginMemberNo = /*[[${session.loginMember?.memberNo}]]*/ "로그인 회원 번호";
-        console.log(loginMemberNo);
-
-        const boardNo = /*[[${board.boardNo}]]*/ "게시글 번호";
-        console.log("boardNo:", /*[[${board.boardNo}]]*/ "게시글 번호");
-        console.log(boardNo);
-
+      const boardNo = /*[[${board.boardNo}]]*/ "게시글 번호";
+      console.log("boardNo:", /*[[${board.boardNo}]]*/ "게시글 번호");
+      console.log(boardNo);
     </script>
 
     <th:block th:replace="~{common/footer}"></th:block>
     <script src="/js/board/board1Detail.js"></script>
-</body>
+  </body>
 </html>

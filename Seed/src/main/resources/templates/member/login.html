@@ -1,106 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>로그인</title>
 
     <th:block th:replace="~{common/common2}"></th:block>
-    <link rel="stylesheet" href="/css/header2/login.css">
-    <link rel="icon" href="/images/씨앗.png">
-</head>
-<body>
-    
+    <link rel="stylesheet" href="/css/header2/login.css" />
+    <link rel="icon" href="/images/씨앗.png" />
+  </head>
+  <body>
     <th:block th:replace="~{common/header2}"></th:block>
 
     <main class="loginForm">
+      <!-- 화면 배치 -->
+      <!-- 좌(공백) / 중앙(로고, 이름, 로그인 폼) / 우(공백) -->
 
+      <!-- 중앙(로고, 이름, 로그인 폼) -->
+      <section class="content-login">
+        <!-- 로고, 이름 -->
 
-        
+        <div style="margin-right: 130px" class="logo-line">
+          <a href="/">
+            <img src="/images/씨앗.png" alt="로고" />
+          </a>
+          <span>언더 더 씨</span>
+        </div>
 
-        
-        <!-- 화면 배치 -->
-        <!-- 좌(공백) / 중앙(로고, 이름, 로그인 폼) / 우(공백) -->
+        <!-- 로그인 박스 -->
+        <form action="/member/login" method="POST" id="login-area">
+          <!-- 아이디/비번 입력 -->
+          <div>
+            <input
+              type="text"
+              class="memberId"
+              placeholder="아이디"
+              name="memberId"
+              id="memberId"
+            />
 
-        
+            <br />
+            <input
+              type="password"
+              class="memberPw"
+              placeholder="비밀번호"
+              name="memberPw"
+              id="memberPw"
+            />
+          </div>
 
-        <!-- 중앙(로고, 이름, 로그인 폼) -->
-        <section class="content-login">
-
-            <!-- 로고, 이름 -->
-
-            
-
-            <div style="margin-right: 130px;" class="logo-line">
-                <a href="/">
-                    <img src="/images/씨앗.png" alt="로고">
-                </a>
-                <span>언더 더 씨</span>
+          <!-- 로그인 버튼 -->
+          <div>
+            <button class="loginBtn" id="loginBtn">로그인</button>
+          </div>
+          <div class="searchIdOther">
+            <div class="saveId">
+              <label for="saveId">
+                <input type="checkbox" name="saveId" id="saveId" /> 아이디 저장
+              </label>
             </div>
-            
+            <div class="searchIdPw">
+              <a href="/member/searchId">아이디 찾기</a>
+              <span> | </span>
+              <a href="/member/searchPw">비밀번호 찾기</a>
+            </div>
+          </div>
+          <div>
+            <a
+              href="https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}"
+            >
+              <img src="/images/kakao_login_small.png" />
+            </a>
+          </div>
 
-            <!-- 로그인 박스 -->
-            <form action="/member/login" method="POST" id="login-area">
-                
-
-                <!-- 아이디/비번 입력 -->
-                <div>
-                    <input type="text"
-                            class="memberId"
-                            placeholder="아이디"
-                            name="memberId"
-                            id="memberId">
-                
-                    <br>
-                    <input type="password"
-                            class="memberPw"
-                            placeholder="비밀번호"
-                            name="memberPw"
-                            id="memberPw">
-                </div>
-                
-                <!-- 로그인 버튼 -->
-                <div>
-                    <button class="loginBtn" id="loginBtn">로그인</button>
-                </div>
-                <div class="searchIdOther">
-                    <div class="saveId">
-                        <label for="saveId">
-                            <input type="checkbox" name="saveId" id="saveId"> 아이디 저장
-                        </label>
-                    </div>
-                    <div class="searchIdPw">
-                        <a href="/member/searchId">아이디 찾기</a>
-                        <span> | </span>
-                        <a href="/member/searchPw">비밀번호 찾기</a>
-                    </div>             
-                </div>
-                
-                
-                
-                        
-                <div class="signupBtn">
-                    <a href="/member/signup">회원가입</a>
-                </div>
-                
-            </form>
-                    
-
-
-
-        </section>
-        
-        
-        
-
+          <div class="signupBtn">
+            <a href="/member/signup">회원가입</a>
+          </div>
+        </form>
+      </section>
     </main>
-
 
     <th:block th:replace="~{common/images1}"></th:block>
     <th:block th:replace="~{common/footer}"></th:block>
 
     <script src="/js/login.js"></script>
-</body>
-
-
+  </body>
 </html>
