@@ -263,4 +263,31 @@ public class MemberServiceImpl implements MemberService{
 		return mapper.signup(inputMember);
 	}
 
+
+
+
+	// 카카오 로그인 아이디 가져오기
+	@Override
+	public int findIdForKakao(int kakaoId, String memberNickname) {
+		
+		return mapper.findIdForKakao(kakaoId, memberNickname);
+	}
+
+
+	// 카카오 로그인
+	@Override
+	public Member login(int memberId) {
+		
+		return mapper.loginForKakao(memberId);
+	}
+
+
+	@Override
+	public int signForKakao(Member signMember) {
+	
+		
+		return mapper.signForKakao(signMember);
+		
+	}
+
 }

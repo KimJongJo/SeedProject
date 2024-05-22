@@ -72,6 +72,25 @@ public interface MemberService {
 	 * @return
 	 */
 	int signup(Member inputMember, String[] memberAddress);
+
+	/** 카카오 아이디 찾기
+	 * @param object
+	 * @param object2
+	 * @return
+	 */
+	int findIdForKakao(int kakaoId, String memberNickname);
+
+	
+	/** 카카오 로그인
+	 * @param 
+	 * @return
+	 */
+	Member login(int memberId);
+
+	/** 카카오 회원가입
+	 * @param signMember
+	 */
+	int signForKakao(Member signMember);
 	
 	
 }

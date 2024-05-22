@@ -82,5 +82,24 @@ public interface MemberMapper {
 	 */
 	int signup(Member inputMember);
 
+	/** 카카오 로그인 회원 정보 가져오기
+	 * @param kakaoId
+	 * @param memberNickname
+	 * @return
+	 */
+	int findIdForKakao(int kakaoId, String memberNickname);
+
+	/** 카카오 로그인
+	 * @param memberId
+	 * @return
+	 */
+	Member loginForKakao(int memberId);
+
+	/** 카카오 회원가입
+	 * @param signMember
+	 * @return
+	 */
+	int signForKakao(Member signMember);
+
 
 }

@@ -110,5 +110,39 @@
 			 DEFAULT
 		)
 	</insert>
+	
+	<!-- 카카오 로그인 -->
+	<select id="findIdForKakao">
+	SELECT COUNT(*) FROM
+	"MEMBER"
+	WHERE MEMBER_ID = #{kakaoId}
+	AND MEMBER_NICKNAME = #{memberNickname}
+	</select>
+	
+	<!-- 카카오 로그인 -->
+	<select id="loginForKakao">
+		SELECT MEMBER_NO, MEMBER_ID, MEMBER_PW, MEMBER_EMAIL, MEMBER_NICKNAME,
+		MEMBER_TEL, MEMBER_ADDRESS,
+		TO_CHAR(ENROLL_DATE, 'YYYY"년" MM"월" DD"일" HH24"시" MI"분" SS"초"') ENROLL_DATE, MANAGER_CHECK
+		FROM "MEMBER"
+		WHERE MEMBER_ID = #{memberId}
+		AND MEMBER_DEL_FL = 'N'
+	</select>
+
+	<!-- 카카오 회원가입 -->
+	<insert id="signForKakao">
+		INSERT INTO "MEMBER"
+		VALUES(SEQ_MEMBER_NO.NEXTVAL, 
+			 #{memberId},
+			 #{memberPw},
+			 #{memberNickname},
+			 #{memberEmail},
+			 #{memberAddress},
+			 #{memberTel},
+			 DEFAULT,
+			 DEFAULT,
+			 DEFAULT
+		)
+	</insert>
 
 </mapper>
