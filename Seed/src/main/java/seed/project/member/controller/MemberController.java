@@ -297,7 +297,7 @@ public class MemberController {
 	}
 
 	
-	@GetMapping("/kakao")
+	@GetMapping("kakao")
 	public String kakaoApiTest(@RequestParam("code") String code) {
 		
 		System.out.println("code ======== " + code);
