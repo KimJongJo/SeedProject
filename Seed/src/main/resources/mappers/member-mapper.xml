@@ -111,12 +111,10 @@
 		)
 	</insert>
 	
-	<!-- 카카오 로그인 -->
+	<!-- 카카오로 가입한 아이디가 있는지 확인 -->
 	<select id="findIdForKakao">
-	SELECT COUNT(*) FROM
-	"MEMBER"
-	WHERE MEMBER_ID = #{kakaoId}
-	AND MEMBER_NICKNAME = #{memberNickname}
+	SELECT COUNT(*) FROM "MEMBER"
+	WHERE MEMBER_ID = #{memberId}
 	</select>
 	
 	<!-- 카카오 로그인 -->
@@ -137,7 +135,7 @@
 			 #{memberPw},
 			 #{memberNickname},
 			 #{memberEmail},
-			 #{memberAddress},
+			 NULL,
 			 #{memberTel},
 			 DEFAULT,
 			 DEFAULT,

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
@@ -37,42 +38,67 @@ public class TestController {
 	@GetMapping("login")
 	public String kakaoApiTest(@RequestParam("code") String code,
 						HttpServletResponse resp,
-						Model model) {
+						Model model,
+						RedirectAttributes ra) {
 		
-		System.out.println("code ======== " + code);
+//		System.out.println("code ======== " + code);
 		
+		// 토큰 발급
 		String accessToken = service.getKakaoToken(code);
 		
-		System.out.println("accessToken ========= " + accessToken);
+//		System.out.println("accessToken ========= " + accessToken);
 		
+		// 사용자 정보 받아오기
+		// 안에는 kakaoId, memberNickname이 들어있음
 		HashMap<String, Object> userInfo = service.getUserInfo(accessToken);
-		
 		
 		// 카카오로 회원 가입 한 회원인지 확인하기 
 		// 처음 카카오 로그인 하는 경우 회원가입 시켜주기
-		int result = memberService.findIdForKakao((int)userInfo.get("kakaoId"), (String)userInfo.get("memberNickname"));
+		String memberId = String.valueOf(userInfo.get("kakaoId")); 
+		String memberNickname = String.valueOf(userInfo.get("memberNickname"));
+		
+		System.out.println(memberId);
+		System.out.println("ID" + memberId);
+		
+		int result = memberService.findIdForKakao("ID" + memberId);
 		
 		// 이미 존재하는회원
 		if(result > 0) {
-			Member loginMember = memberService.login((int)userInfo.get("kakaoId"));
+			Member loginMember = memberService.login("ID" + memberId);
 			
 			model.addAttribute("loginMember", loginMember);
 			
 			model.addAttribute("message", "카카오 로그인 완료!");
 			
+			System.out.println("카카오 로그인 완료");
+			
+			ra.addFlashAttribute("message", loginMember.getMemberNickname() + "님 환영합니다.");
+			
 		}else { // 존재하지 않은 회원일 경우 회원가입 시켜줌
 			Member signMember = Member.builder()
-								.memberId("ID" + (int)userInfo.get("kakaoId"))
+								.memberId("ID" + memberId)
 								.memberEmail("kakaoEmail")
-								.memberPw("PW" + (int)userInfo.get("kakaoId"))
-								.memberNickname((String)userInfo.get("memberNickname"))
-								.memberAddress("kakaoAddress")
+								.memberPw("PW" + memberId)
+								.memberNickname(memberNickname)
 								.memberTel("kakaoTel")
 								.build();
 			
 			int result2 = memberService.signForKakao(signMember);
 			
-			model.addAttribute("message", "카카오 회원가입 완료!");
+			
+			if(result2 > 0) {
+				model.addAttribute("message", "카카오 회원가입 완료!");
+				
+				model.addAttribute("loginMember", signMember);
+				
+				ra.addFlashAttribute("message", signMember.getMemberNickname() + "님 환영합니다.");
+				
+				System.out.println("카카오 회원가입");
+			}else {
+				System.out.println("카카오 회원가입 안됨");
+			}
+			
+			
 								
 			
 		}

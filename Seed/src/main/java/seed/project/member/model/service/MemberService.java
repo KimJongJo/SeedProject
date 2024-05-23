@@ -78,14 +78,14 @@ public interface MemberService {
 	 * @param object2
 	 * @return
 	 */
-	int findIdForKakao(int kakaoId, String memberNickname);
+	int findIdForKakao(String memberId);
 
 	
 	/** 카카오 로그인
 	 * @param 
 	 * @return
 	 */
-	Member login(int memberId);
+	Member login(String memberId);
 
 	/** 카카오 회원가입
 	 * @param signMember

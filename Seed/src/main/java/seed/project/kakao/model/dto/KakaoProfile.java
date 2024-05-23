@@ -15,7 +15,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @Builder
 public class KakaoProfile {
-	public Integer id;
+	public long id;
 	public String connected_at;
 	public Properties properties;
 	public KakaoAccount kakao_account;
