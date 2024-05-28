@@ -38,6 +38,12 @@ public class MemberController {
 	@Value("${kakao.redirect.uri}")
 	private String kakaoApiUri;
 	
+	@Value("${google.api.client.id}")
+	private String googleApiClientId;
+	
+	@Value("${google.redirect.uri}")
+	private String googleApiUri;
+	
 	
 	/** 로그인 페이지 이동
 	 * @return
@@ -46,7 +52,10 @@ public class MemberController {
 	public String login(Model model) {
 		
 		model.addAttribute("REST_API_KEY", kakaoApiKey);
-		model.addAttribute("REDIRECT_URI", kakaoApiUri);		
+		model.addAttribute("REDIRECT_URI", kakaoApiUri);	
+		
+		model.addAttribute("googleApiClientId", googleApiClientId);
+		model.addAttribute("googleApiUri", googleApiUri);
 		
 		return "/member/login";
 	}

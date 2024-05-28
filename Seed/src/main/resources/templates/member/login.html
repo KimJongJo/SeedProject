@@ -70,6 +70,9 @@
             <a th:href="@{|https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}|}">
               <img src="/images/kakao_login_small.png">
             </a>
+            <a th:href="@{|https://accounts.google.com/o/oauth2/v2/auth?client_id=${googleApiClientId}&redirect_uri=${googleApiUri}&response_type=code&scope=email|}">
+              구글로그인
+            </a>
           </div>
           
 

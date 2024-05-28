@@ -25,6 +25,7 @@ public class MainController {
 		
 		model.addAttribute("seedList", seedList);
 		
+		
 		return "common/main";
 		
 	}

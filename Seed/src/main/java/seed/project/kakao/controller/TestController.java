@@ -91,16 +91,13 @@ public class TestController {
 				
 				model.addAttribute("loginMember", signMember);
 				
-				ra.addFlashAttribute("message", signMember.getMemberNickname() + "님 환영합니다.");
+				ra.addFlashAttribute("message", signMember.getMemberNickname() + "님의 회원가입을 완료했습니다. 환영합니다.");
 				
 				System.out.println("카카오 회원가입");
 			}else {
 				System.out.println("카카오 회원가입 안됨");
 			}
-			
-			
-								
-			
+				
 		}
 		
 		
